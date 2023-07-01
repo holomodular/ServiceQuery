@@ -1,3 +1,3 @@
-![HoloModular Logo](https://github.com/holomodular/.github/blob/main/profile/Logo.png)
+![ServiceQuery Logo](https://github.com/holomodular/ServiceQuery/.github/blob/main/logo.png)
 
 # Welcome to SERVICE QUERY

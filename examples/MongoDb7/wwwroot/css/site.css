@@ -1,0 +1,83 @@
+html {
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+}
+
+/* LAYOUT STYLES */
+
+.skipnav a {
+    position: absolute;
+    left: -10000px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
+    .skipnav a:focus, .skipnav a:active {
+        position: static;
+        left: 0;
+        width: auto;
+        height: auto;
+        overflow: visible;
+        text-decoration: underline;
+    }
+
+a {
+    color: darkblue;
+}
+
+.companylink {
+    text-decoration: none;
+}
+
+.layout-header {
+}
+
+.layout-body {
+    background-color: white;
+}
+
+.layout-body-view {
+    background-color: whitesmoke;
+    padding-bottom: 5px;
+}
+
+.layout-language {
+    float: right;
+}
+
+.layout-footer {
+    text-align: center;
+}
+
+.layout-cookies-consent {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: 10px;
+    text-align: center;
+    background-color: black;
+    color: white;
+    width: 100%;
+}
+
+    .layout-cookies-consent span {
+        font-size: 10pt;
+    }
+
+.layout-cookies-consent-withdraw {
+    text-align: center;
+}

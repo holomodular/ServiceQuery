@@ -1,0 +1,81 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+	  <Version>1.0.5</Version>
+	  <Description>ServiceQuery provides dynamic querying of data over service boundaries. Visit http://ServiceQuery.com to learn more.</Description>
+	  <AssemblyTitle>ServiceQuery</AssemblyTitle>
+	  <Authors>holomodular</Authors>
+	  <TargetFrameworks>net35;net40;net45;netstandard1.3;netstandard2.0;netstandard2.1;net6.0;net7.0</TargetFrameworks>    
+    <Nullable>disable</Nullable>    
+    <Copyright>Copyright © 2023 HoloModular LLC. All Rights Reserved.</Copyright>
+    <PackageProjectUrl>http://ServiceQuery.com</PackageProjectUrl>    
+    <PackageIcon>logo.png</PackageIcon>    
+    <PackageTags>service;query;api;dynamic;linq;rest;entity;mapping;get;search;find;odata</PackageTags>    
+    <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>    
+    <SignAssembly>True</SignAssembly>    
+    <AssemblyOriginatorKeyFile>ServiceQuery.snk</AssemblyOriginatorKeyFile>    
+    <PackageReadmeFile>readme.md</PackageReadmeFile>    
+    <RepositoryUrl>https://github.com/holomodular/ServiceQuery</RepositoryUrl>    
+    <RepositoryType>git</RepositoryType>    
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+	  <None Include="docs\readme.md" Pack="True" PackagePath="\" />
+    <Content Include="licenses\LICENSE.txt" Pack="true" PackagePath="" />
+    <EmbeddedResource Include="logo.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </EmbeddedResource>
+  </ItemGroup>
+
+
+	<ItemGroup Condition=" '$(TargetFramework)' == 'net35' ">
+		<Reference Include="System" />
+		<PackageReference Include="LinqKit.Core" Version="1.2.4">
+			<PrivateAssets>All</PrivateAssets>
+		</PackageReference>
+	</ItemGroup>
+
+	<ItemGroup Condition=" '$(TargetFramework)' == 'net40' ">
+		<Reference Include="System" />
+		<Reference Include="Microsoft.CSharp" />
+		<PackageReference Include="LinqKit.Core" Version="1.2.4">
+			<PrivateAssets>All</PrivateAssets>
+		</PackageReference>
+	</ItemGroup>
+
+	<ItemGroup Condition=" '$(TargetFramework)' == 'net45' ">
+		<Reference Include="System" />
+		<Reference Include="Microsoft.CSharp" />
+		<PackageReference Include="LinqKit" Version="1.2.4">
+			<PrivateAssets>All</PrivateAssets>
+		</PackageReference>
+	</ItemGroup>
+
+	<ItemGroup Condition=" '$(TargetFramework)' == 'netstandard1.3' ">
+		<PackageReference Include="LinqKit.Core" Version="1.2.4">
+			<PrivateAssets>All</PrivateAssets>
+		</PackageReference>
+	</ItemGroup>
+
+	<ItemGroup Condition=" '$(TargetFramework)' == 'netstandard2.0' ">
+		<PackageReference Include="LinqKit.Core" Version="1.2.4">
+			<PrivateAssets>All</PrivateAssets>
+		</PackageReference>
+	</ItemGroup>
+
+	<ItemGroup Condition=" '$(TargetFramework)' == 'netstandard2.1' ">
+		<PackageReference Include="LinqKit" Version="1.2.4">
+			<PrivateAssets>All</PrivateAssets>
+		</PackageReference>
+	</ItemGroup>
+
+	<ItemGroup Condition=" '$(TargetFramework)' == 'net6.0' ">
+		<PackageReference Include="LinqKit" Version="1.2.4" />
+	</ItemGroup>
+
+	<ItemGroup Condition=" '$(TargetFramework)' == 'net7.0' ">
+		<PackageReference Include="LinqKit" Version="1.2.4" />
+	</ItemGroup>
+</Project>
