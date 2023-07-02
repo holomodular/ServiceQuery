@@ -37,7 +37,7 @@ namespace WebApp.Controllers
             request = ServiceQueryRequestBuilder.New()
                 .StartsWith(nameof(ExampleClass.Name), "J")
                 .IsEqual(nameof(ExampleClass.IsConfirmed), "true")
-                .Sort(nameof(ExampleClass.Name))
+                .SortAsc(nameof(ExampleClass.Name))
                 .Select(nameof(ExampleClass.Name), nameof(ExampleClass.Id))
                 .IncludeCount()
                 .Build();
