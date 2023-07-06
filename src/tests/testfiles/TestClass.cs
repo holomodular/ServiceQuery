@@ -2,6 +2,9 @@
 {
     public class TestClass : ITestClass
     {
+        //cosmos key
+        public Guid CosmosKey { get; set; }
+
         //db key
         public virtual int DatabaseKey { get; set; }
 

@@ -12,6 +12,8 @@
     {
         public bool ValidateNullLong = true;
 
+        public bool CosmosIntLongRounding = false;
+
         [Fact]
         public async Task AverageStandardTest()
         {
@@ -125,15 +127,30 @@
                 result = await serviceQuery.ExecuteAggregateAsync<T>(sourceQueryable);
             });
 
-            // Int
-            serviceQuery = ServiceQueryBuilder.New().Average(nameof(TestClass.IntVal)).Build();
-            result = serviceQuery.ExecuteAggregate<T>(sourceQueryable);
-            Assert.True(result == (double)6 / 4);
+            if (CosmosIntLongRounding)
+            {
+                // Int
+                serviceQuery = ServiceQueryBuilder.New().Average(nameof(TestClass.IntVal)).Build();
+                result = serviceQuery.ExecuteAggregate<T>(sourceQueryable);
+                Assert.True(result == Math.Round((double)6 / 4));
 
-            // Long
-            serviceQuery = ServiceQueryBuilder.New().Average(nameof(TestClass.LongVal)).Build();
-            result = serviceQuery.ExecuteAggregate<T>(sourceQueryable);
-            Assert.True(result == (double)6 / 4);
+                // Long
+                serviceQuery = ServiceQueryBuilder.New().Average(nameof(TestClass.LongVal)).Build();
+                result = serviceQuery.ExecuteAggregate<T>(sourceQueryable);
+                Assert.True(result == Math.Round((double)6 / 4));
+            }
+            else
+            {
+                // Int
+                serviceQuery = ServiceQueryBuilder.New().Average(nameof(TestClass.IntVal)).Build();
+                result = serviceQuery.ExecuteAggregate<T>(sourceQueryable);
+                Assert.True(result == (double)6 / 4);
+
+                // Long
+                serviceQuery = ServiceQueryBuilder.New().Average(nameof(TestClass.LongVal)).Build();
+                result = serviceQuery.ExecuteAggregate<T>(sourceQueryable);
+                Assert.True(result == (double)6 / 4);
+            }
 
             // SByte
             serviceQuery = ServiceQueryBuilder.New().Average(nameof(TestClass.SByteVal)).Build();
@@ -327,15 +344,30 @@
                 result = serviceQuery.GetServiceQuery().ExecuteAggregate<T>(sourceQueryable);
             });
 
-            // Int
-            serviceQuery = ServiceQueryRequestBuilder.New().Average(nameof(TestClass.IntVal)).Build();
-            result = serviceQuery.GetServiceQuery().ExecuteAggregate<T>(sourceQueryable);
-            Assert.True(result == (double)6 / 4);
+            if (CosmosIntLongRounding)
+            {
+                // Int
+                serviceQuery = ServiceQueryRequestBuilder.New().Average(nameof(TestClass.IntVal)).Build();
+                result = serviceQuery.GetServiceQuery().ExecuteAggregate<T>(sourceQueryable);
+                Assert.True(result == Math.Round((double)6 / 4));
 
-            // Long
-            serviceQuery = ServiceQueryRequestBuilder.New().Average(nameof(TestClass.LongVal)).Build();
-            result = serviceQuery.GetServiceQuery().ExecuteAggregate<T>(sourceQueryable);
-            Assert.True(result == (double)6 / 4);
+                // Long
+                serviceQuery = ServiceQueryRequestBuilder.New().Average(nameof(TestClass.LongVal)).Build();
+                result = serviceQuery.GetServiceQuery().ExecuteAggregate<T>(sourceQueryable);
+                Assert.True(result == Math.Round((double)6 / 4));
+            }
+            else
+            {
+                // Int
+                serviceQuery = ServiceQueryRequestBuilder.New().Average(nameof(TestClass.IntVal)).Build();
+                result = serviceQuery.GetServiceQuery().ExecuteAggregate<T>(sourceQueryable);
+                Assert.True(result == (double)6 / 4);
+
+                // Long
+                serviceQuery = ServiceQueryRequestBuilder.New().Average(nameof(TestClass.LongVal)).Build();
+                result = serviceQuery.GetServiceQuery().ExecuteAggregate<T>(sourceQueryable);
+                Assert.True(result == (double)6 / 4);
+            }
 
             // SByte
             serviceQuery = ServiceQueryRequestBuilder.New().Average(nameof(TestClass.SByteVal)).Build();

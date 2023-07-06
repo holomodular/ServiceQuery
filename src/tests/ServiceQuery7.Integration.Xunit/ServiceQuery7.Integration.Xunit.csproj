@@ -54,6 +54,27 @@
     <Compile Include="..\testfiles\ComparisonIsNotNullTests.cs" Link="ComparisonIsNotNullTests.cs" />
     <Compile Include="..\testfiles\ComparisonIsNullTests.cs" Link="ComparisonIsNullTests.cs" />
     <Compile Include="..\testfiles\ComparisonStartsWithTests.cs" Link="ComparisonStartsWithTests.cs" />
+    <Compile Include="..\testfiles\CosmosAggregateAverageTests.cs" Link="CosmosAggregateAverageTests.cs" />
+    <Compile Include="..\testfiles\CosmosAggregateCountTests.cs" Link="CosmosAggregateCountTests.cs" />
+    <Compile Include="..\testfiles\CosmosAggregateMaximumTests.cs" Link="CosmosAggregateMaximumTests.cs" />
+    <Compile Include="..\testfiles\CosmosAggregateMinimumTests.cs" Link="CosmosAggregateMinimumTests.cs" />
+    <Compile Include="..\testfiles\CosmosAggregateSumTests.cs" Link="CosmosAggregateSumTests.cs" />
+    <Compile Include="..\testfiles\CosmosComparisonBetweenTests.cs" Link="CosmosComparisonBetweenTests.cs" />
+    <Compile Include="..\testfiles\CosmosComparisonContainsTests.cs" Link="CosmosComparisonContainsTests.cs" />
+    <Compile Include="..\testfiles\CosmosComparisonEndsWithTests.cs" Link="CosmosComparisonEndsWithTests.cs" />
+    <Compile Include="..\testfiles\CosmosComparisonIsEqualTests.cs" Link="CosmosComparisonIsEqualTests.cs" />
+    <Compile Include="..\testfiles\CosmosComparisonIsGreaterThanOrEqualTests.cs" Link="CosmosComparisonIsGreaterThanOrEqualTests.cs" />
+    <Compile Include="..\testfiles\CosmosComparisonIsGreaterThanTests.cs" Link="CosmosComparisonIsGreaterThanTests.cs" />
+    <Compile Include="..\testfiles\CosmosComparisonIsLessThanOrEqualTests.cs" Link="CosmosComparisonIsLessThanOrEqualTests.cs" />
+    <Compile Include="..\testfiles\CosmosComparisonIsLessThanTests.cs" Link="CosmosComparisonIsLessThanTests.cs" />
+    <Compile Include="..\testfiles\CosmosComparisonIsNotEqualTests.cs" Link="CosmosComparisonIsNotEqualTests.cs" />
+    <Compile Include="..\testfiles\CosmosComparisonStartsWithTests.cs" Link="CosmosComparisonStartsWithTests.cs" />
+    <Compile Include="..\testfiles\CosmosDistinctTests.cs" Link="CosmosDistinctTests.cs" />
+    <Compile Include="..\testfiles\CosmosExpressionTests.cs" Link="CosmosExpressionTests.cs" />
+    <Compile Include="..\testfiles\CosmosHelper.cs" Link="CosmosHelper.cs" />
+    <Compile Include="..\testfiles\CosmosSelectTests.cs" Link="CosmosSelectTests.cs" />
+    <Compile Include="..\testfiles\CosmosSortTests.cs" Link="CosmosSortTests.cs" />
+    <Compile Include="..\testfiles\CosmosTestContext.cs" Link="CosmosTestContext.cs" />
     <Compile Include="..\testfiles\DistinctTests.cs" Link="DistinctTests.cs" />
     <Compile Include="..\testfiles\ExpressionTests.cs" Link="ExpressionTests.cs" />
     <Compile Include="..\testfiles\ExternalInterfaceTests.cs" Link="ExternalInterfaceTests.cs" />
@@ -150,6 +171,7 @@
 
   <ItemGroup>
 	  <PackageReference Include="Azure.Data.Tables" Version="12.8.0" />
+	  <PackageReference Include="Microsoft.EntityFrameworkCore.Cosmos" Version="7.0.8" />
 	  <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="7.0.0" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.6.3" />
     <PackageReference Include="xunit" Version="2.4.2" />

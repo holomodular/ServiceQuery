@@ -10,6 +10,8 @@
 
     public abstract class AggregateSumTests<T> : BaseTest<T> where T : class
     {
+        public bool NullSumIsNull = false;
+
         [Fact]
         public async Task SumStandardTest()
         {
@@ -402,20 +404,32 @@
             {
                 serviceQuery = ServiceQueryBuilder.New().Sum(nameof(TestClass.NullDecimalVal)).Build();
                 result = serviceQuery.ExecuteAggregate<T>(sourceQueryable);
-                Assert.True(result == 0);
+                if (NullSumIsNull)
+                    Assert.True(result == null);
+                else
+                    Assert.True(result == 0);
             }
 
             // Double
             serviceQuery = ServiceQueryBuilder.New().Sum(nameof(TestClass.NullDoubleVal)).Build();
             result = serviceQuery.ExecuteAggregate<T>(sourceQueryable);
-            Assert.True(result == 0);
+            if (NullSumIsNull)
+                Assert.True(result == null);
+            else
+                Assert.True(result == 0);
             result = await serviceQuery.ExecuteAggregateAsync<T>(sourceQueryable);
-            Assert.True(result == 0);
+            if (NullSumIsNull)
+                Assert.True(result == null);
+            else
+                Assert.True(result == 0);
 
             // Float
             serviceQuery = ServiceQueryBuilder.New().Sum(nameof(TestClass.NullFloatVal)).Build();
             result = serviceQuery.ExecuteAggregate<T>(sourceQueryable);
-            Assert.True(result == 0);
+            if (NullSumIsNull)
+                Assert.True(result == null);
+            else
+                Assert.True(result == 0);
 
             // Guid
             serviceQuery = ServiceQueryBuilder.New().Sum(nameof(TestClass.NullGuidVal)).Build();
@@ -427,12 +441,18 @@
             // Int
             serviceQuery = ServiceQueryBuilder.New().Sum(nameof(TestClass.NullIntVal)).Build();
             result = serviceQuery.ExecuteAggregate<T>(sourceQueryable);
-            Assert.True(result == 0);
+            if (NullSumIsNull)
+                Assert.True(result == null);
+            else
+                Assert.True(result == 0);
 
             // Long
             serviceQuery = ServiceQueryBuilder.New().Sum(nameof(TestClass.NullLongVal)).Build();
             result = serviceQuery.ExecuteAggregate<T>(sourceQueryable);
-            Assert.True(result == 0);
+            if (NullSumIsNull)
+                Assert.True(result == null);
+            else
+                Assert.True(result == 0);
 
             // SByte
             serviceQuery = ServiceQueryBuilder.New().Sum(nameof(TestClass.NullSByteVal)).Build();
@@ -451,7 +471,10 @@
             // Single
             serviceQuery = ServiceQueryBuilder.New().Sum(nameof(TestClass.NullSingleVal)).Build();
             result = serviceQuery.ExecuteAggregate<T>(sourceQueryable);
-            Assert.True(result == 0);
+            if (NullSumIsNull)
+                Assert.True(result == null);
+            else
+                Assert.True(result == 0);
 
             // String
             serviceQuery = ServiceQueryBuilder.New().Sum(nameof(TestClass.NullStringVal)).Build();
@@ -567,20 +590,32 @@
             {
                 serviceQuery = ServiceQueryRequestBuilder.New().Sum(nameof(TestClass.NullDecimalVal)).Build();
                 result = serviceQuery.GetServiceQuery().ExecuteAggregate<T>(sourceQueryable);
-                Assert.True(result == 0);
+                if (NullSumIsNull)
+                    Assert.True(result == null);
+                else
+                    Assert.True(result == 0);
             }
 
             // Double
             serviceQuery = ServiceQueryRequestBuilder.New().Sum(nameof(TestClass.NullDoubleVal)).Build();
             result = serviceQuery.GetServiceQuery().ExecuteAggregate<T>(sourceQueryable);
-            Assert.True(result == 0);
+            if (NullSumIsNull)
+                Assert.True(result == null);
+            else
+                Assert.True(result == 0);
             result = await serviceQuery.GetServiceQuery().ExecuteAggregateAsync<T>(sourceQueryable);
-            Assert.True(result == 0);
+            if (NullSumIsNull)
+                Assert.True(result == null);
+            else
+                Assert.True(result == 0);
 
             // Float
             serviceQuery = ServiceQueryRequestBuilder.New().Sum(nameof(TestClass.NullFloatVal)).Build();
             result = serviceQuery.GetServiceQuery().ExecuteAggregate<T>(sourceQueryable);
-            Assert.True(result == 0);
+            if (NullSumIsNull)
+                Assert.True(result == null);
+            else
+                Assert.True(result == 0);
 
             // Guid
             serviceQuery = ServiceQueryRequestBuilder.New().Sum(nameof(TestClass.NullGuidVal)).Build();
@@ -592,12 +627,18 @@
             // Int
             serviceQuery = ServiceQueryRequestBuilder.New().Sum(nameof(TestClass.NullIntVal)).Build();
             result = serviceQuery.GetServiceQuery().ExecuteAggregate<T>(sourceQueryable);
-            Assert.True(result == 0);
+            if (NullSumIsNull)
+                Assert.True(result == null);
+            else
+                Assert.True(result == 0);
 
             // Long
             serviceQuery = ServiceQueryRequestBuilder.New().Sum(nameof(TestClass.NullLongVal)).Build();
             result = serviceQuery.GetServiceQuery().ExecuteAggregate<T>(sourceQueryable);
-            Assert.True(result == 0);
+            if (NullSumIsNull)
+                Assert.True(result == null);
+            else
+                Assert.True(result == 0);
 
             // SByte
             serviceQuery = ServiceQueryRequestBuilder.New().Sum(nameof(TestClass.NullSByteVal)).Build();
@@ -616,7 +657,10 @@
             // Single
             serviceQuery = ServiceQueryRequestBuilder.New().Sum(nameof(TestClass.NullSingleVal)).Build();
             result = serviceQuery.GetServiceQuery().ExecuteAggregate<T>(sourceQueryable);
-            Assert.True(result == 0);
+            if (NullSumIsNull)
+                Assert.True(result == null);
+            else
+                Assert.True(result == 0);
 
             // String
             serviceQuery = ServiceQueryRequestBuilder.New().Sum(nameof(TestClass.NullStringVal)).Build();
