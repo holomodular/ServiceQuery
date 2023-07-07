@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<Version>1.0.5</Version>
+		<Version>1.0.6</Version>
 		<Description>ServiceQuery provides dynamic querying of data over service boundaries. Visit http://ServiceQuery.com to learn more.</Description>
 		<AssemblyTitle>ServiceQuery.AzureDataTables</AssemblyTitle>
 		<Authors>holomodular</Authors>
@@ -54,7 +54,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <PackageReference Include="ServiceQuery" Version="1.0.5" />
+	  <PackageReference Include="ServiceQuery" Version="1.0.6" />
 	</ItemGroup>
 
 </Project>

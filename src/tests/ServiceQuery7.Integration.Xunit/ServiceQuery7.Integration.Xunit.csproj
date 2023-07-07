@@ -101,6 +101,27 @@
     <Compile Include="..\testfiles\MongoDbSortTests.cs" Link="MongoDbSortTests.cs" />
     <Compile Include="..\testfiles\MongoDbTestClass.cs" Link="MongoDbTestClass.cs" />
     <Compile Include="..\testfiles\PagingTests.cs" Link="PagingTests.cs" />
+    <Compile Include="..\testfiles\PostgreSqlAggregateAverageTests.cs" Link="PostgreSqlAggregateAverageTests.cs" />
+    <Compile Include="..\testfiles\PostgreSqlAggregateCountTests.cs" Link="PostgreSqlAggregateCountTests.cs" />
+    <Compile Include="..\testfiles\PostgreSqlAggregateMaximumTests.cs" Link="PostgreSqlAggregateMaximumTests.cs" />
+    <Compile Include="..\testfiles\PostgreSqlAggregateMinimumTests.cs" Link="PostgreSqlAggregateMinimumTests.cs" />
+    <Compile Include="..\testfiles\PostgreSqlAggregateSumTests.cs" Link="PostgreSqlAggregateSumTests.cs" />
+    <Compile Include="..\testfiles\PostgreSqlComparisonBetweenTests.cs" Link="PostgreSqlComparisonBetweenTests.cs" />
+    <Compile Include="..\testfiles\PostgreSqlComparisonContainsTests.cs" Link="PostgreSqlComparisonContainsTests.cs" />
+    <Compile Include="..\testfiles\PostgreSqlComparisonEndsWithTests.cs" Link="PostgreSqlComparisonEndsWithTests.cs" />
+    <Compile Include="..\testfiles\PostgreSqlComparisonIsEqualTests.cs" Link="PostgreSqlComparisonIsEqualTests.cs" />
+    <Compile Include="..\testfiles\PostgreSqlComparisonIsGreaterThanOrEqualTests.cs" Link="PostgreSqlComparisonIsGreaterThanOrEqualTests.cs" />
+    <Compile Include="..\testfiles\PostgreSqlComparisonIsGreaterThanTests.cs" Link="PostgreSqlComparisonIsGreaterThanTests.cs" />
+    <Compile Include="..\testfiles\PostgreSqlComparisonIsLessThanOrEqualTests.cs" Link="PostgreSqlComparisonIsLessThanOrEqualTests.cs" />
+    <Compile Include="..\testfiles\PostgreSqlComparisonIsLessThanTests.cs" Link="PostgreSqlComparisonIsLessThanTests.cs" />
+    <Compile Include="..\testfiles\PostgreSqlComparisonIsNotEqualTests.cs" Link="PostgreSqlComparisonIsNotEqualTests.cs" />
+    <Compile Include="..\testfiles\PostgreSqlComparisonStartsWithTests.cs" Link="PostgreSqlComparisonStartsWithTests.cs" />
+    <Compile Include="..\testfiles\PostgreSqlDistinctTests.cs" Link="PostgreSqlDistinctTests.cs" />
+    <Compile Include="..\testfiles\PostgreSqlExpressionTests.cs" Link="PostgreSqlExpressionTests.cs" />
+    <Compile Include="..\testfiles\PostgreSqlHelper.cs" Link="PostgreSqlHelper.cs" />
+    <Compile Include="..\testfiles\PostgreSqlSelectTests.cs" Link="PostgreSqlSelectTests.cs" />
+    <Compile Include="..\testfiles\PostgreSqlSortTests.cs" Link="PostgreSqlSortTests.cs" />
+    <Compile Include="..\testfiles\PostgreSqlTestContext.cs" Link="PostgreSqlTestContext.cs" />
     <Compile Include="..\testfiles\SelectTests.cs" Link="SelectTests.cs" />
     <Compile Include="..\testfiles\SortTests.cs" Link="SortTests.cs" />
     <Compile Include="..\testfiles\SqlLiteAggregateAverageTests.cs" Link="SqlLiteAggregateAverageTests.cs" />
@@ -174,6 +195,7 @@
 	  <PackageReference Include="Microsoft.EntityFrameworkCore.Cosmos" Version="7.0.8" />
 	  <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="7.0.0" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.6.3" />
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="7.0.4" />
     <PackageReference Include="xunit" Version="2.4.2" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.4.5">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>

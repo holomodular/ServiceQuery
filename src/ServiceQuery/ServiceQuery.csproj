@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-	  <Version>1.0.5</Version>
+	  <Version>1.0.6</Version>
 	  <Description>ServiceQuery provides dynamic querying of data over service boundaries. Visit http://ServiceQuery.com to learn more.</Description>
 	  <AssemblyTitle>ServiceQuery</AssemblyTitle>
 	  <Authors>holomodular</Authors>

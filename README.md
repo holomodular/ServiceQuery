@@ -10,7 +10,8 @@ Documentation is located on our website at (http://ServiceQuery.com). It also co
 Install the NuGet Package ServiceQuery
 
 # Examples
-We have numerous examples built using the most popular database storage providers, such as InMemory, Azure Data Tables, SQL Server, MongoDB, SQLite and more coming soon. View all our examples in the [Examples](https://github.com/holomodular/ServiceQuery/blob/main/examples) folder in this project.
+We have numerous examples built using the most popular database storage providers, such as Azure Data Tables, Cosmos DB, MongoDB, MySQL, Oracle, SQLite, SQL Server, Oracle, PostgreSQL and more! 
+View all our examples in the [examples](https://github.com/holomodular/ServiceQuery/blob/main/examples) folder in this project.
 
 # Feedback
 We want to hear from our users. Please feel free to post any issues or questions on our discussion board. You can also reach us at: Support@HoloModular.com

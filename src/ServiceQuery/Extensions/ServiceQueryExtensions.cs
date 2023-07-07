@@ -1021,12 +1021,12 @@ namespace ServiceQuery
                 return new char?(char.Parse(value));
             }
             if (prop.PropertyType == typeof(DateTime))
-                return DateTime.Parse(value);
+                return DateTime.Parse(value, null, System.Globalization.DateTimeStyles.RoundtripKind);
             if (prop.PropertyType == typeof(DateTime?))
             {
                 if (string.IsNullOrEmpty(value))
                     return new DateTime?();
-                return new DateTime?(DateTime.Parse(value));
+                return new DateTime?(DateTime.Parse(value, null, System.Globalization.DateTimeStyles.RoundtripKind));
             }
             if (prop.PropertyType == typeof(DateTimeOffset))
                 return DateTimeOffset.Parse(value);
