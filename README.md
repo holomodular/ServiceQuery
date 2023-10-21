@@ -1,6 +1,6 @@
 <img src="https://github.com/holomodular/ServiceQuery/blob/main/examples/InMemory7/wwwroot/Logo.png" title="ServiceQuery Logo" width="250"/>
 
-# Service Query Allows Safely Querying Data Over REST APIs
+# Service Query Allows Querying Data Over REST APIs
 Service Query (http://ServiceQuery.com) is an open-source library that allows dynamically querying database information over REST APIs. It leverages the power of an expressions builder and a simple model that is capable of serializing query instructions over service boundaries, similar to how ODATA works but better. It supports numerous popular relational (SQL) and document (NoSQL) database engines that expose an IQueryable interface. This provides clients and front end applications unprecedented queryability as well as a standardized endpoint for a microservice-based architecture supporting polyglot data access to system database data.
 
 # Installation Instructions
@@ -33,9 +33,8 @@ Modeled based on LINQ, on your client or web page, you create a simple request o
   }
 </script>
 ```
-On the server, the request is safely converted into IQueryable expressions that can be executed against several different database engines.
-On your web server, expose a REST API POST method.
-Expose 
+On the web server, the request is safely converted into IQueryable expressions that can be executed against several different database engines.
+The following exposes a REST API POST method that the client will call.
 ```csharp
 using ServiceQuery;
 
@@ -51,8 +50,10 @@ public ServiceQueryResponse<ExampleTable> ExampleServiceQuery(ServiceQueryReques
 # Documentation
 Documentation is located on our website at (http://ServiceQuery.com) as well as a simplified version below. The website also contains tables for supported data types and operations by .NET Framework version and database engine.
 
+## ServiceQuery.AzureDataTables
+AzureDataTables does not support several things out of the box, such as string comparisons and ordering (solved by downloading all records). We have built a companion NuGet package <b>ServiceQuery.AzureDataTables</b> that provides workarounds to get around these limitations and paging (supporting more than 1000 records), as well as a simple wrapper to execute the request in one line of code. See our example project for more information.
+
 ## Building and Executing a Query
-If you are using javascript, make sure to download the [ServiceQuery.js](https://servicequery.com/js/servicequery.js) javascript file. This allows you to use the same syntax as the .NET code below!
 Building a query is accomplish using the ServiceQueryRequestBuilder object to create the request.
 ```csharp
 using ServiceQuery;
@@ -112,7 +113,7 @@ Selecting Functions
 * Select
 
 ## Using Query Operations
-
+If you are using javascript, make sure to download the [ServiceQuery.js](https://servicequery.com/js/servicequery.js) javascript file. This allows you to use the same syntax as the .NET code below!
 ```csharp
   using ServiceQuery;
 
