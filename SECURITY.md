@@ -12,6 +12,6 @@ We are supporting security updates for Service Query. The latest version will ha
 
 ## Reporting a Vulnerability
 
-Please report all vulernabilities via our discussion board or privately at Support@HoloModular.com
+Please report all vulernabilities as a bug or privately at Support@HoloModular.com
 
 Thank you
