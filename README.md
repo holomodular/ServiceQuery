@@ -14,12 +14,15 @@ View all our examples in the [examples](https://github.com/holomodular/ServiceQu
 We want to hear from our users. Please feel free to post any issues or questions on our discussion board. You can star our repository or you can also reach us at: Support@HoloModular.com
 
 # Simple Example - Dynamic Querying Using Javascript
-Modeled based on LINQ, on your client or web page, you create a simple request object that is sent over a REST API endpoint to your web server. Make sure to include the following [ServiceQuery.js](https://servicequery.com/js/servicequery.js) javascript file to quickly build request queries in javascript.
+Modeled based on LINQ, you create a simple request object that is sent over a REST API endpoint to your web server. Make sure to include the following [ServiceQuery.js](https://servicequery.com/js/servicequery.js) javascript file to quickly build request queries in javascript.
 ```javascript
 <script src="/js/servicequery.js"></script>
 <script type="text/javascript">
-  function GetAll() {
-    var request = new ServiceQueryRequestBuilder().Build();
+  function GetById() {
+    // Build the request
+    var request = new ServiceQueryRequestBuilder().IsEqual("Id","123").Build();
+
+    // Send request to REST API
     $.ajax({
         url: '/api/MyAPI/ExampleServiceQuery',
         data: JSON.stringify(request),
@@ -27,6 +30,8 @@ Modeled based on LINQ, on your client or web page, you create a simple request o
         dataType: 'json',
         headers: { 'Content-Type': 'application/json' },
         success: function (result) {
+
+          // Output the response
           alert(result.list.length + ' records returned');
         }
     });
@@ -51,7 +56,7 @@ public ServiceQueryResponse<ExampleTable> ExampleServiceQuery(ServiceQueryReques
 Documentation is located on our website at (http://ServiceQuery.com) as well as a simplified version below. The website also contains tables for supported data types and operations by .NET Framework version and database engine.
 
 ## ServiceQuery.AzureDataTables
-AzureDataTables does not support several things out of the box, such as string comparisons and ordering (solved by downloading all records). We have built a companion NuGet package <b>ServiceQuery.AzureDataTables</b> that provides workarounds to get around these limitations and paging (supporting more than 1000 records), as well as a simple wrapper to execute the request in one line of code. See our example project for more information.
+AzureDataTables does not support several things out of the box, such as aggregates, string comparisons and ordering (solved by downloading all records). We have built a companion NuGet package <b>ServiceQuery.AzureDataTables</b> that provides workarounds to these limitations so you can use all standard operations and execute the request in one line of code. See our example project for more information.
 
 ## Building and Executing a Query
 Building a query is accomplish using the ServiceQueryRequestBuilder object to create the request.
@@ -89,28 +94,33 @@ Comparison Functions
 * In Set
 * Not In Set
 
+Comparison Functions (string)
+* Contains
+* StartsWith
+* EndsWith
+
 Grouping Functions
 * And
 * Or
 * Begin
 * End
 
-String Comparison Functions
-* Contains
-* StartsWith
-* EndsWith
-
 Nullability Functions
 * Null
 * Not Null
+
+Paging Functions
+* Page Number
+* Page Size
+
+Selecting Functions
+* Distinct
+* Select
 
 Sorting Functions
 * Sort Ascending
 * Sort Descending
 
-Selecting Functions
-* Distinct
-* Select
 
 ## Using Query Operations
 If you are using javascript, make sure to download the [ServiceQuery.js](https://servicequery.com/js/servicequery.js) javascript file. This allows you to use the same syntax as the .NET code below!
