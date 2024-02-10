@@ -1,4 +1,4 @@
-<img src="https://github.com/holomodular/ServiceQuery/blob/main/examples/InMemory7/wwwroot/Logo.png" title="ServiceQuery Logo" width="250"/>
+<img src="https://github.com/holomodular/ServiceQuery/blob/main/examples/SqlServerNet7/wwwroot/Logo.png" title="ServiceQuery Logo" width="250"/>
 
 # Service Query Allows Querying Data Over REST APIs
 Service Query (http://ServiceQuery.com) is an open-source library that allows dynamically querying database information over REST APIs. It leverages the power of an expressions builder and a simple model that is capable of serializing query instructions over service boundaries, similar to how OData and GraphQL work. It supports numerous popular relational (SQL) and document (NoSQL) database engines that expose an IQueryable interface. ServiceQuery dynamically builds LINQ expressions for querying data, so your data is safe and secure. This library provides clients and front end applications unprecedented queryability using a standardized endpoint supporting polyglot data access. 
@@ -14,7 +14,7 @@ View all our examples in the [examples](https://github.com/holomodular/ServiceQu
 We want to hear from our users. Please feel free to post any issues or questions on our discussion board. You can star our repository or you can also reach us at: Support@HoloModular.com
 
 # Simple Example - Dynamic Querying Using Javascript
-Modeled based on LINQ, you create a simple request object that is sent over a REST API endpoint to your web server. Make sure to include the following [ServiceQuery.js](https://github.com/holomodular/ServiceQuery/blob/main/src/javascript/servicequery.js) javascript file to quickly build request queries in javascript.
+Modeled based on LINQ, you create a simple request object that is sent over a REST API endpoint to your web server. Make sure to include the following [ServiceQuery.js](https://github.com/holomodular/ServiceQuery/blob/main/src/javascript/ServiceQuery.js) javascript file to quickly build request queries in javascript.
 ```javascript
 <script src="/js/servicequery.js"></script>
 <script type="text/javascript">
@@ -126,7 +126,7 @@ Sorting Functions
 
 
 ## Using Query Operations
-If you are using javascript, make sure to download the [ServiceQuery.js](https://github.com/holomodular/ServiceQuery/blob/main/src/javascript/servicequery.js) javascript file. This allows you to use the same syntax as the .NET code below!
+If you are using javascript, make sure to download the [ServiceQuery.js](https://github.com/holomodular/ServiceQuery/blob/main/src/javascript/ServiceQuery.js) javascript file. This allows you to use the same syntax as the .NET code below!
 ```csharp
   using ServiceQuery;
 
