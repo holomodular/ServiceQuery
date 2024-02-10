@@ -1,7 +1,7 @@
 <img src="https://github.com/holomodular/ServiceQuery/blob/main/examples/SqlServerNet7/wwwroot/Logo.png" title="ServiceQuery Logo" width="250"/>
 
 # Service Query Allows Querying Data Over REST APIs
-Service Query (http://ServiceQuery.com) is an open-source library that allows dynamically querying database information over REST APIs. It leverages the power of an expressions builder and a simple model that is capable of serializing query instructions over service boundaries, similar to how OData and GraphQL work. It supports numerous popular relational (SQL) and document (NoSQL) database engines that expose an IQueryable interface. ServiceQuery dynamically builds LINQ expressions for querying data, so your data is safe and secure. This library provides clients and front end applications unprecedented queryability using a standardized endpoint supporting polyglot data access. 
+Service Query https://ServiceQuery.com is an open-source library that allows dynamically querying database information over REST APIs. It leverages the power of an expressions builder and a simple model that is capable of serializing query instructions over service boundaries, similar to how OData and GraphQL work. It supports numerous popular relational (SQL) and document (NoSQL) database engines that expose an IQueryable interface. ServiceQuery dynamically builds LINQ expressions for querying data, so your data is safe and secure. This library provides clients and front end applications unprecedented queryability using a standardized endpoint supporting polyglot data access. 
 
 # Installation Instructions
 Install the NuGet Package <b>ServiceQuery</b>
@@ -190,3 +190,6 @@ If you are using javascript, make sure to download the [ServiceQuery.js](https:/
     .Build();
 
 ```
+
+# About
+I am a business executive and software architect with over 26 years professional experience. You can reach me via www.linkedin.com/in/danlogsdon or https://HoloModular.com
