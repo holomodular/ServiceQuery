@@ -1,0 +1,81 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>disable</Nullable>
+
+    <IsPackable>false</IsPackable>
+    <IsTestProject>true</IsTestProject>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\testfiles\AggregateAverageTests.cs" Link="AggregateAverageTests.cs" />
+    <Compile Include="..\testfiles\AggregateCountTests.cs" Link="AggregateCountTests.cs" />
+    <Compile Include="..\testfiles\AggregateMaximumTests.cs" Link="AggregateMaximumTests.cs" />
+    <Compile Include="..\testfiles\AggregateMinimumTests.cs" Link="AggregateMinimumTests.cs" />
+    <Compile Include="..\testfiles\AggregateSumTests.cs" Link="AggregateSumTests.cs" />
+    <Compile Include="..\testfiles\BaseTest.cs" Link="BaseTest.cs" />
+    <Compile Include="..\testfiles\ComparisonBetweenTests.cs" Link="ComparisonBetweenTests.cs" />
+    <Compile Include="..\testfiles\ComparisonContainsTests.cs" Link="ComparisonContainsTests.cs" />
+    <Compile Include="..\testfiles\ComparisonEndsWithTests.cs" Link="ComparisonEndsWithTests.cs" />
+    <Compile Include="..\testfiles\ComparisonIsEqualTests.cs" Link="ComparisonIsEqualTests.cs" />
+    <Compile Include="..\testfiles\ComparisonIsGreaterThanOrEqualTests.cs" Link="ComparisonIsGreaterThanOrEqualTests.cs" />
+    <Compile Include="..\testfiles\ComparisonIsGreaterThanTests.cs" Link="ComparisonIsGreaterThanTests.cs" />
+    <Compile Include="..\testfiles\ComparisonIsInSetTests.cs" Link="ComparisonIsInSetTests.cs" />
+    <Compile Include="..\testfiles\ComparisonIsLessThanOrEqualTests.cs" Link="ComparisonIsLessThanOrEqualTests.cs" />
+    <Compile Include="..\testfiles\ComparisonIsLessThanTests.cs" Link="ComparisonIsLessThanTests.cs" />
+    <Compile Include="..\testfiles\ComparisonIsNotEqualTests.cs" Link="ComparisonIsNotEqualTests.cs" />
+    <Compile Include="..\testfiles\ComparisonIsNotInSetTests.cs" Link="ComparisonIsNotInSetTests.cs" />
+    <Compile Include="..\testfiles\ComparisonIsNotNullTests.cs" Link="ComparisonIsNotNullTests.cs" />
+    <Compile Include="..\testfiles\ComparisonIsNullTests.cs" Link="ComparisonIsNullTests.cs" />
+    <Compile Include="..\testfiles\ComparisonStartsWithTests.cs" Link="ComparisonStartsWithTests.cs" />
+    <Compile Include="..\testfiles\DistinctTests.cs" Link="DistinctTests.cs" />
+    <Compile Include="..\testfiles\ExpressionTests.cs" Link="ExpressionTests.cs" />
+    <Compile Include="..\testfiles\ExternalInterfaceTests.cs" Link="ExternalInterfaceTests.cs" />
+    <Compile Include="..\testfiles\ITestClass.cs" Link="ITestClass.cs" />
+    <Compile Include="..\TestFiles\LinqAsyncComparisonBetweenTests.cs" Link="LinqAsyncComparisonBetweenTests.cs" />
+    <Compile Include="..\TestFiles\LinqAsyncComparisonContainsTests.cs" Link="LinqAsyncComparisonContainsTests.cs" />
+    <Compile Include="..\TestFiles\LinqAsyncComparisonEndsWithTests.cs" Link="LinqAsyncComparisonEndsWithTests.cs" />
+    <Compile Include="..\TestFiles\LinqAsyncComparisonIsEqualTests.cs" Link="LinqAsyncComparisonIsEqualTests.cs" />
+    <Compile Include="..\TestFiles\LinqAsyncComparisonIsGreaterThanOrEqualTests.cs" Link="LinqAsyncComparisonIsGreaterThanOrEqualTests.cs" />
+    <Compile Include="..\TestFiles\LinqAsyncComparisonIsGreaterThanTests.cs" Link="LinqAsyncComparisonIsGreaterThanTests.cs" />
+    <Compile Include="..\TestFiles\LinqAsyncComparisonIsInSetTests.cs" Link="LinqAsyncComparisonIsInSetTests.cs" />
+    <Compile Include="..\TestFiles\LinqAsyncComparisonIsLessThanOrEqualTests.cs" Link="LinqAsyncComparisonIsLessThanOrEqualTests.cs" />
+    <Compile Include="..\TestFiles\LinqAsyncComparisonIsLessThanTests.cs" Link="LinqAsyncComparisonIsLessThanTests.cs" />
+    <Compile Include="..\TestFiles\LinqAsyncComparisonIsNotEqualTests.cs" Link="LinqAsyncComparisonIsNotEqualTests.cs" />
+    <Compile Include="..\TestFiles\LinqAsyncComparisonIsNotInSetTests.cs" Link="LinqAsyncComparisonIsNotInSetTests.cs" />
+    <Compile Include="..\TestFiles\LinqAsyncComparisonIsNotNullTests.cs" Link="LinqAsyncComparisonIsNotNullTests.cs" />
+    <Compile Include="..\TestFiles\LinqAsyncComparisonIsNullTests.cs" Link="LinqAsyncComparisonIsNullTests.cs" />
+    <Compile Include="..\TestFiles\LinqAsyncComparisonStartsWithTests.cs" Link="LinqAsyncComparisonStartsWithTests.cs" />
+    <Compile Include="..\TestFiles\LinqAsyncDistinctTests.cs" Link="LinqAsyncDistinctTests.cs" />
+    <Compile Include="..\TestFiles\LinqAsyncExpressionTests.cs" Link="LinqAsyncExpressionTests.cs" />
+    <Compile Include="..\TestFiles\LinqAsyncSelectTests.cs" Link="LinqAsyncSelectTests.cs" />
+    <Compile Include="..\TestFiles\LinqAsyncSortTests.cs" Link="LinqAsyncSortTests.cs" />
+    <Compile Include="..\testfiles\PagingTests.cs" Link="PagingTests.cs" />
+    <Compile Include="..\testfiles\SelectTests.cs" Link="SelectTests.cs" />
+    <Compile Include="..\testfiles\SortTests.cs" Link="SortTests.cs" />
+    <Compile Include="..\testfiles\TestClass.cs" Link="TestClass.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Azure.Data.Tables" Version="12.8.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.1" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.8.0" />
+    <PackageReference Include="System.Linq.Async" Version="6.0.1" />
+    <PackageReference Include="xunit" Version="2.6.6" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.5.6">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="coverlet.collector" Version="6.0.0">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\ServiceQuery\ServiceQuery.csproj" />	
+  </ItemGroup>
+
+</Project>

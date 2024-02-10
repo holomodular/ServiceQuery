@@ -118,7 +118,7 @@ namespace ServiceQuery.Xunit
                 testQueryable = serviceQuery.Apply(sourceQueryable);
             });
 #endif
-#if NET7_0
+#if NET7_0_OR_GREATER
             // Guid
             serviceQuery = ServiceQueryBuilder.New().IsGreaterThanOrEqual(nameof(TestClass.GuidVal), Guid.Empty.ToString()).Build();
             testQueryable = serviceQuery.Apply(sourceQueryable);
@@ -352,7 +352,7 @@ namespace ServiceQuery.Xunit
                 testQueryable = serviceQuery.GetServiceQuery().Apply(sourceQueryable);
             });
 #endif
-#if NET7_0
+#if NET7_0_OR_GREATER
             // Guid
             serviceQuery = ServiceQueryRequestBuilder.New().IsGreaterThanOrEqual(nameof(TestClass.GuidVal), Guid.Empty.ToString()).Build();
             testQueryable = serviceQuery.GetServiceQuery().Apply(sourceQueryable);
@@ -586,7 +586,7 @@ namespace ServiceQuery.Xunit
                 testQueryable = serviceQuery.Apply(sourceQueryable);
             });
 #endif
-#if NET7_0
+#if NET7_0_OR_GREATER
             // Guid
             serviceQuery = ServiceQueryBuilder.New().IsGreaterThanOrEqual(nameof(TestClass.NullGuidVal), Guid.Empty.ToString()).Build();
             testQueryable = serviceQuery.Apply(sourceQueryable);
@@ -820,7 +820,7 @@ namespace ServiceQuery.Xunit
                 testQueryable = serviceQuery.GetServiceQuery().Apply(sourceQueryable);
             });
 #endif
-#if NET7_0
+#if NET7_0_OR_GREATER
             // Guid
             serviceQuery = ServiceQueryRequestBuilder.New().IsGreaterThanOrEqual(nameof(TestClass.NullGuidVal), Guid.Empty.ToString()).Build();
             testQueryable = serviceQuery.GetServiceQuery().Apply(sourceQueryable);

@@ -142,7 +142,7 @@ namespace ServiceQuery.Xunit
                 Assert.True(testList.Count == 2);
             });
 
-#if NET7_0
+#if NET7_0_OR_GREATER
             // Guid
             serviceQuery = ServiceQueryBuilder.New().IsLessThanOrEqual(nameof(AzureDataTablesTestClass.GuidVal), "11111111-1111-1111-1111-111111111111").Build();
             predicate = serviceQuery.BuildWhereExpression<AzureDataTablesTestClass>();
@@ -396,7 +396,7 @@ namespace ServiceQuery.Xunit
                 Assert.True(testList.Count == 2);
             });
 
-#if NET7_0
+#if NET7_0_OR_GREATER
             // Guid
             serviceQuery = ServiceQueryRequestBuilder.New().IsLessThanOrEqual(nameof(AzureDataTablesTestClass.GuidVal), "11111111-1111-1111-1111-111111111111").Build();
             predicate = serviceQuery.GetServiceQuery().BuildWhereExpression<AzureDataTablesTestClass>();
@@ -650,7 +650,7 @@ namespace ServiceQuery.Xunit
                 Assert.True(testList.Count == 0);
             });
 
-#if NET7_0
+#if NET7_0_OR_GREATER
             // Guid
             serviceQuery = ServiceQueryBuilder.New().IsLessThanOrEqual(nameof(AzureDataTablesTestClass.NullGuidVal), "11111111-1111-1111-1111-111111111111").Build();
             predicate = serviceQuery.BuildWhereExpression<AzureDataTablesTestClass>();
@@ -904,7 +904,7 @@ namespace ServiceQuery.Xunit
                 Assert.True(testList.Count == 0);
             });
 
-#if NET7_0
+#if NET7_0_OR_GREATER
             // Guid
             serviceQuery = ServiceQueryRequestBuilder.New().IsLessThanOrEqual(nameof(AzureDataTablesTestClass.NullGuidVal), "11111111-1111-1111-1111-111111111111").Build();
             predicate = serviceQuery.GetServiceQuery().BuildWhereExpression<AzureDataTablesTestClass>();

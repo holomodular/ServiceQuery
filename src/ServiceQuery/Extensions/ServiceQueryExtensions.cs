@@ -1145,7 +1145,7 @@ namespace ServiceQuery
                     return new UInt64?();
                 return new UInt64?(UInt64.Parse(value));
             }
-#if NET7_0
+#if NET7_0_OR_GREATER
             if (prop.PropertyType == typeof(UInt128))
                 return UInt128.Parse(value);
             if (prop.PropertyType == typeof(UInt128?))
@@ -1805,8 +1805,8 @@ namespace ServiceQuery
                             throw new ServiceQueryException("aggregate not defined");
                     }
                 }
-#if NET7_0
-            if (prop.PropertyType == typeof(UInt128))
+#if NET7_0_OR_GREATER
+                if (prop.PropertyType == typeof(UInt128))
                 {
                     var uint128Selector = Expression.Lambda<Func<T, UInt128>>(Expression.Property(param, prop), param);
                     switch (filter.AggregateType)
@@ -1827,33 +1827,33 @@ namespace ServiceQuery
                             throw new ServiceQueryException("aggregate not defined");
                     }
                 }
-            if (prop.PropertyType == typeof(UInt128?))
-            {
-               var uint128NSelector = Expression.Lambda<Func<T, decimal?>>(Expression.Property(param, prop), param);
-                switch (filter.AggregateType)
+                if (prop.PropertyType == typeof(UInt128?))
                 {
-                    case ServiceQueryAggregateType.Average:
-                        throw new ServiceQueryException("average not supported on UInt128?");
+                    var uint128NSelector = Expression.Lambda<Func<T, decimal?>>(Expression.Property(param, prop), param);
+                    switch (filter.AggregateType)
+                    {
+                        case ServiceQueryAggregateType.Average:
+                            throw new ServiceQueryException("average not supported on UInt128?");
 
-                    case ServiceQueryAggregateType.Maximum:
-                        var mauint128Nval = query.Max(uint128NSelector);
-                        if (mauint128Nval.HasValue)
-                            return Convert.ToDouble(mauint128Nval.Value);
-                        return null;
+                        case ServiceQueryAggregateType.Maximum:
+                            var mauint128Nval = query.Max(uint128NSelector);
+                            if (mauint128Nval.HasValue)
+                                return Convert.ToDouble(mauint128Nval.Value);
+                            return null;
 
-                    case ServiceQueryAggregateType.Minimum:
-                        var miuint128Nval = query.Min(uint128NSelector);
-                        if (miuint128Nval.HasValue)
-                            return Convert.ToDouble(miuint128Nval.Value);
-                        return null;
+                        case ServiceQueryAggregateType.Minimum:
+                            var miuint128Nval = query.Min(uint128NSelector);
+                            if (miuint128Nval.HasValue)
+                                return Convert.ToDouble(miuint128Nval.Value);
+                            return null;
 
-                    case ServiceQueryAggregateType.Sum:
-                        throw new ServiceQueryException("sum not supported on UInt128?");
+                        case ServiceQueryAggregateType.Sum:
+                            throw new ServiceQueryException("sum not supported on UInt128?");
 
-                    default:
-                        throw new ServiceQueryException("aggregate not defined");
+                        default:
+                            throw new ServiceQueryException("aggregate not defined");
+                    }
                 }
-            }
 #endif
                 throw new ServiceQueryException("aggregate type not defined");
             }
@@ -2386,8 +2386,8 @@ namespace ServiceQuery
                             throw new ServiceQueryException("aggregate not defined");
                     }
                 }
-#if NET7_0
-            if (prop.PropertyType == typeof(UInt128))
+#if NET7_0_OR_GREATER
+                if (prop.PropertyType == typeof(UInt128))
                 {
                     var uint128Selector = Expression.Lambda<Func<T, UInt128>>(Expression.Property(param, prop), param);
                     switch (filter.AggregateType)
@@ -2408,33 +2408,33 @@ namespace ServiceQuery
                             throw new ServiceQueryException("aggregate not defined");
                     }
                 }
-            if (prop.PropertyType == typeof(UInt128?))
-            {
-               var uint128NSelector = Expression.Lambda<Func<T, decimal?>>(Expression.Property(param, prop), param);
-                switch (filter.AggregateType)
+                if (prop.PropertyType == typeof(UInt128?))
                 {
-                    case ServiceQueryAggregateType.Average:
-                        throw new ServiceQueryException("average not supported on UInt128?");
+                    var uint128NSelector = Expression.Lambda<Func<T, decimal?>>(Expression.Property(param, prop), param);
+                    switch (filter.AggregateType)
+                    {
+                        case ServiceQueryAggregateType.Average:
+                            throw new ServiceQueryException("average not supported on UInt128?");
 
-                    case ServiceQueryAggregateType.Maximum:
-                        var mauint128Nval = await query.MaxAsync(uint128NSelector);
-                        if (mauint128Nval.HasValue)
-                            return Convert.ToDouble(mauint128Nval.Value);
-                        return null;
+                        case ServiceQueryAggregateType.Maximum:
+                            var mauint128Nval = await query.MaxAsync(uint128NSelector);
+                            if (mauint128Nval.HasValue)
+                                return Convert.ToDouble(mauint128Nval.Value);
+                            return null;
 
-                    case ServiceQueryAggregateType.Minimum:
-                        var miuint128Nval = await query.MinAsync(uint128NSelector);
-                        if (miuint128Nval.HasValue)
-                            return Convert.ToDouble(miuint128Nval.Value);
-                        return null;
+                        case ServiceQueryAggregateType.Minimum:
+                            var miuint128Nval = await query.MinAsync(uint128NSelector);
+                            if (miuint128Nval.HasValue)
+                                return Convert.ToDouble(miuint128Nval.Value);
+                            return null;
 
-                    case ServiceQueryAggregateType.Sum:
-                        throw new ServiceQueryException("sum not supported on UInt128?");
+                        case ServiceQueryAggregateType.Sum:
+                            throw new ServiceQueryException("sum not supported on UInt128?");
 
-                    default:
-                        throw new ServiceQueryException("aggregate not defined");
+                        default:
+                            throw new ServiceQueryException("aggregate not defined");
+                    }
                 }
-            }
 #endif
                 throw new ServiceQueryException("aggregate type not defined");
             }

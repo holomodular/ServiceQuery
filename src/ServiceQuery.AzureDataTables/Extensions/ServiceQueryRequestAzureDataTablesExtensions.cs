@@ -27,7 +27,7 @@ namespace ServiceQuery
             return serviceQuery.Execute<T>(tableClient, serviceQueryOptions, azureDataTablesOptions);
         }
 
-#if NETSTANDARD2_0
+#if NETSTANDARD2_0_OR_GREATER
 #else
 
         /// <summary>

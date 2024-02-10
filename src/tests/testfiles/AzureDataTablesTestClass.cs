@@ -100,7 +100,7 @@ namespace ServiceQuery.Xunit
                 SingleVal = 0,
                 StringVal = " ",
                 //TimeSpanVal = TimeSpan.Zero,
-#if NET7_0
+#if NET7_0_OR_GREATER
                 //UInt128Val = 0,
 #endif
                 //UInt16Val = 0,
@@ -133,7 +133,7 @@ namespace ServiceQuery.Xunit
                 SingleVal = 1,
                 StringVal = "a",
                 //TimeSpanVal = TimeSpan.FromMilliseconds(1),
-#if NET7_0
+#if NET7_0_OR_GREATER
                 //UInt128Val = 1,
 #endif
                 //UInt16Val = 1,
@@ -166,7 +166,7 @@ namespace ServiceQuery.Xunit
                 SingleVal = 2,
                 StringVal = "b",
                 //TimeSpanVal = TimeSpan.FromMilliseconds(2),
-#if NET7_0
+#if NET7_0_OR_GREATER
                 //UInt128Val = 2,
 #endif
                 //UInt16Val = 2,
@@ -199,7 +199,7 @@ namespace ServiceQuery.Xunit
                 SingleVal = 3,
                 StringVal = "c",
                 //TimeSpanVal = TimeSpan.FromMilliseconds(3),
-#if NET7_0
+#if NET7_0_OR_GREATER
                 //UInt128Val = 3,
 #endif
                 //UInt16Val = 3,

@@ -109,7 +109,7 @@ namespace ServiceQuery.Xunit
             result = await testQueryable.ToListAsync();
             Assert.NotNull(result);
             Assert.True(result.Count == 1);
-#if NET7_0
+#if NET7_0_OR_GREATER
 
             // Guid
             serviceQuery = ServiceQueryBuilder.New().IsLessThan(nameof(TestClass.GuidVal), "11111111-1111-1111-1111-111111111111").Build();
@@ -335,7 +335,7 @@ namespace ServiceQuery.Xunit
             result = await testQueryable.ToListAsync();
             Assert.NotNull(result);
             Assert.True(result.Count == 1);
-#if NET7_0
+#if NET7_0_OR_GREATER
 
             // Guid
             serviceQuery = ServiceQueryRequestBuilder.New().IsLessThan(nameof(TestClass.GuidVal), "11111111-1111-1111-1111-111111111111").Build();
@@ -561,7 +561,7 @@ namespace ServiceQuery.Xunit
             result = await testQueryable.ToListAsync();
             Assert.NotNull(result);
             Assert.True(result.Count == 0);
-#if NET7_0
+#if NET7_0_OR_GREATER
 
             // Guid
             serviceQuery = ServiceQueryBuilder.New().IsLessThan(nameof(TestClass.NullGuidVal), "11111111-1111-1111-1111-111111111111").Build();
@@ -787,7 +787,7 @@ namespace ServiceQuery.Xunit
             result = await testQueryable.ToListAsync();
             Assert.NotNull(result);
             Assert.True(result.Count == 0);
-#if NET7_0
+#if NET7_0_OR_GREATER
 
             // Guid
             serviceQuery = ServiceQueryRequestBuilder.New().IsLessThan(nameof(TestClass.NullGuidVal), "11111111-1111-1111-1111-111111111111").Build();

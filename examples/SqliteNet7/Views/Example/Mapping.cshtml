@@ -1,0 +1,340 @@
+﻿@{
+    ViewBag.Title = "Mapping Example";
+    ViewBag.Description = "Mapping Example";
+    ViewBag.Keywords = "Mapping Example";
+}
+@section Head{
+    <!-- Add the service query javascript class to access ServiceQueryRequestBuilder object -->
+    <script src="/js/servicequery.js"></script>
+}
+<h1>Mapping Example</h1>
+<p>
+    This example shows how to map properties between a data transfer object and an underlying database data class.
+    It also uses automapper to move data between objects.    
+</p>
+<p>
+    The database class is <b>WebApp.Database.ExampleClass</b> and it is mapped to <b>WebApp.Model.CustomExampleClassDto</b>
+</p>
+<h2>Restricting Access</h2>
+<p>
+    You can restrict access to certain properties by removing them from the property mapping list on the <b>ServiceQueryOptions</b> class.
+</p>
+<p>
+    This page shows how to query the API using javascript.
+    Include the servicequery.js file to your page to access the ServiceQueryRequestBuilder object.
+    Its usage is identical to the .NET methods, so they can be used interchangeably.
+</p>
+<p>
+    Select one of the buttons below to execute a Service Query. View the page source (API.cshtml) to see the methods used.
+</p>
+<p>
+    <button class="btn btn-primary mb-3" onclick="GetAll();">Get All</button>
+    <button class="btn btn-primary mb-3" onclick="GetIdEqualOne();">Get Id = 1</button>
+    <button class="btn btn-primary mb-3" onclick="GetInSet();">Get InSet 1,2,3</button>
+    <button class="btn btn-primary mb-3" onclick="GetBetween();">Get Id Between 1 and 5</button>
+    <button class="btn btn-primary mb-3" onclick="GetNameJohnDoe();">Get Name = 'John Doe'</button>
+    <button class="btn btn-primary mb-3" onclick="GetGreaterThanFive();">Get Id > 5</button>
+    <button class="btn btn-primary mb-3" onclick="GetGreaterThanOrEqualFive();">Get Id >= 5</button>
+    <button class="btn btn-primary mb-3" onclick="GetLessThanFive();">Get Id < 5</button>
+    <button class="btn btn-primary mb-3" onclick="GetLessThanOrEqualFive();">Get Id <= 5</button>
+    <button class="btn btn-primary mb-3" onclick="GetCount();">Get Count()</button>
+    <button class="btn btn-primary mb-3" onclick="GetAverageId();">Get Average(Id)</button>
+    <button class="btn btn-primary mb-3" onclick="GetMinimumId();">Get Minimum(Id)</button>
+    <button class="btn btn-primary mb-3" onclick="GetMaximumId();">Get Maximum(Id)</button>
+    <button class="btn btn-primary mb-3" onclick="GetSumId();">Get Sum(Id)</button>
+    <button class="btn btn-primary mb-3" onclick="GetIncludeCount();">Get IncludeCount()</button>
+    <button class="btn btn-primary mb-3" onclick="GetStartsWithJohn();">Get StartsWith("John")</button>
+    <button class="btn btn-primary mb-3" onclick="GetEndsWithDoe();">Get EndsWith("Doe")</button>
+    <button class="btn btn-primary mb-3" onclick="GetContainsJohn();">Get Contains("John")</button>
+    <button class="btn btn-primary mb-3" onclick="GetSortByNameAsc();">Get Sort Name Asc</button>
+    <button class="btn btn-primary mb-3" onclick="GetSortByNameDesc();">Get Sort Name Desc</button>
+
+</p>
+
+<script type="text/javascript">
+
+    var requestUrl = '/api/v1/Example/CustomExampleServiceQuery';
+
+    function GetAll() {
+        var request = new ServiceQueryRequestBuilder().Build();
+        $.ajax({
+            url: requestUrl,
+            data: JSON.stringify(request),
+            type: "POST",
+            dataType: 'json',
+            headers: { 'Content-Type': 'application/json' },
+            success: function (result) {
+                alert(result.list.length + ' records returned');
+            }
+        });
+    }
+
+    function GetIdEqualOne() {
+        var request = new ServiceQueryRequestBuilder().IsEqual("customid", "1").Build();
+        $.ajax({
+            url: requestUrl,
+            data: JSON.stringify(request),
+            type: "POST",
+            dataType: 'json',
+            headers: { 'Content-Type': 'application/json' },
+            success: function (result) {
+                alert(result.list.length + ' records returned. Name is: ' + result.list[0].customName);
+            }
+        });
+    }
+
+    function GetInSet() {
+        var request = new ServiceQueryRequestBuilder().IsInSet("customid", "1", "2", "3").Build();
+        $.ajax({
+            url: requestUrl,
+            data: JSON.stringify(request),
+            type: "POST",
+            dataType: 'json',
+            headers: { 'Content-Type': 'application/json' },
+            success: function (result) {
+                alert(result.list.length + ' records returned');
+            }
+        });
+    }
+
+    function GetBetween() {
+        var request = new ServiceQueryRequestBuilder().Between("customid", "1", "5").Build();
+        $.ajax({
+            url: requestUrl,
+            data: JSON.stringify(request),
+            type: "POST",
+            dataType: 'json',
+            headers: { 'Content-Type': 'application/json' },
+            success: function (result) {
+                alert(result.list.length + ' records returned');
+            }
+        });
+    }
+
+    function GetNameJohnDoe() {
+        var request = new ServiceQueryRequestBuilder().IsEqual("customname", "John Doe").Build();
+        $.ajax({
+            url: requestUrl,
+            data: JSON.stringify(request),
+            type: "POST",
+            dataType: 'json',
+            headers: { 'Content-Type': 'application/json' },
+            success: function (result) {
+                alert(result.list.length + ' records returned');
+            }
+        });
+    }
+
+    function GetGreaterThanFive() {
+        var request = new ServiceQueryRequestBuilder().IsGreaterThan("customid", "5").Build();
+        $.ajax({
+            url: requestUrl,
+            data: JSON.stringify(request),
+            type: "POST",
+            dataType: 'json',
+            headers: { 'Content-Type': 'application/json' },
+            success: function (result) {
+                alert(result.list.length + ' records returned');
+            }
+        });
+    }
+
+    function GetGreaterThanOrEqualFive() {
+        var request = new ServiceQueryRequestBuilder().IsGreaterThanOrEqual("customid", "5").Build();
+        $.ajax({
+            url: requestUrl,
+            data: JSON.stringify(request),
+            type: "POST",
+            dataType: 'json',
+            headers: { 'Content-Type': 'application/json' },
+            success: function (result) {
+                alert(result.list.length + ' records returned');
+            }
+        });
+    }
+
+
+    function GetLessThanFive() {
+        var request = new ServiceQueryRequestBuilder().IsLessThan("customid", "5").Build();
+        $.ajax({
+            url: requestUrl,
+            data: JSON.stringify(request),
+            type: "POST",
+            dataType: 'json',
+            headers: { 'Content-Type': 'application/json' },
+            success: function (result) {
+                alert(result.list.length + ' records returned');
+            }
+        });
+    }
+
+    function GetLessThanOrEqualFive() {
+        var request = new ServiceQueryRequestBuilder().IsLessThanOrEqual("customid", "5").Build();
+        $.ajax({
+            url: requestUrl,
+            data: JSON.stringify(request),
+            type: "POST",
+            dataType: 'json',
+            headers: { 'Content-Type': 'application/json' },
+            success: function (result) {
+                alert(result.list.length + ' records returned');
+            }
+        });
+    }
+
+    function GetAverageId() {
+        var request = new ServiceQueryRequestBuilder().Average("customid").Build();
+        $.ajax({
+            url: requestUrl,
+            data: JSON.stringify(request),
+            type: "POST",
+            dataType: 'json',
+            headers: { 'Content-Type': 'application/json' },
+            success: function (result) {
+                alert(result.aggregate + ' returned');
+            }
+        });
+    }
+
+    function GetMinimumId() {
+        var request = new ServiceQueryRequestBuilder().Minimum("customid").Build();
+        $.ajax({
+            url: requestUrl,
+            data: JSON.stringify(request),
+            type: "POST",
+            dataType: 'json',
+            headers: { 'Content-Type': 'application/json' },
+            success: function (result) {
+                alert(result.aggregate + ' returned');
+            }
+        });
+    }
+
+
+    function GetMaximumId() {
+        var request = new ServiceQueryRequestBuilder().Maximum("customid").Build();
+        $.ajax({
+            url: requestUrl,
+            data: JSON.stringify(request),
+            type: "POST",
+            dataType: 'json',
+            headers: { 'Content-Type': 'application/json' },
+            success: function (result) {
+                alert(result.aggregate + ' returned');
+            }
+        });
+    }
+
+    function GetSumId() {
+        var request = new ServiceQueryRequestBuilder().Sum("customid").Build();
+        $.ajax({
+            url: requestUrl,
+            data: JSON.stringify(request),
+            type: "POST",
+            dataType: 'json',
+            headers: { 'Content-Type': 'application/json' },
+            success: function (result) {
+                alert(result.aggregate + ' returned');
+            }
+        });
+    }
+
+    function GetCount() {
+        var request = new ServiceQueryRequestBuilder().Count().Build();
+        $.ajax({
+            url: requestUrl,
+            data: JSON.stringify(request),
+            type: "POST",
+            dataType: 'json',
+            headers: { 'Content-Type': 'application/json' },
+            success: function (result) {
+                alert(result.aggregate + ' returned');
+            }
+        });
+    }
+
+    function GetIncludeCount() {
+        var request = new ServiceQueryRequestBuilder().IncludeCount().Build();
+        $.ajax({
+            url: requestUrl,
+            data: JSON.stringify(request),
+            type: "POST",
+            dataType: 'json',
+            headers: { 'Content-Type': 'application/json' },
+            success: function (result) {
+                alert(result.count + ' returned');
+            }
+        });
+    }
+
+    function GetStartsWithJohn() {
+        var request = new ServiceQueryRequestBuilder().StartsWith("customname", "John").Build();
+        $.ajax({
+            url: requestUrl,
+            data: JSON.stringify(request),
+            type: "POST",
+            dataType: 'json',
+            headers: { 'Content-Type': 'application/json' },
+            success: function (result) {
+                alert(result.list.length + ' returned');
+            }
+        });
+    }
+
+    function GetEndsWithDoe() {
+        var request = new ServiceQueryRequestBuilder().EndsWith("customname", "Doe").Build();
+        $.ajax({
+            url: requestUrl,
+            data: JSON.stringify(request),
+            type: "POST",
+            dataType: 'json',
+            headers: { 'Content-Type': 'application/json' },
+            success: function (result) {
+                alert(result.list.length + ' returned');
+            }
+        });
+    }
+
+    function GetContainsJohn() {
+        var request = new ServiceQueryRequestBuilder().Contains("customname", "John").Build();
+        $.ajax({
+            url: requestUrl,
+            data: JSON.stringify(request),
+            type: "POST",
+            dataType: 'json',
+            headers: { 'Content-Type': 'application/json' },
+            success: function (result) {
+                alert(result.list.length + ' returned');
+            }
+        });
+    }
+
+    function GetSortByNameAsc() {
+        var request = new ServiceQueryRequestBuilder().SortAsc("customname").Build();
+        $.ajax({
+            url: requestUrl,
+            data: JSON.stringify(request),
+            type: "POST",
+            dataType: 'json',
+            headers: { 'Content-Type': 'application/json' },
+            success: function (result) {
+                alert(result.list.length + ' returned. First name is ' + result.list[0].customName);
+            }
+        });
+    }
+
+    function GetSortByNameDesc() {
+        var request = new ServiceQueryRequestBuilder().SortDesc("customname").Build();
+        $.ajax({
+            url: requestUrl,
+            data: JSON.stringify(request),
+            type: "POST",
+            dataType: 'json',
+            headers: { 'Content-Type': 'application/json' },
+            success: function (result) {
+                alert(result.list.length + ' returned. First name is ' + result.list[0].customName);
+            }
+        });
+    }
+
+</script>

@@ -1,3 +1,6 @@
+# 1.0.8
+- Support .NET 8.0
+
 # 1.0.6
 - DateTime parsing using System.Globalization.DateTimeStyles.RoundtripKind
 
