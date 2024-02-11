@@ -191,6 +191,26 @@ If you are using javascript, make sure to download the [ServiceQuery.js](https:/
 
 ```
 
+## ServiceQuery Options
+We currently provide the following server-side options when processing queries.
+```csharp
+    public class ServiceQueryOptions
+    {
+        /// <summary>
+        /// Dictionary list of property name mappings.
+        /// Exposed Class -> Internal Class
+        /// Default will use all queryable class property names
+        /// </summary>
+        public Dictionary<string, string> PropertyNameMappings { get; set; }
+
+        /// <summary>
+        /// Determine whether property names must be case sensitive or throw an exception.
+        /// Default is false.
+        /// </summary>
+        public bool PropertyNameCaseSensitive { get; set; }
+    }
+```
+
 # Roadmap
 There are several new features planned and currently in development. Visit the Issues page at the top to view the current list. Let us know if you have any requests.
 
