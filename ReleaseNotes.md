@@ -1,3 +1,6 @@
+# 2.0.0
+- Refactor library to contain no external nuget package references
+
 # 1.0.8
 - Support .NET 8.0
 
