@@ -1,5 +1,6 @@
 ﻿namespace ServiceQuery.Xunit
 {
+    [Collection("Cosmos")]
     public class CosmosComparisonIsLessThanOrEqualTests : ComparisonIsLessThanOrEqualTests<TestClass>
     {
         public CosmosComparisonIsLessThanOrEqualTests()

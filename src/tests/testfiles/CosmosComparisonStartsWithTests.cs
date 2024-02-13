@@ -1,5 +1,6 @@
 ﻿namespace ServiceQuery.Xunit
 {
+    [Collection("Cosmos")]
     public class CosmosComparisonStartsWithTests : ComparisonStartsWithTests<TestClass>
     {
         public CosmosComparisonStartsWithTests()

@@ -1,12 +1,6 @@
-﻿#if NET8_0_OR_GREATER
-
-#else
-using System.Data.Entity;
-#endif
-
-namespace ServiceQuery.Xunit
+﻿namespace ServiceQuery.Xunit
 {
-    public class LinqAsyncSortTests : SortTests<TestClass>
+    public class LinqAsyncSortTests : LinqAsyncSortTests<TestClass>
     {
         public override IQueryable<TestClass> GetTestList()
         {
@@ -53,11 +47,7 @@ namespace ServiceQuery.Xunit
             Assert.True(result[2].IntVal == 1 || result[2].IntVal == 3);
             Assert.True(result[3].IntVal == 1 || result[3].IntVal == 3);
 
-#if NET8_0_OR_GREATER
             result = await testQueryable.ToAsyncEnumerable().ToListAsync();
-#else
-            result = await testQueryable.ToListAsync();
-#endif
             Assert.True(result[0].IntVal == 0 || result[0].IntVal == 2);
             Assert.True(result[1].IntVal == 0 || result[1].IntVal == 2);
             Assert.True(result[2].IntVal == 1 || result[2].IntVal == 3);
@@ -234,11 +224,7 @@ namespace ServiceQuery.Xunit
             Assert.True(result[1].IntVal == 1 || result[1].IntVal == 3);
             Assert.True(result[2].IntVal == 0 || result[2].IntVal == 2);
             Assert.True(result[3].IntVal == 0 || result[3].IntVal == 2);
-#if NET8_0_OR_GREATER
             result = await testQueryable.ToAsyncEnumerable().ToListAsync();
-#else
-            result = await testQueryable.ToListAsync();
-#endif
             Assert.True(result[0].IntVal == 1 || result[0].IntVal == 3);
             Assert.True(result[1].IntVal == 1 || result[1].IntVal == 3);
             Assert.True(result[2].IntVal == 0 || result[2].IntVal == 2);
@@ -407,11 +393,7 @@ namespace ServiceQuery.Xunit
             Assert.True(result[1].IntVal == 0 || result[1].IntVal == 2);
             Assert.True(result[2].IntVal == 1 || result[2].IntVal == 3);
             Assert.True(result[3].IntVal == 1 || result[3].IntVal == 3);
-#if NET8_0_OR_GREATER
             result = await testQueryable.ToAsyncEnumerable().ToListAsync();
-#else
-            result = await testQueryable.ToListAsync();
-#endif
             Assert.True(result[0].IntVal == 0 || result[0].IntVal == 2);
             Assert.True(result[1].IntVal == 0 || result[1].IntVal == 2);
             Assert.True(result[2].IntVal == 1 || result[2].IntVal == 3);
@@ -580,11 +562,7 @@ namespace ServiceQuery.Xunit
             Assert.True(result[1].IntVal == 1 || result[1].IntVal == 3);
             Assert.True(result[2].IntVal == 0 || result[2].IntVal == 2);
             Assert.True(result[3].IntVal == 0 || result[3].IntVal == 2);
-#if NET8_0_OR_GREATER
             result = await testQueryable.ToAsyncEnumerable().ToListAsync();
-#else
-            result = await testQueryable.ToListAsync();
-#endif
             Assert.True(result[0].IntVal == 1 || result[0].IntVal == 3);
             Assert.True(result[1].IntVal == 1 || result[1].IntVal == 3);
             Assert.True(result[2].IntVal == 0 || result[2].IntVal == 2);
@@ -750,11 +728,7 @@ namespace ServiceQuery.Xunit
             testQueryable = serviceQuery.Apply(sourceQueryable);
             result = testQueryable.ToList();
             Assert.True(result.Count == 4);
-#if NET8_0_OR_GREATER
             result = await testQueryable.ToAsyncEnumerable().ToListAsync();
-#else
-            result = await testQueryable.ToListAsync();
-#endif
             Assert.True(result.Count == 4);
             //Assert.True(result[0].IntVal == 0 || result[0].IntVal == 2);
             //Assert.True(result[1].IntVal == 0 || result[1].IntVal == 2);
@@ -930,11 +904,7 @@ namespace ServiceQuery.Xunit
             testQueryable = serviceQuery.Apply(sourceQueryable);
             result = testQueryable.ToList();
             Assert.True(result.Count == 4);
-#if NET8_0_OR_GREATER
             result = await testQueryable.ToAsyncEnumerable().ToListAsync();
-#else
-            result = await testQueryable.ToListAsync();
-#endif
             Assert.True(result.Count == 4);
 
             // ByteArray
@@ -1097,11 +1067,7 @@ namespace ServiceQuery.Xunit
             testQueryable = serviceQuery.GetServiceQuery().Apply(sourceQueryable);
             result = testQueryable.ToList();
             Assert.True(result.Count == 4);
-#if NET8_0_OR_GREATER
             result = await testQueryable.ToAsyncEnumerable().ToListAsync();
-#else
-            result = await testQueryable.ToListAsync();
-#endif
             Assert.True(result.Count == 4);
 
             // ByteArray
@@ -1264,11 +1230,7 @@ namespace ServiceQuery.Xunit
             testQueryable = serviceQuery.GetServiceQuery().Apply(sourceQueryable);
             result = testQueryable.ToList();
             Assert.True(result.Count == 4);
-#if NET8_0_OR_GREATER
             result = await testQueryable.ToAsyncEnumerable().ToListAsync();
-#else
-            result = await testQueryable.ToListAsync();
-#endif
             Assert.True(result.Count == 4);
 
             // ByteArray

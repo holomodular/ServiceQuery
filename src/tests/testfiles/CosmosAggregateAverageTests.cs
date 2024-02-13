@@ -1,5 +1,6 @@
 ﻿namespace ServiceQuery.Xunit
 {
+    [Collection("Cosmos")]
     public class CosmosAggregateAverageTests : AggregateAverageTests<TestClass>
     {
         public CosmosAggregateAverageTests()

@@ -1,4 +1,4 @@
-<img src="https://github.com/holomodular/ServiceQuery/blob/main/examples/SqlServerNet7/wwwroot/Logo.png" title="ServiceQuery Logo" width="250"/>
+<img src="https://github.com/holomodular/ServiceQuery/blob/main/Logo.png" title="ServiceQuery Logo" width="250"/>
 
 # ServiceQuery Allows Querying Data Over REST APIs
 ServiceQuery, https://ServiceQuery.com, is an open-source library that allows dynamically querying database information over REST APIs. Similar to how OData and GraphQL work, it leverages the power of an expressions builder and a simple model that is capable of serializing query instructions over service boundaries. It supports numerous popular relational (SQL) and document (NoSQL) database engines that expose an IQueryable interface. ServiceQuery builds LINQ expressions using individually mapped functions and parsed data that eliminates injection attacks, so querying your data is safe and secure. This library provides clients and front end applications unprecedented queryability using a standardized endpoint supporting polyglot data access. 
@@ -55,7 +55,7 @@ public ServiceQueryResponse<ExampleTable> ExampleServiceQuery(ServiceQueryReques
 ```
 
 # Documentation
-Documentation is located on our website at (http://ServiceQuery.com) as well as a simplified version below. The website also contains tables for supported data types and operations by .NET Framework version and database engine.
+Documentation is located on our website at http://ServiceQuery.com as well as a simplified version below. The website also contains tables for supported data types and operations by .NET Framework version and database engine.
 
 ## ServiceQuery.AzureDataTables
 AzureDataTables does not support several things out of the box, such as aggregates, string comparisons and ordering (solved by downloading all records). We have built a companion NuGet package <b>ServiceQuery.AzureDataTables</b> that provides workarounds to these limitations so you can use all standard operations and execute the request in one line of code. See our example projects for more information.

@@ -1,12 +1,6 @@
-﻿#if NET8_0_OR_GREATER
-
-#else
-using System.Data.Entity;
-#endif
-
-namespace ServiceQuery.Xunit
+﻿namespace ServiceQuery.Xunit
 {
-    public class LinqAsyncComparisonStartsWithTests : ComparisonStartsWithTests<TestClass>
+    public class LinqAsyncComparisonStartsWithTests : LinqAsyncComparisonStartsWithTests<TestClass>
     {
         public override IQueryable<TestClass> GetTestList()
         {
@@ -141,11 +135,7 @@ namespace ServiceQuery.Xunit
             result = testQueryable.ToList();
             Assert.NotNull(result);
             Assert.True(result.Count == 1);
-#if NET8_0_OR_GREATER
             result = await testQueryable.ToAsyncEnumerable().ToListAsync();
-#else
-            result = await testQueryable.ToListAsync();
-#endif
             Assert.NotNull(result);
             Assert.True(result.Count == 1);
 
@@ -320,11 +310,7 @@ namespace ServiceQuery.Xunit
             result = testQueryable.ToList();
             Assert.NotNull(result);
             Assert.True(result.Count == 1);
-#if NET8_0_OR_GREATER
             result = await testQueryable.ToAsyncEnumerable().ToListAsync();
-#else
-            result = await testQueryable.ToListAsync();
-#endif
             Assert.NotNull(result);
             Assert.True(result.Count == 1);
 
@@ -499,11 +485,7 @@ namespace ServiceQuery.Xunit
             result = testQueryable.ToList();
             Assert.NotNull(result);
             Assert.True(result.Count == 0);
-#if NET8_0_OR_GREATER
             result = await testQueryable.ToAsyncEnumerable().ToListAsync();
-#else
-            result = await testQueryable.ToListAsync();
-#endif
             Assert.NotNull(result);
             Assert.True(result.Count == 0);
 
@@ -678,11 +660,7 @@ namespace ServiceQuery.Xunit
             result = testQueryable.ToList();
             Assert.NotNull(result);
             Assert.True(result.Count == 0);
-#if NET8_0_OR_GREATER
             result = await testQueryable.ToAsyncEnumerable().ToListAsync();
-#else
-            result = await testQueryable.ToListAsync();
-#endif
             Assert.NotNull(result);
             Assert.True(result.Count == 0);
 

@@ -1,0 +1,136 @@
+﻿@model WebApp.ViewModel.Home.HomeViewModel
+@{
+    ViewBag.Title = "Welcome to Service Query";
+    ViewBag.Description = "Welcome to Service Query";
+    ViewBag.Keywords = "Welcome to Service Query";
+}
+<h1>Welcome</h1>
+<p>
+    This is the Service Query Starter Application.
+    You can modify this application however you like.
+    Please visit our website at: <a href="http://ServiceQuery.com" target="_blank">http://ServiceQuery.com</a>.
+</p>
+<p>    
+    This application is setup to use the <b>Microsoft.EntityFrameworkCore.Cosmos</b> NuGet package.
+    Open the appsetting.json file and configure your database connection string.
+</p>
+<h4>Objects in a List</h4>
+<p>
+    No database, just a list of objects
+</p>
+<ul>
+    <li><a href="/Example/Api">REST API Example</a> - This shows how to query data using the REST API.</li>
+    <li><a href="/Example/Mapping">Mapping REST API Example</a> - This shows how to map data using a data transfer object with different property names.</li>
+</ul>
+<h4>EntityFrameworkCore Cosmos DB</h4>
+<p>    
+    These examples use the <b>Microsoft.EntityFrameworkCore.Cosmos</b> NuGet package as the data store.
+    Open the appsetting.json file and configure your database connection string.
+</p>
+<ul>    
+    <li><a href="/EntityFrameworkCoreCosmos/Api">REST API Example</a> - This shows how to query data using the REST API.</li>
+    <li><a href="/EntityFrameworkCoreCosmos/Mapping">Mapping REST API Example</a> - This shows how to map data using a data transfer object with different property names.</li>
+</ul>
+<h4>Service Query Without Services</h4>
+<ul>
+    <li><a href="/Example/Index">Controller Example</a> - This shows how to query data inside of a controller method (no service access).</li>
+</ul>
+<h2>Swagger</h2>
+<p>
+    This website has Swagger configured. View the <a target="_blank" href="/swagger">Swagger Page</a> to view the example API.
+</p>
+<p>     
+    Here are a few example requests for you to use. 
+    See the WebApp/wwwroot/js/servicequery.js for more information on building queries using javascript.
+</p>
+<ul>
+    <li>
+        Get everything
+        <div style='background-color:lightgray;padding:5px;'>
+            { "filters": [ ] }
+        </div>
+    </li>
+    <li>
+        Where ID = 1
+        <div style='background-color:lightgray;padding:5px;'>
+            {
+            "filters": [
+            {
+            "properties": [
+            "id"
+            ],
+            "values": [
+            "1"
+            ],
+            "filterType": "equal"
+            }
+            ]
+            }
+        </div>
+    </li>
+    <li>
+        Where ID > 1
+        <div style='background-color:lightgray;padding:5px;'>
+            {
+            "filters": [
+            {
+            "properties": [
+            "id"
+            ],
+            "values": [
+            "1"
+            ],
+            "filterType": "greaterthan"
+            }
+            ]
+            }
+        </div>
+    </li>
+    <li>
+        Where ID Between 1 and 5 or Id = 20
+        <div style='background-color:lightgray;padding:5px;'>
+            {
+            "filters": [
+            {
+            "properties": [
+            "id"
+            ],
+            "values": [
+            "1",
+            "5"
+            ],
+            "filterType": "between"
+            },
+            {
+            "filterType": "or"
+            },
+            {
+            "properties": [
+            "id"
+            ],
+            "values": [
+            "20"
+            ],
+            "filterType": "equal"
+            }
+            ]
+            }
+        </div>
+    </li>
+    <li>
+        Average Id
+        <div style='background-color:lightgray;padding:5px;'>
+            {
+            "filters": [
+            {
+            "properties": [
+            "id"
+            ],
+            "values": [],
+            "filterType": "average"
+            }
+            ]
+            }
+        </div>
+    </li>
+</ul>

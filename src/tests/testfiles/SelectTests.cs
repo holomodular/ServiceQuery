@@ -12,6 +12,8 @@ namespace ServiceQuery.Xunit
 
     public abstract class SelectTests<T> : BaseTest<T> where T : class, ITestClass, new()
     {
+        public bool OverrideDatetimeForCosmos { get; set; }
+
         [Fact]
         public async Task SelectStandardTests()
         {
@@ -40,7 +42,14 @@ namespace ServiceQuery.Xunit
             Assert.True(retRecord.ByteVal == oneRecord.ByteVal);
             Assert.True(retRecord.CharVal == oneRecord.CharVal);
             Assert.True(retRecord.DateTimeOffsetVal == oneRecord.DateTimeOffsetVal);
-            Assert.True(retRecord.DateTimeVal == oneRecord.DateTimeVal);
+            if (OverrideDatetimeForCosmos)
+            {
+                Assert.True(retRecord.DateTimeOffsetVal.ToLocalTime() == oneRecord.DateTimeOffsetVal);
+            }
+            else
+            {
+                Assert.True(retRecord.DateTimeVal == oneRecord.DateTimeVal);
+            }
             Assert.True(retRecord.DecimalVal == oneRecord.DecimalVal);
             Assert.True(retRecord.DoubleVal == oneRecord.DoubleVal);
             Assert.True(retRecord.FloatVal == oneRecord.FloatVal);
@@ -265,7 +274,14 @@ namespace ServiceQuery.Xunit
             Assert.True(retRecord.ByteVal == oneRecord.ByteVal);
             Assert.True(retRecord.CharVal == oneRecord.CharVal);
             Assert.True(retRecord.DateTimeOffsetVal == oneRecord.DateTimeOffsetVal);
-            Assert.True(retRecord.DateTimeVal == oneRecord.DateTimeVal);
+            if (OverrideDatetimeForCosmos)
+            {
+                Assert.True(retRecord.DateTimeOffsetVal.ToLocalTime() == oneRecord.DateTimeOffsetVal);
+            }
+            else
+            {
+                Assert.True(retRecord.DateTimeVal == oneRecord.DateTimeVal);
+            }
             Assert.True(retRecord.DecimalVal != oneRecord.DecimalVal);
             Assert.True(retRecord.DoubleVal != oneRecord.DoubleVal);
             Assert.True(retRecord.FloatVal != oneRecord.FloatVal);
@@ -306,7 +322,14 @@ namespace ServiceQuery.Xunit
             Assert.True(retRecord.ByteVal == oneRecord.ByteVal);
             Assert.True(retRecord.CharVal == oneRecord.CharVal);
             Assert.True(retRecord.DateTimeOffsetVal == oneRecord.DateTimeOffsetVal);
-            Assert.True(retRecord.DateTimeVal == oneRecord.DateTimeVal);
+            if (OverrideDatetimeForCosmos)
+            {
+                Assert.True(retRecord.DateTimeOffsetVal.ToLocalTime() == oneRecord.DateTimeOffsetVal);
+            }
+            else
+            {
+                Assert.True(retRecord.DateTimeVal == oneRecord.DateTimeVal);
+            }
             Assert.True(retRecord.DecimalVal == oneRecord.DecimalVal);
             Assert.True(retRecord.DoubleVal != oneRecord.DoubleVal);
             Assert.True(retRecord.FloatVal != oneRecord.FloatVal);
@@ -348,7 +371,14 @@ namespace ServiceQuery.Xunit
             Assert.True(retRecord.ByteVal == oneRecord.ByteVal);
             Assert.True(retRecord.CharVal == oneRecord.CharVal);
             Assert.True(retRecord.DateTimeOffsetVal == oneRecord.DateTimeOffsetVal);
-            Assert.True(retRecord.DateTimeVal == oneRecord.DateTimeVal);
+            if (OverrideDatetimeForCosmos)
+            {
+                Assert.True(retRecord.DateTimeOffsetVal.ToLocalTime() == oneRecord.DateTimeOffsetVal);
+            }
+            else
+            {
+                Assert.True(retRecord.DateTimeVal == oneRecord.DateTimeVal);
+            }
             Assert.True(retRecord.DecimalVal == oneRecord.DecimalVal);
             Assert.True(retRecord.DoubleVal == oneRecord.DoubleVal);
             Assert.True(retRecord.FloatVal != oneRecord.FloatVal);
@@ -391,7 +421,14 @@ namespace ServiceQuery.Xunit
             Assert.True(retRecord.ByteVal == oneRecord.ByteVal);
             Assert.True(retRecord.CharVal == oneRecord.CharVal);
             Assert.True(retRecord.DateTimeOffsetVal == oneRecord.DateTimeOffsetVal);
-            Assert.True(retRecord.DateTimeVal == oneRecord.DateTimeVal);
+            if (OverrideDatetimeForCosmos)
+            {
+                Assert.True(retRecord.DateTimeOffsetVal.ToLocalTime() == oneRecord.DateTimeOffsetVal);
+            }
+            else
+            {
+                Assert.True(retRecord.DateTimeVal == oneRecord.DateTimeVal);
+            }
             Assert.True(retRecord.DecimalVal == oneRecord.DecimalVal);
             Assert.True(retRecord.DoubleVal == oneRecord.DoubleVal);
             Assert.True(retRecord.FloatVal == oneRecord.FloatVal);
@@ -435,7 +472,14 @@ namespace ServiceQuery.Xunit
             Assert.True(retRecord.ByteVal == oneRecord.ByteVal);
             Assert.True(retRecord.CharVal == oneRecord.CharVal);
             Assert.True(retRecord.DateTimeOffsetVal == oneRecord.DateTimeOffsetVal);
-            Assert.True(retRecord.DateTimeVal == oneRecord.DateTimeVal);
+            if (OverrideDatetimeForCosmos)
+            {
+                Assert.True(retRecord.DateTimeOffsetVal.ToLocalTime() == oneRecord.DateTimeOffsetVal);
+            }
+            else
+            {
+                Assert.True(retRecord.DateTimeVal == oneRecord.DateTimeVal);
+            }
             Assert.True(retRecord.DecimalVal == oneRecord.DecimalVal);
             Assert.True(retRecord.DoubleVal == oneRecord.DoubleVal);
             Assert.True(retRecord.FloatVal == oneRecord.FloatVal);
@@ -480,7 +524,14 @@ namespace ServiceQuery.Xunit
             Assert.True(retRecord.ByteVal == oneRecord.ByteVal);
             Assert.True(retRecord.CharVal == oneRecord.CharVal);
             Assert.True(retRecord.DateTimeOffsetVal == oneRecord.DateTimeOffsetVal);
-            Assert.True(retRecord.DateTimeVal == oneRecord.DateTimeVal);
+            if (OverrideDatetimeForCosmos)
+            {
+                Assert.True(retRecord.DateTimeOffsetVal.ToLocalTime() == oneRecord.DateTimeOffsetVal);
+            }
+            else
+            {
+                Assert.True(retRecord.DateTimeVal == oneRecord.DateTimeVal);
+            }
             Assert.True(retRecord.DecimalVal == oneRecord.DecimalVal);
             Assert.True(retRecord.DoubleVal == oneRecord.DoubleVal);
             Assert.True(retRecord.FloatVal == oneRecord.FloatVal);
@@ -526,7 +577,14 @@ namespace ServiceQuery.Xunit
             Assert.True(retRecord.ByteVal == oneRecord.ByteVal);
             Assert.True(retRecord.CharVal == oneRecord.CharVal);
             Assert.True(retRecord.DateTimeOffsetVal == oneRecord.DateTimeOffsetVal);
-            Assert.True(retRecord.DateTimeVal == oneRecord.DateTimeVal);
+            if (OverrideDatetimeForCosmos)
+            {
+                Assert.True(retRecord.DateTimeOffsetVal.ToLocalTime() == oneRecord.DateTimeOffsetVal);
+            }
+            else
+            {
+                Assert.True(retRecord.DateTimeVal == oneRecord.DateTimeVal);
+            }
             Assert.True(retRecord.DecimalVal == oneRecord.DecimalVal);
             Assert.True(retRecord.DoubleVal == oneRecord.DoubleVal);
             Assert.True(retRecord.FloatVal == oneRecord.FloatVal);
@@ -573,7 +631,14 @@ namespace ServiceQuery.Xunit
             Assert.True(retRecord.ByteVal == oneRecord.ByteVal);
             Assert.True(retRecord.CharVal == oneRecord.CharVal);
             Assert.True(retRecord.DateTimeOffsetVal == oneRecord.DateTimeOffsetVal);
-            Assert.True(retRecord.DateTimeVal == oneRecord.DateTimeVal);
+            if (OverrideDatetimeForCosmos)
+            {
+                Assert.True(retRecord.DateTimeOffsetVal.ToLocalTime() == oneRecord.DateTimeOffsetVal);
+            }
+            else
+            {
+                Assert.True(retRecord.DateTimeVal == oneRecord.DateTimeVal);
+            }
             Assert.True(retRecord.DecimalVal == oneRecord.DecimalVal);
             Assert.True(retRecord.DoubleVal == oneRecord.DoubleVal);
             Assert.True(retRecord.FloatVal == oneRecord.FloatVal);
@@ -621,7 +686,14 @@ namespace ServiceQuery.Xunit
             Assert.True(retRecord.ByteVal == oneRecord.ByteVal);
             Assert.True(retRecord.CharVal == oneRecord.CharVal);
             Assert.True(retRecord.DateTimeOffsetVal == oneRecord.DateTimeOffsetVal);
-            Assert.True(retRecord.DateTimeVal == oneRecord.DateTimeVal);
+            if (OverrideDatetimeForCosmos)
+            {
+                Assert.True(retRecord.DateTimeOffsetVal.ToLocalTime() == oneRecord.DateTimeOffsetVal);
+            }
+            else
+            {
+                Assert.True(retRecord.DateTimeVal == oneRecord.DateTimeVal);
+            }
             Assert.True(retRecord.DecimalVal == oneRecord.DecimalVal);
             Assert.True(retRecord.DoubleVal == oneRecord.DoubleVal);
             Assert.True(retRecord.FloatVal == oneRecord.FloatVal);
@@ -670,7 +742,14 @@ namespace ServiceQuery.Xunit
             Assert.True(retRecord.ByteVal == oneRecord.ByteVal);
             Assert.True(retRecord.CharVal == oneRecord.CharVal);
             Assert.True(retRecord.DateTimeOffsetVal == oneRecord.DateTimeOffsetVal);
-            Assert.True(retRecord.DateTimeVal == oneRecord.DateTimeVal);
+            if (OverrideDatetimeForCosmos)
+            {
+                Assert.True(retRecord.DateTimeOffsetVal.ToLocalTime() == oneRecord.DateTimeOffsetVal);
+            }
+            else
+            {
+                Assert.True(retRecord.DateTimeVal == oneRecord.DateTimeVal);
+            }
             Assert.True(retRecord.DecimalVal == oneRecord.DecimalVal);
             Assert.True(retRecord.DoubleVal == oneRecord.DoubleVal);
             Assert.True(retRecord.FloatVal == oneRecord.FloatVal);
@@ -720,7 +799,14 @@ namespace ServiceQuery.Xunit
             Assert.True(retRecord.ByteVal == oneRecord.ByteVal);
             Assert.True(retRecord.CharVal == oneRecord.CharVal);
             Assert.True(retRecord.DateTimeOffsetVal == oneRecord.DateTimeOffsetVal);
-            Assert.True(retRecord.DateTimeVal == oneRecord.DateTimeVal);
+            if (OverrideDatetimeForCosmos)
+            {
+                Assert.True(retRecord.DateTimeOffsetVal.ToLocalTime() == oneRecord.DateTimeOffsetVal);
+            }
+            else
+            {
+                Assert.True(retRecord.DateTimeVal == oneRecord.DateTimeVal);
+            }
             Assert.True(retRecord.DecimalVal == oneRecord.DecimalVal);
             Assert.True(retRecord.DoubleVal == oneRecord.DoubleVal);
             Assert.True(retRecord.FloatVal == oneRecord.FloatVal);
@@ -771,7 +857,14 @@ namespace ServiceQuery.Xunit
             Assert.True(retRecord.ByteVal == oneRecord.ByteVal);
             Assert.True(retRecord.CharVal == oneRecord.CharVal);
             Assert.True(retRecord.DateTimeOffsetVal == oneRecord.DateTimeOffsetVal);
-            Assert.True(retRecord.DateTimeVal == oneRecord.DateTimeVal);
+            if (OverrideDatetimeForCosmos)
+            {
+                Assert.True(retRecord.DateTimeOffsetVal.ToLocalTime() == oneRecord.DateTimeOffsetVal);
+            }
+            else
+            {
+                Assert.True(retRecord.DateTimeVal == oneRecord.DateTimeVal);
+            }
             Assert.True(retRecord.DecimalVal == oneRecord.DecimalVal);
             Assert.True(retRecord.DoubleVal == oneRecord.DoubleVal);
             Assert.True(retRecord.FloatVal == oneRecord.FloatVal);
@@ -822,7 +915,14 @@ namespace ServiceQuery.Xunit
             Assert.True(retRecord.ByteVal == oneRecord.ByteVal);
             Assert.True(retRecord.CharVal == oneRecord.CharVal);
             Assert.True(retRecord.DateTimeOffsetVal == oneRecord.DateTimeOffsetVal);
-            Assert.True(retRecord.DateTimeVal == oneRecord.DateTimeVal);
+            if (OverrideDatetimeForCosmos)
+            {
+                Assert.True(retRecord.DateTimeOffsetVal.ToLocalTime() == oneRecord.DateTimeOffsetVal);
+            }
+            else
+            {
+                Assert.True(retRecord.DateTimeVal == oneRecord.DateTimeVal);
+            }
             Assert.True(retRecord.DecimalVal == oneRecord.DecimalVal);
             Assert.True(retRecord.DoubleVal == oneRecord.DoubleVal);
             Assert.True(retRecord.FloatVal == oneRecord.FloatVal);
@@ -874,7 +974,14 @@ namespace ServiceQuery.Xunit
             Assert.True(retRecord.ByteVal == oneRecord.ByteVal);
             Assert.True(retRecord.CharVal == oneRecord.CharVal);
             Assert.True(retRecord.DateTimeOffsetVal == oneRecord.DateTimeOffsetVal);
-            Assert.True(retRecord.DateTimeVal == oneRecord.DateTimeVal);
+            if (OverrideDatetimeForCosmos)
+            {
+                Assert.True(retRecord.DateTimeOffsetVal.ToLocalTime() == oneRecord.DateTimeOffsetVal);
+            }
+            else
+            {
+                Assert.True(retRecord.DateTimeVal == oneRecord.DateTimeVal);
+            }
             Assert.True(retRecord.DecimalVal == oneRecord.DecimalVal);
             Assert.True(retRecord.DoubleVal == oneRecord.DoubleVal);
             Assert.True(retRecord.FloatVal == oneRecord.FloatVal);
@@ -927,7 +1034,14 @@ namespace ServiceQuery.Xunit
             Assert.True(retRecord.ByteVal == oneRecord.ByteVal);
             Assert.True(retRecord.CharVal == oneRecord.CharVal);
             Assert.True(retRecord.DateTimeOffsetVal == oneRecord.DateTimeOffsetVal);
-            Assert.True(retRecord.DateTimeVal == oneRecord.DateTimeVal);
+            if (OverrideDatetimeForCosmos)
+            {
+                Assert.True(retRecord.DateTimeOffsetVal.ToLocalTime() == oneRecord.DateTimeOffsetVal);
+            }
+            else
+            {
+                Assert.True(retRecord.DateTimeVal == oneRecord.DateTimeVal);
+            }
             Assert.True(retRecord.DecimalVal == oneRecord.DecimalVal);
             Assert.True(retRecord.DoubleVal == oneRecord.DoubleVal);
             Assert.True(retRecord.FloatVal == oneRecord.FloatVal);
@@ -981,7 +1095,14 @@ namespace ServiceQuery.Xunit
             Assert.True(retRecord.ByteVal == oneRecord.ByteVal);
             Assert.True(retRecord.CharVal == oneRecord.CharVal);
             Assert.True(retRecord.DateTimeOffsetVal == oneRecord.DateTimeOffsetVal);
-            Assert.True(retRecord.DateTimeVal == oneRecord.DateTimeVal);
+            if (OverrideDatetimeForCosmos)
+            {
+                Assert.True(retRecord.DateTimeOffsetVal.ToLocalTime() == oneRecord.DateTimeOffsetVal);
+            }
+            else
+            {
+                Assert.True(retRecord.DateTimeVal == oneRecord.DateTimeVal);
+            }
             Assert.True(retRecord.DecimalVal == oneRecord.DecimalVal);
             Assert.True(retRecord.DoubleVal == oneRecord.DoubleVal);
             Assert.True(retRecord.FloatVal == oneRecord.FloatVal);
@@ -1026,7 +1147,15 @@ namespace ServiceQuery.Xunit
             Assert.True(retRecord.ByteVal == oneRecord.ByteVal);
             Assert.True(retRecord.CharVal == oneRecord.CharVal);
             Assert.True(retRecord.DateTimeOffsetVal == oneRecord.DateTimeOffsetVal);
-            Assert.True(retRecord.DateTimeVal == oneRecord.DateTimeVal);
+
+            if (OverrideDatetimeForCosmos)
+            {
+                Assert.True(retRecord.DateTimeOffsetVal.ToLocalTime() == oneRecord.DateTimeOffsetVal);
+            }
+            else
+            {
+                Assert.True(retRecord.DateTimeVal == oneRecord.DateTimeVal);
+            }
             Assert.True(retRecord.DecimalVal == oneRecord.DecimalVal);
             Assert.True(retRecord.DoubleVal == oneRecord.DoubleVal);
             Assert.True(retRecord.FloatVal == oneRecord.FloatVal);
@@ -1251,7 +1380,14 @@ namespace ServiceQuery.Xunit
             Assert.True(retRecord.ByteVal == oneRecord.ByteVal);
             Assert.True(retRecord.CharVal == oneRecord.CharVal);
             Assert.True(retRecord.DateTimeOffsetVal == oneRecord.DateTimeOffsetVal);
-            Assert.True(retRecord.DateTimeVal == oneRecord.DateTimeVal);
+            if (OverrideDatetimeForCosmos)
+            {
+                Assert.True(retRecord.DateTimeOffsetVal.ToLocalTime() == oneRecord.DateTimeOffsetVal);
+            }
+            else
+            {
+                Assert.True(retRecord.DateTimeVal == oneRecord.DateTimeVal);
+            }
             Assert.True(retRecord.DecimalVal != oneRecord.DecimalVal);
             Assert.True(retRecord.DoubleVal != oneRecord.DoubleVal);
             Assert.True(retRecord.FloatVal != oneRecord.FloatVal);
@@ -1292,7 +1428,14 @@ namespace ServiceQuery.Xunit
             Assert.True(retRecord.ByteVal == oneRecord.ByteVal);
             Assert.True(retRecord.CharVal == oneRecord.CharVal);
             Assert.True(retRecord.DateTimeOffsetVal == oneRecord.DateTimeOffsetVal);
-            Assert.True(retRecord.DateTimeVal == oneRecord.DateTimeVal);
+            if (OverrideDatetimeForCosmos)
+            {
+                Assert.True(retRecord.DateTimeOffsetVal.ToLocalTime() == oneRecord.DateTimeOffsetVal);
+            }
+            else
+            {
+                Assert.True(retRecord.DateTimeVal == oneRecord.DateTimeVal);
+            }
             Assert.True(retRecord.DecimalVal == oneRecord.DecimalVal);
             Assert.True(retRecord.DoubleVal != oneRecord.DoubleVal);
             Assert.True(retRecord.FloatVal != oneRecord.FloatVal);
@@ -1334,7 +1477,14 @@ namespace ServiceQuery.Xunit
             Assert.True(retRecord.ByteVal == oneRecord.ByteVal);
             Assert.True(retRecord.CharVal == oneRecord.CharVal);
             Assert.True(retRecord.DateTimeOffsetVal == oneRecord.DateTimeOffsetVal);
-            Assert.True(retRecord.DateTimeVal == oneRecord.DateTimeVal);
+            if (OverrideDatetimeForCosmos)
+            {
+                Assert.True(retRecord.DateTimeOffsetVal.ToLocalTime() == oneRecord.DateTimeOffsetVal);
+            }
+            else
+            {
+                Assert.True(retRecord.DateTimeVal == oneRecord.DateTimeVal);
+            }
             Assert.True(retRecord.DecimalVal == oneRecord.DecimalVal);
             Assert.True(retRecord.DoubleVal == oneRecord.DoubleVal);
             Assert.True(retRecord.FloatVal != oneRecord.FloatVal);
@@ -1377,7 +1527,14 @@ namespace ServiceQuery.Xunit
             Assert.True(retRecord.ByteVal == oneRecord.ByteVal);
             Assert.True(retRecord.CharVal == oneRecord.CharVal);
             Assert.True(retRecord.DateTimeOffsetVal == oneRecord.DateTimeOffsetVal);
-            Assert.True(retRecord.DateTimeVal == oneRecord.DateTimeVal);
+            if (OverrideDatetimeForCosmos)
+            {
+                Assert.True(retRecord.DateTimeOffsetVal.ToLocalTime() == oneRecord.DateTimeOffsetVal);
+            }
+            else
+            {
+                Assert.True(retRecord.DateTimeVal == oneRecord.DateTimeVal);
+            }
             Assert.True(retRecord.DecimalVal == oneRecord.DecimalVal);
             Assert.True(retRecord.DoubleVal == oneRecord.DoubleVal);
             Assert.True(retRecord.FloatVal == oneRecord.FloatVal);
@@ -1421,7 +1578,14 @@ namespace ServiceQuery.Xunit
             Assert.True(retRecord.ByteVal == oneRecord.ByteVal);
             Assert.True(retRecord.CharVal == oneRecord.CharVal);
             Assert.True(retRecord.DateTimeOffsetVal == oneRecord.DateTimeOffsetVal);
-            Assert.True(retRecord.DateTimeVal == oneRecord.DateTimeVal);
+            if (OverrideDatetimeForCosmos)
+            {
+                Assert.True(retRecord.DateTimeOffsetVal.ToLocalTime() == oneRecord.DateTimeOffsetVal);
+            }
+            else
+            {
+                Assert.True(retRecord.DateTimeVal == oneRecord.DateTimeVal);
+            }
             Assert.True(retRecord.DecimalVal == oneRecord.DecimalVal);
             Assert.True(retRecord.DoubleVal == oneRecord.DoubleVal);
             Assert.True(retRecord.FloatVal == oneRecord.FloatVal);
@@ -1466,7 +1630,14 @@ namespace ServiceQuery.Xunit
             Assert.True(retRecord.ByteVal == oneRecord.ByteVal);
             Assert.True(retRecord.CharVal == oneRecord.CharVal);
             Assert.True(retRecord.DateTimeOffsetVal == oneRecord.DateTimeOffsetVal);
-            Assert.True(retRecord.DateTimeVal == oneRecord.DateTimeVal);
+            if (OverrideDatetimeForCosmos)
+            {
+                Assert.True(retRecord.DateTimeOffsetVal.ToLocalTime() == oneRecord.DateTimeOffsetVal);
+            }
+            else
+            {
+                Assert.True(retRecord.DateTimeVal == oneRecord.DateTimeVal);
+            }
             Assert.True(retRecord.DecimalVal == oneRecord.DecimalVal);
             Assert.True(retRecord.DoubleVal == oneRecord.DoubleVal);
             Assert.True(retRecord.FloatVal == oneRecord.FloatVal);
@@ -1512,7 +1683,14 @@ namespace ServiceQuery.Xunit
             Assert.True(retRecord.ByteVal == oneRecord.ByteVal);
             Assert.True(retRecord.CharVal == oneRecord.CharVal);
             Assert.True(retRecord.DateTimeOffsetVal == oneRecord.DateTimeOffsetVal);
-            Assert.True(retRecord.DateTimeVal == oneRecord.DateTimeVal);
+            if (OverrideDatetimeForCosmos)
+            {
+                Assert.True(retRecord.DateTimeOffsetVal.ToLocalTime() == oneRecord.DateTimeOffsetVal);
+            }
+            else
+            {
+                Assert.True(retRecord.DateTimeVal == oneRecord.DateTimeVal);
+            }
             Assert.True(retRecord.DecimalVal == oneRecord.DecimalVal);
             Assert.True(retRecord.DoubleVal == oneRecord.DoubleVal);
             Assert.True(retRecord.FloatVal == oneRecord.FloatVal);
@@ -1559,7 +1737,14 @@ namespace ServiceQuery.Xunit
             Assert.True(retRecord.ByteVal == oneRecord.ByteVal);
             Assert.True(retRecord.CharVal == oneRecord.CharVal);
             Assert.True(retRecord.DateTimeOffsetVal == oneRecord.DateTimeOffsetVal);
-            Assert.True(retRecord.DateTimeVal == oneRecord.DateTimeVal);
+            if (OverrideDatetimeForCosmos)
+            {
+                Assert.True(retRecord.DateTimeOffsetVal.ToLocalTime() == oneRecord.DateTimeOffsetVal);
+            }
+            else
+            {
+                Assert.True(retRecord.DateTimeVal == oneRecord.DateTimeVal);
+            }
             Assert.True(retRecord.DecimalVal == oneRecord.DecimalVal);
             Assert.True(retRecord.DoubleVal == oneRecord.DoubleVal);
             Assert.True(retRecord.FloatVal == oneRecord.FloatVal);
@@ -1607,7 +1792,14 @@ namespace ServiceQuery.Xunit
             Assert.True(retRecord.ByteVal == oneRecord.ByteVal);
             Assert.True(retRecord.CharVal == oneRecord.CharVal);
             Assert.True(retRecord.DateTimeOffsetVal == oneRecord.DateTimeOffsetVal);
-            Assert.True(retRecord.DateTimeVal == oneRecord.DateTimeVal);
+            if (OverrideDatetimeForCosmos)
+            {
+                Assert.True(retRecord.DateTimeOffsetVal.ToLocalTime() == oneRecord.DateTimeOffsetVal);
+            }
+            else
+            {
+                Assert.True(retRecord.DateTimeVal == oneRecord.DateTimeVal);
+            }
             Assert.True(retRecord.DecimalVal == oneRecord.DecimalVal);
             Assert.True(retRecord.DoubleVal == oneRecord.DoubleVal);
             Assert.True(retRecord.FloatVal == oneRecord.FloatVal);
@@ -1656,7 +1848,14 @@ namespace ServiceQuery.Xunit
             Assert.True(retRecord.ByteVal == oneRecord.ByteVal);
             Assert.True(retRecord.CharVal == oneRecord.CharVal);
             Assert.True(retRecord.DateTimeOffsetVal == oneRecord.DateTimeOffsetVal);
-            Assert.True(retRecord.DateTimeVal == oneRecord.DateTimeVal);
+            if (OverrideDatetimeForCosmos)
+            {
+                Assert.True(retRecord.DateTimeOffsetVal.ToLocalTime() == oneRecord.DateTimeOffsetVal);
+            }
+            else
+            {
+                Assert.True(retRecord.DateTimeVal == oneRecord.DateTimeVal);
+            }
             Assert.True(retRecord.DecimalVal == oneRecord.DecimalVal);
             Assert.True(retRecord.DoubleVal == oneRecord.DoubleVal);
             Assert.True(retRecord.FloatVal == oneRecord.FloatVal);
@@ -1706,7 +1905,14 @@ namespace ServiceQuery.Xunit
             Assert.True(retRecord.ByteVal == oneRecord.ByteVal);
             Assert.True(retRecord.CharVal == oneRecord.CharVal);
             Assert.True(retRecord.DateTimeOffsetVal == oneRecord.DateTimeOffsetVal);
-            Assert.True(retRecord.DateTimeVal == oneRecord.DateTimeVal);
+            if (OverrideDatetimeForCosmos)
+            {
+                Assert.True(retRecord.DateTimeOffsetVal.ToLocalTime() == oneRecord.DateTimeOffsetVal);
+            }
+            else
+            {
+                Assert.True(retRecord.DateTimeVal == oneRecord.DateTimeVal);
+            }
             Assert.True(retRecord.DecimalVal == oneRecord.DecimalVal);
             Assert.True(retRecord.DoubleVal == oneRecord.DoubleVal);
             Assert.True(retRecord.FloatVal == oneRecord.FloatVal);
@@ -1757,7 +1963,14 @@ namespace ServiceQuery.Xunit
             Assert.True(retRecord.ByteVal == oneRecord.ByteVal);
             Assert.True(retRecord.CharVal == oneRecord.CharVal);
             Assert.True(retRecord.DateTimeOffsetVal == oneRecord.DateTimeOffsetVal);
-            Assert.True(retRecord.DateTimeVal == oneRecord.DateTimeVal);
+            if (OverrideDatetimeForCosmos)
+            {
+                Assert.True(retRecord.DateTimeOffsetVal.ToLocalTime() == oneRecord.DateTimeOffsetVal);
+            }
+            else
+            {
+                Assert.True(retRecord.DateTimeVal == oneRecord.DateTimeVal);
+            }
             Assert.True(retRecord.DecimalVal == oneRecord.DecimalVal);
             Assert.True(retRecord.DoubleVal == oneRecord.DoubleVal);
             Assert.True(retRecord.FloatVal == oneRecord.FloatVal);
@@ -1808,7 +2021,14 @@ namespace ServiceQuery.Xunit
             Assert.True(retRecord.ByteVal == oneRecord.ByteVal);
             Assert.True(retRecord.CharVal == oneRecord.CharVal);
             Assert.True(retRecord.DateTimeOffsetVal == oneRecord.DateTimeOffsetVal);
-            Assert.True(retRecord.DateTimeVal == oneRecord.DateTimeVal);
+            if (OverrideDatetimeForCosmos)
+            {
+                Assert.True(retRecord.DateTimeOffsetVal.ToLocalTime() == oneRecord.DateTimeOffsetVal);
+            }
+            else
+            {
+                Assert.True(retRecord.DateTimeVal == oneRecord.DateTimeVal);
+            }
             Assert.True(retRecord.DecimalVal == oneRecord.DecimalVal);
             Assert.True(retRecord.DoubleVal == oneRecord.DoubleVal);
             Assert.True(retRecord.FloatVal == oneRecord.FloatVal);
@@ -1860,7 +2080,14 @@ namespace ServiceQuery.Xunit
             Assert.True(retRecord.ByteVal == oneRecord.ByteVal);
             Assert.True(retRecord.CharVal == oneRecord.CharVal);
             Assert.True(retRecord.DateTimeOffsetVal == oneRecord.DateTimeOffsetVal);
-            Assert.True(retRecord.DateTimeVal == oneRecord.DateTimeVal);
+            if (OverrideDatetimeForCosmos)
+            {
+                Assert.True(retRecord.DateTimeOffsetVal.ToLocalTime() == oneRecord.DateTimeOffsetVal);
+            }
+            else
+            {
+                Assert.True(retRecord.DateTimeVal == oneRecord.DateTimeVal);
+            }
             Assert.True(retRecord.DecimalVal == oneRecord.DecimalVal);
             Assert.True(retRecord.DoubleVal == oneRecord.DoubleVal);
             Assert.True(retRecord.FloatVal == oneRecord.FloatVal);
@@ -1913,7 +2140,14 @@ namespace ServiceQuery.Xunit
             Assert.True(retRecord.ByteVal == oneRecord.ByteVal);
             Assert.True(retRecord.CharVal == oneRecord.CharVal);
             Assert.True(retRecord.DateTimeOffsetVal == oneRecord.DateTimeOffsetVal);
-            Assert.True(retRecord.DateTimeVal == oneRecord.DateTimeVal);
+            if (OverrideDatetimeForCosmos)
+            {
+                Assert.True(retRecord.DateTimeOffsetVal.ToLocalTime() == oneRecord.DateTimeOffsetVal);
+            }
+            else
+            {
+                Assert.True(retRecord.DateTimeVal == oneRecord.DateTimeVal);
+            }
             Assert.True(retRecord.DecimalVal == oneRecord.DecimalVal);
             Assert.True(retRecord.DoubleVal == oneRecord.DoubleVal);
             Assert.True(retRecord.FloatVal == oneRecord.FloatVal);
@@ -1967,7 +2201,14 @@ namespace ServiceQuery.Xunit
             Assert.True(retRecord.ByteVal == oneRecord.ByteVal);
             Assert.True(retRecord.CharVal == oneRecord.CharVal);
             Assert.True(retRecord.DateTimeOffsetVal == oneRecord.DateTimeOffsetVal);
-            Assert.True(retRecord.DateTimeVal == oneRecord.DateTimeVal);
+            if (OverrideDatetimeForCosmos)
+            {
+                Assert.True(retRecord.DateTimeOffsetVal.ToLocalTime() == oneRecord.DateTimeOffsetVal);
+            }
+            else
+            {
+                Assert.True(retRecord.DateTimeVal == oneRecord.DateTimeVal);
+            }
             Assert.True(retRecord.DecimalVal == oneRecord.DecimalVal);
             Assert.True(retRecord.DoubleVal == oneRecord.DoubleVal);
             Assert.True(retRecord.FloatVal == oneRecord.FloatVal);

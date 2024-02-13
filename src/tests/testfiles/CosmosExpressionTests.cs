@@ -1,5 +1,6 @@
 ﻿namespace ServiceQuery.Xunit
 {
+    [Collection("Cosmos")]
     public class CosmosExpressionTests : ExpressionTests<TestClass>
     {
         public CosmosExpressionTests()

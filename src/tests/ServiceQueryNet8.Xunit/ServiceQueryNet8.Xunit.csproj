@@ -59,8 +59,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Azure.Data.Tables" Version="12.8.2" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.1" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.8.0" />
     <PackageReference Include="System.Linq.Async" Version="6.0.1" />
     <PackageReference Include="xunit" Version="2.6.6" />

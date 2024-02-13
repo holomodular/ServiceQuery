@@ -191,8 +191,15 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="..\TestFiles\appsettings.json" Link="appsettings.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
 	  <PackageReference Include="Azure.Data.Tables" Version="12.8.2" />
-	  <PackageReference Include="Microsoft.EntityFrameworkCore.Cosmos" Version="8.0.1" />
+	  <PackageReference Include="LinqKit.Microsoft.EntityFrameworkCore" Version="8.1.5" />
+	  <PackageReference Include="Microsoft.EntityFrameworkCore.Cosmos" Version="8.0.0" />
 	  <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="8.0.0" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.8.0" />
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="8.0.0" />
@@ -215,12 +222,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\ServiceQuery\ServiceQuery.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Update="appsettings.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
   </ItemGroup>
 
 </Project>
