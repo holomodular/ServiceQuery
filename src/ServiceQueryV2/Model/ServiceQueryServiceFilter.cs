@@ -29,6 +29,6 @@ namespace ServiceQuery
         /// <summary>
         /// The type of filter.
         /// </summary>
-        public virtual ServiceQueryServiceFilterType FilterType { get; set; }
+        public virtual string FilterType { get; set; }
     }
 }

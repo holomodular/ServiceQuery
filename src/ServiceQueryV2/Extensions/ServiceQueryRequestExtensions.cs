@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Dynamic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace ServiceQuery
@@ -22,188 +23,208 @@ namespace ServiceQuery
                 return builder.Build();
             foreach (var filter in request.Filters)
             {
-                switch (filter.FilterType)
+                if (string.Compare(filter.FilterType, "and", true) == 0)
                 {
-                    case ServiceQueryServiceFilterType.and:
-                        builder.And();
-                        break;
-
-                    case ServiceQueryServiceFilterType.average:
-                        builder.Average(filter.Properties?.FirstOrDefault());
-                        break;
-
-                    case ServiceQueryServiceFilterType.begin:
-                        builder.BeginExpression();
-                        break;
-
-                    case ServiceQueryServiceFilterType.between:
-                        builder.Between(
-                            filter.Properties?.FirstOrDefault(),
-                            filter.Values?.FirstOrDefault(),
-                            filter.Values?.LastOrDefault());
-                        break;
-
-                    //case ServiceQueryServiceFilterType.binarychecksum:
-                    //    builder.BinaryChecksum(filter.Properties?.FirstOrDefault());
-                    //    break;
-
-                    //case ServiceQueryServiceFilterType.checksum:
-                    //    builder.Checksum(filter.Properties?.FirstOrDefault());
-                    //    break;
-
-                    case ServiceQueryServiceFilterType.contains:
-                        builder.Contains(
-                            filter.Properties?.FirstOrDefault(),
-                            filter.Values?.FirstOrDefault());
-                        break;
-
-                    case ServiceQueryServiceFilterType.count:
-                        builder.Count();
-                        break;
-
-                    case ServiceQueryServiceFilterType.distinct:
-                        builder.Distinct();
-                        break;
-
-                    case ServiceQueryServiceFilterType.end:
-                        builder.EndExpression();
-                        break;
-
-                    case ServiceQueryServiceFilterType.endswith:
-                        builder.EndsWith(
-                            filter.Properties?.FirstOrDefault(),
-                            filter.Values?.FirstOrDefault());
-                        break;
-
-                    case ServiceQueryServiceFilterType.equal:
-                        builder.IsEqual(
-                            filter.Properties?.FirstOrDefault(),
-                            filter.Values?.FirstOrDefault());
-                        break;
-
-                    case ServiceQueryServiceFilterType.greaterthan:
-                        builder.IsGreaterThan(
-                            filter.Properties?.FirstOrDefault(),
-                            filter.Values?.FirstOrDefault());
-                        break;
-
-                    case ServiceQueryServiceFilterType.greaterthanorequal:
-                        builder.IsGreaterThanOrEqual(
-                            filter.Properties?.FirstOrDefault(),
-                            filter.Values?.FirstOrDefault());
-                        break;
-
-                    case ServiceQueryServiceFilterType.includecount:
-                        var includecount = filter.Values?.FirstOrDefault();
-                        if (!string.IsNullOrEmpty(includecount))
-                        {
-                            bool tempbool;
-                            if (bool.TryParse(includecount, out tempbool))
-                                builder.IncludeCount = tempbool;
-                            else
-                                throw new ServiceQueryException("includecount is not a boolean");
-                        }
+                    builder.And();
+                    continue;
+                }
+                if (string.Compare(filter.FilterType, "average", true) == 0)
+                {
+                    builder.Average(filter.Properties?.FirstOrDefault());
+                    continue;
+                }
+                if (string.Compare(filter.FilterType, "begin", true) == 0)
+                {
+                    builder.Begin();
+                    continue;
+                }
+                if (string.Compare(filter.FilterType, "between", true) == 0)
+                {
+                    builder.Between(
+                        filter.Properties?.FirstOrDefault(),
+                        filter.Values?.FirstOrDefault(),
+                        filter.Values?.LastOrDefault());
+                    continue;
+                }
+                if (string.Compare(filter.FilterType, "contains", true) == 0)
+                {
+                    builder.Contains(
+                        filter.Properties?.FirstOrDefault(),
+                        filter.Values?.FirstOrDefault());
+                    continue;
+                }
+                if (string.Compare(filter.FilterType, "count", true) == 0)
+                {
+                    builder.Count();
+                    continue;
+                }
+                if (string.Compare(filter.FilterType, "distinct", true) == 0)
+                {
+                    builder.Distinct();
+                    continue;
+                }
+                if (string.Compare(filter.FilterType, "end", true) == 0)
+                {
+                    builder.End();
+                    continue;
+                }
+                if (string.Compare(filter.FilterType, "endswith", true) == 0)
+                {
+                    builder.EndsWith(
+                        filter.Properties?.FirstOrDefault(),
+                        filter.Values?.FirstOrDefault());
+                    continue;
+                }
+                if (string.Compare(filter.FilterType, "equal", true) == 0)
+                {
+                    builder.IsEqual(
+                        filter.Properties?.FirstOrDefault(),
+                        filter.Values?.FirstOrDefault());
+                    continue;
+                }
+                if (string.Compare(filter.FilterType, "greaterthan", true) == 0)
+                {
+                    builder.IsGreaterThan(
+                        filter.Properties?.FirstOrDefault(),
+                        filter.Values?.FirstOrDefault());
+                    continue;
+                }
+                if (string.Compare(filter.FilterType, "greaterthanorequal", true) == 0)
+                {
+                    builder.IsGreaterThanOrEqual(
+                        filter.Properties?.FirstOrDefault(),
+                        filter.Values?.FirstOrDefault());
+                    continue;
+                }
+                if (string.Compare(filter.FilterType, "includecount", true) == 0)
+                {
+                    var includecount = filter.Values?.FirstOrDefault();
+                    if (!string.IsNullOrEmpty(includecount))
+                    {
+                        bool tempbool;
+                        if (bool.TryParse(includecount, out tempbool))
+                            builder.IncludeCount = tempbool;
                         else
-                            builder.IncludeCount = true;
-                        break;
-
-                    case ServiceQueryServiceFilterType.inset:
-                        builder.IsInSet(
-                            filter.Properties?.FirstOrDefault(),
-                            filter.Values?.ToArray());
-                        break;
-
-                    case ServiceQueryServiceFilterType.isnull:
-                        builder.IsNull(filter.Properties?.FirstOrDefault());
-                        break;
-
-                    case ServiceQueryServiceFilterType.isnotnull:
-                        builder.IsNotNull(filter.Properties?.FirstOrDefault());
-                        break;
-
-                    case ServiceQueryServiceFilterType.lessthan:
-                        builder.IsLessThan(
-                            filter.Properties?.FirstOrDefault(),
-                            filter.Values?.FirstOrDefault());
-                        break;
-
-                    case ServiceQueryServiceFilterType.lessthanorequal:
-                        builder.IsLessThanOrEqual(
-                            filter.Properties?.FirstOrDefault(),
-                            filter.Values?.FirstOrDefault());
-                        break;
-
-                    case ServiceQueryServiceFilterType.maximum:
-                        builder.Maximum(filter.Properties?.FirstOrDefault());
-                        break;
-
-                    case ServiceQueryServiceFilterType.minimum:
-                        builder.Minimum(filter.Properties?.FirstOrDefault());
-                        break;
-
-                    case ServiceQueryServiceFilterType.notequal:
-                        builder.IsNotEqual(
-                            filter.Properties?.FirstOrDefault(),
-                            filter.Values?.FirstOrDefault());
-                        break;
-
-                    case ServiceQueryServiceFilterType.notinset:
-                        builder.IsNotInSet(
-                            filter.Properties?.FirstOrDefault(),
-                            filter.Values?.ToArray());
-                        break;
-
-                    case ServiceQueryServiceFilterType.or:
-                        builder.Or();
-                        break;
-
-                    case ServiceQueryServiceFilterType.pagenumber:
-                        var pagenum = filter.Values?.FirstOrDefault();
-                        if (!string.IsNullOrEmpty(pagenum))
-                        {
-                            int tempint;
-                            if (int.TryParse(pagenum, out tempint))
-                                builder.PageNumber = tempint;
-                            else
-                                throw new ServiceQueryException("pagenumber is not a number");
-                        }
+                            throw new ServiceQueryException("includecount is not a boolean");
+                    }
+                    else
+                        builder.IncludeCount = true;
+                    continue;
+                }
+                if (string.Compare(filter.FilterType, "inset", true) == 0)
+                {
+                    builder.IsInSet(
+                        filter.Properties?.FirstOrDefault(),
+                        filter.Values?.ToArray());
+                    continue;
+                }
+                if (string.Compare(filter.FilterType, "isnull", true) == 0)
+                {
+                    builder.IsNull(filter.Properties?.FirstOrDefault());
+                    continue;
+                }
+                if (string.Compare(filter.FilterType, "isnotnull", true) == 0)
+                {
+                    builder.IsNotNull(filter.Properties?.FirstOrDefault());
+                    continue;
+                }
+                if (string.Compare(filter.FilterType, "lessthan", true) == 0)
+                {
+                    builder.IsLessThan(
+                        filter.Properties?.FirstOrDefault(),
+                        filter.Values?.FirstOrDefault());
+                    continue;
+                }
+                if (string.Compare(filter.FilterType, "lessthanorequal", true) == 0)
+                {
+                    builder.IsLessThanOrEqual(
+                        filter.Properties?.FirstOrDefault(),
+                        filter.Values?.FirstOrDefault());
+                    continue;
+                }
+                if (string.Compare(filter.FilterType, "maximum", true) == 0)
+                {
+                    builder.Maximum(filter.Properties?.FirstOrDefault());
+                    continue;
+                }
+                if (string.Compare(filter.FilterType, "minimum", true) == 0)
+                {
+                    builder.Minimum(filter.Properties?.FirstOrDefault());
+                    continue;
+                }
+                if (string.Compare(filter.FilterType, "notequal", true) == 0)
+                {
+                    builder.IsNotEqual(
+                        filter.Properties?.FirstOrDefault(),
+                        filter.Values?.FirstOrDefault());
+                    continue;
+                }
+                if (string.Compare(filter.FilterType, "notinset", true) == 0)
+                {
+                    builder.IsNotInSet(
+                        filter.Properties?.FirstOrDefault(),
+                        filter.Values?.ToArray());
+                    continue;
+                }
+                if (string.Compare(filter.FilterType, "or", true) == 0)
+                {
+                    builder.Or();
+                    continue;
+                }
+                if (string.Compare(filter.FilterType, "pagenumber", true) == 0)
+                {
+                    var pagenum = filter.Values?.FirstOrDefault();
+                    if (!string.IsNullOrEmpty(pagenum))
+                    {
+                        int tempint;
+                        if (int.TryParse(pagenum, out tempint))
+                            builder.PageNumber = tempint;
                         else
-                            throw new ServiceQueryException("pagenumber must be a number");
-                        break;
-
-                    case ServiceQueryServiceFilterType.pagesize:
-                        var pagesize = filter.Values?.FirstOrDefault();
-                        if (!string.IsNullOrEmpty(pagesize))
-                        {
-                            int tempint;
-                            if (int.TryParse(pagesize, out tempint))
-                                builder.PageSize = tempint;
-                            else
-                                throw new ServiceQueryException("pagesize is not a number");
-                        }
+                            throw new ServiceQueryException("pagenumber is not a number");
+                    }
+                    else
+                        throw new ServiceQueryException("pagenumber must be a number");
+                    continue;
+                }
+                if (string.Compare(filter.FilterType, "pagesize", true) == 0)
+                {
+                    var pagesize = filter.Values?.FirstOrDefault();
+                    if (!string.IsNullOrEmpty(pagesize))
+                    {
+                        int tempint;
+                        if (int.TryParse(pagesize, out tempint))
+                            builder.PageSize = tempint;
                         else
-                            throw new ServiceQueryException("pagesize must be a number");
-                        break;
-
-                    case ServiceQueryServiceFilterType.select:
-                        builder.Select(filter.Properties?.ToArray());
-                        break;
-
-                    case ServiceQueryServiceFilterType.startswith:
-                        builder.StartsWith(filter.Properties?.FirstOrDefault(), filter.Values?.FirstOrDefault());
-                        break;
-
-                    case ServiceQueryServiceFilterType.sortasc:
-                        builder.Sort(filter.Properties?.FirstOrDefault(), true);
-                        break;
-
-                    case ServiceQueryServiceFilterType.sortdesc:
-                        builder.Sort(filter.Properties?.FirstOrDefault(), false);
-                        break;
-
-                    case ServiceQueryServiceFilterType.sum:
-                        builder.Sum(filter.Properties?.FirstOrDefault());
-                        break;
+                            throw new ServiceQueryException("pagesize is not a number");
+                    }
+                    else
+                        throw new ServiceQueryException("pagesize must be a number");
+                    continue;
+                }
+                if (string.Compare(filter.FilterType, "select", true) == 0)
+                {
+                    builder.Select(filter.Properties?.ToArray());
+                    continue;
+                }
+                if (string.Compare(filter.FilterType, "startswith", true) == 0)
+                {
+                    builder.StartsWith(filter.Properties?.FirstOrDefault(), filter.Values?.FirstOrDefault());
+                    continue;
+                }
+                if (string.Compare(filter.FilterType, "sortasc", true) == 0)
+                {
+                    builder.Sort(filter.Properties?.FirstOrDefault(), true);
+                    continue;
+                }
+                if (string.Compare(filter.FilterType, "sortdesc", true) == 0)
+                {
+                    builder.Sort(filter.Properties?.FirstOrDefault(), false);
+                    continue;
+                }
+                if (string.Compare(filter.FilterType, "sum", true) == 0)
+                {
+                    builder.Sum(filter.Properties?.FirstOrDefault());
+                    continue;
                 }
             }
 

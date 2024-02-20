@@ -50,7 +50,7 @@ namespace ServiceQuery
         {
             Filters.Add(new ServiceQueryServiceFilter()
             {
-                FilterType = ServiceQueryServiceFilterType.begin,
+                FilterType = "begin",
             });
             return this;
         }
@@ -63,7 +63,7 @@ namespace ServiceQuery
         {
             Filters.Add(new ServiceQueryServiceFilter()
             {
-                FilterType = ServiceQueryServiceFilterType.begin,
+                FilterType = "begin",
             });
             return this;
         }
@@ -76,7 +76,7 @@ namespace ServiceQuery
         {
             Filters.Add(new ServiceQueryServiceFilter()
             {
-                FilterType = ServiceQueryServiceFilterType.end,
+                FilterType = "end",
             });
             return this;
         }
@@ -89,7 +89,7 @@ namespace ServiceQuery
         {
             Filters.Add(new ServiceQueryServiceFilter()
             {
-                FilterType = ServiceQueryServiceFilterType.end,
+                FilterType = "end",
             });
             return this;
         }
@@ -102,7 +102,7 @@ namespace ServiceQuery
         {
             Filters.Add(new ServiceQueryServiceFilter()
             {
-                FilterType = ServiceQueryServiceFilterType.and,
+                FilterType = "and",
             });
             return this;
         }
@@ -115,7 +115,7 @@ namespace ServiceQuery
         {
             Filters.Add(new ServiceQueryServiceFilter()
             {
-                FilterType = ServiceQueryServiceFilterType.or,
+                FilterType = "or",
             });
             return this;
         }
@@ -128,7 +128,7 @@ namespace ServiceQuery
         public virtual IServiceQueryRequestBuilder Select(params string[] propertyNames)
         {
             ServiceQueryServiceFilter filter = new ServiceQueryServiceFilter();
-            filter.FilterType = ServiceQueryServiceFilterType.select;
+            filter.FilterType = "select";
             foreach (string prop in propertyNames)
                 filter.Properties.Add(prop);
             Filters.Add(filter);
@@ -142,7 +142,7 @@ namespace ServiceQuery
         public virtual IServiceQueryRequestBuilder Distinct()
         {
             ServiceQueryServiceFilter filter = new ServiceQueryServiceFilter();
-            filter.FilterType = ServiceQueryServiceFilterType.distinct;
+            filter.FilterType = "distinct";
             Filters.Add(filter);
             return this;
         }
@@ -158,7 +158,7 @@ namespace ServiceQuery
         {
             Filters.Add(new ServiceQueryServiceFilter()
             {
-                FilterType = ServiceQueryServiceFilterType.between,
+                FilterType = "between",
                 Properties = new List<string>() { propertyName },
                 Values = new List<string>() { lowValue, highValue }
             });
@@ -175,7 +175,7 @@ namespace ServiceQuery
         {
             Filters.Add(new ServiceQueryServiceFilter()
             {
-                FilterType = ServiceQueryServiceFilterType.contains,
+                FilterType = "contains",
                 Properties = new List<string>() { propertyName },
                 Values = new List<string>() { value }
             });
@@ -192,7 +192,7 @@ namespace ServiceQuery
         {
             Filters.Add(new ServiceQueryServiceFilter()
             {
-                FilterType = ServiceQueryServiceFilterType.startswith,
+                FilterType = "startswith",
                 Properties = new List<string>() { propertyName },
                 Values = new List<string>() { value }
             });
@@ -209,7 +209,7 @@ namespace ServiceQuery
         {
             Filters.Add(new ServiceQueryServiceFilter()
             {
-                FilterType = ServiceQueryServiceFilterType.endswith,
+                FilterType = "endswith",
                 Properties = new List<string>() { propertyName },
                 Values = new List<string>() { value }
             });
@@ -226,7 +226,7 @@ namespace ServiceQuery
         {
             Filters.Add(new ServiceQueryServiceFilter()
             {
-                FilterType = ServiceQueryServiceFilterType.equal,
+                FilterType = "equal",
                 Properties = new List<string>() { propertyName },
                 Values = new List<string>() { value }
             });
@@ -243,7 +243,7 @@ namespace ServiceQuery
         {
             Filters.Add(new ServiceQueryServiceFilter()
             {
-                FilterType = ServiceQueryServiceFilterType.notequal,
+                FilterType = "notequal",
                 Properties = new List<string>() { propertyName },
                 Values = new List<string>() { value }
             });
@@ -260,7 +260,7 @@ namespace ServiceQuery
         {
             Filters.Add(new ServiceQueryServiceFilter()
             {
-                FilterType = ServiceQueryServiceFilterType.greaterthan,
+                FilterType = "greaterthan",
                 Properties = new List<string>() { propertyName },
                 Values = new List<string>() { value }
             });
@@ -277,7 +277,7 @@ namespace ServiceQuery
         {
             Filters.Add(new ServiceQueryServiceFilter()
             {
-                FilterType = ServiceQueryServiceFilterType.greaterthanorequal,
+                FilterType = "greaterthanorequal",
                 Properties = new List<string>() { propertyName },
                 Values = new List<string>() { value }
             });
@@ -294,7 +294,7 @@ namespace ServiceQuery
         {
             Filters.Add(new ServiceQueryServiceFilter()
             {
-                FilterType = ServiceQueryServiceFilterType.lessthan,
+                FilterType = "lessthan",
                 Properties = new List<string>() { propertyName },
                 Values = new List<string>() { value }
             });
@@ -311,7 +311,7 @@ namespace ServiceQuery
         {
             Filters.Add(new ServiceQueryServiceFilter()
             {
-                FilterType = ServiceQueryServiceFilterType.lessthanorequal,
+                FilterType = "lessthanorequal",
                 Properties = new List<string>() { propertyName },
                 Values = new List<string>() { value }
             });
@@ -339,9 +339,9 @@ namespace ServiceQuery
             ServiceQueryServiceFilter filter = new ServiceQueryServiceFilter();
             filter.Properties.Add(propertyName);
             if (isNull)
-                filter.FilterType = ServiceQueryServiceFilterType.isnull;
+                filter.FilterType = "isnull";
             else
-                filter.FilterType = ServiceQueryServiceFilterType.isnotnull;
+                filter.FilterType = "isnotnull";
             Filters.Add(filter);
             return this;
         }
@@ -380,9 +380,9 @@ namespace ServiceQuery
 
             filter.Properties.Add(propertyName);
             if (inSet)
-                filter.FilterType = ServiceQueryServiceFilterType.inset;
+                filter.FilterType = "inset";
             else
-                filter.FilterType = ServiceQueryServiceFilterType.notinset;
+                filter.FilterType = "notinset";
             if (values == null)
                 filter.Values.Add(null);
             else
@@ -416,9 +416,9 @@ namespace ServiceQuery
             ServiceQueryServiceFilter filter = new ServiceQueryServiceFilter();
             filter.Properties.Add(propertyName);
             if (sortAscending)
-                filter.FilterType = ServiceQueryServiceFilterType.sortasc;
+                filter.FilterType = "sortasc";
             else
-                filter.FilterType = ServiceQueryServiceFilterType.sortdesc;
+                filter.FilterType = "sortdesc";
             Filters.Add(filter);
             return this;
         }
@@ -432,7 +432,7 @@ namespace ServiceQuery
         {
             ServiceQueryServiceFilter filter = new ServiceQueryServiceFilter();
             filter.Properties.Add(propertyName);
-            filter.FilterType = ServiceQueryServiceFilterType.sortasc;
+            filter.FilterType = "sortasc";
             Filters.Add(filter);
             return this;
         }
@@ -446,7 +446,7 @@ namespace ServiceQuery
         {
             ServiceQueryServiceFilter filter = new ServiceQueryServiceFilter();
             filter.Properties.Add(propertyName);
-            filter.FilterType = ServiceQueryServiceFilterType.sortdesc;
+            filter.FilterType = "sortdesc";
             Filters.Add(filter);
             return this;
         }
@@ -460,7 +460,7 @@ namespace ServiceQuery
         {
             Filters.Add(new ServiceQueryServiceFilter()
             {
-                FilterType = ServiceQueryServiceFilterType.average,
+                FilterType = "average",
                 Properties = new List<string> { propertyName }
             });
             return this;
@@ -474,7 +474,7 @@ namespace ServiceQuery
         {
             Filters.Add(new ServiceQueryServiceFilter()
             {
-                FilterType = ServiceQueryServiceFilterType.count
+                FilterType = "count"
             });
             return this;
         }
@@ -488,7 +488,7 @@ namespace ServiceQuery
         {
             Filters.Add(new ServiceQueryServiceFilter()
             {
-                FilterType = ServiceQueryServiceFilterType.maximum,
+                FilterType = "maximum",
                 Properties = new List<string> { propertyName }
             });
             return this;
@@ -503,7 +503,7 @@ namespace ServiceQuery
         {
             Filters.Add(new ServiceQueryServiceFilter()
             {
-                FilterType = ServiceQueryServiceFilterType.minimum,
+                FilterType = "minimum",
                 Properties = new List<string> { propertyName }
             });
             return this;
@@ -518,7 +518,7 @@ namespace ServiceQuery
         {
             Filters.Add(new ServiceQueryServiceFilter()
             {
-                FilterType = ServiceQueryServiceFilterType.sum,
+                FilterType = "sum",
                 Properties = new List<string> { propertyName }
             });
             return this;
@@ -530,14 +530,14 @@ namespace ServiceQuery
         /// <returns></returns>
         public virtual IServiceQueryRequestBuilder IncludeCount()
         {
-            var found = Filters.Where(x => x.FilterType == ServiceQueryServiceFilterType.includecount).FirstOrDefault();
+            var found = Filters.Where(x => x.FilterType == "includecount").FirstOrDefault();
             if (found != null)
                 found.Values = new List<string>() { "true" };
             else
             {
                 Filters.Add(new ServiceQueryServiceFilter()
                 {
-                    FilterType = ServiceQueryServiceFilterType.includecount,
+                    FilterType = "includecount",
                     Values = new List<string> { "true" }
                 });
             }
@@ -555,22 +555,22 @@ namespace ServiceQuery
         {
             Filters.Add(new ServiceQueryServiceFilter()
             {
-                FilterType = ServiceQueryServiceFilterType.pagenumber,
+                FilterType = "pagenumber",
                 Values = new List<string> { pageNumber.ToString() }
             });
             Filters.Add(new ServiceQueryServiceFilter()
             {
-                FilterType = ServiceQueryServiceFilterType.pagesize,
+                FilterType = "pagesize",
                 Values = new List<string> { pageSize.ToString() }
             });
-            var found = Filters.Where(x => x.FilterType == ServiceQueryServiceFilterType.includecount).FirstOrDefault();
+            var found = Filters.Where(x => x.FilterType == "includecount").FirstOrDefault();
             if (found != null)
                 found.Values = new List<string>() { includeCount.ToString() };
             else
             {
                 Filters.Add(new ServiceQueryServiceFilter()
                 {
-                    FilterType = ServiceQueryServiceFilterType.includecount,
+                    FilterType = "includecount",
                     Values = new List<string> { includeCount.ToString() }
                 });
             }

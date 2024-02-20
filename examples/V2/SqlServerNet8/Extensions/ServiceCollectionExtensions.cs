@@ -20,12 +20,7 @@ namespace WebApp.Extensions
             services.AddControllersWithViews().AddRazorRuntimeCompilation();
             services.AddOptions();
             services.AddCors();
-            services.AddMvc()
-                .AddJsonOptions(options =>
-                {
-                    // This makes enums easier to use in Swagger using name instead of int
-                    options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
-                });
+            services.AddMvc();
 
             // Register Database SqlServer
             var builder = new DbContextOptionsBuilder<SqlServerDatabaseContext>();
