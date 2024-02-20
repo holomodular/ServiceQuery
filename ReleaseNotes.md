@@ -1,3 +1,6 @@
+# 2.0.1
+- Change ServiceQueryServiceFilter.FilterType enum to a string for easier serialization
+
 # 2.0.0
 - Refactor library to contain no external nuget package references
 
