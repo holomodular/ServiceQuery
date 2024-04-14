@@ -5,7 +5,7 @@ dotnet tool install -g dotnet-reportgenerator-globaltool
 
 Run this command in powershell in the test project directory:
 
-dotnet-coverage collect -f xml -o coverage.xml dotnet test ServiceQuery8.Xunit.csproj
+dotnet-coverage collect -f xml -o coverage.xml dotnet test ServiceQueryV2Net8.Xunit.csproj
 
 Then run this command next:
 

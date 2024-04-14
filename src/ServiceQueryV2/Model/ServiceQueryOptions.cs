@@ -19,5 +19,11 @@ namespace ServiceQuery
         /// Default is false.
         /// </summary>
         public bool PropertyNameCaseSensitive { get; set; }
+
+        /// <summary>
+        /// Determine if missing BEGIN/END/AND/OR expressions throw an exception
+        /// or try to add them missing ones automatiically.
+        /// </summary>
+        public bool AllowMissingExpressions { get; set; }
     }
 }

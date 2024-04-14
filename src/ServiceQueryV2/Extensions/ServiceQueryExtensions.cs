@@ -22,9 +22,6 @@ namespace ServiceQuery
         /// <returns></returns>
         public static IQueryable<T> Apply<T>(this IServiceQuery query, IQueryable<T> queryable, ServiceQueryOptions serviceQueryOptions = null)
         {
-            //Get the filters back in grouped sets
-            ServiceQueryFilterSet filterSet = GetFilterSet(query);
-
             //Get type and property info of the base type
             Type entityType = typeof(T);
             var properties = entityType.GetProperties();
@@ -41,6 +38,9 @@ namespace ServiceQuery
                 properties.ToList().ForEach(x => mappings.Add(x.Name, x.Name));
                 options.PropertyNameMappings = mappings;
             }
+
+            //Get the filters back in grouped sets
+            ServiceQueryFilterSet filterSet = GetFilterSet(query, options);
 
             //Build "where" clause
             queryable = BuildWhere<T>(queryable, filterSet, entityType, properties, options);
@@ -71,25 +71,25 @@ namespace ServiceQuery
         /// <returns></returns>
         public static Expression<Func<T, bool>> BuildWhereExpression<T>(this IServiceQuery query, ServiceQueryOptions serviceQueryOptions = null)
         {
-            //Get the filters back in grouped sets
-            ServiceQueryFilterSet filterSet = GetFilterSet(query);
-
             //Get type and property info of the base type
             Type entityType = typeof(T);
             var properties = entityType.GetProperties();
 
-            //Get column name mappings (in case storage object name is different than mapped object name)
+            //Get name mappings (in case storage object name is different than mapped object name)
             ServiceQueryOptions options = new ServiceQueryOptions();
             if (serviceQueryOptions != null)
                 options = serviceQueryOptions;
             Dictionary<string, string> mappings = options.PropertyNameMappings;
             if (mappings == null || mappings.Count == 0)
             {
-                //Use same property name (will be case-insensitive)
+                // Use all existing property names
                 mappings = new Dictionary<string, string>();
                 properties.ToList().ForEach(x => mappings.Add(x.Name, x.Name));
                 options.PropertyNameMappings = mappings;
             }
+
+            //Get the filters back in grouped sets
+            ServiceQueryFilterSet filterSet = GetFilterSet(query, options);
 
             //Build "where" clause
             return BuildWhereExpression<T>(filterSet, entityType, properties, options);
@@ -179,9 +179,6 @@ namespace ServiceQuery
         /// <returns></returns>
         public static List<string> GetSelectProperties<T>(this IServiceQuery queryable, ServiceQueryOptions serviceQueryOptions = null)
         {
-            //Get the filters back in grouped sets
-            ServiceQueryFilterSet filterSet = GetFilterSet(queryable);
-
             //Get type and property info of the base type
             Type entityType = typeof(T);
             var properties = entityType.GetProperties();
@@ -198,6 +195,9 @@ namespace ServiceQuery
                 properties.ToList().ForEach(x => mappings.Add(x.Name, x.Name));
                 options.PropertyNameMappings = mappings;
             }
+
+            //Get the filters back in grouped sets
+            ServiceQueryFilterSet filterSet = GetFilterSet(queryable, options);
 
             List<string> selectFilters = new List<string>();
             if (filterSet.SelectFilters != null && filterSet.SelectFilters.Count > 0)
@@ -232,9 +232,6 @@ namespace ServiceQuery
         /// <returns></returns>
         public static Expression<Func<T, T>> BuildSelectExpression<T>(this IServiceQuery queryable, ServiceQueryOptions serviceQueryOptions = null)
         {
-            //Get the filters back in grouped sets
-            ServiceQueryFilterSet filterSet = GetFilterSet(queryable);
-
             //Get type and property info of the base type
             Type entityType = typeof(T);
             var properties = entityType.GetProperties();
@@ -251,6 +248,9 @@ namespace ServiceQuery
                 properties.ToList().ForEach(x => mappings.Add(x.Name, x.Name));
                 options.PropertyNameMappings = mappings;
             }
+
+            //Get the filters back in grouped sets
+            ServiceQueryFilterSet filterSet = GetFilterSet(queryable, options);
 
             //Build "where" clause
             return BuildSelectExpressionEx<T>(filterSet, entityType, properties, options);
@@ -361,30 +361,27 @@ namespace ServiceQuery
         {
             switch (filter.FilterType)
             {
-                case ServiceQueryFilterType.Aggregate:
-                    break; //TODO
+                //case ServiceQueryFilterType.Aggregate:
+                //    break;
                 case ServiceQueryFilterType.Between:
                     return GetBetweenExpression<T>(filter, t, props, serviceQueryOptions);
 
                 case ServiceQueryFilterType.Compare:
                     return GetCompareExpression<T>(filter, t, props, serviceQueryOptions);
-
-                case ServiceQueryFilterType.Distinct:
-                    break; //No expression (handled in buildselect)
-                case ServiceQueryFilterType.Expression:
-                    break; //No expression (handled in buildwhere)
+                //case ServiceQueryFilterType.Distinct:
+                //    break; //No expression (handled in buildselect)
+                //case ServiceQueryFilterType.Expression:
+                //    break; //No expression (handled in buildwhere)
                 case ServiceQueryFilterType.Null:
                     return GetNullExpression<T>(filter, t, props, serviceQueryOptions);
-
-                case ServiceQueryFilterType.PropertyCompare:
-                    break; //TODO
-                case ServiceQueryFilterType.Select:
-                    break; //No expression (handled in buildselect)
+                //case ServiceQueryFilterType.PropertyCompare:
+                //    break;
+                //case ServiceQueryFilterType.Select:
+                //    break; //No expression (handled in buildselect)
                 case ServiceQueryFilterType.Set:
                     return GetSetExpression<T>(filter, t, props, serviceQueryOptions);
-
-                case ServiceQueryFilterType.Sort:
-                    break; //No expression (handled by buildorderby)
+                    //case ServiceQueryFilterType.Sort:
+                    //    break; //No expression (handled by buildorderby)
             }
             return null;
         }
@@ -567,13 +564,7 @@ namespace ServiceQuery
                         member = Expression.MakeMemberAccess(arg, p);
                         BinaryExpression exp = Expression.NotEqual(member, Expression.Constant(null, p.PropertyType));
                         var first = Expression.Lambda<Func<T, bool>>(exp, arg);
-
-#if NET35
-
-                        return Expression.Lambda<Func<T, bool>>(Expression.AndAlso(first.Body, second), first.Parameters);
-#else
                         return Expression.Lambda<Func<T, bool>>(Expression.AndAlso(first.Body, new ExpressionParameterReplacer(second.Parameters, first.Parameters).Visit(second.Body)), first.Parameters);
-#endif
                     }
 
                     return Expression.Lambda(startsWithCall, typeParam) as Expression<Func<T, bool>>;
@@ -594,12 +585,7 @@ namespace ServiceQuery
                         member = Expression.MakeMemberAccess(arg, p);
                         BinaryExpression exp = Expression.NotEqual(member, Expression.Constant(null, p.PropertyType));
                         var first = Expression.Lambda<Func<T, bool>>(exp, arg);
-#if NET35
-
-                        return Expression.Lambda<Func<T, bool>>(Expression.AndAlso(first.Body, second), first.Parameters);
-#else
                         return Expression.Lambda<Func<T, bool>>(Expression.AndAlso(first.Body, new ExpressionParameterReplacer(second.Parameters, first.Parameters).Visit(second.Body)), first.Parameters);
-#endif
                     }
                     return Expression.Lambda(containsCall, typeParam) as Expression<Func<T, bool>>;
 
@@ -703,9 +689,6 @@ namespace ServiceQuery
         /// <returns></returns>
         public static Expression<Func<T, object>> BuildOrderByExpression<T>(this IServiceQuery serviceQuery, IQueryable<T> queryable, ServiceQueryOptions serviceQueryOptions = null)
         {
-            //Get the filters back in grouped sets
-            ServiceQueryFilterSet filterSet = GetFilterSet(serviceQuery);
-
             //Get type and property info of the base type
             Type entityType = typeof(T);
             var properties = entityType.GetProperties();
@@ -722,6 +705,9 @@ namespace ServiceQuery
                 properties.ToList().ForEach(x => mappings.Add(x.Name, x.Name));
                 options.PropertyNameMappings = mappings;
             }
+
+            //Get the filters back in grouped sets
+            ServiceQueryFilterSet filterSet = GetFilterSet(serviceQuery, options);
 
             //Build "where" clause
             return BuildOrderByExpression<T>(filterSet, entityType, properties, options);
@@ -788,6 +774,15 @@ namespace ServiceQuery
                             else
                                 queryable = queryable.OrderByDescending(Expression.Lambda<Func<T, char>>(Expression.Property(param, p), param));
                         }
+#if NET6_0_OR_GREATER
+                        if (p.PropertyType == typeof(DateOnly))
+                        {
+                            if (filterSet.SortFilters[i].SortType == ServiceQuerySortType.Ascending)
+                                queryable = queryable.OrderBy(Expression.Lambda<Func<T, DateOnly>>(Expression.Property(param, p), param));
+                            else
+                                queryable = queryable.OrderByDescending(Expression.Lambda<Func<T, DateOnly>>(Expression.Property(param, p), param));
+                        }
+#endif
                         if (p.PropertyType == typeof(DateTime))
                         {
                             if (filterSet.SortFilters[i].SortType == ServiceQuerySortType.Ascending)
@@ -865,6 +860,15 @@ namespace ServiceQuery
                             else
                                 queryable = queryable.OrderByDescending(Expression.Lambda<Func<T, string>>(Expression.Property(param, p), param));
                         }
+#if NET6_0_OR_GREATER
+                        if (p.PropertyType == typeof(TimeOnly))
+                        {
+                            if (filterSet.SortFilters[i].SortType == ServiceQuerySortType.Ascending)
+                                queryable = queryable.OrderBy(Expression.Lambda<Func<T, TimeOnly>>(Expression.Property(param, p), param));
+                            else
+                                queryable = queryable.OrderByDescending(Expression.Lambda<Func<T, TimeOnly>>(Expression.Property(param, p), param));
+                        }
+#endif
                         if (p.PropertyType == typeof(TimeSpan))
                         {
                             if (filterSet.SortFilters[i].SortType == ServiceQuerySortType.Ascending)
@@ -893,6 +897,15 @@ namespace ServiceQuery
                             else
                                 queryable = queryable.OrderByDescending(Expression.Lambda<Func<T, UInt64>>(Expression.Property(param, p), param));
                         }
+#if NET7_0_OR_GREATER
+                        if (p.PropertyType == typeof(UInt128))
+                        {
+                            if (filterSet.SortFilters[i].SortType == ServiceQuerySortType.Ascending)
+                                queryable = queryable.OrderBy(Expression.Lambda<Func<T, UInt128>>(Expression.Property(param, p), param));
+                            else
+                                queryable = queryable.OrderByDescending(Expression.Lambda<Func<T, UInt128>>(Expression.Property(param, p), param));
+                        }
+#endif
                     }
                 }
                 return queryable;
@@ -903,8 +916,11 @@ namespace ServiceQuery
             }
         }
 
-        private static ServiceQueryFilterSet GetFilterSet(this IServiceQuery query)
+        private static ServiceQueryFilterSet GetFilterSet(this IServiceQuery query, ServiceQueryOptions options)
         {
+            if (query.Filters != null && options != null && !options.AllowMissingExpressions)
+                ValidateQuery(query);
+
             ServiceQueryFilterSet filterSet = new ServiceQueryFilterSet();
             List<IServiceQueryFilter> currentWhereFilters = new List<IServiceQueryFilter>();
             bool nestedExpression = false;
@@ -965,9 +981,9 @@ namespace ServiceQuery
                         currentWhereFilters.Add(filter);
                         break;
 
-                    case ServiceQueryFilterType.PropertyCompare:
-                        currentWhereFilters.Add(filter);
-                        break;
+                    //case ServiceQueryFilterType.PropertyCompare:
+                    //    currentWhereFilters.Add(filter);
+                    //    break;
 
                     case ServiceQueryFilterType.Select:
                         filterSet.SelectFilters.Add(filter);
@@ -986,6 +1002,91 @@ namespace ServiceQuery
                 filterSet.WhereFilters.Add(currentWhereFilters);
 
             return filterSet;
+        }
+
+        private static void ValidateQuery(IServiceQuery query)
+        {
+            var beginCount = query.Filters.Where(x => x.ExpressionType == ServiceQueryExpressionType.Begin).Count();
+            var endCount = query.Filters.Where(x => x.ExpressionType == ServiceQueryExpressionType.End).Count();
+            if (beginCount != endCount)
+                throw new ServiceQueryException("Begin and End expression counts do not match");
+
+            // Make sure all filters have an associated expression (if needed)
+            bool anyWhereExpressionFound = false;
+            bool isAndOrExpressionNeeded = false;
+            Stack<ServiceQueryExpressionType> beginendstack = new Stack<ServiceQueryExpressionType>();
+            foreach (var item in query.Filters)
+            {
+                switch (item.FilterType)
+                {
+                    case ServiceQueryFilterType.Between:
+                        if (isAndOrExpressionNeeded)
+                            throw new ServiceQueryException("Expression is needed before Between filter");
+                        isAndOrExpressionNeeded = true;
+                        anyWhereExpressionFound = true;
+                        continue;
+
+                    case ServiceQueryFilterType.Compare:
+                        if (isAndOrExpressionNeeded)
+                            throw new ServiceQueryException("Expression is needed before Compare filter");
+                        isAndOrExpressionNeeded = true;
+                        anyWhereExpressionFound = true;
+                        continue;
+
+                    case ServiceQueryFilterType.Null:
+                        if (isAndOrExpressionNeeded)
+                            throw new ServiceQueryException("Expression is needed before Compare filter");
+                        isAndOrExpressionNeeded = true;
+                        anyWhereExpressionFound = true;
+                        continue;
+
+                    case ServiceQueryFilterType.Set:
+                        if (isAndOrExpressionNeeded)
+                            throw new ServiceQueryException("Expression is needed before Compare filter");
+                        isAndOrExpressionNeeded = true;
+                        anyWhereExpressionFound = true;
+                        continue;
+
+                    case ServiceQueryFilterType.Expression:
+                        switch (item.ExpressionType)
+                        {
+                            case ServiceQueryExpressionType.Begin:
+                                beginendstack.Push(ServiceQueryExpressionType.Begin);
+                                if (isAndOrExpressionNeeded)
+                                    isAndOrExpressionNeeded = false;
+                                continue;
+
+                            case ServiceQueryExpressionType.End:
+                                if (beginendstack.Count == 0)
+                                    throw new ServiceQueryException("End Expression is before Begin");
+                                beginendstack.Pop();
+                                if (isAndOrExpressionNeeded)
+                                    isAndOrExpressionNeeded = false;
+                                isAndOrExpressionNeeded = true;
+                                continue;
+
+                            case ServiceQueryExpressionType.And:
+                                if (isAndOrExpressionNeeded)
+                                    isAndOrExpressionNeeded = false;
+                                else
+                                    throw new ServiceQueryException("And Expression is not needed");
+                                continue;
+
+                            case ServiceQueryExpressionType.Or:
+                                if (isAndOrExpressionNeeded)
+                                    isAndOrExpressionNeeded = false;
+                                else
+                                    throw new ServiceQueryException("Or Expression is not needed");
+                                continue;
+                        }
+                        continue;
+                        // ALl others don't matter
+                }
+            }
+            if (anyWhereExpressionFound && !isAndOrExpressionNeeded)
+                throw new Exception("Ending expression is missing");
+            if (beginendstack.Count > 0)
+                throw new ServiceQueryException("Begin and End expression counts do not match");
         }
 
         private static object GetParsedPropertyType(PropertyInfo prop, string value)
@@ -1021,6 +1122,16 @@ namespace ServiceQuery
                     return new char?();
                 return new char?(char.Parse(value));
             }
+#if NET6_0_OR_GREATER
+            if (prop.PropertyType == typeof(DateOnly))
+                return DateOnly.Parse(value);
+            if (prop.PropertyType == typeof(DateOnly?))
+            {
+                if (string.IsNullOrEmpty(value))
+                    return new DateOnly?();
+                return new DateOnly?(DateOnly.Parse(value));
+            }
+#endif
             if (prop.PropertyType == typeof(DateTime))
                 return DateTime.Parse(value, null, System.Globalization.DateTimeStyles.RoundtripKind);
             if (prop.PropertyType == typeof(DateTime?))
@@ -1105,6 +1216,16 @@ namespace ServiceQuery
             }
             if (prop.PropertyType == typeof(string))
                 return value;
+#if NET6_0_OR_GREATER
+            if (prop.PropertyType == typeof(TimeOnly))
+                return TimeOnly.Parse(value);
+            if (prop.PropertyType == typeof(TimeOnly?))
+            {
+                if (string.IsNullOrEmpty(value))
+                    return new TimeOnly?();
+                return new TimeOnly?(TimeOnly.Parse(value));
+            }
+#endif
             if (prop.PropertyType == typeof(TimeSpan))
                 return TimeSpan.Parse(value);
             if (prop.PropertyType == typeof(TimeSpan?))
@@ -1239,9 +1360,6 @@ namespace ServiceQuery
                 if (filter == null)
                     return null;
 
-                //Get the filters back in grouped sets
-                ServiceQueryFilterSet filterSet = GetFilterSet(serviceQuery);
-
                 //Get type and property info of the base type
                 Type entityType = typeof(T);
                 var properties = entityType.GetProperties();
@@ -1262,6 +1380,9 @@ namespace ServiceQuery
                 // Count doesn't require a property selector
                 if (filter.AggregateType == ServiceQueryAggregateType.Count)
                     return query.Count();
+
+                //Get the filters back in grouped sets
+                ServiceQueryFilterSet filterSet = GetFilterSet(serviceQuery, options);
 
                 var param = Expression.Parameter(entityType, "x");
                 PropertyInfo prop = null;
@@ -1285,6 +1406,13 @@ namespace ServiceQuery
                     throw new ServiceQueryException("aggregate functions not supported on char");
                 if (prop.PropertyType == typeof(char?))
                     throw new ServiceQueryException("aggregate functions not supported on char?");
+#if NET6_0_OR_GREATER
+                if (prop.PropertyType == typeof(DateOnly))
+                    throw new ServiceQueryException("aggregate functions not supported on DateOnly");
+                if (prop.PropertyType == typeof(DateOnly?))
+                    throw new ServiceQueryException("aggregate functions not supported on DateOnly?");
+#endif
+
                 if (prop.PropertyType == typeof(DateTime))
                     throw new ServiceQueryException("aggregate functions not supported on DateTime");
                 if (prop.PropertyType == typeof(DateTime?))
@@ -1293,6 +1421,12 @@ namespace ServiceQuery
                     throw new ServiceQueryException("aggregate functions not supported on DateTimeOffset");
                 if (prop.PropertyType == typeof(DateTimeOffset?))
                     throw new ServiceQueryException("aggregate functions not supported on DateTimeOffset?");
+#if NET6_0_OR_GREATER
+                if (prop.PropertyType == typeof(TimeOnly))
+                    throw new ServiceQueryException("aggregate functions not supported on TimeOnly");
+                if (prop.PropertyType == typeof(TimeOnly?))
+                    throw new ServiceQueryException("aggregate functions not supported on TimeOnly?");
+#endif
                 if (prop.PropertyType == typeof(TimeSpan))
                     throw new ServiceQueryException("aggregate functions not supported on TimeSpan");
                 if (prop.PropertyType == typeof(TimeSpan?))
@@ -1313,9 +1447,6 @@ namespace ServiceQuery
 
                         case ServiceQueryAggregateType.Sum:
                             return Convert.ToDouble(query.Sum(decimalSelector));
-
-                        default:
-                            throw new ServiceQueryException("aggregate not defined");
                     }
                 }
                 if (prop.PropertyType == typeof(decimal?))
@@ -1346,9 +1477,6 @@ namespace ServiceQuery
                             if (sval.HasValue)
                                 return Convert.ToDouble(sval.Value);
                             return null;
-
-                        default:
-                            throw new ServiceQueryException("aggregate not defined");
                     }
                 }
                 if (prop.PropertyType == typeof(double))
@@ -1367,9 +1495,6 @@ namespace ServiceQuery
 
                         case ServiceQueryAggregateType.Sum:
                             return query.Sum(doubleSelector);
-
-                        default:
-                            throw new ServiceQueryException("aggregate not defined");
                     }
                 }
                 if (prop.PropertyType == typeof(double?))
@@ -1388,9 +1513,6 @@ namespace ServiceQuery
 
                         case ServiceQueryAggregateType.Sum:
                             return query.Sum(doubleNSelector);
-
-                        default:
-                            throw new ServiceQueryException("aggregate not defined");
                     }
                 }
                 if (prop.PropertyType == typeof(Guid))
@@ -1413,9 +1535,6 @@ namespace ServiceQuery
 
                         case ServiceQueryAggregateType.Sum:
                             throw new ServiceQueryException("sum not supported on short");
-
-                        default:
-                            throw new ServiceQueryException("aggregate not defined");
                     }
                 }
                 if (prop.PropertyType == typeof(short?))
@@ -1434,9 +1553,6 @@ namespace ServiceQuery
 
                         case ServiceQueryAggregateType.Sum:
                             throw new ServiceQueryException("sum not supported on short?");
-
-                        default:
-                            throw new ServiceQueryException("aggregate not defined");
                     }
                 }
                 if (prop.PropertyType == typeof(int))
@@ -1455,9 +1571,6 @@ namespace ServiceQuery
 
                         case ServiceQueryAggregateType.Sum:
                             return query.Sum(intSelector);
-
-                        default:
-                            throw new ServiceQueryException("aggregate not defined");
                     }
                 }
                 if (prop.PropertyType == typeof(int?))
@@ -1476,9 +1589,6 @@ namespace ServiceQuery
 
                         case ServiceQueryAggregateType.Sum:
                             return query.Sum(intNSelector);
-
-                        default:
-                            throw new ServiceQueryException("aggregate not defined");
                     }
                 }
                 if (prop.PropertyType == typeof(long))
@@ -1497,9 +1607,6 @@ namespace ServiceQuery
 
                         case ServiceQueryAggregateType.Sum:
                             return query.Sum(longSelector);
-
-                        default:
-                            throw new ServiceQueryException("aggregate not defined");
                     }
                 }
                 if (prop.PropertyType == typeof(long?))
@@ -1518,9 +1625,6 @@ namespace ServiceQuery
 
                         case ServiceQueryAggregateType.Sum:
                             return query.Sum(longNSelector);
-
-                        default:
-                            throw new ServiceQueryException("aggregate not defined");
                     }
                 }
                 if (prop.PropertyType == typeof(sbyte))
@@ -1539,9 +1643,6 @@ namespace ServiceQuery
 
                         case ServiceQueryAggregateType.Sum:
                             throw new ServiceQueryException("sum not supported on sbyte");
-
-                        default:
-                            throw new ServiceQueryException("aggregate not defined");
                     }
                 }
                 if (prop.PropertyType == typeof(sbyte?))
@@ -1560,9 +1661,6 @@ namespace ServiceQuery
 
                         case ServiceQueryAggregateType.Sum:
                             throw new ServiceQueryException("sum not supported on sbyte?");
-
-                        default:
-                            throw new ServiceQueryException("aggregate not defined");
                     }
                 }
                 if (prop.PropertyType == typeof(Single))
@@ -1581,9 +1679,6 @@ namespace ServiceQuery
 
                         case ServiceQueryAggregateType.Sum:
                             return query.Sum(singleSelector);
-
-                        default:
-                            throw new ServiceQueryException("aggregate not defined");
                     }
                 }
                 if (prop.PropertyType == typeof(Single?))
@@ -1602,24 +1697,17 @@ namespace ServiceQuery
 
                         case ServiceQueryAggregateType.Sum:
                             return query.Sum(singleNSelector);
-
-                        default:
-                            throw new ServiceQueryException("aggregate not defined");
                     }
                 }
                 if (prop.PropertyType == typeof(string))
                     throw new ServiceQueryException("aggregate functions not supported on string");
-                if (prop.PropertyType == typeof(TimeSpan))
-                    throw new ServiceQueryException("aggregate functions not supported on TimeSpan");
-                if (prop.PropertyType == typeof(TimeSpan?))
-                    throw new ServiceQueryException("aggregate functions not supported on TimeSpan?");
                 if (prop.PropertyType == typeof(UInt16))
                 {
                     var uint16Selector = Expression.Lambda<Func<T, UInt16>>(Expression.Property(param, prop), param);
                     switch (filter.AggregateType)
                     {
                         case ServiceQueryAggregateType.Average:
-                            throw new ServiceQueryException("average not supported on UInt32");
+                            throw new ServiceQueryException("average not supported on UInt16");
 
                         case ServiceQueryAggregateType.Maximum:
                             return query.Max(uint16Selector);
@@ -1628,10 +1716,7 @@ namespace ServiceQuery
                             return query.Min(uint16Selector);
 
                         case ServiceQueryAggregateType.Sum:
-                            throw new ServiceQueryException("sum not supported on UInt32");
-
-                        default:
-                            throw new ServiceQueryException("aggregate not defined");
+                            throw new ServiceQueryException("sum not supported on UInt16");
                     }
                 }
                 if (prop.PropertyType == typeof(UInt16?))
@@ -1640,7 +1725,7 @@ namespace ServiceQuery
                     switch (filter.AggregateType)
                     {
                         case ServiceQueryAggregateType.Average:
-                            throw new ServiceQueryException("average not supported on UInt32?");
+                            throw new ServiceQueryException("average not supported on UInt16?");
 
                         case ServiceQueryAggregateType.Maximum:
                             return query.Max(uint16NSelector);
@@ -1649,10 +1734,7 @@ namespace ServiceQuery
                             return query.Min(uint16NSelector);
 
                         case ServiceQueryAggregateType.Sum:
-                            throw new ServiceQueryException("sum not supported on UInt32?");
-
-                        default:
-                            throw new ServiceQueryException("aggregate not defined");
+                            throw new ServiceQueryException("sum not supported on UInt16?");
                     }
                 }
                 if (prop.PropertyType == typeof(UInt32))
@@ -1671,9 +1753,6 @@ namespace ServiceQuery
 
                         case ServiceQueryAggregateType.Sum:
                             throw new ServiceQueryException("sum not supported on UInt32");
-
-                        default:
-                            throw new ServiceQueryException("aggregate not defined");
                     }
                 }
                 if (prop.PropertyType == typeof(UInt32?))
@@ -1692,9 +1771,6 @@ namespace ServiceQuery
 
                         case ServiceQueryAggregateType.Sum:
                             throw new ServiceQueryException("sum not supported on UInt32?");
-
-                        default:
-                            throw new ServiceQueryException("aggregate not defined");
                     }
                 }
                 if (prop.PropertyType == typeof(UInt64))
@@ -1724,7 +1800,7 @@ namespace ServiceQuery
                     switch (filter.AggregateType)
                     {
                         case ServiceQueryAggregateType.Average:
-                            throw new ServiceQueryException("average not supported on UInt32?");
+                            throw new ServiceQueryException("average not supported on UInt64?");
 
                         case ServiceQueryAggregateType.Maximum:
                             return query.Max(uint64NSelector);
@@ -1733,10 +1809,7 @@ namespace ServiceQuery
                             return query.Min(uint64NSelector);
 
                         case ServiceQueryAggregateType.Sum:
-                            throw new ServiceQueryException("sum not supported on UInt32?");
-
-                        default:
-                            throw new ServiceQueryException("aggregate not defined");
+                            throw new ServiceQueryException("sum not supported on UInt64?");
                     }
                 }
 #if NET7_0_OR_GREATER
@@ -1749,43 +1822,37 @@ namespace ServiceQuery
                             throw new ServiceQueryException("average not supported on UInt128");
 
                         case ServiceQueryAggregateType.Maximum:
-                            return Convert.ToDouble(query.Max(uint128Selector));
+                            return (double)query.Max(uint128Selector);
 
                         case ServiceQueryAggregateType.Minimum:
-                            return Convert.ToDouble(query.Min(uint128Selector));
+                            return (double)query.Min(uint128Selector);
 
                         case ServiceQueryAggregateType.Sum:
                             throw new ServiceQueryException("sum not supported on UInt128");
-
-                        default:
-                            throw new ServiceQueryException("aggregate not defined");
                     }
                 }
                 if (prop.PropertyType == typeof(UInt128?))
                 {
-                    var uint128NSelector = Expression.Lambda<Func<T, decimal?>>(Expression.Property(param, prop), param);
+                    var uint128NSelector = Expression.Lambda<Func<T, UInt128?>>(Expression.Property(param, prop), param);
                     switch (filter.AggregateType)
                     {
                         case ServiceQueryAggregateType.Average:
                             throw new ServiceQueryException("average not supported on UInt128?");
 
                         case ServiceQueryAggregateType.Maximum:
-                            var mauint128Nval = query.Max(uint128NSelector);
-                            if (mauint128Nval.HasValue)
-                                return Convert.ToDouble(mauint128Nval.Value);
+                            var val = query.Max(uint128NSelector);
+                            if (val.HasValue)
+                                return (double)val.Value;
                             return null;
 
                         case ServiceQueryAggregateType.Minimum:
-                            var miuint128Nval = query.Min(uint128NSelector);
-                            if (miuint128Nval.HasValue)
-                                return Convert.ToDouble(miuint128Nval.Value);
+                            var val2 = query.Min(uint128NSelector);
+                            if (val2.HasValue)
+                                return (double)val2.Value;
                             return null;
 
                         case ServiceQueryAggregateType.Sum:
                             throw new ServiceQueryException("sum not supported on UInt128?");
-
-                        default:
-                            throw new ServiceQueryException("aggregate not defined");
                     }
                 }
 #endif

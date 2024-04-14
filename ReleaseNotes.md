@@ -1,3 +1,7 @@
+# 2.0.2
+- Support for datatypes DateOnly, TimeOnly and UInt128
+- Unit test code coverage at 95%
+
 # 2.0.1
 - Change ServiceQueryServiceFilter.FilterType enum to a string for easier serialization
 

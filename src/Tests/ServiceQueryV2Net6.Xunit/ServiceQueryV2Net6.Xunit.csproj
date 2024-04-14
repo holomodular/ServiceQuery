@@ -12,36 +12,38 @@
   <ItemGroup>
     <Compile Remove="LinqAsyncExternalInterfaceTests.cs" />
   </ItemGroup>
-
-  <ItemGroup>
-    <Compile Include="..\testfiles\BaseTest.cs" Link="BaseTest.cs" />
-    <Compile Include="..\testfiles\ITestClass.cs" Link="ITestClass.cs" />
-    <Compile Include="..\TestFiles\LinqAsyncAggregateAverageTests.cs" Link="LinqAsyncAggregateAverageTests.cs" />
-    <Compile Include="..\TestFiles\LinqAsyncAggregateCountTests.cs" Link="LinqAsyncAggregateCountTests.cs" />
-    <Compile Include="..\TestFiles\LinqAsyncAggregateMaximumTests.cs" Link="LinqAsyncAggregateMaximumTests.cs" />
-    <Compile Include="..\TestFiles\LinqAsyncAggregateMinimumTests.cs" Link="LinqAsyncAggregateMinimumTests.cs" />
-    <Compile Include="..\TestFiles\LinqAsyncAggregateSumTests.cs" Link="LinqAsyncAggregateSumTests.cs" />
-    <Compile Include="..\TestFiles\LinqAsyncComparisonBetweenTests.cs" Link="LinqAsyncComparisonBetweenTests.cs" />
-    <Compile Include="..\TestFiles\LinqAsyncComparisonContainsTests.cs" Link="LinqAsyncComparisonContainsTests.cs" />
-    <Compile Include="..\TestFiles\LinqAsyncComparisonEndsWithTests.cs" Link="LinqAsyncComparisonEndsWithTests.cs" />
-    <Compile Include="..\TestFiles\LinqAsyncComparisonIsEqualTests.cs" Link="LinqAsyncComparisonIsEqualTests.cs" />
-    <Compile Include="..\TestFiles\LinqAsyncComparisonIsGreaterThanOrEqualTests.cs" Link="LinqAsyncComparisonIsGreaterThanOrEqualTests.cs" />
-    <Compile Include="..\TestFiles\LinqAsyncComparisonIsGreaterThanTests.cs" Link="LinqAsyncComparisonIsGreaterThanTests.cs" />
-    <Compile Include="..\TestFiles\LinqAsyncComparisonIsInSetTests.cs" Link="LinqAsyncComparisonIsInSetTests.cs" />
-    <Compile Include="..\TestFiles\LinqAsyncComparisonIsLessThanOrEqualTests.cs" Link="LinqAsyncComparisonIsLessThanOrEqualTests.cs" />
-    <Compile Include="..\TestFiles\LinqAsyncComparisonIsLessThanTests.cs" Link="LinqAsyncComparisonIsLessThanTests.cs" />
-    <Compile Include="..\TestFiles\LinqAsyncComparisonIsNotEqualTests.cs" Link="LinqAsyncComparisonIsNotEqualTests.cs" />
-    <Compile Include="..\TestFiles\LinqAsyncComparisonIsNotInSetTests.cs" Link="LinqAsyncComparisonIsNotInSetTests.cs" />
-    <Compile Include="..\TestFiles\LinqAsyncComparisonIsNotNullTests.cs" Link="LinqAsyncComparisonIsNotNullTests.cs" />
-    <Compile Include="..\TestFiles\LinqAsyncComparisonIsNullTests.cs" Link="LinqAsyncComparisonIsNullTests.cs" />
-    <Compile Include="..\TestFiles\LinqAsyncComparisonStartsWithTests.cs" Link="LinqAsyncComparisonStartsWithTests.cs" />
-    <Compile Include="..\TestFiles\LinqAsyncDistinctTests.cs" Link="LinqAsyncDistinctTests.cs" />
-    <Compile Include="..\TestFiles\LinqAsyncExpressionTests.cs" Link="LinqAsyncExpressionTests.cs" />
-    <Compile Include="..\TestFiles\LinqAsyncExternalInterfaceTests.cs" Link="LinqAsyncExternalInterfaceTests.cs" />
-    <Compile Include="..\TestFiles\LinqAsyncSelectTests.cs" Link="LinqAsyncSelectTests.cs" />
-    <Compile Include="..\TestFiles\LinqAsyncSortTests.cs" Link="LinqAsyncSortTests.cs" />
-    <Compile Include="..\testfiles\TestClass.cs" Link="TestClass.cs" />
-  </ItemGroup>
+	<ItemGroup>
+		<Compile Include="..\TestFiles\V2\AggregateAverageTests.cs" Link="AggregateAverageTests.cs" />
+		<Compile Include="..\TestFiles\V2\AggregateCountTests.cs" Link="AggregateCountTests.cs" />
+		<Compile Include="..\TestFiles\V2\AggregateMaximumTests.cs" Link="AggregateMaximumTests.cs" />
+		<Compile Include="..\TestFiles\V2\AggregateMinimumTests.cs" Link="AggregateMinimumTests.cs" />
+		<Compile Include="..\TestFiles\V2\AggregateSumTests.cs" Link="AggregateSumTests.cs" />
+		<Compile Include="..\TestFiles\V2\BaseTest.cs" Link="BaseTest.cs" />
+		<Compile Include="..\TestFiles\V2\ComparisonBetweenTests.cs" Link="ComparisonBetweenTests.cs" />
+		<Compile Include="..\TestFiles\V2\ComparisonContainsTests.cs" Link="ComparisonContainsTests.cs" />
+		<Compile Include="..\TestFiles\V2\ComparisonEndsWithTests.cs" Link="ComparisonEndsWithTests.cs" />
+		<Compile Include="..\TestFiles\V2\ComparisonIsEqualTests.cs" Link="ComparisonIsEqualTests.cs" />
+		<Compile Include="..\TestFiles\V2\ComparisonIsGreaterThanOrEqualTests.cs" Link="ComparisonIsGreaterThanOrEqualTests.cs" />
+		<Compile Include="..\TestFiles\V2\ComparisonIsGreaterThanTests.cs" Link="ComparisonIsGreaterThanTests.cs" />
+		<Compile Include="..\TestFiles\V2\ComparisonIsInSetTests.cs" Link="ComparisonIsInSetTests.cs" />
+		<Compile Include="..\TestFiles\V2\ComparisonIsLessThanOrEqualTests.cs" Link="ComparisonIsLessThanOrEqualTests.cs" />
+		<Compile Include="..\TestFiles\V2\ComparisonIsLessThanTests.cs" Link="ComparisonIsLessThanTests.cs" />
+		<Compile Include="..\TestFiles\V2\ComparisonIsNotEqualTests.cs" Link="ComparisonIsNotEqualTests.cs" />
+		<Compile Include="..\TestFiles\V2\ComparisonIsNotInSetTests.cs" Link="ComparisonIsNotInSetTests.cs" />
+		<Compile Include="..\TestFiles\V2\ComparisonIsNotNullTests.cs" Link="ComparisonIsNotNullTests.cs" />
+		<Compile Include="..\TestFiles\V2\ComparisonIsNullTests.cs" Link="ComparisonIsNullTests.cs" />
+		<Compile Include="..\TestFiles\V2\ComparisonStartsWithTests.cs" Link="ComparisonStartsWithTests.cs" />
+		<Compile Include="..\TestFiles\V2\DistinctTests.cs" Link="DistinctTests.cs" />
+		<Compile Include="..\TestFiles\V2\ExpressionTests.cs" Link="ExpressionTests.cs" />
+		<Compile Include="..\TestFiles\V2\ExternalInterfaceTests.cs" Link="ExternalInterfaceTests.cs" />
+		<Compile Include="..\TestFiles\V2\ITestClass.cs" Link="ITestClass.cs" />
+		<Compile Include="..\TestFiles\V2\NegativeTests.cs" Link="NegativeTests.cs" />
+		<Compile Include="..\TestFiles\V2\OptionTests.cs" Link="OptionTests.cs" />
+		<Compile Include="..\TestFiles\V2\PagingTests.cs" Link="PagingTests.cs" />
+		<Compile Include="..\TestFiles\V2\SelectTests.cs" Link="SelectTests.cs" />
+		<Compile Include="..\TestFiles\V2\SortTests.cs" Link="SortTests.cs" />
+		<Compile Include="..\TestFiles\V2\TestClass.cs" Link="TestClass.cs" />
+	</ItemGroup>
 
 	<ItemGroup>
 		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.6.3" />

@@ -1,4 +1,5 @@
-﻿using System.Dynamic;
+﻿using System;
+using System.Dynamic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -226,6 +227,7 @@ namespace ServiceQuery
                     builder.Sum(filter.Properties?.FirstOrDefault());
                     continue;
                 }
+                throw new ServiceQueryException($"filterType {filter.FilterType} not found");
             }
 
             return builder.Build();
