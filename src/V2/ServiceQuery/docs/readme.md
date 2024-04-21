@@ -1,4 +1,4 @@
-<img src="https://github.com/holomodular/ServiceQuery/blob/main/Logo.png" title="ServiceQuery Logo" width="250"/>
+﻿<img src="https://github.com/holomodular/ServiceQuery/blob/main/Logo.png" title="ServiceQuery Logo" width="250"/>
 
 # ServiceQuery Allows Querying Data Over REST APIs
 ServiceQuery, https://ServiceQuery.com, is an open-source library that allows dynamically querying database information over REST APIs. Similar to how OData and GraphQL work, it leverages the power of an expressions builder and a simple model that is capable of serializing query instructions over service boundaries. It supports numerous popular relational (SQL) and document (NoSQL) database engines that expose an IQueryable interface. ServiceQuery builds LINQ expressions using individually mapped functions and parsed data that eliminates injection attacks, so querying your data is safe and secure. This library provides clients and front end applications unprecedented queryability using a standardized endpoint supporting polyglot data access. 

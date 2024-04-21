@@ -1,0 +1,21 @@
+﻿namespace ServiceQuery.Xunit
+{
+    [Collection("Postgres")]
+    public class PostgreSqlAggregateMaximumTests : AggregateMaximumTests<TestClass>
+    {
+        public PostgreSqlAggregateMaximumTests()
+        {
+            ValidateUInt128 = false;
+        }
+
+        public override IQueryable<TestClass> GetTestList()
+        {
+            return PostgreSqlHelper.GetTestList();
+        }
+
+        public override IQueryable<TestClass> GetTestNullCopyList()
+        {
+            return PostgreSqlHelper.GetTestNullCopyList();
+        }
+    }
+}

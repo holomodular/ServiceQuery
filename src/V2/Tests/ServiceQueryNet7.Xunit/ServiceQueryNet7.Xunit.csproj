@@ -1,0 +1,62 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>disable</Nullable>
+    <IsPackable>false</IsPackable>
+    <IsTestProject>true</IsTestProject>
+  </PropertyGroup>
+
+	<ItemGroup>
+		<Compile Include="..\TestFiles\AggregateAverageTests.cs" Link="AggregateAverageTests.cs" />
+		<Compile Include="..\TestFiles\AggregateCountTests.cs" Link="AggregateCountTests.cs" />
+		<Compile Include="..\TestFiles\AggregateMaximumTests.cs" Link="AggregateMaximumTests.cs" />
+		<Compile Include="..\TestFiles\AggregateMinimumTests.cs" Link="AggregateMinimumTests.cs" />
+		<Compile Include="..\TestFiles\AggregateSumTests.cs" Link="AggregateSumTests.cs" />
+		<Compile Include="..\TestFiles\BaseTest.cs" Link="BaseTest.cs" />
+		<Compile Include="..\TestFiles\ComparisonBetweenTests.cs" Link="ComparisonBetweenTests.cs" />
+		<Compile Include="..\TestFiles\ComparisonContainsTests.cs" Link="ComparisonContainsTests.cs" />
+		<Compile Include="..\TestFiles\ComparisonEndsWithTests.cs" Link="ComparisonEndsWithTests.cs" />
+		<Compile Include="..\TestFiles\ComparisonIsEqualTests.cs" Link="ComparisonIsEqualTests.cs" />
+		<Compile Include="..\TestFiles\ComparisonIsGreaterThanOrEqualTests.cs" Link="ComparisonIsGreaterThanOrEqualTests.cs" />
+		<Compile Include="..\TestFiles\ComparisonIsGreaterThanTests.cs" Link="ComparisonIsGreaterThanTests.cs" />
+		<Compile Include="..\TestFiles\ComparisonIsInSetTests.cs" Link="ComparisonIsInSetTests.cs" />
+		<Compile Include="..\TestFiles\ComparisonIsLessThanOrEqualTests.cs" Link="ComparisonIsLessThanOrEqualTests.cs" />
+		<Compile Include="..\TestFiles\ComparisonIsLessThanTests.cs" Link="ComparisonIsLessThanTests.cs" />
+		<Compile Include="..\TestFiles\ComparisonIsNotEqualTests.cs" Link="ComparisonIsNotEqualTests.cs" />
+		<Compile Include="..\TestFiles\ComparisonIsNotInSetTests.cs" Link="ComparisonIsNotInSetTests.cs" />
+		<Compile Include="..\TestFiles\ComparisonIsNotNullTests.cs" Link="ComparisonIsNotNullTests.cs" />
+		<Compile Include="..\TestFiles\ComparisonIsNullTests.cs" Link="ComparisonIsNullTests.cs" />
+		<Compile Include="..\TestFiles\ComparisonStartsWithTests.cs" Link="ComparisonStartsWithTests.cs" />
+		<Compile Include="..\TestFiles\DistinctTests.cs" Link="DistinctTests.cs" />
+		<Compile Include="..\TestFiles\ExpressionTests.cs" Link="ExpressionTests.cs" />
+		<Compile Include="..\TestFiles\ExternalInterfaceTests.cs" Link="ExternalInterfaceTests.cs" />
+		<Compile Include="..\TestFiles\ITestClass.cs" Link="ITestClass.cs" />
+		<Compile Include="..\TestFiles\NegativeTests.cs" Link="NegativeTests.cs" />
+		<Compile Include="..\TestFiles\OptionTests.cs" Link="OptionTests.cs" />
+		<Compile Include="..\TestFiles\PagingTests.cs" Link="PagingTests.cs" />
+		<Compile Include="..\TestFiles\SelectTests.cs" Link="SelectTests.cs" />
+		<Compile Include="..\TestFiles\SortTests.cs" Link="SortTests.cs" />
+		<Compile Include="..\TestFiles\TestClass.cs" Link="TestClass.cs" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.6.3" />
+		<PackageReference Include="System.Linq.Async" Version="6.0.1" />
+		<PackageReference Include="xunit" Version="2.4.2" />
+		<PackageReference Include="xunit.runner.visualstudio" Version="2.4.5">
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+			<PrivateAssets>all</PrivateAssets>
+		</PackageReference>
+		<PackageReference Include="coverlet.collector" Version="6.0.0">
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+			<PrivateAssets>all</PrivateAssets>
+		</PackageReference>
+	</ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\ServiceQuery\ServiceQuery.csproj" />	
+  </ItemGroup>
+
+</Project>
