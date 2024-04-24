@@ -1,4 +1,4 @@
-﻿namespace ServiceQuery.Xunit
+﻿namespace ServiceQuery.Xunit.Integration
 {
     [Collection("Cosmos")]
     public class CosmosComparisonIsNotEqualTests : ComparisonIsNotEqualTests<TestClass>

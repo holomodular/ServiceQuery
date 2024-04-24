@@ -1,7 +1,7 @@
 ﻿using Azure;
 using Azure.Data.Tables;
 
-namespace ServiceQuery.Xunit
+namespace ServiceQuery.Xunit.Integration
 {
     public class SortTests : BaseTest<AzureDataTablesTestClass>
     {

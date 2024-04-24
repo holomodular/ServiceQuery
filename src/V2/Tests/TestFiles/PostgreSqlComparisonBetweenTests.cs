@@ -1,4 +1,4 @@
-﻿namespace ServiceQuery.Xunit
+﻿namespace ServiceQuery.Xunit.Integration
 {
     [Collection("Postgres")]
     public class PostgreSqlComparisonBetweenTests : ComparisonBetweenTests<TestClass>

@@ -9,7 +9,7 @@ using Azure;
 using ServiceQuery;
 using System.Linq.Expressions;
 
-namespace ServiceQuery.Xunit
+namespace ServiceQuery.Xunit.Integration
 {
     [Collection("AzureDataTables")]
     public class AzureDataTablesComparisonIsNotInSetTests : BaseTest

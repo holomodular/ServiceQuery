@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Cosmos;
 
-namespace ServiceQuery.Xunit
+namespace ServiceQuery.Xunit.Integration
 {
     public class CosmosTestContext : DbContext
     {

@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-namespace ServiceQuery.Xunit
+namespace ServiceQuery.Xunit.Integration
 {
     public class SqlLiteHelper
     {

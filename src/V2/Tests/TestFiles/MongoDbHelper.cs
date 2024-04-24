@@ -2,7 +2,7 @@
 using Microsoft.Extensions.Configuration;
 using MongoDB.Driver;
 
-namespace ServiceQuery.Xunit
+namespace ServiceQuery.Xunit.Integration
 {
     public class MongoDbHelper
     {

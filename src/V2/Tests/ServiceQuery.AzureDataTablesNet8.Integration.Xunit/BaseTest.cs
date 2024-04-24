@@ -1,4 +1,4 @@
-﻿namespace ServiceQuery.Xunit
+﻿namespace ServiceQuery.Xunit.Integration
 {
     public abstract class BaseTest<T> where T : class
     {

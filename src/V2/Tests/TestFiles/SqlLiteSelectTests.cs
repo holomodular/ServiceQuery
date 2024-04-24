@@ -1,4 +1,4 @@
-﻿namespace ServiceQuery.Xunit
+﻿namespace ServiceQuery.Xunit.Integration
 {
     [Collection("Sqlite")]
     public class SqlLiteSelectTests : SelectTests<TestClass>

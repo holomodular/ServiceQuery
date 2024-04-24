@@ -2,7 +2,7 @@
 using Azure.Data.Tables;
 using System.Linq.Expressions;
 
-namespace ServiceQuery.Xunit
+namespace ServiceQuery.Xunit.Integration
 {
     [Collection("AzureDataTables")]
     public class AzureDataTablesDistinctTests : BaseTest

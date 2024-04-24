@@ -1,4 +1,4 @@
-﻿namespace ServiceQuery.Xunit
+﻿namespace ServiceQuery.Xunit.Integration
 {
     [Collection("SqlServer")]
     public class SqlServerComparisonBetweenTests : ComparisonBetweenTests<TestClass>

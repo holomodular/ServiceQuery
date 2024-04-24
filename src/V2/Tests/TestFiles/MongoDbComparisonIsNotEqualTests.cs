@@ -1,4 +1,4 @@
-﻿namespace ServiceQuery.Xunit
+﻿namespace ServiceQuery.Xunit.Integration
 {
     [Collection("MongoDb")]
     public class MongoDbComparisonIsNotEqualTests : ComparisonIsNotEqualTests<MongoDbTestClass>

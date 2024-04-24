@@ -1,7 +1,7 @@
 ﻿using Azure.Data.Tables;
 using Azure;
 
-namespace ServiceQuery.Xunit
+namespace ServiceQuery.Xunit.Integration
 {
     public class AggregateMinimumTests : BaseTest<AzureDataTablesTestClass>
     {

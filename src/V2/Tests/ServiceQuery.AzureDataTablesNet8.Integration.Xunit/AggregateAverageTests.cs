@@ -3,7 +3,7 @@ using Azure;
 using System.Linq.Expressions;
 using ServiceQuery;
 
-namespace ServiceQuery.Xunit
+namespace ServiceQuery.Xunit.Integration
 {
     public class AggregateAverageTests : BaseTest<AzureDataTablesTestClass>
     {
