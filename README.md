@@ -221,8 +221,29 @@ We currently provide the following server-side options when processing queries.
     }
 ```
 
-# Roadmap
-There are several new features planned and currently in development. Visit the Issues page at the top to view the current list. Let us know if you have any requests.
+## Advanced Usage Scenarios
+There are many benefits to being able to manipulate queries before they are executed. You could:
+
+* Restrict properties by user roles
+
+When receiving a query, you can use the ServiceQueryOptions to change the list of mapped properties based on the user's security role. If a user specifies a property that is not mapped, such as SSN property, an exception is thrown.
+
+Note: You should restrict properties from select, where and orderby filters so that no information can be obtained, filtered, ordered or gleaned in anyway by its usage.
+
+* Sharding data
+
+When receiving a query, you can add expressions on to the query to make sure that it is only performed against a data segment that you specify, for instance a CustomerKey.
+This would be in the format: 
+
+**( originalquery ) AND CustomerKey = 123**
+
+To accomplish this on a ServiceQueryRequest object, perform the following operations:
+1) Add a BEGIN expressions at the first index of the filters
+2) Add an END expression to the end of the list
+3) Add an AND expression to the end of the list
+4) Add an ISEQUAL for property CustomerKey and value 123
+
+If the user doesn't pass any where filters, skip steps 1-3. The library will validate queries, ensuring begin and end expressions, their directions and counts match, ensuring users can't craft malicious queries to circumvent this, otherwise an exception is thrown.
 
 # About
 I am a business executive and software architect with over 26 years professional experience. You can reach me via www.linkedin.com/in/danlogsdon or https://HoloModular.com
