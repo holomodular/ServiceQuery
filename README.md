@@ -65,7 +65,7 @@ public ServiceQueryResponse<ExampleTable> ExampleServiceQuery(ServiceQueryReques
 ```
 
 ## Documentation
-Comprehensive cocumentation is available on our website at http://ServiceQuery.com including tables for supported data types and operations by .NET Framework version and database engine.
+Comprehensive documentation is available on our website at http://ServiceQuery.com including tables for supported data types and operations by .NET Framework version and database engine.
 
 ## ServiceQuery.AzureDataTables
 Azure Data Tables has certain limitations, like lack of support for aggregate functions, string comparisons and ordering. 
@@ -197,7 +197,7 @@ If you are using javascript, make sure to download the [ServiceQuery.js](https:/
   // Aggregate functions
   request = new ServiceQueryRequestBuilder()
     .IsLessThan("Id", "200")
-    .Sum("Age")
+    .Sum("Price")
     .Build();
 
 ```
