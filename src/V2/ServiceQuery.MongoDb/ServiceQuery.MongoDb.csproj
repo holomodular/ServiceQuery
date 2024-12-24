@@ -1,0 +1,40 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<Version>2.2.0</Version>
+		<Description>ServiceQuery allows dynamic querying of data over service boundaries. Visit http://ServiceQuery.com to learn more.</Description>
+		<PackageId>ServiceQuery.MongoDb</PackageId>
+		<Title>ServiceQuery.MongoDb</Title>
+		<AssemblyTitle>ServiceQuery.MongoDb</AssemblyTitle>
+		<Authors>holomodular</Authors>
+		<Company>HoloModular LLC</Company>
+		<Product>ServiceQuery</Product>
+		<TargetFrameworks>netstandard2.1;net6.0;net7.0;net8.0;net9.0</TargetFrameworks>
+		<Nullable>disable</Nullable>
+		<Copyright>Copyright © 2023 HoloModular LLC. All Rights Reserved.</Copyright>
+		<PackageProjectUrl>https://ServiceQuery.com</PackageProjectUrl>
+		<PackageIcon>logo.png</PackageIcon>
+		<PackageTags>service;query;azure;data;tables;api;dynamic;linq;rest;entity;get;search;find</PackageTags>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<SignAssembly>True</SignAssembly>
+		<AssemblyOriginatorKeyFile>Resource\ServiceQuery.MongoDb.snk</AssemblyOriginatorKeyFile>
+		<PackageReadmeFile>readme.md</PackageReadmeFile>
+		<PackageRequireLicenseAcceptance>False</PackageRequireLicenseAcceptance>
+		<RepositoryUrl>https://github.com/holomodular/ServiceQuery</RepositoryUrl>
+		<RepositoryType>git</RepositoryType>
+		<GenerateDocumentationFile>True</GenerateDocumentationFile>
+	</PropertyGroup>
+	<ItemGroup>
+		<None Include="Resource\readme.md" Pack="True" PackagePath="\" />
+		<None Include="Resource\logo.png">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="MongoDB.Driver" Version="3.1.0" />
+		<PackageReference Include="ServiceQuery" Version="2.2.0" />
+	</ItemGroup>
+
+</Project>

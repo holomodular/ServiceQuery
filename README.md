@@ -18,7 +18,7 @@ Install the NuGet Package **ServiceQuery**
 * **Powerful:** Provides clients and front-end applications with unprecedented querying capabilities.
 
 ## Examples
-Explore our [examples folder](https://github.com/holomodular/ServiceQuery/blob/main/examples/V2) for detailed implementations using the most popular database storage providers.
+Explore our [Examples Repository](https://github.com/holomodular/ServiceQuery-Examples) for detailed implementations using the most popular database storage providers.
 
 ## We Value Your Feedback
 Join our discussion board to post any questions or issues. Don't forget to star our repository. For direct support, reach us at: Support@HoloModular.com

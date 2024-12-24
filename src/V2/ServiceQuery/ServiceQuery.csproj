@@ -1,53 +1,36 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-	  <Version>2.1.1</Version>
-	  <Description>ServiceQuery allows dynamic querying of data over service boundaries. Visit http://ServiceQuery.com to learn more.</Description>
-	  <AssemblyTitle>ServiceQuery</AssemblyTitle>
-	  <Authors>holomodular</Authors>
-	  <TargetFrameworks>net40;net45;netstandard2.0;netstandard2.1;net6.0;net7.0;net8.0</TargetFrameworks>    
-    <Nullable>disable</Nullable>    
-    <Copyright>Copyright © 2023 HoloModular LLC. All Rights Reserved.</Copyright>
-    <PackageProjectUrl>http://ServiceQuery.com</PackageProjectUrl>    
-    <PackageIcon>logo.png</PackageIcon>    
-    <PackageTags>service;query;api;dynamic;linq;rest;entity;get;search;find</PackageTags>
-	  <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <SignAssembly>True</SignAssembly>    
-    <AssemblyOriginatorKeyFile>ServiceQuery.snk</AssemblyOriginatorKeyFile>    
-    <PackageReadmeFile>readme.md</PackageReadmeFile>    
-    <RepositoryUrl>https://github.com/holomodular/ServiceQuery</RepositoryUrl>    
-    <RepositoryType>git</RepositoryType>    
-    <GenerateDocumentationFile>True</GenerateDocumentationFile>
+		<Version>2.2.0</Version>
+		<Description>ServiceQuery allows dynamic querying of data over service boundaries. Visit https://ServiceQuery.com to learn more.</Description>
+		<PackageId>ServiceQuery</PackageId>
+		<Title>ServiceQuery</Title>
+		<AssemblyTitle>ServiceQuery</AssemblyTitle>
+		<Authors>holomodular</Authors>
+		<Company>HoloModular LLC</Company>
+		<Product>ServiceQuery</Product>
+		<TargetFrameworks>net40;net45;netstandard2.0;netstandard2.1;net6.0;net7.0;net8.0;net9.0</TargetFrameworks>    
+		<Nullable>disable</Nullable>    
+		<Copyright>Copyright © 2023 HoloModular LLC. All Rights Reserved.</Copyright>
+		<PackageProjectUrl>https://ServiceQuery.com</PackageProjectUrl>    
+		<PackageIcon>logo.png</PackageIcon>    
+		<PackageTags>service;query;api;dynamic;linq;rest;entity;get;search;find</PackageTags>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<SignAssembly>True</SignAssembly>    
+		<AssemblyOriginatorKeyFile>Resource\ServiceQuery.snk</AssemblyOriginatorKeyFile>    
+		<PackageReadmeFile>readme.md</PackageReadmeFile>		
+		<PackageRequireLicenseAcceptance>False</PackageRequireLicenseAcceptance>
+		<RepositoryUrl>https://github.com/holomodular/ServiceQuery</RepositoryUrl>    
+		<RepositoryType>git</RepositoryType>    
+		<GenerateDocumentationFile>True</GenerateDocumentationFile>
   </PropertyGroup>
 
-  <ItemGroup>
-	  <None Include="docs\readme.md" Pack="True" PackagePath="\" />
-    <EmbeddedResource Include="logo.png">
-      <Pack>True</Pack>
-      <PackagePath>\</PackagePath>
-    </EmbeddedResource>
-  </ItemGroup>
-
-    <ItemGroup Condition="'$(TargetFramework)' == 'net40'">
-    </ItemGroup>
-	
-    <ItemGroup Condition="'$(TargetFramework)' == 'net45'">
-    </ItemGroup>
-	
-  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
-  </ItemGroup>
-
-  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.1'">
-  </ItemGroup>
-
-  <ItemGroup Condition="'$(TargetFramework)' == 'net6.0'">
-  </ItemGroup>
-
-  <ItemGroup Condition="'$(TargetFramework)' == 'net7.0'">
-  </ItemGroup>
-
-  <ItemGroup Condition="'$(TargetFramework)' == 'net8.0'">
-  </ItemGroup>
-	
+	<ItemGroup>
+		<None Include="Resource\readme.md" Pack="True" PackagePath="\" />
+		<None Include="Resource\logo.png">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+	</ItemGroup>
 	
 </Project>

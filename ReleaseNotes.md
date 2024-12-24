@@ -1,3 +1,7 @@
+# 2.2.0
+- Support async operations with an inmemory provider
+- Added new NuGet packages for ServiceQuery.EntityFrameworkCore and ServiceQuery.MongoDb for async support
+
 # 2.1.1
 - Support sorting for nullable datatypes
 - Update project structure for future release versions

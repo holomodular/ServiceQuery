@@ -1,0 +1,124 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>disable</Nullable>
+    <IsPackable>false</IsPackable>
+    <IsTestProject>true</IsTestProject>
+  </PropertyGroup>
+
+  <ItemGroup>
+	  <Compile Include="..\TestFiles\AzureDataTables\AzureDataTablesAggregateAverageTests.cs" Link="AzureDataTablesAggregateAverageTests.cs" />
+	  <Compile Include="..\TestFiles\AzureDataTables\AzureDataTablesAggregateCountTests.cs" Link="AzureDataTablesAggregateCountTests.cs" />
+	  <Compile Include="..\TestFiles\AzureDataTables\AzureDataTablesAggregateMaximumTests.cs" Link="AzureDataTablesAggregateMaximumTests.cs" />
+	  <Compile Include="..\TestFiles\AzureDataTables\AzureDataTablesAggregateMinimumTests.cs" Link="AzureDataTablesAggregateMinimumTests.cs" />
+	  <Compile Include="..\TestFiles\AzureDataTables\AzureDataTablesAggregateSumTests.cs" Link="AzureDataTablesAggregateSumTests.cs" />
+	  <Compile Include="..\TestFiles\AzureDataTables\AzureDataTablesComparisonBetweenTests.cs" Link="AzureDataTablesComparisonBetweenTests.cs" />
+	  <Compile Include="..\TestFiles\AzureDataTables\AzureDataTablesComparisonContainsTests.cs" Link="AzureDataTablesComparisonContainsTests.cs" />
+	  <Compile Include="..\TestFiles\AzureDataTables\AzureDataTablesComparisonEndsWithTests.cs" Link="AzureDataTablesComparisonEndsWithTests.cs" />
+	  <Compile Include="..\TestFiles\AzureDataTables\AzureDataTablesComparisonIsEqualTests.cs" Link="AzureDataTablesComparisonIsEqualTests.cs" />
+	  <Compile Include="..\TestFiles\AzureDataTables\AzureDataTablesComparisonIsGreaterThanOrEqualTests.cs" Link="AzureDataTablesComparisonIsGreaterThanOrEqualTests.cs" />
+	  <Compile Include="..\TestFiles\AzureDataTables\AzureDataTablesComparisonIsGreaterThanTests.cs" Link="AzureDataTablesComparisonIsGreaterThanTests.cs" />
+	  <Compile Include="..\TestFiles\AzureDataTables\AzureDataTablesComparisonIsInSetTests.cs" Link="AzureDataTablesComparisonIsInSetTests.cs" />
+	  <Compile Include="..\TestFiles\AzureDataTables\AzureDataTablesComparisonIsLessThanOrEqualTests.cs" Link="AzureDataTablesComparisonIsLessThanOrEqualTests.cs" />
+	  <Compile Include="..\TestFiles\AzureDataTables\AzureDataTablesComparisonIsLessThanTests.cs" Link="AzureDataTablesComparisonIsLessThanTests.cs" />
+	  <Compile Include="..\TestFiles\AzureDataTables\AzureDataTablesComparisonIsNotEqualTests.cs" Link="AzureDataTablesComparisonIsNotEqualTests.cs" />
+	  <Compile Include="..\TestFiles\AzureDataTables\AzureDataTablesComparisonIsNotInSetTests.cs" Link="AzureDataTablesComparisonIsNotInSetTests.cs" />
+	  <Compile Include="..\TestFiles\AzureDataTables\AzureDataTablesComparisonIsNotNullTests.cs" Link="AzureDataTablesComparisonIsNotNullTests.cs" />
+	  <Compile Include="..\TestFiles\AzureDataTables\AzureDataTablesComparisonIsNullTests.cs" Link="AzureDataTablesComparisonIsNullTests.cs" />
+	  <Compile Include="..\TestFiles\AzureDataTables\AzureDataTablesComparisonStartsWithTests.cs" Link="AzureDataTablesComparisonStartsWithTests.cs" />
+	  <Compile Include="..\TestFiles\AzureDataTables\AzureDataTablesDistinctTests.cs" Link="AzureDataTablesDistinctTests.cs" />
+	  <Compile Include="..\TestFiles\AzureDataTables\AzureDataTablesExpressionTests.cs" Link="AzureDataTablesExpressionTests.cs" />
+	  <Compile Include="..\TestFiles\AzureDataTables\AzureDataTablesSelectTests.cs" Link="AzureDataTablesSelectTests.cs" />
+	  <Compile Include="..\TestFiles\AzureDataTables\AzureDataTablesSortTests.cs" Link="AzureDataTablesSortTests.cs" />
+	  <Compile Include="..\TestFiles\AzureDataTables\AzureDataTablesHelper.cs" Link="AzureDataTablesHelper.cs" />
+	  <Compile Include="..\TestFiles\AzureDataTables\AzureDataTablesTestClass.cs" Link="AzureDataTablesTestClass.cs" />
+
+
+	  <Compile Include="..\TestFiles\AzureDataTables\AzureDataTablesAggregateAverageTestsAsync.cs" Link="AzureDataTablesAggregateAverageTestsAsync.cs" />
+	  <Compile Include="..\TestFiles\AzureDataTables\AzureDataTablesAggregateCountTestsAsync.cs" Link="AzureDataTablesAggregateCountTestsAsync.cs" />
+	  <Compile Include="..\TestFiles\AzureDataTables\AzureDataTablesAggregateMaximumTestsAsync.cs" Link="AzureDataTablesAggregateMaximumTestsAsync.cs" />
+	  <Compile Include="..\TestFiles\AzureDataTables\AzureDataTablesAggregateMinimumTestsAsync.cs" Link="AzureDataTablesAggregateMinimumTestsAsync.cs" />
+	  <Compile Include="..\TestFiles\AzureDataTables\AzureDataTablesAggregateSumTestsAsync.cs" Link="AzureDataTablesAggregateSumTestsAsync.cs" />
+	  <Compile Include="..\TestFiles\AzureDataTables\AzureDataTablesComparisonBetweenTestsAsync.cs" Link="AzureDataTablesComparisonBetweenTestsAsync.cs" />
+	  <Compile Include="..\TestFiles\AzureDataTables\AzureDataTablesComparisonContainsTestsAsync.cs" Link="AzureDataTablesComparisonContainsTestsAsync.cs" />
+	  <Compile Include="..\TestFiles\AzureDataTables\AzureDataTablesComparisonEndsWithTestsAsync.cs" Link="AzureDataTablesComparisonEndsWithTestsAsync.cs" />
+	  <Compile Include="..\TestFiles\AzureDataTables\AzureDataTablesComparisonIsEqualTestsAsync.cs" Link="AzureDataTablesComparisonIsEqualTestsAsync.cs" />
+	  <Compile Include="..\TestFiles\AzureDataTables\AzureDataTablesComparisonIsGreaterThanOrEqualTestsAsync.cs" Link="AzureDataTablesComparisonIsGreaterThanOrEqualTestsAsync.cs" />
+	  <Compile Include="..\TestFiles\AzureDataTables\AzureDataTablesComparisonIsGreaterThanTestsAsync.cs" Link="AzureDataTablesComparisonIsGreaterThanTestsAsync.cs" />
+	  <Compile Include="..\TestFiles\AzureDataTables\AzureDataTablesComparisonIsInSetTestsAsync.cs" Link="AzureDataTablesComparisonIsInSetTestsAsync.cs" />
+	  <Compile Include="..\TestFiles\AzureDataTables\AzureDataTablesComparisonIsLessThanOrEqualTestsAsync.cs" Link="AzureDataTablesComparisonIsLessThanOrEqualTestsAsync.cs" />
+	  <Compile Include="..\TestFiles\AzureDataTables\AzureDataTablesComparisonIsLessThanTestsAsync.cs" Link="AzureDataTablesComparisonIsLessThanTestsAsync.cs" />
+	  <Compile Include="..\TestFiles\AzureDataTables\AzureDataTablesComparisonIsNotEqualTestsAsync.cs" Link="AzureDataTablesComparisonIsNotEqualTestsAsync.cs" />
+	  <Compile Include="..\TestFiles\AzureDataTables\AzureDataTablesComparisonIsNotInSetTestsAsync.cs" Link="AzureDataTablesComparisonIsNotInSetTestsAsync.cs" />
+	  <Compile Include="..\TestFiles\AzureDataTables\AzureDataTablesComparisonIsNotNullTestsAsync.cs" Link="AzureDataTablesComparisonIsNotNullTestsAsync.cs" />
+	  <Compile Include="..\TestFiles\AzureDataTables\AzureDataTablesComparisonIsNullTestsAsync.cs" Link="AzureDataTablesComparisonIsNullTestsAsync.cs" />
+	  <Compile Include="..\TestFiles\AzureDataTables\AzureDataTablesComparisonStartsWithTestsAsync.cs" Link="AzureDataTablesComparisonStartsWithTestsAsync.cs" />
+	  <Compile Include="..\TestFiles\AzureDataTables\AzureDataTablesDistinctTestsAsync.cs" Link="AzureDataTablesDistinctTestsAsync.cs" />
+	  <Compile Include="..\TestFiles\AzureDataTables\AzureDataTablesExpressionTestsAsync.cs" Link="AzureDataTablesExpressionTestsAsync.cs" />
+	  <Compile Include="..\TestFiles\AzureDataTables\AzureDataTablesSelectTestsAsync.cs" Link="AzureDataTablesSelectTestsAsync.cs" />
+	  <Compile Include="..\TestFiles\AzureDataTables\AzureDataTablesSortTestsAsync.cs" Link="AzureDataTablesSortTestsAsync.cs" />	  
+
+
+	  <Compile Include="..\TestFiles\Core\AggregateAverageTests.cs" Link="AggregateAverageTests.cs" />
+	  <Compile Include="..\TestFiles\Core\AggregateCountTests.cs" Link="AggregateCountTests.cs" />
+	  <Compile Include="..\TestFiles\Core\AggregateMaximumTests.cs" Link="AggregateMaximumTests.cs" />
+	  <Compile Include="..\TestFiles\Core\AggregateMinimumTests.cs" Link="AggregateMinimumTests.cs" />
+	  <Compile Include="..\TestFiles\Core\AggregateSumTests.cs" Link="AggregateSumTests.cs" />
+	  <Compile Include="..\TestFiles\Core\BaseTest.cs" Link="BaseTest.cs" />
+	  <Compile Include="..\TestFiles\Core\ComparisonBetweenTests.cs" Link="ComparisonBetweenTests.cs" />
+	  <Compile Include="..\TestFiles\Core\ComparisonContainsTests.cs" Link="ComparisonContainsTests.cs" />
+	  <Compile Include="..\TestFiles\Core\ComparisonEndsWithTests.cs" Link="ComparisonEndsWithTests.cs" />
+	  <Compile Include="..\TestFiles\Core\ComparisonIsEqualTests.cs" Link="ComparisonIsEqualTests.cs" />
+	  <Compile Include="..\TestFiles\Core\ComparisonIsGreaterThanOrEqualTests.cs" Link="ComparisonIsGreaterThanOrEqualTests.cs" />
+	  <Compile Include="..\TestFiles\Core\ComparisonIsGreaterThanTests.cs" Link="ComparisonIsGreaterThanTests.cs" />
+	  <Compile Include="..\TestFiles\Core\ComparisonIsInSetTests.cs" Link="ComparisonIsInSetTests.cs" />
+	  <Compile Include="..\TestFiles\Core\ComparisonIsLessThanOrEqualTests.cs" Link="ComparisonIsLessThanOrEqualTests.cs" />
+	  <Compile Include="..\TestFiles\Core\ComparisonIsLessThanTests.cs" Link="ComparisonIsLessThanTests.cs" />
+	  <Compile Include="..\TestFiles\Core\ComparisonIsNotEqualTests.cs" Link="ComparisonIsNotEqualTests.cs" />
+	  <Compile Include="..\TestFiles\Core\ComparisonIsNotInSetTests.cs" Link="ComparisonIsNotInSetTests.cs" />
+	  <Compile Include="..\TestFiles\Core\ComparisonIsNotNullTests.cs" Link="ComparisonIsNotNullTests.cs" />
+	  <Compile Include="..\TestFiles\Core\ComparisonIsNullTests.cs" Link="ComparisonIsNullTests.cs" />
+	  <Compile Include="..\TestFiles\Core\ComparisonStartsWithTests.cs" Link="ComparisonStartsWithTests.cs" />
+	  <Compile Include="..\TestFiles\Core\DistinctTests.cs" Link="DistinctTests.cs" />
+	  <Compile Include="..\TestFiles\Core\ExpressionTests.cs" Link="ExpressionTests.cs" />
+	  <Compile Include="..\TestFiles\Core\NegativeTests.cs" Link="NegativeTests.cs" />
+	  <Compile Include="..\TestFiles\Core\OptionTests.cs" Link="OptionTests.cs" />
+	  <Compile Include="..\TestFiles\Core\PagingTests.cs" Link="PagingTests.cs" />
+	  <Compile Include="..\TestFiles\Core\SelectTests.cs" Link="SelectTests.cs" />
+	  <Compile Include="..\TestFiles\Core\SortTests.cs" Link="SortTests.cs" />	  
+	  <Compile Include="..\TestFiles\Core\ExternalInterfaceTests.cs" Link="ExternalInterfaceTests.cs" />
+	  <Compile Include="..\TestFiles\Core\ITestClass.cs" Link="ITestClass.cs" />	  	  	  
+	  <Compile Include="..\TestFiles\Core\TestClass.cs" Link="TestClass.cs" />
+
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="..\TestFiles\appsettings.json" Link="appsettings.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+	  <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="9.0.0" />
+	  <PackageReference Include="Azure.Data.Tables" Version="12.9.1" />	  
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.12.0" />
+	  <PackageReference Include="xunit" Version="2.9.2" />
+	  <PackageReference Include="xunit.runner.visualstudio" Version="3.0.0">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="coverlet.collector" Version="6.0.2">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\ServiceQuery\ServiceQuery.csproj" />
+	  <ProjectReference Include="..\..\ServiceQuery.EntityFrameworkCore\ServiceQuery.EntityFrameworkCore.csproj" />
+	  <ProjectReference Include="..\..\ServiceQuery.MongoDb\ServiceQuery.MongoDb.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,123 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>disable</Nullable>
+    <IsPackable>false</IsPackable>
+    <IsTestProject>true</IsTestProject>
+  </PropertyGroup>
+
+  <ItemGroup>	 
+	  <Compile Include="..\TestFiles\MongoDb\MongoDbAggregateAverageTests.cs" Link="MongoDbAggregateAverageTests.cs" />
+	  <Compile Include="..\TestFiles\MongoDb\MongoDbAggregateCountTests.cs" Link="MongoDbAggregateCountTests.cs" />
+	  <Compile Include="..\TestFiles\MongoDb\MongoDbAggregateMaximumTests.cs" Link="MongoDbAggregateMaximumTests.cs" />
+	  <Compile Include="..\TestFiles\MongoDb\MongoDbAggregateMinimumTests.cs" Link="MongoDbAggregateMinimumTests.cs" />
+	  <Compile Include="..\TestFiles\MongoDb\MongoDbAggregateSumTests.cs" Link="MongoDbAggregateSumTests.cs" />
+	  <Compile Include="..\TestFiles\MongoDb\MongoDbComparisonBetweenTests.cs" Link="MongoDbComparisonBetweenTests.cs" />
+	  <Compile Include="..\TestFiles\MongoDb\MongoDbComparisonContainsTests.cs" Link="MongoDbComparisonContainsTests.cs" />
+	  <Compile Include="..\TestFiles\MongoDb\MongoDbComparisonEndsWithTests.cs" Link="MongoDbComparisonEndsWithTests.cs" />
+	  <Compile Include="..\TestFiles\MongoDb\MongoDbComparisonIsEqualTests.cs" Link="MongoDbComparisonIsEqualTests.cs" />
+	  <Compile Include="..\TestFiles\MongoDb\MongoDbComparisonIsGreaterThanOrEqualTests.cs" Link="MongoDbComparisonIsGreaterThanOrEqualTests.cs" />
+	  <Compile Include="..\TestFiles\MongoDb\MongoDbComparisonIsGreaterThanTests.cs" Link="MongoDbComparisonIsGreaterThanTests.cs" />
+	  <Compile Include="..\TestFiles\MongoDb\MongoDbComparisonIsLessThanOrEqualTests.cs" Link="MongoDbComparisonIsLessThanOrEqualTests.cs" />
+	  <Compile Include="..\TestFiles\MongoDb\MongoDbComparisonIsLessThanTests.cs" Link="MongoDbComparisonIsLessThanTests.cs" />
+	  <Compile Include="..\TestFiles\MongoDb\MongoDbComparisonIsNotEqualTests.cs" Link="MongoDbComparisonIsNotEqualTests.cs" />
+	  <Compile Include="..\TestFiles\MongoDb\MongoDbComparisonStartsWithTests.cs" Link="MongoDbComparisonStartsWithTests.cs" />
+	  <Compile Include="..\TestFiles\MongoDb\MongoDbDistinctTests.cs" Link="MongoDbDistinctTests.cs" />
+	  <Compile Include="..\TestFiles\MongoDb\MongoDbExpressionTests.cs" Link="MongoDbExpressionTests.cs" />
+	  <Compile Include="..\TestFiles\MongoDb\MongoDbSelectTests.cs" Link="MongoDbSelectTests.cs" />
+	  <Compile Include="..\TestFiles\MongoDb\MongoDbSortTests.cs" Link="MongoDbSortTests.cs" />
+	  <Compile Include="..\TestFiles\MongoDb\MongoDbHelper.cs" Link="MongoDbHelper.cs" />
+	  <Compile Include="..\TestFiles\MongoDb\MongoDbTestClass.cs" Link="MongoDbTestClass.cs" />
+	  
+  
+	  <Compile Include="..\TestFiles\Core\AggregateAverageTests.cs" Link="AggregateAverageTests.cs" />
+	  <Compile Include="..\TestFiles\Core\AggregateCountTests.cs" Link="AggregateCountTests.cs" />
+	  <Compile Include="..\TestFiles\Core\AggregateMaximumTests.cs" Link="AggregateMaximumTests.cs" />
+	  <Compile Include="..\TestFiles\Core\AggregateMinimumTests.cs" Link="AggregateMinimumTests.cs" />
+	  <Compile Include="..\TestFiles\Core\AggregateSumTests.cs" Link="AggregateSumTests.cs" />
+	  <Compile Include="..\TestFiles\Core\BaseTest.cs" Link="BaseTest.cs" />
+	  <Compile Include="..\TestFiles\Core\ComparisonBetweenTests.cs" Link="ComparisonBetweenTests.cs" />
+	  <Compile Include="..\TestFiles\Core\ComparisonContainsTests.cs" Link="ComparisonContainsTests.cs" />
+	  <Compile Include="..\TestFiles\Core\ComparisonEndsWithTests.cs" Link="ComparisonEndsWithTests.cs" />
+	  <Compile Include="..\TestFiles\Core\ComparisonIsEqualTests.cs" Link="ComparisonIsEqualTests.cs" />
+	  <Compile Include="..\TestFiles\Core\ComparisonIsGreaterThanOrEqualTests.cs" Link="ComparisonIsGreaterThanOrEqualTests.cs" />
+	  <Compile Include="..\TestFiles\Core\ComparisonIsGreaterThanTests.cs" Link="ComparisonIsGreaterThanTests.cs" />
+	  <Compile Include="..\TestFiles\Core\ComparisonIsInSetTests.cs" Link="ComparisonIsInSetTests.cs" />
+	  <Compile Include="..\TestFiles\Core\ComparisonIsLessThanOrEqualTests.cs" Link="ComparisonIsLessThanOrEqualTests.cs" />
+	  <Compile Include="..\TestFiles\Core\ComparisonIsLessThanTests.cs" Link="ComparisonIsLessThanTests.cs" />
+	  <Compile Include="..\TestFiles\Core\ComparisonIsNotEqualTests.cs" Link="ComparisonIsNotEqualTests.cs" />
+	  <Compile Include="..\TestFiles\Core\ComparisonIsNotInSetTests.cs" Link="ComparisonIsNotInSetTests.cs" />
+	  <Compile Include="..\TestFiles\Core\ComparisonIsNotNullTests.cs" Link="ComparisonIsNotNullTests.cs" />
+	  <Compile Include="..\TestFiles\Core\ComparisonIsNullTests.cs" Link="ComparisonIsNullTests.cs" />
+	  <Compile Include="..\TestFiles\Core\ComparisonStartsWithTests.cs" Link="ComparisonStartsWithTests.cs" />
+	  <Compile Include="..\TestFiles\Core\DistinctTests.cs" Link="DistinctTests.cs" />
+	  <Compile Include="..\TestFiles\Core\ExpressionTests.cs" Link="ExpressionTests.cs" />
+	  <Compile Include="..\TestFiles\Core\NegativeTests.cs" Link="NegativeTests.cs" />
+	  <Compile Include="..\TestFiles\Core\OptionTests.cs" Link="OptionTests.cs" />
+	  <Compile Include="..\TestFiles\Core\PagingTests.cs" Link="PagingTests.cs" />
+	  <Compile Include="..\TestFiles\Core\SelectTests.cs" Link="SelectTests.cs" />
+	  <Compile Include="..\TestFiles\Core\SortTests.cs" Link="SortTests.cs" />	  
+	  <Compile Include="..\TestFiles\Core\ExternalInterfaceTests.cs" Link="ExternalInterfaceTests.cs" />
+	  <Compile Include="..\TestFiles\Core\ITestClass.cs" Link="ITestClass.cs" />	  	  	  
+	  <Compile Include="..\TestFiles\Core\TestClass.cs" Link="TestClass.cs" />
+
+	  
+	<Compile Include="..\TestFiles\MongoDb\AggregateAverageTestsAsyncMongoDb.cs" Link="AggregateAverageTestsAsyncMongoDb.cs" />
+	  <Compile Include="..\TestFiles\MongoDb\AggregateCountTestsAsyncMongoDb.cs" Link="AggregateCountTestsAsyncMongoDb.cs" />
+	  <Compile Include="..\TestFiles\MongoDb\AggregateMaximumTestsAsyncMongoDb.cs" Link="AggregateMaximumTestsAsyncMongoDb.cs" />
+	  <Compile Include="..\TestFiles\MongoDb\AggregateMinimumTestsAsyncMongoDb.cs" Link="AggregateMinimumTestsAsyncMongoDb.cs" />
+	  <Compile Include="..\TestFiles\MongoDb\AggregateSumTestsAsyncMongoDb.cs" Link="AggregateSumTestsAsyncMongoDb.cs" />
+	  <Compile Include="..\TestFiles\MongoDb\ComparisonBetweenTestsAsyncMongoDb.cs" Link="ComparisonBetweenTestsAsyncMongoDb.cs" />
+	  <Compile Include="..\TestFiles\MongoDb\ComparisonContainsTestsAsyncMongoDb.cs" Link="ComparisonContainsTestsAsyncMongoDb.cs" />
+	  <Compile Include="..\TestFiles\MongoDb\ComparisonEndsWithTestsAsyncMongoDb.cs" Link="ComparisonEndsWithTestsAsyncMongoDb.cs" />
+	  <Compile Include="..\TestFiles\MongoDb\ComparisonIsEqualTestsAsyncMongoDb.cs" Link="ComparisonIsEqualTestsAsyncMongoDb.cs" />
+	  <Compile Include="..\TestFiles\MongoDb\ComparisonIsGreaterThanOrEqualTestsAsyncMongoDb.cs" Link="ComparisonIsGreaterThanOrEqualTestsAsyncMongoDb.cs" />
+	  <Compile Include="..\TestFiles\MongoDb\ComparisonIsGreaterThanTestsAsyncMongoDb.cs" Link="ComparisonIsGreaterThanTestsAsyncMongoDb.cs" />
+	  <Compile Include="..\TestFiles\MongoDb\ComparisonIsInSetTestsAsyncMongoDb.cs" Link="ComparisonIsInSetTestsAsyncMongoDb.cs" />
+	  <Compile Include="..\TestFiles\MongoDb\ComparisonIsLessThanOrEqualTestsAsyncMongoDb.cs" Link="ComparisonIsLessThanOrEqualTestsAsyncMongoDb.cs" />
+	  <Compile Include="..\TestFiles\MongoDb\ComparisonIsLessThanTestsAsyncMongoDb.cs" Link="ComparisonIsLessThanTestsAsyncMongoDb.cs" />
+	  <Compile Include="..\TestFiles\MongoDb\ComparisonIsNotEqualTestsAsyncMongoDb.cs" Link="ComparisonIsNotEqualTestsAsyncMongoDb.cs" />
+	  <Compile Include="..\TestFiles\MongoDb\ComparisonIsNotInSetTestsAsyncMongoDb.cs" Link="ComparisonIsNotInSetTestsAsyncMongoDb.cs" />
+	  <Compile Include="..\TestFiles\MongoDb\ComparisonIsNotNullTestsAsyncMongoDb.cs" Link="ComparisonIsNotNullTestsAsyncMongoDb.cs" />
+	  <Compile Include="..\TestFiles\MongoDb\ComparisonIsNullTestsAsyncMongoDb.cs" Link="ComparisonIsNullTestsAsyncMongoDb.cs" />
+	  <Compile Include="..\TestFiles\MongoDb\ComparisonStartsWithTestsAsyncMongoDb.cs" Link="ComparisonStartsWithTestsAsyncMongoDb.cs" />
+	  <Compile Include="..\TestFiles\MongoDb\DistinctTestsAsyncMongoDb.cs" Link="DistinctTestsAsyncMongoDb.cs" />
+	  <Compile Include="..\TestFiles\MongoDb\ExpressionTestsAsyncMongoDb.cs" Link="ExpressionTestsAsyncMongoDb.cs" />
+	  <Compile Include="..\TestFiles\MongoDb\NegativeTestsAsyncMongoDb.cs" Link="NegativeTestsAsyncMongoDb.cs" />
+	  <Compile Include="..\TestFiles\MongoDb\OptionTestsAsyncMongoDb.cs" Link="OptionTestsAsyncMongoDb.cs" />
+	  <Compile Include="..\TestFiles\MongoDb\PagingTestsAsyncMongoDb.cs" Link="PagingTestsAsyncMongoDb.cs" />
+	  <Compile Include="..\TestFiles\MongoDb\SelectTestsAsyncMongoDb.cs" Link="SelectTestsAsyncMongoDb.cs" />
+	  <Compile Include="..\TestFiles\MongoDb\SortTestsAsyncMongoDb.cs" Link="SortTestsAsyncMongoDb.cs" />
+	  <Compile Include="..\TestFiles\MongoDb\ExternalInterfaceTestsAsyncMongoDb.cs" Link="ExternalInterfaceTestsAsyncMongoDb.cs" />
+	  
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="..\TestFiles\appsettings.json" Link="appsettings.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+	  <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="8.0.0" />
+	  <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.12.0" />    
+	  <PackageReference Include="xunit" Version="2.9.2" />
+	  <PackageReference Include="xunit.runner.visualstudio" Version="3.0.0">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="coverlet.collector" Version="6.0.2">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>	
+  </ItemGroup>
+
+  <ItemGroup>
+	  <PackageReference Include="MongoDB.Driver" Version="3.1.0" />
+    <ProjectReference Include="..\..\ServiceQuery\ServiceQuery.csproj" />
+	  <ProjectReference Include="..\..\ServiceQuery.MongoDb\ServiceQuery.MongoDb.csproj" />
+  </ItemGroup>
+
+</Project>

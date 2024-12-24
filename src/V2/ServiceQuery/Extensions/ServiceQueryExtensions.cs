@@ -385,7 +385,15 @@ namespace ServiceQuery
             return null;
         }
 
-        private static PropertyInfo GetProperty(PropertyInfo[] props, ServiceQueryOptions serviceQueryOptions, string name)
+        /// <summary>
+        /// Get a property
+        /// </summary>
+        /// <param name="props"></param>
+        /// <param name="serviceQueryOptions"></param>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        /// <exception cref="ServiceQueryException"></exception>
+        public static PropertyInfo GetProperty(PropertyInfo[] props, ServiceQueryOptions serviceQueryOptions, string name)
         {
             if (serviceQueryOptions.PropertyNameCaseSensitive)
             {
@@ -1513,9 +1521,6 @@ namespace ServiceQuery
                 // Count doesn't require a property selector
                 if (filter.AggregateType == ServiceQueryAggregateType.Count)
                     return query.Count();
-
-                //Get the filters back in grouped sets
-                ServiceQueryFilterSet filterSet = GetFilterSet(serviceQuery, options);
 
                 var param = Expression.Parameter(entityType, "x");
                 PropertyInfo prop = null;

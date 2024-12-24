@@ -1,0 +1,217 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>disable</Nullable>
+    <IsPackable>false</IsPackable>
+    <IsTestProject>true</IsTestProject>
+  </PropertyGroup>
+
+  <ItemGroup>
+
+	  <Compile Include="..\TestFiles\Postgres\PostgreSqlAggregateAverageTests.cs" Link="PostgreSqlAggregateAverageTests.cs" />
+	  <Compile Include="..\TestFiles\Postgres\PostgreSqlAggregateCountTests.cs" Link="PostgreSqlAggregateCountTests.cs" />
+	  <Compile Include="..\TestFiles\Postgres\PostgreSqlAggregateMaximumTests.cs" Link="PostgreSqlAggregateMaximumTests.cs" />
+	  <Compile Include="..\TestFiles\Postgres\PostgreSqlAggregateMinimumTests.cs" Link="PostgreSqlAggregateMinimumTests.cs" />
+	  <Compile Include="..\TestFiles\Postgres\PostgreSqlAggregateSumTests.cs" Link="PostgreSqlAggregateSumTests.cs" />
+	  <Compile Include="..\TestFiles\Postgres\PostgreSqlComparisonBetweenTests.cs" Link="PostgreSqlComparisonBetweenTests.cs" />
+	  <Compile Include="..\TestFiles\Postgres\PostgreSqlComparisonContainsTests.cs" Link="PostgreSqlComparisonContainsTests.cs" />
+	  <Compile Include="..\TestFiles\Postgres\PostgreSqlComparisonEndsWithTests.cs" Link="PostgreSqlComparisonEndsWithTests.cs" />
+	  <Compile Include="..\TestFiles\Postgres\PostgreSqlComparisonIsEqualTests.cs" Link="PostgreSqlComparisonIsEqualTests.cs" />
+	  <Compile Include="..\TestFiles\Postgres\PostgreSqlComparisonIsGreaterThanOrEqualTests.cs" Link="PostgreSqlComparisonIsGreaterThanOrEqualTests.cs" />
+	  <Compile Include="..\TestFiles\Postgres\PostgreSqlComparisonIsGreaterThanTests.cs" Link="PostgreSqlComparisonIsGreaterThanTests.cs" />
+	  <Compile Include="..\TestFiles\Postgres\PostgreSqlComparisonIsLessThanOrEqualTests.cs" Link="PostgreSqlComparisonIsLessThanOrEqualTests.cs" />
+	  <Compile Include="..\TestFiles\Postgres\PostgreSqlComparisonIsLessThanTests.cs" Link="PostgreSqlComparisonIsLessThanTests.cs" />
+	  <Compile Include="..\TestFiles\Postgres\PostgreSqlComparisonIsNotEqualTests.cs" Link="PostgreSqlComparisonIsNotEqualTests.cs" />
+	  <Compile Include="..\TestFiles\Postgres\PostgreSqlComparisonStartsWithTests.cs" Link="PostgreSqlComparisonStartsWithTests.cs" />
+	  <Compile Include="..\TestFiles\Postgres\PostgreSqlDistinctTests.cs" Link="PostgreSqlDistinctTests.cs" />
+	  <Compile Include="..\TestFiles\Postgres\PostgreSqlExpressionTests.cs" Link="PostgreSqlExpressionTests.cs" />
+	  <Compile Include="..\TestFiles\Postgres\PostgreSqlSelectTests.cs" Link="PostgreSqlSelectTests.cs" />
+	  <Compile Include="..\TestFiles\Postgres\PostgreSqlSortTests.cs" Link="PostgreSqlSortTests.cs" />
+	  <Compile Include="..\TestFiles\Postgres\PostgreSqlHelper.cs" Link="PostgreSqlHelper.cs" />
+	  <Compile Include="..\TestFiles\Postgres\PostgreSqlTestContext.cs" Link="PostgreSqlTestContext.cs" />
+
+
+	  <Compile Include="..\TestFiles\Cosmos\CosmosAggregateAverageTestsAsync.cs" Link="CosmosAggregateAverageTestsAsync.cs" />
+	  <Compile Include="..\TestFiles\Cosmos\CosmosAggregateCountTestsAsync.cs" Link="CosmosAggregateCountTestsAsync.cs" />
+	  <Compile Include="..\TestFiles\Cosmos\CosmosAggregateMaximumTestsAsync.cs" Link="CosmosAggregateMaximumTestsAsync.cs" />
+	  <Compile Include="..\TestFiles\Cosmos\CosmosAggregateMinimumTestsAsync.cs" Link="CosmosAggregateMinimumTestsAsync.cs" />
+	  <Compile Include="..\TestFiles\Cosmos\CosmosAggregateSumTestsAsync.cs" Link="CosmosAggregateSumTestsAsync.cs" />
+	  <Compile Include="..\TestFiles\Cosmos\CosmosComparisonBetweenTestsAsync.cs" Link="CosmosComparisonBetweenTestsAsync.cs" />
+	  <Compile Include="..\TestFiles\Cosmos\CosmosComparisonContainsTestsAsync.cs" Link="CosmosComparisonContainsTestsAsync.cs" />
+	  <Compile Include="..\TestFiles\Cosmos\CosmosComparisonEndsWithTestsAsync.cs" Link="CosmosComparisonEndsWithTestsAsync.cs" />
+	  <Compile Include="..\TestFiles\Cosmos\CosmosComparisonIsEqualTestsAsync.cs" Link="CosmosComparisonIsEqualTestsAsync.cs" />
+	  <Compile Include="..\TestFiles\Cosmos\CosmosComparisonIsGreaterThanOrEqualTestsAsync.cs" Link="CosmosComparisonIsGreaterThanOrEqualTestsAsync.cs" />
+	  <Compile Include="..\TestFiles\Cosmos\CosmosComparisonIsGreaterThanTestsAsync.cs" Link="CosmosComparisonIsGreaterThanTestsAsync.cs" />
+	  <Compile Include="..\TestFiles\Cosmos\CosmosComparisonIsLessThanOrEqualTestsAsync.cs" Link="CosmosComparisonIsLessThanOrEqualTestsAsync.cs" />
+	  <Compile Include="..\TestFiles\Cosmos\CosmosComparisonIsLessThanTestsAsync.cs" Link="CosmosComparisonIsLessThanTestsAsync.cs" />
+	  <Compile Include="..\TestFiles\Cosmos\CosmosComparisonIsNotEqualTestsAsync.cs" Link="CosmosComparisonIsNotEqualTestsAsync.cs" />
+	  <Compile Include="..\TestFiles\Cosmos\CosmosComparisonStartsWithTestsAsync.cs" Link="CosmosComparisonStartsWithTestsAsync.cs" />
+	  <Compile Include="..\TestFiles\Cosmos\CosmosDistinctTestsAsync.cs" Link="CosmosDistinctTestsAsync.cs" />
+	  <Compile Include="..\TestFiles\Cosmos\CosmosExpressionTestsAsync.cs" Link="CosmosExpressionTestsAsync.cs" />
+	  <Compile Include="..\TestFiles\Cosmos\CosmosSelectTestsAsync.cs" Link="CosmosSelectTestsAsync.cs" />
+	  <Compile Include="..\TestFiles\Cosmos\CosmosSortTestsAsync.cs" Link="CosmosSortTestsAsync.cs" />
+	  <Compile Include="..\TestFiles\Cosmos\CosmosHelper.cs" Link="CosmosHelper.cs" />
+	  <Compile Include="..\TestFiles\Cosmos\CosmosTestContext.cs" Link="CosmosTestContext.cs" />
+	 
+	  <Compile Include="..\TestFiles\Sqlite\SqlLiteAggregateAverageTests.cs" Link="SqlLiteAggregateAverageTests.cs" />
+	  <Compile Include="..\TestFiles\Sqlite\SqlLiteAggregateCountTests.cs" Link="SqlLiteAggregateCountTests.cs" />
+	  <Compile Include="..\TestFiles\Sqlite\SqlLiteAggregateMaximumTests.cs" Link="SqlLiteAggregateMaximumTests.cs" />
+	  <Compile Include="..\TestFiles\Sqlite\SqlLiteAggregateMinimumTests.cs" Link="SqlLiteAggregateMinimumTests.cs" />
+	  <Compile Include="..\TestFiles\Sqlite\SqlLiteAggregateSumTests.cs" Link="SqlLiteAggregateSumTests.cs" />
+	  <Compile Include="..\TestFiles\Sqlite\SqlLiteComparisonBetweenTests.cs" Link="SqlLiteComparisonBetweenTests.cs" />
+	  <Compile Include="..\TestFiles\Sqlite\SqlLiteComparisonContainsTests.cs" Link="SqlLiteComparisonContainsTests.cs" />
+	  <Compile Include="..\TestFiles\Sqlite\SqlLiteComparisonEndsWithTests.cs" Link="SqlLiteComparisonEndsWithTests.cs" />
+	  <Compile Include="..\TestFiles\Sqlite\SqlLiteComparisonIsEqualTests.cs" Link="SqlLiteComparisonIsEqualTests.cs" />
+	  <Compile Include="..\TestFiles\Sqlite\SqlLiteComparisonIsGreaterThanOrEqualTests.cs" Link="SqlLiteComparisonIsGreaterThanOrEqualTests.cs" />
+	  <Compile Include="..\TestFiles\Sqlite\SqlLiteComparisonIsGreaterThanTests.cs" Link="SqlLiteComparisonIsGreaterThanTests.cs" />
+	  <Compile Include="..\TestFiles\Sqlite\SqlLiteComparisonIsLessThanOrEqualTests.cs" Link="SqlLiteComparisonIsLessThanOrEqualTests.cs" />
+	  <Compile Include="..\TestFiles\Sqlite\SqlLiteComparisonIsLessThanTests.cs" Link="SqlLiteComparisonIsLessThanTests.cs" />
+	  <Compile Include="..\TestFiles\Sqlite\SqlLiteComparisonIsNotEqualTests.cs" Link="SqlLiteComparisonIsNotEqualTests.cs" />
+	  <Compile Include="..\TestFiles\Sqlite\SqlLiteComparisonStartsWithTests.cs" Link="SqlLiteComparisonStartsWithTests.cs" />
+	  <Compile Include="..\TestFiles\Sqlite\SqlLiteDistinctTests.cs" Link="SqlLiteDistinctTests.cs" />
+	  <Compile Include="..\TestFiles\Sqlite\SqlLiteExpressionTests.cs" Link="SqlLiteExpressionTests.cs" />
+	  <Compile Include="..\TestFiles\Sqlite\SqlLiteSelectTests.cs" Link="SqlLiteSelectTests.cs" />
+	  <Compile Include="..\TestFiles\Sqlite\SqlLiteSortTests.cs" Link="SqlLiteSortTests.cs" />
+	  <Compile Include="..\TestFiles\Sqlite\SqlLiteHelper.cs" Link="SqlLiteHelper.cs" />
+	  <Compile Include="..\TestFiles\Sqlite\SqlLiteTestContext.cs" Link="SqlLiteTestContext.cs" />
+	  
+	  <Compile Include="..\TestFiles\SqlServer\SqlServerAggregateAverageTests.cs" Link="SqlServerAggregateAverageTests.cs" />
+	  <Compile Include="..\TestFiles\SqlServer\SqlServerAggregateCountTests.cs" Link="SqlServerAggregateCountTests.cs" />
+	  <Compile Include="..\TestFiles\SqlServer\SqlServerAggregateMaximumTests.cs" Link="SqlServerAggregateMaximumTests.cs" />
+	  <Compile Include="..\TestFiles\SqlServer\SqlServerAggregateMinimumTests.cs" Link="SqlServerAggregateMinimumTests.cs" />
+	  <Compile Include="..\TestFiles\SqlServer\SqlServerAggregateSumTests.cs" Link="SqlServerAggregateSumTests.cs" />
+	  <Compile Include="..\TestFiles\SqlServer\SqlServerComparisonBetweenTests.cs" Link="SqlServerComparisonBetweenTests.cs" />
+	  <Compile Include="..\TestFiles\SqlServer\SqlServerComparisonContainsTests.cs" Link="SqlServerComparisonContainsTests.cs" />
+	  <Compile Include="..\TestFiles\SqlServer\SqlServerComparisonEndsWithTests.cs" Link="SqlServerComparisonEndsWithTests.cs" />
+	  <Compile Include="..\TestFiles\SqlServer\SqlServerComparisonIsEqualTests.cs" Link="SqlServerComparisonIsEqualTests.cs" />
+	  <Compile Include="..\TestFiles\SqlServer\SqlServerComparisonIsGreaterThanOrEqualTests.cs" Link="SqlServerComparisonIsGreaterThanOrEqualTests.cs" />
+	  <Compile Include="..\TestFiles\SqlServer\SqlServerComparisonIsGreaterThanTests.cs" Link="SqlServerComparisonIsGreaterThanTests.cs" />
+	  <Compile Include="..\TestFiles\SqlServer\SqlServerComparisonIsLessThanOrEqualTests.cs" Link="SqlServerComparisonIsLessThanOrEqualTests.cs" />
+	  <Compile Include="..\TestFiles\SqlServer\SqlServerComparisonIsLessThanTests.cs" Link="SqlServerComparisonIsLessThanTests.cs" />
+	  <Compile Include="..\TestFiles\SqlServer\SqlServerComparisonIsNotEqualTests.cs" Link="SqlServerComparisonIsNotEqualTests.cs" />
+	  <Compile Include="..\TestFiles\SqlServer\SqlServerComparisonStartsWithTests.cs" Link="SqlServerComparisonStartsWithTests.cs" />
+	  <Compile Include="..\TestFiles\SqlServer\SqlServerDistinctTests.cs" Link="SqlServerDistinctTests.cs" />
+	  <Compile Include="..\TestFiles\SqlServer\SqlServerExpressionTests.cs" Link="SqlServerExpressionTests.cs" />
+	  <Compile Include="..\TestFiles\SqlServer\SqlServerSelectTests.cs" Link="SqlServerSelectTests.cs" />
+	  <Compile Include="..\TestFiles\SqlServer\SqlServerSortTests.cs" Link="SqlServerSortTests.cs" />
+	  <Compile Include="..\TestFiles\SqlServer\SqlServerHelper.cs" Link="SqlServerHelper.cs" />
+	  <Compile Include="..\TestFiles\SqlServer\SqlServerTestContext.cs" Link="SqlServerTestContext.cs" />
+	  
+	  <Compile Include="..\TestFiles\InMemory\SqlServerInMemAggregateAverageTests.cs" Link="SqlServerInMemAggregateAverageTests.cs" />
+	  <Compile Include="..\TestFiles\InMemory\SqlServerInMemAggregateCountTests.cs" Link="SqlServerInMemAggregateCountTests.cs" />
+	  <Compile Include="..\TestFiles\InMemory\SqlServerInMemAggregateMaximumTests.cs" Link="SqlServerInMemAggregateMaximumTests.cs" />
+	  <Compile Include="..\TestFiles\InMemory\SqlServerInMemAggregateMinimumTests.cs" Link="SqlServerInMemAggregateMinimumTests.cs" />
+	  <Compile Include="..\TestFiles\InMemory\SqlServerInMemAggregateSumTests.cs" Link="SqlServerInMemAggregateSumTests.cs" />
+	  <Compile Include="..\TestFiles\InMemory\SqlServerInMemComparisonBetweenTests.cs" Link="SqlServerInMemComparisonBetweenTests.cs" />
+	  <Compile Include="..\TestFiles\InMemory\SqlServerInMemComparisonContainsTests.cs" Link="SqlServerInMemComparisonContainsTests.cs" />
+	  <Compile Include="..\TestFiles\InMemory\SqlServerInMemComparisonEndsWithTests.cs" Link="SqlServerInMemComparisonEndsWithTests.cs" />
+	  <Compile Include="..\TestFiles\InMemory\SqlServerInMemComparisonIsEqualTests.cs" Link="SqlServerInMemComparisonIsEqualTests.cs" />
+	  <Compile Include="..\TestFiles\InMemory\SqlServerInMemComparisonIsGreaterThanOrEqualTests.cs" Link="SqlServerInMemComparisonIsGreaterThanOrEqualTests.cs" />
+	  <Compile Include="..\TestFiles\InMemory\SqlServerInMemComparisonIsGreaterThanTests.cs" Link="SqlServerInMemComparisonIsGreaterThanTests.cs" />
+	  <Compile Include="..\TestFiles\InMemory\SqlServerInMemComparisonIsLessThanOrEqualTests.cs" Link="SqlServerInMemComparisonIsLessThanOrEqualTests.cs" />
+	  <Compile Include="..\TestFiles\InMemory\SqlServerInMemComparisonIsLessThanTests.cs" Link="SqlServerInMemComparisonIsLessThanTests.cs" />
+	  <Compile Include="..\TestFiles\InMemory\SqlServerInMemComparisonIsNotEqualTests.cs" Link="SqlServerInMemComparisonIsNotEqualTests.cs" />
+	  <Compile Include="..\TestFiles\InMemory\SqlServerInMemComparisonStartsWithTests.cs" Link="SqlServerInMemComparisonStartsWithTests.cs" />
+	  <Compile Include="..\TestFiles\InMemory\SqlServerInMemDistinctTests.cs" Link="SqlServerInMemDistinctTests.cs" />
+	  <Compile Include="..\TestFiles\InMemory\SqlServerInMemExpressionTests.cs" Link="SqlServerInMemExpressionTests.cs" />
+	  <Compile Include="..\TestFiles\InMemory\SqlServerInMemSelectTests.cs" Link="SqlServerInMemSelectTests.cs" />
+	  <Compile Include="..\TestFiles\InMemory\SqlServerInMemSortTests.cs" Link="SqlServerInMemSortTests.cs" />
+	  <Compile Include="..\TestFiles\InMemory\SqlServerInMemHelper.cs" Link="SqlServerInMemHelper.cs" />
+	  <Compile Include="..\TestFiles\InMemory\SqlServerInMemTestContext.cs" Link="SqlServerInMemTestContext.cs" />
+	  
+	  <Compile Include="..\TestFiles\Core\AggregateAverageTests.cs" Link="AggregateAverageTests.cs" />
+	  <Compile Include="..\TestFiles\Core\AggregateCountTests.cs" Link="AggregateCountTests.cs" />
+	  <Compile Include="..\TestFiles\Core\AggregateMaximumTests.cs" Link="AggregateMaximumTests.cs" />
+	  <Compile Include="..\TestFiles\Core\AggregateMinimumTests.cs" Link="AggregateMinimumTests.cs" />
+	  <Compile Include="..\TestFiles\Core\AggregateSumTests.cs" Link="AggregateSumTests.cs" />
+	  <Compile Include="..\TestFiles\Core\BaseTest.cs" Link="BaseTest.cs" />
+	  <Compile Include="..\TestFiles\Core\ComparisonBetweenTests.cs" Link="ComparisonBetweenTests.cs" />
+	  <Compile Include="..\TestFiles\Core\ComparisonContainsTests.cs" Link="ComparisonContainsTests.cs" />
+	  <Compile Include="..\TestFiles\Core\ComparisonEndsWithTests.cs" Link="ComparisonEndsWithTests.cs" />
+	  <Compile Include="..\TestFiles\Core\ComparisonIsEqualTests.cs" Link="ComparisonIsEqualTests.cs" />
+	  <Compile Include="..\TestFiles\Core\ComparisonIsGreaterThanOrEqualTests.cs" Link="ComparisonIsGreaterThanOrEqualTests.cs" />
+	  <Compile Include="..\TestFiles\Core\ComparisonIsGreaterThanTests.cs" Link="ComparisonIsGreaterThanTests.cs" />
+	  <Compile Include="..\TestFiles\Core\ComparisonIsInSetTests.cs" Link="ComparisonIsInSetTests.cs" />
+	  <Compile Include="..\TestFiles\Core\ComparisonIsLessThanOrEqualTests.cs" Link="ComparisonIsLessThanOrEqualTests.cs" />
+	  <Compile Include="..\TestFiles\Core\ComparisonIsLessThanTests.cs" Link="ComparisonIsLessThanTests.cs" />
+	  <Compile Include="..\TestFiles\Core\ComparisonIsNotEqualTests.cs" Link="ComparisonIsNotEqualTests.cs" />
+	  <Compile Include="..\TestFiles\Core\ComparisonIsNotInSetTests.cs" Link="ComparisonIsNotInSetTests.cs" />
+	  <Compile Include="..\TestFiles\Core\ComparisonIsNotNullTests.cs" Link="ComparisonIsNotNullTests.cs" />
+	  <Compile Include="..\TestFiles\Core\ComparisonIsNullTests.cs" Link="ComparisonIsNullTests.cs" />
+	  <Compile Include="..\TestFiles\Core\ComparisonStartsWithTests.cs" Link="ComparisonStartsWithTests.cs" />
+	  <Compile Include="..\TestFiles\Core\DistinctTests.cs" Link="DistinctTests.cs" />
+	  <Compile Include="..\TestFiles\Core\ExpressionTests.cs" Link="ExpressionTests.cs" />
+	  <Compile Include="..\TestFiles\Core\NegativeTests.cs" Link="NegativeTests.cs" />
+	  <Compile Include="..\TestFiles\Core\OptionTests.cs" Link="OptionTests.cs" />
+	  <Compile Include="..\TestFiles\Core\PagingTests.cs" Link="PagingTests.cs" />
+	  <Compile Include="..\TestFiles\Core\SelectTests.cs" Link="SelectTests.cs" />
+	  <Compile Include="..\TestFiles\Core\SortTests.cs" Link="SortTests.cs" />	  
+	  <Compile Include="..\TestFiles\Core\ExternalInterfaceTests.cs" Link="ExternalInterfaceTests.cs" />
+	  <Compile Include="..\TestFiles\Core\ITestClass.cs" Link="ITestClass.cs" />	  	  	  
+	  <Compile Include="..\TestFiles\Core\TestClass.cs" Link="TestClass.cs" />
+
+	  <Compile Include="..\TestFiles\EntityFrameworkCore\AggregateAverageTestsAsyncEfc.cs" Link="AggregateAverageTestsAsyncEfc.cs" />
+	  <Compile Include="..\TestFiles\EntityFrameworkCore\AggregateCountTestsAsyncEfc.cs" Link="AggregateCountTestsAsyncEfc.cs" />
+	  <Compile Include="..\TestFiles\EntityFrameworkCore\AggregateMaximumTestsAsyncEfc.cs" Link="AggregateMaximumTestsAsyncEfc.cs" />
+	  <Compile Include="..\TestFiles\EntityFrameworkCore\AggregateMinimumTestsAsyncEfc.cs" Link="AggregateMinimumTestsAsyncEfc.cs" />
+	  <Compile Include="..\TestFiles\EntityFrameworkCore\AggregateSumTestsAsyncEfc.cs" Link="AggregateSumTestsAsyncEfc.cs" />
+	  <Compile Include="..\TestFiles\EntityFrameworkCore\ComparisonBetweenTestsAsyncEfc.cs" Link="ComparisonBetweenTestsAsyncEfc.cs" />
+	  <Compile Include="..\TestFiles\EntityFrameworkCore\ComparisonContainsTestsAsyncEfc.cs" Link="ComparisonContainsTestsAsyncEfc.cs" />
+	  <Compile Include="..\TestFiles\EntityFrameworkCore\ComparisonEndsWithTestsAsyncEfc.cs" Link="ComparisonEndsWithTestsAsyncEfc.cs" />
+	  <Compile Include="..\TestFiles\EntityFrameworkCore\ComparisonIsEqualTestsAsyncEfc.cs" Link="ComparisonIsEqualTestsAsyncEfc.cs" />
+	  <Compile Include="..\TestFiles\EntityFrameworkCore\ComparisonIsGreaterThanOrEqualTestsAsyncEfc.cs" Link="ComparisonIsGreaterThanOrEqualTestsAsyncEfc.cs" />
+	  <Compile Include="..\TestFiles\EntityFrameworkCore\ComparisonIsGreaterThanTestsAsyncEfc.cs" Link="ComparisonIsGreaterThanTestsAsyncEfc.cs" />
+	  <Compile Include="..\TestFiles\EntityFrameworkCore\ComparisonIsInSetTestsAsyncEfc.cs" Link="ComparisonIsInSetTestsAsyncEfc.cs" />
+	  <Compile Include="..\TestFiles\EntityFrameworkCore\ComparisonIsLessThanOrEqualTestsAsyncEfc.cs" Link="ComparisonIsLessThanOrEqualTestsAsyncEfc.cs" />
+	  <Compile Include="..\TestFiles\EntityFrameworkCore\ComparisonIsLessThanTestsAsyncEfc.cs" Link="ComparisonIsLessThanTestsAsyncEfc.cs" />
+	  <Compile Include="..\TestFiles\EntityFrameworkCore\ComparisonIsNotEqualTestsAsyncEfc.cs" Link="ComparisonIsNotEqualTestsAsyncEfc.cs" />
+	  <Compile Include="..\TestFiles\EntityFrameworkCore\ComparisonIsNotInSetTestsAsyncEfc.cs" Link="ComparisonIsNotInSetTestsAsyncEfc.cs" />
+	  <Compile Include="..\TestFiles\EntityFrameworkCore\ComparisonIsNotNullTestsAsyncEfc.cs" Link="ComparisonIsNotNullTestsAsyncEfc.cs" />
+	  <Compile Include="..\TestFiles\EntityFrameworkCore\ComparisonIsNullTestsAsyncEfc.cs" Link="ComparisonIsNullTestsAsyncEfc.cs" />
+	  <Compile Include="..\TestFiles\EntityFrameworkCore\ComparisonStartsWithTestsAsyncEfc.cs" Link="ComparisonStartsWithTestsAsyncEfc.cs" />
+	  <Compile Include="..\TestFiles\EntityFrameworkCore\DistinctTestsAsyncEfc.cs" Link="DistinctTestsAsyncEfc.cs" />
+	  <Compile Include="..\TestFiles\EntityFrameworkCore\ExpressionTestsAsyncEfc.cs" Link="ExpressionTestsAsyncEfc.cs" />
+	  <Compile Include="..\TestFiles\EntityFrameworkCore\NegativeTestsAsyncEfc.cs" Link="NegativeTestsAsyncEfc.cs" />
+	  <Compile Include="..\TestFiles\EntityFrameworkCore\OptionTestsAsyncEfc.cs" Link="OptionTestsAsyncEfc.cs" />
+	  <Compile Include="..\TestFiles\EntityFrameworkCore\PagingTestsAsyncEfc.cs" Link="PagingTestsAsyncEfc.cs" />
+	  <Compile Include="..\TestFiles\EntityFrameworkCore\SelectTestsAsyncEfc.cs" Link="SelectTestsAsyncEfc.cs" />
+	  <Compile Include="..\TestFiles\EntityFrameworkCore\SortTestsAsyncEfc.cs" Link="SortTestsAsyncEfc.cs" />
+	  <Compile Include="..\TestFiles\EntityFrameworkCore\ExternalInterfaceTestsAsyncEfc.cs" Link="ExternalInterfaceTestsAsyncEfc.cs" />
+	
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="..\TestFiles\appsettings.json" Link="appsettings.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+	  <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="9.0.0" />	  	  
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.12.0" />    
+	  <PackageReference Include="xunit" Version="2.9.2" />
+	  <PackageReference Include="xunit.runner.visualstudio" Version="3.0.0">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="coverlet.collector" Version="6.0.2">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+	  <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.0" />
+	  <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="9.0.0" />
+	  <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="9.0.0" />
+	  <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="9.0.0" />
+	  <PackageReference Include="Microsoft.EntityFrameworkCore.Cosmos" Version="9.0.0" />
+	  <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="9.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\ServiceQuery\ServiceQuery.csproj" />
+	  <ProjectReference Include="..\..\ServiceQuery.EntityFrameworkCore\ServiceQuery.EntityFrameworkCore.csproj" />
+	  <ProjectReference Include="..\..\ServiceQuery.MongoDb\ServiceQuery.MongoDb.csproj" />
+  </ItemGroup>
+
+</Project>

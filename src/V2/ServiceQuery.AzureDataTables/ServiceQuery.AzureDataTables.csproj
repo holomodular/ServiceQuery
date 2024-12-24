@@ -1,38 +1,40 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<Version>2.1.1</Version>
+		<Version>2.2.0</Version>
 		<Description>ServiceQuery allows dynamic querying of data over service boundaries. Visit http://ServiceQuery.com to learn more.</Description>
+		<PackageId>ServiceQuery.AzureDataTables</PackageId>
+		<Title>ServiceQuery.AzureDataTables</Title>
 		<AssemblyTitle>ServiceQuery.AzureDataTables</AssemblyTitle>
 		<Authors>holomodular</Authors>
-		<TargetFrameworks>netstandard2.1;net6.0;net7.0;net8.0</TargetFrameworks>
+		<Company>HoloModular LLC</Company>
+		<Product>ServiceQuery</Product>
+		<TargetFrameworks>netstandard2.1;net6.0;net7.0;net8.0;net9.0</TargetFrameworks>
 		<Nullable>disable</Nullable>
 		<Copyright>Copyright © 2023 HoloModular LLC. All Rights Reserved.</Copyright>
-		<PackageProjectUrl>http://ServiceQuery.com</PackageProjectUrl>
+		<PackageProjectUrl>https://ServiceQuery.com</PackageProjectUrl>
 		<PackageIcon>logo.png</PackageIcon>
 		<PackageTags>service;query;azure;data;tables;api;dynamic;linq;rest;entity;get;search;find</PackageTags>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<SignAssembly>True</SignAssembly>
-		<AssemblyOriginatorKeyFile>ServiceQuery.AzureDataTables.snk</AssemblyOriginatorKeyFile>
+		<AssemblyOriginatorKeyFile>Resource\ServiceQuery.AzureDataTables.snk</AssemblyOriginatorKeyFile>
 		<PackageReadmeFile>readme.md</PackageReadmeFile>
+		<PackageRequireLicenseAcceptance>False</PackageRequireLicenseAcceptance>
 		<RepositoryUrl>https://github.com/holomodular/ServiceQuery</RepositoryUrl>
 		<RepositoryType>git</RepositoryType>
 		<GenerateDocumentationFile>True</GenerateDocumentationFile>
 	</PropertyGroup>
-
 	<ItemGroup>
-		<None Include="docs\readme.md" Pack="True" PackagePath="\" />
-		<EmbeddedResource Include="logo.png">
+		<None Include="Resource\readme.md" Pack="True" PackagePath="\" />
+		<None Include="Resource\logo.png">
 			<Pack>True</Pack>
 			<PackagePath>\</PackagePath>
-		</EmbeddedResource>
+		</None>
 	</ItemGroup>
-		
-	<ItemGroup>	    
-		<PackageReference Include="Azure.Data.Tables">
-			<Version>12.8.3</Version>
-		</PackageReference>	    
-		<PackageReference Include="ServiceQuery" Version="2.1.1" />
+	
+	<ItemGroup>
+		<PackageReference Include="Azure.Data.Tables" Version="12.9.1" />	
+		<PackageReference Include="ServiceQuery" Version="2.2.0" />
 	</ItemGroup>
 
 </Project>

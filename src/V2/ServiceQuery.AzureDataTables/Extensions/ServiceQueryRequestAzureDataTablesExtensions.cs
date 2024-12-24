@@ -26,5 +26,24 @@ namespace ServiceQuery
             var serviceQuery = serviceQueryRequest.GetServiceQuery();
             return serviceQuery.Execute<T>(tableClient, serviceQueryOptions, azureDataTablesOptions);
         }
+
+        /// <summary>
+        /// Execute a Service Query and return a response.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="serviceQueryRequest"></param>
+        /// <param name="tableClient"></param>
+        /// <param name="serviceQueryOptions"></param>
+        /// <param name="azureDataTablesOptions"></param>
+        /// <returns></returns>
+        public static async Task<ServiceQueryResponse<T>> ExecuteAsync<T>(this IServiceQueryRequest serviceQueryRequest, TableClient tableClient, ServiceQueryOptions serviceQueryOptions = null, AzureDataTablesOptions azureDataTablesOptions = null)
+            where T : class, ITableEntity
+        {
+            if (tableClient == null)
+                return null;
+
+            var serviceQuery = serviceQueryRequest.GetServiceQuery();
+            return await serviceQuery.ExecuteAsync<T>(tableClient, serviceQueryOptions, azureDataTablesOptions);
+        }
     }
 }
