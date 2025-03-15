@@ -1,4 +1,4 @@
-﻿#if NET40 || NET45 || NETSTANDARD2_0
+﻿#if NET40 || NET45 || NET46 || NET47 || NET471 || NET472 || NET48 || NET481 || NETSTANDARD2_0
 #else
 using System.Collections.Generic;
 using System.Linq;

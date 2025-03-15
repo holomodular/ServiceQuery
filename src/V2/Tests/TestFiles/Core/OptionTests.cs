@@ -50,7 +50,7 @@
         }
 
         [Fact]
-        public async Task NullOptions()
+        public void NullOptions()
         {
             var sourceQueryable = GetTestList();
 

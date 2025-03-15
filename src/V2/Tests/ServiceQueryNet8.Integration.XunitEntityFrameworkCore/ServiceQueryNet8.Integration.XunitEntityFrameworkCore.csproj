@@ -189,29 +189,28 @@
   </ItemGroup>
 
   <ItemGroup>
-	  <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="8.0.0" />	  	  
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.12.0" />    
-	  <PackageReference Include="xunit" Version="2.9.2" />
-	  <PackageReference Include="xunit.runner.visualstudio" Version="3.0.0">
+	  <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="9.0.3" />	  	  
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.13.0" />    
+	  <PackageReference Include="xunit" Version="2.9.3" />
+	  <PackageReference Include="xunit.runner.visualstudio" Version="3.0.2">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
-    <PackageReference Include="coverlet.collector" Version="6.0.2">
+    <PackageReference Include="coverlet.collector" Version="6.0.4">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
-	  <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.11" />
-	  <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="8.0.11" />
-	  <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="8.0.11" />
-	  <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.11" />
-	  <PackageReference Include="Microsoft.EntityFrameworkCore.Cosmos" Version="8.0.11" />
-	  <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="8.0.11" />
+	  <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.3" />
+	  <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="9.0.3" />
+	  <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="9.0.3" />
+	  <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="9.0.3" />
+	  <PackageReference Include="Microsoft.EntityFrameworkCore.Cosmos" Version="9.0.3" />
+	  <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="9.0.4" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\ServiceQuery\ServiceQuery.csproj" />
-	  <ProjectReference Include="..\..\ServiceQuery.EntityFrameworkCore\ServiceQuery.EntityFrameworkCore.csproj" />
-	  <ProjectReference Include="..\..\ServiceQuery.MongoDb\ServiceQuery.MongoDb.csproj" />
+	  <ProjectReference Include="..\..\ServiceQuery.EntityFrameworkCore\ServiceQuery.EntityFrameworkCore.csproj" />	  
   </ItemGroup>
 
 </Project>

@@ -35,7 +35,7 @@ namespace ServiceQuery.Xunit
     public abstract class NegativeTestsAsyncMongoDb<T> : BaseTest<T> where T : class, ITestClass, new()
     {
         [Fact]
-        public async Task EndBeforeBegin()
+        public void EndBeforeBegin()
         {
             var sourceQueryable = GetTestList();
             var sq = ServiceQueryRequestBuilder.New()
@@ -60,7 +60,7 @@ namespace ServiceQuery.Xunit
         }
 
         [Fact]
-        public async Task MissingEnd()
+        public void MissingEnd()
         {
             var sourceQueryable = GetTestList();
             var sq = ServiceQueryRequestBuilder.New()
@@ -74,7 +74,7 @@ namespace ServiceQuery.Xunit
         }
 
         [Fact]
-        public async Task MultipleAndOr()
+        public void MultipleAndOr()
         {
             var sourceQueryable = GetTestList();
             var sq = ServiceQueryRequestBuilder.New()
@@ -111,7 +111,7 @@ namespace ServiceQuery.Xunit
         }
 
         [Fact]
-        public async Task PropertyNotFound()
+        public void PropertyNotFound()
         {
             var sourceQueryable = GetTestList();
             var sq = ServiceQueryRequestBuilder.New()
@@ -144,7 +144,7 @@ namespace ServiceQuery.Xunit
         }
 
         [Fact]
-        public async Task PageSizeNotANumber()
+        public void PageSizeNotANumber()
         {
             var sourceQueryable = GetTestList();
             //IQueryable<T> testQueryable;
@@ -210,7 +210,7 @@ namespace ServiceQuery.Xunit
         }
 
         [Fact]
-        public async Task RequestBeginEnd()
+        public void RequestBeginEnd()
         {
             var sourceQueryable = GetTestList();
             IQueryable<T> testQueryable;
@@ -228,7 +228,7 @@ namespace ServiceQuery.Xunit
         }
 
         [Fact]
-        public async Task IncludeCountTwice()
+        public void IncludeCountTwice()
         {
             var sourceQueryable = GetTestList();
             IQueryable<T> testQueryable;
@@ -253,7 +253,7 @@ namespace ServiceQuery.Xunit
         }
 
         [Fact]
-        public async Task IsAggregateNullCheck()
+        public void IsAggregateNullCheck()
         {
             IServiceQueryRequest serviceQuery;
 
@@ -265,7 +265,7 @@ namespace ServiceQuery.Xunit
         }
 
         [Fact]
-        public async Task FilterTypeNotDefined()
+        public void FilterTypeNotDefined()
         {
             IServiceQueryRequest serviceQuery;
 
@@ -282,7 +282,7 @@ namespace ServiceQuery.Xunit
         }
 
         [Fact]
-        public async Task MissingProperty()
+        public void MissingProperty()
         {
             var sourceQueryable = GetTestList();
             IServiceQueryRequest serviceQuery;
@@ -715,7 +715,7 @@ namespace ServiceQuery.Xunit
         }
 
         [Fact]
-        public async Task ExecuteNull()
+        public void ExecuteNull()
         {
             IServiceQueryRequest serviceQuery;
 
@@ -726,7 +726,7 @@ namespace ServiceQuery.Xunit
         }
 
         [Fact]
-        public async Task SyncNegativeIsEqualStandardTest()
+        public void SyncNegativeIsEqualStandardTest()
         {
             var sourceQueryable = GetTestList();
             IQueryable<T> testQueryable;
@@ -920,7 +920,7 @@ namespace ServiceQuery.Xunit
         }
 
         [Fact]
-        public async Task SyncIsEqualRequestTest()
+        public void SyncIsEqualRequestTest()
         {
             var sourceQueryable = GetTestList();
             IQueryable<T> testQueryable;
@@ -1114,7 +1114,7 @@ namespace ServiceQuery.Xunit
         }
 
         [Fact]
-        public async Task SyncNullIsEqualStandardTest()
+        public void SyncNullIsEqualStandardTest()
         {
             var sourceQueryable = GetTestList();
             IQueryable<T> testQueryable;
@@ -1308,7 +1308,7 @@ namespace ServiceQuery.Xunit
         }
 
         [Fact]
-        public async Task SyncNullIsEqualRequestTest()
+        public void SyncNullIsEqualRequestTest()
         {
             var sourceQueryable = GetTestList();
             IQueryable<T> testQueryable;

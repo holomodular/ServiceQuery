@@ -34,7 +34,7 @@ namespace ServiceQuery.Xunit
     public abstract class OptionTestsAsyncEfc<T> : BaseTest<T> where T : class, ITestClass, new()
     {
         [Fact]
-        public async Task PropertyNameSensitivity()
+        public void PropertyNameSensitivity()
         {
             var sourceQueryable = GetTestList();
 
@@ -55,7 +55,7 @@ namespace ServiceQuery.Xunit
         }
 
         [Fact]
-        public async Task NullOptions()
+        public void NullOptions()
         {
             var sourceQueryable = GetTestList();
 

@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-using MongoDB.Driver;
 
 namespace ServiceQuery.Xunit.Integration
 {

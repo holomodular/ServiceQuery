@@ -5,7 +5,7 @@ namespace ServiceQuery.Xunit
     public class PagingTestsAsyncEfc : BaseTest
     {
         [Fact]
-        public async Task NegativePagingRequestTest()
+        public void NegativePagingRequestTest()
         {
             var sourceQueryable = GetTestList();
             IServiceQueryRequest serviceQuery;
@@ -41,7 +41,7 @@ namespace ServiceQuery.Xunit
         }
 
         [Fact]
-        public async Task PagingStandardTest()
+        public void PagingStandardTest()
         {
             var sourceQueryable = GetTestList();
             IServiceQuery serviceQuery;
@@ -183,7 +183,7 @@ namespace ServiceQuery.Xunit
         }
 
         [Fact]
-        public async Task PagingRequestTest()
+        public void PagingRequestTest()
         {
             var sourceQueryable = GetTestList();
             IServiceQueryRequest serviceQuery;

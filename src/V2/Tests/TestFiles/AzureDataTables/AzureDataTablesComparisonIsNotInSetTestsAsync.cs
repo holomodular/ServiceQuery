@@ -2259,7 +2259,7 @@ namespace ServiceQuery.Xunit.Integration
         }
 
         [Fact]
-        public async Task NullIsNotInSetRequestNoneTest()
+        public void NullIsNotInSetRequestNoneTest()
         {
             //await Startup();
             //ServiceQueryRequest serviceQuery;

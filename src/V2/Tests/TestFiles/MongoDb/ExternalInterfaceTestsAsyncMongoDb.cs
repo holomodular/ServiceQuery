@@ -26,7 +26,7 @@ namespace ServiceQuery.Xunit
         }
 
         [Fact]
-        public async Task ExternalInterfaceStandardTest()
+        public void ExternalInterfaceStandardTest()
         {
             var sourceQueryable = GetTestList();
 
@@ -116,7 +116,7 @@ namespace ServiceQuery.Xunit
         }
 
         [Fact]
-        public async Task NullExternalInterfaceStandardTest()
+        public void NullExternalInterfaceStandardTest()
         {
             var sourceQueryable = GetTestList();
 
@@ -206,7 +206,7 @@ namespace ServiceQuery.Xunit
         }
 
         [Fact]
-        public async Task ExternalInterfaceRequestTest()
+        public void ExternalInterfaceRequestTest()
         {
             var sourceQueryable = GetTestList();
 
@@ -296,7 +296,7 @@ namespace ServiceQuery.Xunit
         }
 
         [Fact]
-        public async Task NullExternalInterfaceRequestTest()
+        public void NullExternalInterfaceRequestTest()
         {
             var sourceQueryable = GetTestList();
 
@@ -386,7 +386,7 @@ namespace ServiceQuery.Xunit
         }
 
         [Fact]
-        public async Task ExternalInterfaceRequestExecuteTest()
+        public void ExternalInterfaceRequestExecuteTest()
         {
             var sourceQueryable = GetTestList();
 

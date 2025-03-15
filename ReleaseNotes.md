@@ -1,3 +1,10 @@
+# 2.2.1
+- Added target frameworks for Net46, Net47, Net471, Net472, Net48, Net481
+- Relaxed ServiceQuery.EntityFrameworkCore references for Net 6, 7, 8 and 9 to be base 0 versions
+- Changed ServiceQuery.EntityFrameworkCore Net8 to target EntityFrameworkCore 9 
+- Updated MongoDb driver to 3.2.1
+- Fixes for compiler warnings in tests
+
 # 2.2.0
 - Support async operations with an inmemory provider
 - Added new NuGet packages for ServiceQuery.EntityFrameworkCore and ServiceQuery.MongoDb for async support

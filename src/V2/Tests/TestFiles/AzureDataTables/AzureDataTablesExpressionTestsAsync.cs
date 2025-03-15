@@ -1190,25 +1190,25 @@ namespace ServiceQuery.Xunit.Integration
         }
 
         [Fact]
-        public async Task NullExpressionsAndTests()
+        public void NullExpressionsAndTests()
         {
             // NOT SUPPORTED
         }
 
         [Fact]
-        public async Task NullExpressionsOrTests()
+        public void NullExpressionsOrTests()
         {
             // NOT SUPPORTED
         }
 
         [Fact]
-        public async Task NullExpressionsAndOrTests()
+        public void NullExpressionsAndOrTests()
         {
             //NOT SUPPORTED
         }
 
         [Fact]
-        public async Task NullExpressionsAndOrGroupingTests()
+        public void NullExpressionsAndOrGroupingTests()
         {
             //NOT SUPPORTED
         }

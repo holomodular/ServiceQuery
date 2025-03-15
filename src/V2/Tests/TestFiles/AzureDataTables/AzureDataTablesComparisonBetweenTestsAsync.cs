@@ -38,7 +38,7 @@ namespace ServiceQuery.Xunit.Integration
 
             // Boolean
             serviceQuery = ServiceQueryBuilder.New().Between(nameof(TestClass.BoolVal), "false", "true").Build();
-            await Assert.ThrowsAsync<ServiceQueryException>(async () =>
+            Assert.Throws<ServiceQueryException>(() =>
             {
                 predicate = serviceQuery.BuildWhereExpression<AzureDataTablesTestClass>();
             });
@@ -222,7 +222,7 @@ namespace ServiceQuery.Xunit.Integration
 
             // String
             serviceQuery = ServiceQueryBuilder.New().Between(nameof(TestClass.StringVal), "a", "b").Build();
-            await Assert.ThrowsAsync<ServiceQueryException>(async () =>
+            Assert.Throws<ServiceQueryException>(() =>
             {
                 predicate = serviceQuery.BuildWhereExpression<AzureDataTablesTestClass>();
             });
@@ -304,7 +304,7 @@ namespace ServiceQuery.Xunit.Integration
 
             // Boolean
             serviceQuery = ServiceQueryRequestBuilder.New().Between(nameof(TestClass.BoolVal), "false", "true").Build();
-            await Assert.ThrowsAsync<ServiceQueryException>(async () =>
+            Assert.Throws<ServiceQueryException>(() =>
             {
                 predicate = serviceQuery.GetServiceQuery().BuildWhereExpression<AzureDataTablesTestClass>();
             });
@@ -495,7 +495,7 @@ namespace ServiceQuery.Xunit.Integration
 
             // String
             serviceQuery = ServiceQueryRequestBuilder.New().Between(nameof(TestClass.StringVal), "a", "b").Build();
-            await Assert.ThrowsAsync<ServiceQueryException>(async () =>
+            Assert.Throws<ServiceQueryException>(() =>
             {
                 predicate = serviceQuery.GetServiceQuery().BuildWhereExpression<AzureDataTablesTestClass>();
             });
@@ -573,7 +573,7 @@ namespace ServiceQuery.Xunit.Integration
 
             // Boolean
             serviceQuery = ServiceQueryBuilder.New().Between(nameof(TestClass.NullBoolVal), "false", "true").Build();
-            await Assert.ThrowsAsync<ServiceQueryException>(async () =>
+            Assert.Throws<ServiceQueryException>(() =>
             {
                 predicate = serviceQuery.BuildWhereExpression<AzureDataTablesTestClass>();
             });
@@ -765,7 +765,7 @@ namespace ServiceQuery.Xunit.Integration
 
             // String
             serviceQuery = ServiceQueryBuilder.New().Between(nameof(TestClass.NullStringVal), "a", "b").Build();
-            await Assert.ThrowsAsync<ServiceQueryException>(async () =>
+            Assert.Throws<ServiceQueryException>(() =>
             {
                 predicate = serviceQuery.BuildWhereExpression<AzureDataTablesTestClass>();
             });
@@ -843,7 +843,7 @@ namespace ServiceQuery.Xunit.Integration
 
             // Boolean
             serviceQuery = ServiceQueryRequestBuilder.New().Between(nameof(TestClass.NullBoolVal), "false", "true").Build();
-            await Assert.ThrowsAsync<ServiceQueryException>(async () =>
+            Assert.Throws<ServiceQueryException>(() =>
             {
                 predicate = serviceQuery.GetServiceQuery().BuildWhereExpression<AzureDataTablesTestClass>();
             });
@@ -1035,7 +1035,7 @@ namespace ServiceQuery.Xunit.Integration
 
             // String
             serviceQuery = ServiceQueryRequestBuilder.New().Between(nameof(TestClass.NullStringVal), "a", "b").Build();
-            await Assert.ThrowsAsync<ServiceQueryException>(async () =>
+            Assert.Throws<ServiceQueryException>(() =>
             {
                 predicate = serviceQuery.GetServiceQuery().BuildWhereExpression<AzureDataTablesTestClass>();
             });
