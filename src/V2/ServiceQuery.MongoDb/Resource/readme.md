@@ -1,32 +1,43 @@
 ﻿<img src="https://github.com/holomodular/ServiceQuery/blob/main/Logo.png" title="ServiceQuery Logo" width="250"/>
 
-# ServiceQuery Allows Querying Data Over REST APIs
-ServiceQuery, https://ServiceQuery.com, is an open-source library that allows dynamically querying database information over REST APIs. Similar to how OData and GraphQL work, it leverages the power of an expressions builder and a simple model that is capable of serializing query instructions over service boundaries. It supports numerous popular relational (SQL) and document (NoSQL) database engines that expose an IQueryable interface. ServiceQuery builds LINQ expressions using individually mapped functions and parsed data that eliminates injection attacks, so querying your data is safe and secure. This library provides clients and front end applications unprecedented queryability using a standardized endpoint supporting polyglot data access. 
+[![NuGet version](https://badge.fury.io/nu/ServiceQuery.svg)](https://badge.fury.io/nu/ServiceQuery)
+![badge](https://img.shields.io/endpoint?url=https://gist.githubusercontent.com/holomodular-support/5a0fab9a9341bb94e27da49a1e89fd03/raw/servicequery-codecoverage.json)
+[![License: MIT](https://img.shields.io/badge/License-MIT-389DA0.svg)](https://opensource.org/licenses/MIT)
 
-# Installation Instructions
-Install the NuGet Package <b>ServiceQuery</b>
+# ServiceQuery: Dynamic Data Querying Over REST APIs
+## Overview
+Welcome to [ServiceQuery](https://ServiceQuery.com), the open-source library designed to revolutionize your data querying over REST APIs. Similar to OData and GraphQL, ServiceQuery harnesses the power of an expression builder and a straightforward model to serialize query instructions across service boundaries. It seamlessly supports a wide array of popular relational (SQL), document (NoSQL), cloud and embedded database engines, as well as in-memory lists. Front-end applications gain unprecedented querying capabilities through a standardized endpoint supporting polyglot data access across all database providers. 
 
-# Examples
-We have numerous examples built using the most popular database storage providers, such as Azure Data Tables, Cosmos DB, MongoDB, MySQL, SQLite, SQL Server, PostgreSQL, Oracle and more! 
-View all our examples in the [examples](https://github.com/holomodular/ServiceQuery/blob/main/examples) folder in this project.
+## Get Started
+### Installation is simple:
+Install the NuGet Package **ServiceQuery**
 
-# Feedback
-We want to hear from our users. Please feel free to post any issues or questions on our discussion board. You can star our repository or you can also reach us at: Support@HoloModular.com
+## Why ServiceQuery?
+* **Powerful:** Provides front-end and back-end applications unprecedented dynamic querying capabilities with ease.
+* **Secure:** Utilizing the IQueryable interface, it builds dynamic LINQ expressions using individually mapped functions and parsed data, eliminating injection attacks.
+* **Versatile:** Supports numerous database engines including Azure Data Tables, Cosmos DB, MongoDB, MySQL, SQLite, SQL Server, PostgreSQL, Oracle, and many more.
 
-# Simple Example - Dynamic Querying Using Javascript
-Modeled based on LINQ, you create a simple request object that is sent over a REST API endpoint to your web server. Make sure to include the following [ServiceQuery.js](https://github.com/holomodular/ServiceQuery/blob/main/src/V2/javascript/ServiceQuery.js) javascript file to quickly build request queries in javascript.
+## Examples
+Explore our [Examples Repository](https://github.com/holomodular/ServiceQuery-Examples) for detailed implementations using the most popular database storage providers.
+
+## We Value Your Feedback
+Join our discussion board to post any questions or issues. Don't forget to star our repository. For direct support, reach us at: Support@HoloModular.com
+
+## Dynamic Querying Made Easy
+Here's how you can dynamically query data using JavaScript:
+Make sure to include the following [ServiceQuery.js](https://github.com/holomodular/ServiceQuery/blob/main/src/V2/javascript/servicequery.js) javascript file to quickly build request queries in javascript.
 ```javascript
 <script src="/js/servicequery.js"></script>
 <script type="text/javascript">
 
   function GetById() {
 
-    // Build the request
+    // Build the request where id = 123
     var request = new ServiceQueryRequestBuilder().IsEqual("Id","123").Build();
 
-    // Send request to REST API
+    // Send ajax request to REST Controller
     $.ajax({
-        url: '/api/MyAPI/ExampleServiceQuery',
+        url: '/ExampleServiceQuery',
         data: JSON.stringify(request),
         type: "POST",
         dataType: 'json',
@@ -40,8 +51,7 @@ Modeled based on LINQ, you create a simple request object that is sent over a RE
   }
 </script>
 ```
-On the web server, the request is safely converted into IQueryable expressions that can be executed against several different database engines.
-The following exposes a REST API POST method that the client will call.
+On the server side, convert the request into IQueryable expressions and return the result (sync or async):
 ```csharp
 using ServiceQuery;
 
@@ -52,16 +62,25 @@ public ServiceQueryResponse<ExampleTable> ExampleServiceQuery(ServiceQueryReques
   var queryable = databaseContext.ExampleTable.AsQueryable();
   return request.Execute(queryable);
 }
+
+[HttpPost]
+[Route("ExampleServiceQueryAsync")]
+public async Task<ServiceQueryResponse<ExampleTable>> ExampleServiceQueryAsync(ServiceQueryRequest request)
+{
+  var queryable = databaseContext.ExampleTable.AsQueryable();
+  return await request.ExecuteAsync(queryable);
+}
 ```
 
-# Documentation
-Documentation is located on our website at http://ServiceQuery.com as well as a simplified version below. The website also contains tables for supported data types and operations by .NET Framework version and database engine.
+## Documentation
+Comprehensive documentation is available on our website at http://ServiceQuery.com including tables for supported data types and operations by .NET Framework version and database engine.
 
 ## ServiceQuery.AzureDataTables
-AzureDataTables does not support several things out of the box, such as aggregates, string comparisons and ordering (solved by downloading all records). We have built a companion NuGet package <b>ServiceQuery.AzureDataTables</b> that provides workarounds to these limitations so you can use all standard operations and execute the request in one line of code. See our example projects for more information.
+Azure Data Tables has certain limitations, such as lack of support for aggregate functions, string comparisons and ordering. 
+Our companion NuGet package <b>ServiceQuery.AzureDataTables</b> provides a solution to these limitations, allowing you to use standard operations and execute requests seamlessly. The solution is to download all records and then perform the query using an internal list. See our example project for more information.
 
 ## Building and Executing a Query
-Building a query is accomplished using the ServiceQueryRequestBuilder object to create the request.
+Construct queries using the ServiceQueryRequestBuilder object:
 ```csharp
 using ServiceQuery;
 
@@ -69,23 +88,25 @@ public void Example()
 {
   var request = new ServiceQueryRequestBuilder().Build();
   var queryable = databaseContext.ExampleTable.AsQueryable();
-  var response = request.Execute(queryable);
+  
+  var response = request.Execute(queryable); // sync support  
+  var responseasync = await request.ExecuteAsync(queryable); // async support
 
   List<ExampleTable> list = response.List; // contains the list of objects returned from the query
   int? count = response.Count; // returns the count of the query (if requested)
-  double? aggregate = response.Aggregate; // returns the aggregate (if requested)
+  double? aggregate = response.Aggregate; // returns the aggregate value (if requested)
 }
 ```
 
 ## Supported Operations
-Aggregate Functions
+### Aggregate Functions
 * Average
 * Count
 * Maximum
 * Minimum
 * Sum
 
-Comparison Functions
+### Comparison Functions
 * Between
 * Equal
 * Not Equal
@@ -96,37 +117,37 @@ Comparison Functions
 * In Set
 * Not In Set
 
-Comparison Functions (string)
+### Comparison Functions (string)
 * Contains
 * StartsWith
 * EndsWith
 
-Grouping Functions
+### Grouping Functions
 * And
 * Or
 * Begin
 * End
 
-Nullability Functions
+### Nullability Functions
 * Null
 * Not Null
 
-Paging Functions
+### Paging Functions
 * Page Number
 * Page Size
 * Include Count
 
-Selecting Functions
+### Selecting Functions
 * Distinct
 * Select
 
-Sorting Functions
+### Sorting Functions
 * Sort Ascending
 * Sort Descending
 
 
 ## Using Query Operations
-If you are using javascript, make sure to download the [ServiceQuery.js](https://github.com/holomodular/ServiceQuery/blob/main/src/V2/javascript/ServiceQuery.js) javascript file. This allows you to use the same syntax as the .NET code below!
+If you are using javascript, make sure to download the [ServiceQuery.js](https://github.com/holomodular/ServiceQuery/blob/main/src/V2/javascript/servicequery.js) javascript file. This allows you to use the same syntax as the .NET code below!
 ```csharp
   using ServiceQuery;
 
@@ -186,39 +207,32 @@ If you are using javascript, make sure to download the [ServiceQuery.js](https:/
   // Aggregate functions
   request = new ServiceQueryRequestBuilder()
     .IsLessThan("Id", "200")
-    .Sum("Age")
+    .Sum("Price")
     .Build();
 
 ```
 
 ## ServiceQuery Options
-We currently provide the following server-side options when processing queries.
+Customize server-side query processing with ServiceQueryOptions object:
 ```csharp
     public class ServiceQueryOptions
     {
-        /// <summary>
-        /// Dictionary list of property name mappings.
-        /// Exposed Class -> Internal Class
-        /// Default will use all queryable class property names
-        /// </summary>
         public Dictionary<string, string> PropertyNameMappings { get; set; }
-
-        /// <summary>
-        /// Determine whether property names must be case sensitive or throw an exception.
-        /// Default is false.
-        /// </summary>
         public bool PropertyNameCaseSensitive { get; set; }
-        
-	/// <summary>
-	/// Determine if missing BEGIN/END/AND/OR expressions throw an exception
-	/// or try to add them missing ones automatiically.
-	/// </summary>
         public bool AllowMissingExpressions { get; set; }
     }
 ```
 
-# Roadmap
-There are several new features planned and currently in development. Visit the Issues page at the top to view the current list. Let us know if you have any requests.
+## Advanced Usage Scenarios
 
-# About
-I am a business executive and software architect with over 26 years professional experience. You can reach me via www.linkedin.com/in/danlogsdon or https://HoloModular.com
+### Manipulate queries before executing them
+Add to, change or remove filters from incoming queries for business reasons.
+
+### Restrict properties by user roles
+Adjust property mappings based on user role for security.
+
+### Sharding data
+Add expressions to queries to target specific data segments, ensuring efficient data retrieval and enhanced security.
+
+## About
+Authored by https://www.linkedin.com/in/danlogsdon Visit https://HoloModular.com or https://ServiceQuery.com to learn more.

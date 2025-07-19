@@ -1063,7 +1063,7 @@ namespace ServiceQuery
             }
         }
 
-        private static ServiceQueryFilterSet GetFilterSet(this IServiceQuery query, ServiceQueryOptions options)
+        public static ServiceQueryFilterSet GetFilterSet(this IServiceQuery query, ServiceQueryOptions options)
         {
             if (query.Filters != null && options != null && !options.AllowMissingExpressions)
                 ValidateQuery(query);
@@ -1195,16 +1195,13 @@ namespace ServiceQuery
                         {
                             case ServiceQueryExpressionType.Begin:
                                 beginendstack.Push(ServiceQueryExpressionType.Begin);
-                                if (isAndOrExpressionNeeded)
-                                    isAndOrExpressionNeeded = false;
+                                isAndOrExpressionNeeded = false;
                                 continue;
 
                             case ServiceQueryExpressionType.End:
                                 if (beginendstack.Count == 0)
                                     throw new ServiceQueryException("End Expression is before Begin");
                                 beginendstack.Pop();
-                                if (isAndOrExpressionNeeded)
-                                    isAndOrExpressionNeeded = false;
                                 isAndOrExpressionNeeded = true;
                                 continue;
 
@@ -1227,7 +1224,7 @@ namespace ServiceQuery
                 }
             }
             if (anyWhereExpressionFound && !isAndOrExpressionNeeded)
-                throw new Exception("Ending expression is missing");
+                throw new ServiceQueryException("Ending expression is missing");
         }
 
         private static object GetParsedPropertyType(PropertyInfo prop, string value)

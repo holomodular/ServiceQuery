@@ -2,16 +2,18 @@
 
 ## Supported Versions
 
-We are supporting security updates for Service Query. The latest version will have all updates applied.
+The latest (highest) version of ServiceQuery is supported with routine updates released as needed.
 
 | Version | Supported          |
 | ------- | ------------------ |
-| All - Supported  | :white_check_mark: |
-| None   | :x:                |
+| v2 - Supported  | :white_check_mark: |
+| v1 - Not Supported | :x:                |
 
 
-## Reporting a Vulnerability
+## Reporting a Bug or Vulnerability
 
-Please report all vulernabilities as a bug or privately at Support@HoloModular.com
+Report all bugs using the GitHub issues page.
+Report all vulnerabilities to our email privately at Support@HoloModular.com
 
-Thank you
+Thank you,
+HoloModular Support

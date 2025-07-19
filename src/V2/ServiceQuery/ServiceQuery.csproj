@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-	  <Version>2.2.1</Version>
+	  <Version>2.2.2</Version>
 		<Description>ServiceQuery allows dynamic querying of data over service boundaries. Visit https://ServiceQuery.com to learn more.</Description>
 		<PackageId>ServiceQuery</PackageId>
 		<Title>ServiceQuery</Title>

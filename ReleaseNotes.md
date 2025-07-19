@@ -1,3 +1,10 @@
+# 2.2.2
+- Added new package ServiceQuery.EntityFrameworkCore8 to specifically target EFC 8 since base library uses EFC 9 for .NET 8 runtime
+- Update MongoDb driver to 3.4.1
+- Update test project references to latest versions. Note, NET6 and NET7 no longer work with updated test references and must use SuppressTfmSupportBuildErrors since out of support
+- Expose GetFilterSet method and fix exception thrown
+- Update readme
+
 # 2.2.1
 - Added target frameworks for Net46, Net47, Net471, Net472, Net48, Net481
 - Relaxed ServiceQuery.EntityFrameworkCore references for Net 6, 7, 8 and 9 to be base 0 versions

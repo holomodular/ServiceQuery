@@ -6,16 +6,16 @@
 
 # ServiceQuery: Dynamic Data Querying Over REST APIs
 ## Overview
-Welcome to [ServiceQuery](https://ServiceQuery.com), the open-source library designed to revolutionize your data querying over REST APIs. Similar to OData and GraphQL, ServiceQuery harnesses the power of an expression builder and a straightforward model to serialize query instructions across service boundaries. It seamlessly supports a wide array of popular relational (SQL) and document (NoSQL) database engines, ensuring secure and efficient data querying by eliminating injection attacks. With ServiceQuery, your clients and front-end applications gain unprecedented querying capabilities through a standardized endpoint supporting polyglot data access. 
+Welcome to [ServiceQuery](https://ServiceQuery.com), the open-source library designed to revolutionize your data querying over REST APIs. Similar to OData and GraphQL, ServiceQuery harnesses the power of an expression builder and a straightforward model to serialize query instructions across service boundaries. It seamlessly supports a wide array of popular relational (SQL), document (NoSQL), cloud and embedded database engines, as well as in-memory lists. Front-end applications gain unprecedented querying capabilities through a standardized endpoint supporting polyglot data access across all database providers. 
 
 ## Get Started
 ### Installation is simple:
 Install the NuGet Package **ServiceQuery**
 
 ## Why ServiceQuery?
-* **Versatile:** Supports numerous database engines including Azure Data Tables, Cosmos DB, MongoDB, MySQL, SQLite, SQL Server, PostgreSQL, Oracle, and more.
-* **Secure:** Builds LINQ expressions using individually mapped functions and parsed data, eliminating injection attacks.
-* **Powerful:** Provides clients and front-end applications with unprecedented querying capabilities.
+* **Powerful:** Provides front-end and back-end applications unprecedented dynamic querying capabilities with ease.
+* **Secure:** Utilizing the IQueryable interface, it builds dynamic LINQ expressions using individually mapped functions and parsed data, eliminating injection attacks.
+* **Versatile:** Supports numerous database engines including Azure Data Tables, Cosmos DB, MongoDB, MySQL, SQLite, SQL Server, PostgreSQL, Oracle, and many more.
 
 ## Examples
 Explore our [Examples Repository](https://github.com/holomodular/ServiceQuery-Examples) for detailed implementations using the most popular database storage providers.
@@ -51,7 +51,7 @@ Make sure to include the following [ServiceQuery.js](https://github.com/holomodu
   }
 </script>
 ```
-On the server side, convert the request into IQueryable expressions and return the result:
+On the server side, convert the request into IQueryable expressions and return the result (sync or async):
 ```csharp
 using ServiceQuery;
 
@@ -62,13 +62,21 @@ public ServiceQueryResponse<ExampleTable> ExampleServiceQuery(ServiceQueryReques
   var queryable = databaseContext.ExampleTable.AsQueryable();
   return request.Execute(queryable);
 }
+
+[HttpPost]
+[Route("ExampleServiceQueryAsync")]
+public async Task<ServiceQueryResponse<ExampleTable>> ExampleServiceQueryAsync(ServiceQueryRequest request)
+{
+  var queryable = databaseContext.ExampleTable.AsQueryable();
+  return await request.ExecuteAsync(queryable);
+}
 ```
 
 ## Documentation
 Comprehensive documentation is available on our website at http://ServiceQuery.com including tables for supported data types and operations by .NET Framework version and database engine.
 
 ## ServiceQuery.AzureDataTables
-Azure Data Tables has certain limitations, like lack of support for aggregate functions, string comparisons and ordering. 
+Azure Data Tables has certain limitations, such as lack of support for aggregate functions, string comparisons and ordering. 
 Our companion NuGet package <b>ServiceQuery.AzureDataTables</b> provides a solution to these limitations, allowing you to use standard operations and execute requests seamlessly. The solution is to download all records and then perform the query using an internal list. See our example project for more information.
 
 ## Building and Executing a Query
@@ -80,11 +88,13 @@ public void Example()
 {
   var request = new ServiceQueryRequestBuilder().Build();
   var queryable = databaseContext.ExampleTable.AsQueryable();
-  var response = request.Execute(queryable);
+  
+  var response = request.Execute(queryable); // sync support  
+  var responseasync = await request.ExecuteAsync(queryable); // async support
 
   List<ExampleTable> list = response.List; // contains the list of objects returned from the query
   int? count = response.Count; // returns the count of the query (if requested)
-  double? aggregate = response.Aggregate; // returns the aggregate (if requested)
+  double? aggregate = response.Aggregate; // returns the aggregate value (if requested)
 }
 ```
 
@@ -225,4 +235,4 @@ Adjust property mappings based on user role for security.
 Add expressions to queries to target specific data segments, ensuring efficient data retrieval and enhanced security.
 
 ## About
-I am a business executive and software architect with 25+ years professional experience. You can reach me via www.linkedin.com/in/danlogsdon or visit https://HoloModular.com
+Authored by https://www.linkedin.com/in/danlogsdon Visit https://HoloModular.com or https://ServiceQuery.com to learn more.
