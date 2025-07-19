@@ -83,10 +83,10 @@ This package provides a solution to these limitations, allowing you to use all s
 Support for Microsoft Entity Framework Core (EFC) and async methods. Note: For the .NET 8 runtime, we reference EFC version 9. Use ServiceQuery.EntityFrameworkCore8 if you need EFC version 8.
 
 ### ServiceQuery.EntityFrameworkCore8
-Support for Microsoft Entity Framework Core (EFC) version 8 for the .NET 8 runtime.
+Support for Microsoft Entity Framework Core (EFC) and async method. Note: This references EFC version 8 for the .NET 8 runtime.
 
 ### ServiceQuery.MongoDb
-Support for MongoDb.
+Support for MongoDb and async methods.
 
 ## Building and Executing a Query
 Construct queries using the ServiceQueryRequestBuilder object:
