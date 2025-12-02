@@ -7,13 +7,13 @@
         {
             NullSumIsNull = true;
             ValidateTimeOnly = false;
-
-#if NET8_0
-            CosmosSequenceNoElementsError = false;
-#endif
-#if NET9_0
             CosmosSequenceNoElementsError = true;
-#endif
+            //#if NET8_0
+            //            CosmosSequenceNoElementsError = false;
+            //#endif
+            //#if NET9_0
+            //            CosmosSequenceNoElementsError = true;
+            //#endif
         }
 
         public override IQueryable<TestClass> GetTestList()

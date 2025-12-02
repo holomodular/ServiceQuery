@@ -1,3 +1,10 @@
+# 2.2.3
+- Added target framework for Net10 and new test projects
+- Update ServiceQueryRequestExtensions to add shorthand filter expressions for existing ServiceQueryRequest filter types (, ), lt, <, lte, <=, =, eq, etc.
+- Update test project references to latest available versions
+- Update Cosmos tests, as they standardized rounding and errors for aggregate sum and average
+- Updated MongoDb driver to 3.5.2
+
 # 2.2.2
 - Added new package ServiceQuery.EntityFrameworkCore8 to specifically target EFC 8 since base library uses EFC 9 for .NET 8 runtime
 - Update MongoDb driver to 3.4.1

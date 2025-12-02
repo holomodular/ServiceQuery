@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<Version>2.2.2</Version>
+		<Version>2.2.3</Version>
 		<Description>ServiceQuery allows dynamic querying of data over service boundaries. Visit http://ServiceQuery.com to learn more.</Description>
 		<PackageId>ServiceQuery.AzureDataTables</PackageId>
 		<Title>ServiceQuery.AzureDataTables</Title>
@@ -9,7 +9,7 @@
 		<Authors>holomodular</Authors>
 		<Company>HoloModular LLC</Company>
 		<Product>ServiceQuery</Product>
-		<TargetFrameworks>netstandard2.1;net6.0;net7.0;net8.0;net9.0</TargetFrameworks>
+		<TargetFrameworks>netstandard2.1;net6.0;net7.0;net8.0;net9.0;net10.0</TargetFrameworks>
 		<Nullable>disable</Nullable>
 		<Copyright>Copyright © 2025 HoloModular LLC. All Rights Reserved.</Copyright>
 		<PackageProjectUrl>https://ServiceQuery.com</PackageProjectUrl>
@@ -34,7 +34,7 @@
 	
 	<ItemGroup>
 		<PackageReference Include="Azure.Data.Tables" Version="12.11.0" />	
-		<PackageReference Include="ServiceQuery" Version="2.2.2" />
+		<PackageReference Include="ServiceQuery" Version="2.2.3" />
 	</ItemGroup>
 
 </Project>

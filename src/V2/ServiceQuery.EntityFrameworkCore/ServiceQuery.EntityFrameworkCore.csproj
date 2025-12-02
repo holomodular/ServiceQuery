@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<Version>2.2.2</Version>
+		<Version>2.2.3</Version>
 		<Description>ServiceQuery allows dynamic querying of data over service boundaries. Visit http://ServiceQuery.com to learn more.</Description>
 		<PackageId>ServiceQuery.EntityFrameworkCore</PackageId>
 		<Title>ServiceQuery.EntityFrameworkCore</Title>
@@ -9,7 +9,7 @@
 		<Authors>holomodular</Authors>
 		<Company>HoloModular LLC</Company>
 		<Product>ServiceQuery</Product>
-		<TargetFrameworks>net6.0;net7.0;net8.0;net9.0</TargetFrameworks>
+		<TargetFrameworks>net6.0;net7.0;net8.0;net9.0;net10.0</TargetFrameworks>
 		<Nullable>disable</Nullable>
 		<Copyright>Copyright © 2025 HoloModular LLC. All Rights Reserved.</Copyright>
 		<PackageProjectUrl>https://ServiceQuery.com</PackageProjectUrl>
@@ -33,7 +33,7 @@
 	</ItemGroup>
 	
 	<ItemGroup>
-		<PackageReference Include="ServiceQuery" Version="2.2.2" />
+		<PackageReference Include="ServiceQuery" Version="2.2.3" />
 	</ItemGroup>
 
 	
@@ -59,6 +59,12 @@
 	  <PackageReference Include="Microsoft.EntityFrameworkCore">
 	    <Version>9.0.0</Version>
 	  </PackageReference>
+	</ItemGroup>
+
+	<ItemGroup Condition="'$(TargetFramework)' == 'net10.0'">
+		<PackageReference Include="Microsoft.EntityFrameworkCore">
+			<Version>10.0.0</Version>
+		</PackageReference>
 	</ItemGroup>
 
 </Project>

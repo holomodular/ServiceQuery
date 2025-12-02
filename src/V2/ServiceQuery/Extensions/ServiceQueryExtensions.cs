@@ -1063,6 +1063,12 @@ namespace ServiceQuery
             }
         }
 
+        /// <summary>
+        /// Returns the query as a set of filters
+        /// </summary>
+        /// <param name="query"></param>
+        /// <param name="options"></param>
+        /// <returns></returns>
         public static ServiceQueryFilterSet GetFilterSet(this IServiceQuery query, ServiceQueryOptions options)
         {
             if (query.Filters != null && options != null && !options.AllowMissingExpressions)
