@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<Version>2.2.3</Version>
+		<Version>2.2.4</Version>
 		<Description>ServiceQuery allows dynamic querying of data over service boundaries. Visit http://ServiceQuery.com to learn more.</Description>
 		<PackageId>ServiceQuery.AzureDataTables</PackageId>
 		<Title>ServiceQuery.AzureDataTables</Title>
@@ -34,7 +34,7 @@
 	
 	<ItemGroup>
 		<PackageReference Include="Azure.Data.Tables" Version="12.11.0" />	
-		<PackageReference Include="ServiceQuery" Version="2.2.3" />
+		<PackageReference Include="ServiceQuery" Version="2.2.4" />
 	</ItemGroup>
 
 </Project>

@@ -1,4 +1,4 @@
-<img src="https://github.com/holomodular/ServiceQuery/blob/main/Logo.png" title="ServiceQuery Logo" width="250"/>
+<img src="https://raw.githubusercontent.com/holomodular/ServiceQuery/main/Logo.png" title="ServiceQuery Logo" width="250"/>
 
 [![NuGet version](https://badge.fury.io/nu/ServiceQuery.svg)](https://badge.fury.io/nu/ServiceQuery)
 ![badge](https://img.shields.io/endpoint?url=https://gist.githubusercontent.com/holomodular-support/5a0fab9a9341bb94e27da49a1e89fd03/raw/servicequery-codecoverage.json)
@@ -254,4 +254,4 @@ Adjust property mappings based on user role for security.
 Add expressions to queries to target specific data segments, ensuring efficient data retrieval and enhanced security.
 
 ## About
-Authored by https://www.linkedin.com/in/danlogsdon Visit https://HoloModular.com or https://ServiceQuery.com to learn more.
+ServiceQuery is owned and maintained by HoloModular LLC and created by Danny Logsdon (Founder). Visit our websites at https://HoloModular.com, https://ServiceQuery.com or https://www.linkedin.com/in/danlogsdon to learn more.

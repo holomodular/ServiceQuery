@@ -34,12 +34,13 @@ namespace ServiceQuery.Xunit
     public abstract class ExpressionTestsAsyncEfc<T> : BaseTest<T> where T : class
     {
         [Fact]
-        public async Task SyncExpressionsStandardTests()
+        public async Task AsyncExpressionsStandardTests()
         {
             var sourceQueryable = await GetTestListAsync();
             IQueryable<T> testQueryable;
             IServiceQuery serviceQuery;
             List<T> result;
+            ServiceQueryResponse<T> response = null;
 
             // No filters (match all)
             serviceQuery = ServiceQueryBuilder.New()
@@ -48,7 +49,8 @@ namespace ServiceQuery.Xunit
             result = await testQueryable.ToListAsync();
             Assert.NotNull(result);
             Assert.True(result.Count == 4);
-            result = await testQueryable.ToListAsync();
+            response = await serviceQuery.ExecuteAsync(testQueryable);
+            result = response.List;
             Assert.NotNull(result);
             Assert.True(result.Count == 4);
 
@@ -61,7 +63,8 @@ namespace ServiceQuery.Xunit
             result = await testQueryable.ToListAsync();
             Assert.NotNull(result);
             Assert.True(result.Count == 4);
-            result = await testQueryable.ToListAsync();
+            response = await serviceQuery.ExecuteAsync(testQueryable);
+            result = response.List;
             Assert.NotNull(result);
             Assert.True(result.Count == 4);
         }
@@ -75,6 +78,7 @@ namespace ServiceQuery.Xunit
             IQueryable<T> testQueryable;
             IServiceQuery serviceQuery;
             List<T> result;
+            ServiceQueryResponse<T> response = null;
 
             // Begin and End (match one record)
             serviceQuery = ServiceQueryBuilder.New()
@@ -91,7 +95,8 @@ namespace ServiceQuery.Xunit
             result = await testQueryable.ToListAsync();
             Assert.NotNull(result);
             Assert.True(result.Count == 1);
-            result = await testQueryable.ToListAsync();
+            response = await serviceQuery.ExecuteAsync(testQueryable, optionAllowMissingExpressions);
+            result = response.List;
             Assert.NotNull(result);
             Assert.True(result.Count == 1);
 
@@ -105,7 +110,8 @@ namespace ServiceQuery.Xunit
             result = await testQueryable.ToListAsync();
             Assert.NotNull(result);
             Assert.True(result.Count == 2);
-            result = await testQueryable.ToListAsync();
+            response = await serviceQuery.ExecuteAsync(testQueryable);
+            result = response.List;
             Assert.NotNull(result);
             Assert.True(result.Count == 2);
 
@@ -119,7 +125,8 @@ namespace ServiceQuery.Xunit
             result = await testQueryable.ToListAsync();
             Assert.NotNull(result);
             Assert.True(result.Count == 1);
-            result = await testQueryable.ToListAsync();
+            response = await serviceQuery.ExecuteAsync(testQueryable);
+            result = response.List;
             Assert.NotNull(result);
             Assert.True(result.Count == 1);
 
@@ -133,7 +140,8 @@ namespace ServiceQuery.Xunit
             result = await testQueryable.ToListAsync();
             Assert.NotNull(result);
             Assert.True(result.Count == 1);
-            result = await testQueryable.ToListAsync();
+            response = await serviceQuery.ExecuteAsync(testQueryable);
+            result = response.List;
             Assert.NotNull(result);
             Assert.True(result.Count == 1);
 
@@ -149,7 +157,8 @@ namespace ServiceQuery.Xunit
             result = await testQueryable.ToListAsync();
             Assert.NotNull(result);
             Assert.True(result.Count == 1);
-            result = await testQueryable.ToListAsync();
+            response = await serviceQuery.ExecuteAsync(testQueryable);
+            result = response.List;
             Assert.NotNull(result);
             Assert.True(result.Count == 1);
 
@@ -165,7 +174,8 @@ namespace ServiceQuery.Xunit
             result = await testQueryable.ToListAsync();
             Assert.NotNull(result);
             Assert.True(result.Count == 1);
-            result = await testQueryable.ToListAsync();
+            response = await serviceQuery.ExecuteAsync(testQueryable);
+            result = response.List;
             Assert.NotNull(result);
             Assert.True(result.Count == 1);
 
@@ -183,7 +193,8 @@ namespace ServiceQuery.Xunit
             result = await testQueryable.ToListAsync();
             Assert.NotNull(result);
             Assert.True(result.Count == 1);
-            result = await testQueryable.ToListAsync();
+            response = await serviceQuery.ExecuteAsync(testQueryable, optionAllowMissingExpressions);
+            result = response.List;
             Assert.NotNull(result);
             Assert.True(result.Count == 1);
 
@@ -201,7 +212,8 @@ namespace ServiceQuery.Xunit
             result = await testQueryable.ToListAsync();
             Assert.NotNull(result);
             Assert.True(result.Count == 1);
-            result = await testQueryable.ToListAsync();
+            response = await serviceQuery.ExecuteAsync(testQueryable, optionAllowMissingExpressions);
+            result = response.List;
             Assert.NotNull(result);
             Assert.True(result.Count == 1);
 
@@ -221,7 +233,8 @@ namespace ServiceQuery.Xunit
             result = await testQueryable.ToListAsync();
             Assert.NotNull(result);
             Assert.True(result.Count == 1);
-            result = await testQueryable.ToListAsync();
+            response = await serviceQuery.ExecuteAsync(testQueryable, optionAllowMissingExpressions);
+            result = response.List;
             Assert.NotNull(result);
             Assert.True(result.Count == 1);
 
@@ -241,18 +254,20 @@ namespace ServiceQuery.Xunit
             result = await testQueryable.ToListAsync();
             Assert.NotNull(result);
             Assert.True(result.Count == 1);
-            result = await testQueryable.ToListAsync();
+            response = await serviceQuery.ExecuteAsync(testQueryable, optionAllowMissingExpressions);
+            result = response.List;
             Assert.NotNull(result);
             Assert.True(result.Count == 1);
         }
 
         [Fact]
-        public async Task SyncExpressionsOrTests()
+        public async Task AsyncExpressionsOrTests()
         {
             var sourceQueryable = await GetTestListAsync();
             IQueryable<T> testQueryable;
             IServiceQuery serviceQuery;
             List<T> result;
+            ServiceQueryResponse<T> response = null;
 
             // And (match one record)
             serviceQuery = ServiceQueryBuilder.New()
@@ -264,7 +279,8 @@ namespace ServiceQuery.Xunit
             result = await testQueryable.ToListAsync();
             Assert.NotNull(result);
             Assert.True(result.Count == 1);
-            result = await testQueryable.ToListAsync();
+            response = await serviceQuery.ExecuteAsync(testQueryable);
+            result = response.List;
             Assert.NotNull(result);
             Assert.True(result.Count == 1);
 
@@ -278,7 +294,8 @@ namespace ServiceQuery.Xunit
             result = await testQueryable.ToListAsync();
             Assert.NotNull(result);
             Assert.True(result.Count == 2);
-            result = await testQueryable.ToListAsync();
+            response = await serviceQuery.ExecuteAsync(testQueryable);
+            result = response.List;
             Assert.NotNull(result);
             Assert.True(result.Count == 2);
 
@@ -294,7 +311,8 @@ namespace ServiceQuery.Xunit
             result = await testQueryable.ToListAsync();
             Assert.NotNull(result);
             Assert.True(result.Count == 1);
-            result = await testQueryable.ToListAsync();
+            response = await serviceQuery.ExecuteAsync(testQueryable);
+            result = response.List;
             Assert.NotNull(result);
             Assert.True(result.Count == 1);
 
@@ -310,18 +328,20 @@ namespace ServiceQuery.Xunit
             result = await testQueryable.ToListAsync();
             Assert.NotNull(result);
             Assert.True(result.Count == 2);
-            result = await testQueryable.ToListAsync();
+            response = await serviceQuery.ExecuteAsync(testQueryable);
+            result = response.List;
             Assert.NotNull(result);
             Assert.True(result.Count == 2);
         }
 
         [Fact]
-        public async Task SyncExpressionsAndOrTests()
+        public async Task AsyncExpressionsAndOrTests()
         {
             var sourceQueryable = await GetTestListAsync();
             IQueryable<T> testQueryable;
             IServiceQuery serviceQuery;
             List<T> result;
+            ServiceQueryResponse<T> response;
 
             // And (match one record)
             serviceQuery = ServiceQueryBuilder.New()
@@ -335,7 +355,8 @@ namespace ServiceQuery.Xunit
             result = await testQueryable.ToListAsync();
             Assert.NotNull(result);
             Assert.True(result.Count == 1);
-            result = await testQueryable.ToListAsync();
+            response = await serviceQuery.ExecuteAsync(testQueryable);
+            result = response.List;
             Assert.NotNull(result);
             Assert.True(result.Count == 1);
 
@@ -353,7 +374,8 @@ namespace ServiceQuery.Xunit
             result = await testQueryable.ToListAsync();
             Assert.NotNull(result);
             Assert.True(result.Count == 1);
-            result = await testQueryable.ToListAsync();
+            response = await serviceQuery.ExecuteAsync(testQueryable);
+            result = response.List;
             Assert.NotNull(result);
             Assert.True(result.Count == 1);
 
@@ -369,7 +391,8 @@ namespace ServiceQuery.Xunit
             result = await testQueryable.ToListAsync();
             Assert.NotNull(result);
             Assert.True(result.Count == 2);
-            result = await testQueryable.ToListAsync();
+            response = await serviceQuery.ExecuteAsync(testQueryable);
+            result = response.List;
             Assert.NotNull(result);
             Assert.True(result.Count == 2);
 
@@ -387,7 +410,8 @@ namespace ServiceQuery.Xunit
             result = await testQueryable.ToListAsync();
             Assert.NotNull(result);
             Assert.True(result.Count == 2);
-            result = await testQueryable.ToListAsync();
+            response = await serviceQuery.ExecuteAsync(testQueryable);
+            result = response.List;
             Assert.NotNull(result);
             Assert.True(result.Count == 2);
 
@@ -405,18 +429,20 @@ namespace ServiceQuery.Xunit
             result = await testQueryable.ToListAsync();
             Assert.NotNull(result);
             Assert.True(result.Count == 2);
-            result = await testQueryable.ToListAsync();
+            response = await serviceQuery.ExecuteAsync(testQueryable);
+            result = response.List;
             Assert.NotNull(result);
             Assert.True(result.Count == 2);
         }
 
         [Fact]
-        public async Task SyncExpressionsAndOrGroupingTests()
+        public async Task AsyncExpressionsAndOrGroupingTests()
         {
             var sourceQueryable = await GetTestListAsync();
             IQueryable<T> testQueryable;
             IServiceQuery serviceQuery;
             List<T> result;
+            ServiceQueryResponse<T> response = null;
 
             // Begin End All
             serviceQuery = ServiceQueryBuilder.New()
@@ -432,7 +458,8 @@ namespace ServiceQuery.Xunit
             result = await testQueryable.ToListAsync();
             Assert.NotNull(result);
             Assert.True(result.Count == 2);
-            result = await testQueryable.ToListAsync();
+            response = await serviceQuery.ExecuteAsync(testQueryable);
+            result = response.List;
             Assert.NotNull(result);
             Assert.True(result.Count == 2);
 
@@ -450,7 +477,8 @@ namespace ServiceQuery.Xunit
             result = await testQueryable.ToListAsync();
             Assert.NotNull(result);
             Assert.True(result.Count == 2);
-            result = await testQueryable.ToListAsync();
+            response = await serviceQuery.ExecuteAsync(testQueryable);
+            result = response.List;
             Assert.NotNull(result);
             Assert.True(result.Count == 2);
 
@@ -468,7 +496,8 @@ namespace ServiceQuery.Xunit
             result = await testQueryable.ToListAsync();
             Assert.NotNull(result);
             Assert.True(result.Count == 1);
-            result = await testQueryable.ToListAsync();
+            response = await serviceQuery.ExecuteAsync(testQueryable);
+            result = response.List;
             Assert.NotNull(result);
             Assert.True(result.Count == 1);
 
@@ -486,7 +515,8 @@ namespace ServiceQuery.Xunit
             result = await testQueryable.ToListAsync();
             Assert.NotNull(result);
             Assert.True(result.Count == 3);
-            result = await testQueryable.ToListAsync();
+            response = await serviceQuery.ExecuteAsync(testQueryable);
+            result = response.List;
             Assert.NotNull(result);
             Assert.True(result.Count == 3);
 
@@ -506,7 +536,8 @@ namespace ServiceQuery.Xunit
             result = await testQueryable.ToListAsync();
             Assert.NotNull(result);
             Assert.True(result.Count == 2);
-            result = await testQueryable.ToListAsync();
+            response = await serviceQuery.ExecuteAsync(testQueryable);
+            result = response.List;
             Assert.NotNull(result);
             Assert.True(result.Count == 2);
 
@@ -528,18 +559,20 @@ namespace ServiceQuery.Xunit
             result = await testQueryable.ToListAsync();
             Assert.NotNull(result);
             Assert.True(result.Count == 2);
-            result = await testQueryable.ToListAsync();
+            response = await serviceQuery.ExecuteAsync(testQueryable);
+            result = response.List;
             Assert.NotNull(result);
             Assert.True(result.Count == 2);
         }
 
         [Fact]
-        public async Task SyncExpressionsRequestTests()
+        public async Task AsyncExpressionsRequestTests()
         {
             var sourceQueryable = await GetTestListAsync();
             IQueryable<T> testQueryable;
             IServiceQueryRequest serviceQuery;
             List<T> result;
+            ServiceQueryResponse<T> response;
 
             // No filters (match all)
             serviceQuery = ServiceQueryRequestBuilder.New()
@@ -548,7 +581,8 @@ namespace ServiceQuery.Xunit
             result = await testQueryable.ToListAsync();
             Assert.NotNull(result);
             Assert.True(result.Count == 4);
-            result = await testQueryable.ToListAsync();
+            response = await serviceQuery.ExecuteAsync(testQueryable);
+            result = response.List;
             Assert.NotNull(result);
             Assert.True(result.Count == 4);
 
@@ -561,18 +595,20 @@ namespace ServiceQuery.Xunit
             result = await testQueryable.ToListAsync();
             Assert.NotNull(result);
             Assert.True(result.Count == 4);
-            result = await testQueryable.ToListAsync();
+            response = await serviceQuery.ExecuteAsync(testQueryable);
+            result = response.List;
             Assert.NotNull(result);
             Assert.True(result.Count == 4);
         }
 
         [Fact]
-        public async Task SyncExpressionsAndRequestTests()
+        public async Task AsyncExpressionsAndRequestTests()
         {
             var sourceQueryable = await GetTestListAsync();
             IQueryable<T> testQueryable;
             IServiceQueryRequest serviceQuery;
             List<T> result;
+            ServiceQueryResponse<T> response;
 
             // Begin and End (match one record)
             serviceQuery = ServiceQueryRequestBuilder.New()
@@ -584,7 +620,8 @@ namespace ServiceQuery.Xunit
             result = await testQueryable.ToListAsync();
             Assert.NotNull(result);
             Assert.True(result.Count == 1);
-            result = await testQueryable.ToListAsync();
+            response = await serviceQuery.ExecuteAsync(testQueryable);
+            result = response.List;
             Assert.NotNull(result);
             Assert.True(result.Count == 1);
 
@@ -598,7 +635,8 @@ namespace ServiceQuery.Xunit
             result = await testQueryable.ToListAsync();
             Assert.NotNull(result);
             Assert.True(result.Count == 2);
-            result = await testQueryable.ToListAsync();
+            response = await serviceQuery.ExecuteAsync(testQueryable);
+            result = response.List;
             Assert.NotNull(result);
             Assert.True(result.Count == 2);
 
@@ -612,7 +650,8 @@ namespace ServiceQuery.Xunit
             result = await testQueryable.ToListAsync();
             Assert.NotNull(result);
             Assert.True(result.Count == 1);
-            result = await testQueryable.ToListAsync();
+            response = await serviceQuery.ExecuteAsync(testQueryable);
+            result = response.List;
             Assert.NotNull(result);
             Assert.True(result.Count == 1);
 
@@ -626,7 +665,8 @@ namespace ServiceQuery.Xunit
             result = await testQueryable.ToListAsync();
             Assert.NotNull(result);
             Assert.True(result.Count == 1);
-            result = await testQueryable.ToListAsync();
+            response = await serviceQuery.ExecuteAsync(testQueryable);
+            result = response.List;
             Assert.NotNull(result);
             Assert.True(result.Count == 1);
 
@@ -642,7 +682,8 @@ namespace ServiceQuery.Xunit
             result = await testQueryable.ToListAsync();
             Assert.NotNull(result);
             Assert.True(result.Count == 1);
-            result = await testQueryable.ToListAsync();
+            response = await serviceQuery.ExecuteAsync(testQueryable);
+            result = response.List;
             Assert.NotNull(result);
             Assert.True(result.Count == 1);
 
@@ -658,7 +699,8 @@ namespace ServiceQuery.Xunit
             result = await testQueryable.ToListAsync();
             Assert.NotNull(result);
             Assert.True(result.Count == 1);
-            result = await testQueryable.ToListAsync();
+            response = await serviceQuery.ExecuteAsync(testQueryable);
+            result = response.List;
             Assert.NotNull(result);
             Assert.True(result.Count == 1);
 
@@ -676,7 +718,8 @@ namespace ServiceQuery.Xunit
             result = await testQueryable.ToListAsync();
             Assert.NotNull(result);
             Assert.True(result.Count == 1);
-            result = await testQueryable.ToListAsync();
+            response = await serviceQuery.ExecuteAsync(testQueryable, optionAllowMissingExpressions);
+            result = response.List;
             Assert.NotNull(result);
             Assert.True(result.Count == 1);
 
@@ -694,7 +737,8 @@ namespace ServiceQuery.Xunit
             result = await testQueryable.ToListAsync();
             Assert.NotNull(result);
             Assert.True(result.Count == 1);
-            result = await testQueryable.ToListAsync();
+            response = await serviceQuery.ExecuteAsync(testQueryable, optionAllowMissingExpressions);
+            result = response.List;
             Assert.NotNull(result);
             Assert.True(result.Count == 1);
 
@@ -714,7 +758,8 @@ namespace ServiceQuery.Xunit
             result = await testQueryable.ToListAsync();
             Assert.NotNull(result);
             Assert.True(result.Count == 1);
-            result = await testQueryable.ToListAsync();
+            response = await serviceQuery.ExecuteAsync(testQueryable, optionAllowMissingExpressions);
+            result = response.List;
             Assert.NotNull(result);
             Assert.True(result.Count == 1);
 
@@ -734,18 +779,20 @@ namespace ServiceQuery.Xunit
             result = await testQueryable.ToListAsync();
             Assert.NotNull(result);
             Assert.True(result.Count == 1);
-            result = await testQueryable.ToListAsync();
+            response = await serviceQuery.ExecuteAsync(testQueryable, optionAllowMissingExpressions);
+            result = response.List;
             Assert.NotNull(result);
             Assert.True(result.Count == 1);
         }
 
         [Fact]
-        public async Task SyncExpressionsOrRequestTests()
+        public async Task AsyncExpressionsOrRequestTests()
         {
             var sourceQueryable = await GetTestListAsync();
             IQueryable<T> testQueryable;
             IServiceQueryRequest serviceQuery;
             List<T> result;
+            ServiceQueryResponse<T> response;
 
             // And (match one record)
             serviceQuery = ServiceQueryRequestBuilder.New()
@@ -757,7 +804,8 @@ namespace ServiceQuery.Xunit
             result = await testQueryable.ToListAsync();
             Assert.NotNull(result);
             Assert.True(result.Count == 1);
-            result = await testQueryable.ToListAsync();
+            response = await serviceQuery.ExecuteAsync(testQueryable);
+            result = response.List;
             Assert.NotNull(result);
             Assert.True(result.Count == 1);
 
@@ -771,7 +819,8 @@ namespace ServiceQuery.Xunit
             result = await testQueryable.ToListAsync();
             Assert.NotNull(result);
             Assert.True(result.Count == 2);
-            result = await testQueryable.ToListAsync();
+            response = await serviceQuery.ExecuteAsync(testQueryable);
+            result = response.List;
             Assert.NotNull(result);
             Assert.True(result.Count == 2);
 
@@ -787,7 +836,8 @@ namespace ServiceQuery.Xunit
             result = await testQueryable.ToListAsync();
             Assert.NotNull(result);
             Assert.True(result.Count == 1);
-            result = await testQueryable.ToListAsync();
+            response = await serviceQuery.ExecuteAsync(testQueryable);
+            result = response.List;
             Assert.NotNull(result);
             Assert.True(result.Count == 1);
 
@@ -803,18 +853,20 @@ namespace ServiceQuery.Xunit
             result = await testQueryable.ToListAsync();
             Assert.NotNull(result);
             Assert.True(result.Count == 2);
-            result = await testQueryable.ToListAsync();
+            response = await serviceQuery.ExecuteAsync(testQueryable);
+            result = response.List;
             Assert.NotNull(result);
             Assert.True(result.Count == 2);
         }
 
         [Fact]
-        public async Task SyncExpressionsAndOrRequestTests()
+        public async Task AsyncExpressionsAndOrRequestTests()
         {
             var sourceQueryable = await GetTestListAsync();
             IQueryable<T> testQueryable;
             IServiceQueryRequest serviceQuery;
             List<T> result;
+            ServiceQueryResponse<T> response;
 
             // And (match one record)
             serviceQuery = ServiceQueryRequestBuilder.New()
@@ -828,7 +880,8 @@ namespace ServiceQuery.Xunit
             result = await testQueryable.ToListAsync();
             Assert.NotNull(result);
             Assert.True(result.Count == 1);
-            result = await testQueryable.ToListAsync();
+            response = await serviceQuery.ExecuteAsync(testQueryable);
+            result = response.List;
             Assert.NotNull(result);
             Assert.True(result.Count == 1);
 
@@ -846,7 +899,8 @@ namespace ServiceQuery.Xunit
             result = await testQueryable.ToListAsync();
             Assert.NotNull(result);
             Assert.True(result.Count == 1);
-            result = await testQueryable.ToListAsync();
+            response = await serviceQuery.ExecuteAsync(testQueryable);
+            result = response.List;
             Assert.NotNull(result);
             Assert.True(result.Count == 1);
 
@@ -862,7 +916,8 @@ namespace ServiceQuery.Xunit
             result = await testQueryable.ToListAsync();
             Assert.NotNull(result);
             Assert.True(result.Count == 2);
-            result = await testQueryable.ToListAsync();
+            response = await serviceQuery.ExecuteAsync(testQueryable);
+            result = response.List;
             Assert.NotNull(result);
             Assert.True(result.Count == 2);
 
@@ -880,7 +935,8 @@ namespace ServiceQuery.Xunit
             result = await testQueryable.ToListAsync();
             Assert.NotNull(result);
             Assert.True(result.Count == 2);
-            result = await testQueryable.ToListAsync();
+            response = await serviceQuery.ExecuteAsync(testQueryable);
+            result = response.List;
             Assert.NotNull(result);
             Assert.True(result.Count == 2);
 
@@ -898,18 +954,20 @@ namespace ServiceQuery.Xunit
             result = await testQueryable.ToListAsync();
             Assert.NotNull(result);
             Assert.True(result.Count == 2);
-            result = await testQueryable.ToListAsync();
+            response = await serviceQuery.ExecuteAsync(testQueryable);
+            result = response.List;
             Assert.NotNull(result);
             Assert.True(result.Count == 2);
         }
 
         [Fact]
-        public async Task SyncExpressionsAndOrGroupingRequestTests()
+        public async Task AsyncExpressionsAndOrGroupingRequestTests()
         {
             var sourceQueryable = await GetTestListAsync();
             IQueryable<T> testQueryable;
             IServiceQueryRequest serviceQuery;
             List<T> result;
+            ServiceQueryResponse<T> response;
 
             // Begin End All
             serviceQuery = ServiceQueryRequestBuilder.New()
@@ -925,7 +983,8 @@ namespace ServiceQuery.Xunit
             result = await testQueryable.ToListAsync();
             Assert.NotNull(result);
             Assert.True(result.Count == 2);
-            result = await testQueryable.ToListAsync();
+            response = await serviceQuery.ExecuteAsync(testQueryable);
+            result = response.List;
             Assert.NotNull(result);
             Assert.True(result.Count == 2);
 
@@ -943,7 +1002,8 @@ namespace ServiceQuery.Xunit
             result = await testQueryable.ToListAsync();
             Assert.NotNull(result);
             Assert.True(result.Count == 2);
-            result = await testQueryable.ToListAsync();
+            response = await serviceQuery.ExecuteAsync(testQueryable);
+            result = response.List;
             Assert.NotNull(result);
             Assert.True(result.Count == 2);
 
@@ -961,7 +1021,8 @@ namespace ServiceQuery.Xunit
             result = await testQueryable.ToListAsync();
             Assert.NotNull(result);
             Assert.True(result.Count == 1);
-            result = await testQueryable.ToListAsync();
+            response = await serviceQuery.ExecuteAsync(testQueryable);
+            result = response.List;
             Assert.NotNull(result);
             Assert.True(result.Count == 1);
 
@@ -979,7 +1040,8 @@ namespace ServiceQuery.Xunit
             result = await testQueryable.ToListAsync();
             Assert.NotNull(result);
             Assert.True(result.Count == 3);
-            result = await testQueryable.ToListAsync();
+            response = await serviceQuery.ExecuteAsync(testQueryable);
+            result = response.List;
             Assert.NotNull(result);
             Assert.True(result.Count == 3);
 
@@ -999,7 +1061,8 @@ namespace ServiceQuery.Xunit
             result = await testQueryable.ToListAsync();
             Assert.NotNull(result);
             Assert.True(result.Count == 2);
-            result = await testQueryable.ToListAsync();
+            response = await serviceQuery.ExecuteAsync(testQueryable);
+            result = response.List;
             Assert.NotNull(result);
             Assert.True(result.Count == 2);
 
@@ -1021,18 +1084,20 @@ namespace ServiceQuery.Xunit
             result = await testQueryable.ToListAsync();
             Assert.NotNull(result);
             Assert.True(result.Count == 2);
-            result = await testQueryable.ToListAsync();
+            response = await serviceQuery.ExecuteAsync(testQueryable);
+            result = response.List;
             Assert.NotNull(result);
             Assert.True(result.Count == 2);
         }
 
         [Fact]
-        public async Task SyncNullExpressionsAndTests()
+        public async Task AsyncNullExpressionsAndTests()
         {
             var sourceQueryable = await GetTestListAsync();
             IQueryable<T> testQueryable;
             IServiceQuery serviceQuery;
             List<T> result;
+            ServiceQueryResponse<T> response;
 
             // And (match more than one record)
             serviceQuery = ServiceQueryBuilder.New()
@@ -1044,7 +1109,8 @@ namespace ServiceQuery.Xunit
             result = await testQueryable.ToListAsync();
             Assert.NotNull(result);
             Assert.True(result.Count == 4);
-            result = await testQueryable.ToListAsync();
+            response = await serviceQuery.ExecuteAsync(testQueryable);
+            result = response.List;
             Assert.NotNull(result);
             Assert.True(result.Count == 4);
 
@@ -1058,7 +1124,8 @@ namespace ServiceQuery.Xunit
             result = await testQueryable.ToListAsync();
             Assert.NotNull(result);
             Assert.True(result.Count == 1);
-            result = await testQueryable.ToListAsync();
+            response = await serviceQuery.ExecuteAsync(testQueryable);
+            result = response.List;
             Assert.NotNull(result);
             Assert.True(result.Count == 1);
 
@@ -1074,7 +1141,8 @@ namespace ServiceQuery.Xunit
             result = await testQueryable.ToListAsync();
             Assert.NotNull(result);
             Assert.True(result.Count == 1);
-            result = await testQueryable.ToListAsync();
+            response = await serviceQuery.ExecuteAsync(testQueryable);
+            result = response.List;
             Assert.NotNull(result);
             Assert.True(result.Count == 1);
 
@@ -1092,7 +1160,8 @@ namespace ServiceQuery.Xunit
             result = await testQueryable.ToListAsync();
             Assert.NotNull(result);
             Assert.True(result.Count == 4);
-            result = await testQueryable.ToListAsync();
+            response = await serviceQuery.ExecuteAsync(testQueryable, optionAllowMissingExpressions);
+            result = response.List;
             Assert.NotNull(result);
             Assert.True(result.Count == 4);
 
@@ -1112,18 +1181,20 @@ namespace ServiceQuery.Xunit
             result = await testQueryable.ToListAsync();
             Assert.NotNull(result);
             Assert.True(result.Count == 4);
-            result = await testQueryable.ToListAsync();
+            response = await serviceQuery.ExecuteAsync(testQueryable, optionAllowMissingExpressions);
+            result = response.List;
             Assert.NotNull(result);
             Assert.True(result.Count == 4);
         }
 
         [Fact]
-        public async Task SyncNullExpressionsOrTests()
+        public async Task AsyncNullExpressionsOrTests()
         {
             var sourceQueryable = await GetTestListAsync();
             IQueryable<T> testQueryable;
             IServiceQuery serviceQuery;
             List<T> result;
+            ServiceQueryResponse<T> response;
 
             // Or
             serviceQuery = ServiceQueryBuilder.New()
@@ -1135,7 +1206,8 @@ namespace ServiceQuery.Xunit
             result = await testQueryable.ToListAsync();
             Assert.NotNull(result);
             Assert.True(result.Count == 4);
-            result = await testQueryable.ToListAsync();
+            response = await serviceQuery.ExecuteAsync(testQueryable);
+            result = response.List;
             Assert.NotNull(result);
             Assert.True(result.Count == 4);
 
@@ -1151,7 +1223,8 @@ namespace ServiceQuery.Xunit
             result = await testQueryable.ToListAsync();
             Assert.NotNull(result);
             Assert.True(result.Count == 4);
-            result = await testQueryable.ToListAsync();
+            response = await serviceQuery.ExecuteAsync(testQueryable);
+            result = response.List;
             Assert.NotNull(result);
             Assert.True(result.Count == 4);
 
@@ -1167,18 +1240,20 @@ namespace ServiceQuery.Xunit
             result = await testQueryable.ToListAsync();
             Assert.NotNull(result);
             Assert.True(result.Count == 4);
-            result = await testQueryable.ToListAsync();
+            response = await serviceQuery.ExecuteAsync(testQueryable);
+            result = response.List;
             Assert.NotNull(result);
             Assert.True(result.Count == 4);
         }
 
         [Fact]
-        public async Task SyncNullExpressionsAndOrTests()
+        public async Task AsyncNullExpressionsAndOrTests()
         {
             var sourceQueryable = await GetTestListAsync();
             IQueryable<T> testQueryable;
             IServiceQuery serviceQuery;
             List<T> result;
+            ServiceQueryResponse<T> response;
 
             // And (match one record)
             serviceQuery = ServiceQueryBuilder.New()
@@ -1192,7 +1267,8 @@ namespace ServiceQuery.Xunit
             result = await testQueryable.ToListAsync();
             Assert.NotNull(result);
             Assert.True(result.Count == 4);
-            result = await testQueryable.ToListAsync();
+            response = await serviceQuery.ExecuteAsync(testQueryable);
+            result = response.List;
             Assert.NotNull(result);
             Assert.True(result.Count == 4);
 
@@ -1210,7 +1286,8 @@ namespace ServiceQuery.Xunit
             result = await testQueryable.ToListAsync();
             Assert.NotNull(result);
             Assert.True(result.Count == 1);
-            result = await testQueryable.ToListAsync();
+            response = await serviceQuery.ExecuteAsync(testQueryable);
+            result = response.List;
             Assert.NotNull(result);
             Assert.True(result.Count == 1);
 
@@ -1226,7 +1303,8 @@ namespace ServiceQuery.Xunit
             result = await testQueryable.ToListAsync();
             Assert.NotNull(result);
             Assert.True(result.Count == 2);
-            result = await testQueryable.ToListAsync();
+            response = await serviceQuery.ExecuteAsync(testQueryable);
+            result = response.List;
             Assert.NotNull(result);
             Assert.True(result.Count == 2);
 
@@ -1244,7 +1322,8 @@ namespace ServiceQuery.Xunit
             result = await testQueryable.ToListAsync();
             Assert.NotNull(result);
             Assert.True(result.Count == 2);
-            result = await testQueryable.ToListAsync();
+            response = await serviceQuery.ExecuteAsync(testQueryable);
+            result = response.List;
             Assert.NotNull(result);
             Assert.True(result.Count == 2);
 
@@ -1262,18 +1341,20 @@ namespace ServiceQuery.Xunit
             result = await testQueryable.ToListAsync();
             Assert.NotNull(result);
             Assert.True(result.Count == 3);
-            result = await testQueryable.ToListAsync();
+            response = await serviceQuery.ExecuteAsync(testQueryable);
+            result = response.List;
             Assert.NotNull(result);
             Assert.True(result.Count == 3);
         }
 
         [Fact]
-        public async Task SyncNullExpressionsAndOrGroupingTests()
+        public async Task AsyncNullExpressionsAndOrGroupingTests()
         {
             var sourceQueryable = await GetTestListAsync();
             IQueryable<T> testQueryable;
             IServiceQuery serviceQuery;
             List<T> result;
+            ServiceQueryResponse<T> response;
 
             // Begin End All
             serviceQuery = ServiceQueryBuilder.New()
@@ -1289,7 +1370,8 @@ namespace ServiceQuery.Xunit
             result = await testQueryable.ToListAsync();
             Assert.NotNull(result);
             Assert.True(result.Count == 2);
-            result = await testQueryable.ToListAsync();
+            response = await serviceQuery.ExecuteAsync(testQueryable);
+            result = response.List;
             Assert.NotNull(result);
             Assert.True(result.Count == 2);
 
@@ -1307,7 +1389,8 @@ namespace ServiceQuery.Xunit
             result = await testQueryable.ToListAsync();
             Assert.NotNull(result);
             Assert.True(result.Count == 2);
-            result = await testQueryable.ToListAsync();
+            response = await serviceQuery.ExecuteAsync(testQueryable);
+            result = response.List;
             Assert.NotNull(result);
             Assert.True(result.Count == 2);
 
@@ -1325,7 +1408,8 @@ namespace ServiceQuery.Xunit
             result = await testQueryable.ToListAsync();
             Assert.NotNull(result);
             Assert.True(result.Count == 2);
-            result = await testQueryable.ToListAsync();
+            response = await serviceQuery.ExecuteAsync(testQueryable);
+            result = response.List;
             Assert.NotNull(result);
             Assert.True(result.Count == 2);
 
@@ -1343,7 +1427,8 @@ namespace ServiceQuery.Xunit
             result = await testQueryable.ToListAsync();
             Assert.NotNull(result);
             Assert.True(result.Count == 4);
-            result = await testQueryable.ToListAsync();
+            response = await serviceQuery.ExecuteAsync(testQueryable);
+            result = response.List;
             Assert.NotNull(result);
             Assert.True(result.Count == 4);
 
@@ -1363,7 +1448,8 @@ namespace ServiceQuery.Xunit
             result = await testQueryable.ToListAsync();
             Assert.NotNull(result);
             Assert.True(result.Count == 2);
-            result = await testQueryable.ToListAsync();
+            response = await serviceQuery.ExecuteAsync(testQueryable);
+            result = response.List;
             Assert.NotNull(result);
             Assert.True(result.Count == 2);
 
@@ -1385,7 +1471,8 @@ namespace ServiceQuery.Xunit
             result = await testQueryable.ToListAsync();
             Assert.NotNull(result);
             Assert.True(result.Count == 2);
-            result = await testQueryable.ToListAsync();
+            response = await serviceQuery.ExecuteAsync(testQueryable);
+            result = response.List;
             Assert.NotNull(result);
             Assert.True(result.Count == 2);
         }

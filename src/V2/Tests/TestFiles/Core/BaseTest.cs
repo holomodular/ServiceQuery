@@ -38,7 +38,7 @@
 
         public override Task<IQueryable<TestClass>> GetTestListAsync()
         {
-            return Task.FromResult(new TestClass().GetDefaultList().AsQueryable());
+            return Task.FromResult(new TestClass().GetDefaultList().AsAsyncInMemoryQueryable());
         }
 
         public override Task<IQueryable<TestClass>> GetTestNullCopyListAsync()
@@ -46,7 +46,7 @@
             var list = new TestClass().GetDefaultList();
             foreach (var item in list)
                 item.CopyToNullVals();
-            return Task.FromResult(list.AsQueryable());
+            return Task.FromResult(list.AsAsyncInMemoryQueryable());
         }
     }
 }

@@ -1,3 +1,8 @@
+# 2.2.4
+- Fixed unit tests for pagingasync and others (still more to do)
+- Added check to ExecuteAsync if queryable is AsyncInMemory, then call sync method instead
+- Update test project references to latest available versions
+
 # 2.2.3
 - Added target framework for Net10 and new test projects
 - Update ServiceQueryRequestExtensions to add shorthand filter expressions for existing ServiceQueryRequest filter types (, ), lt, <, lte, <=, =, eq, etc.

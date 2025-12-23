@@ -398,18 +398,22 @@
                 serviceQuery = ServiceQueryRequestBuilder.New().Average(nameof(TestClass.DecimalVal)).Build();
                 result = serviceQuery.GetServiceQuery().ExecuteAggregate<T>(sourceQueryable);
                 Assert.True(result == (double)6 / 4);
+                result = serviceQuery.GetServiceQuery().Execute<T>(sourceQueryable).Aggregate;
+                Assert.True(result == (double)6 / 4);
             }
 
             // Double
             serviceQuery = ServiceQueryRequestBuilder.New().Average(nameof(TestClass.DoubleVal)).Build();
             result = serviceQuery.GetServiceQuery().ExecuteAggregate<T>(sourceQueryable);
             Assert.True(result == (double)6 / 4);
-            result = serviceQuery.GetServiceQuery().ExecuteAggregate<T>(sourceQueryable);
+            result = serviceQuery.GetServiceQuery().Execute<T>(sourceQueryable).Aggregate;
             Assert.True(result == (double)6 / 4);
 
             // Float
             serviceQuery = ServiceQueryRequestBuilder.New().Average(nameof(TestClass.FloatVal)).Build();
             result = serviceQuery.GetServiceQuery().ExecuteAggregate<T>(sourceQueryable);
+            Assert.True(result == (double)6 / 4);
+            result = serviceQuery.GetServiceQuery().Execute<T>(sourceQueryable).Aggregate;
             Assert.True(result == (double)6 / 4);
 
             // Guid
@@ -425,10 +429,14 @@
                 serviceQuery = ServiceQueryRequestBuilder.New().Average(nameof(TestClass.IntVal)).Build();
                 result = serviceQuery.GetServiceQuery().ExecuteAggregate<T>(sourceQueryable);
                 Assert.True(result == Math.Round((double)6 / 4));
+                result = serviceQuery.GetServiceQuery().Execute<T>(sourceQueryable).Aggregate;
+                Assert.True(result == Math.Round((double)6 / 4));
 
                 // Long
                 serviceQuery = ServiceQueryRequestBuilder.New().Average(nameof(TestClass.LongVal)).Build();
                 result = serviceQuery.GetServiceQuery().ExecuteAggregate<T>(sourceQueryable);
+                Assert.True(result == Math.Round((double)6 / 4));
+                result = serviceQuery.GetServiceQuery().Execute<T>(sourceQueryable).Aggregate;
                 Assert.True(result == Math.Round((double)6 / 4));
             }
             else
@@ -437,10 +445,14 @@
                 serviceQuery = ServiceQueryRequestBuilder.New().Average(nameof(TestClass.IntVal)).Build();
                 result = serviceQuery.GetServiceQuery().ExecuteAggregate<T>(sourceQueryable);
                 Assert.True(result == (double)6 / 4);
+                result = serviceQuery.GetServiceQuery().Execute<T>(sourceQueryable).Aggregate;
+                Assert.True(result == (double)6 / 4);
 
                 // Long
                 serviceQuery = ServiceQueryRequestBuilder.New().Average(nameof(TestClass.LongVal)).Build();
                 result = serviceQuery.GetServiceQuery().ExecuteAggregate<T>(sourceQueryable);
+                Assert.True(result == (double)6 / 4);
+                result = serviceQuery.GetServiceQuery().Execute<T>(sourceQueryable).Aggregate;
                 Assert.True(result == (double)6 / 4);
             }
 
@@ -636,18 +648,22 @@
                 serviceQuery = ServiceQueryBuilder.New().Average(nameof(TestClass.NullDecimalVal)).Build();
                 result = serviceQuery.ExecuteAggregate<T>(sourceQueryable);
                 Assert.True(result == null);
+                result = serviceQuery.Execute<T>(sourceQueryable).Aggregate;
+                Assert.True(result == null);
             }
 
             // Double
             serviceQuery = ServiceQueryBuilder.New().Average(nameof(TestClass.NullDoubleVal)).Build();
             result = serviceQuery.ExecuteAggregate<T>(sourceQueryable);
             Assert.True(result == null);
-            result = serviceQuery.ExecuteAggregate<T>(sourceQueryable);
+            result = serviceQuery.Execute<T>(sourceQueryable).Aggregate;
             Assert.True(result == null);
 
             // Float
             serviceQuery = ServiceQueryBuilder.New().Average(nameof(TestClass.NullFloatVal)).Build();
             result = serviceQuery.ExecuteAggregate<T>(sourceQueryable);
+            Assert.True(result == null);
+            result = serviceQuery.Execute<T>(sourceQueryable).Aggregate;
             Assert.True(result == null);
 
             // Guid
@@ -661,12 +677,16 @@
             serviceQuery = ServiceQueryBuilder.New().Average(nameof(TestClass.NullIntVal)).Build();
             result = serviceQuery.ExecuteAggregate<T>(sourceQueryable);
             Assert.True(result == null);
+            result = serviceQuery.Execute<T>(sourceQueryable).Aggregate;
+            Assert.True(result == null);
 
             // Long
             if (ValidateNullLong)
             {
                 serviceQuery = ServiceQueryBuilder.New().Average(nameof(TestClass.NullLongVal)).Build();
                 result = serviceQuery.ExecuteAggregate<T>(sourceQueryable);
+                Assert.True(result == null);
+                result = serviceQuery.Execute<T>(sourceQueryable).Aggregate;
                 Assert.True(result == null);
             }
 
@@ -687,6 +707,8 @@
             // Single
             serviceQuery = ServiceQueryBuilder.New().Average(nameof(TestClass.NullSingleVal)).Build();
             result = serviceQuery.ExecuteAggregate<T>(sourceQueryable);
+            Assert.True(result == null);
+            result = serviceQuery.Execute<T>(sourceQueryable).Aggregate;
             Assert.True(result == null);
 
             // String
@@ -830,12 +852,14 @@
             serviceQuery = ServiceQueryRequestBuilder.New().Average(nameof(TestClass.NullDoubleVal)).Build();
             result = serviceQuery.GetServiceQuery().ExecuteAggregate<T>(sourceQueryable);
             Assert.True(result == null);
-            result = serviceQuery.GetServiceQuery().ExecuteAggregate<T>(sourceQueryable);
+            result = serviceQuery.GetServiceQuery().Execute<T>(sourceQueryable).Aggregate;
             Assert.True(result == null);
 
             // Float
             serviceQuery = ServiceQueryRequestBuilder.New().Average(nameof(TestClass.NullFloatVal)).Build();
             result = serviceQuery.GetServiceQuery().ExecuteAggregate<T>(sourceQueryable);
+            Assert.True(result == null);
+            result = serviceQuery.GetServiceQuery().Execute<T>(sourceQueryable).Aggregate;
             Assert.True(result == null);
 
             // Guid
@@ -849,12 +873,16 @@
             serviceQuery = ServiceQueryRequestBuilder.New().Average(nameof(TestClass.NullIntVal)).Build();
             result = serviceQuery.GetServiceQuery().ExecuteAggregate<T>(sourceQueryable);
             Assert.True(result == null);
+            result = serviceQuery.GetServiceQuery().Execute<T>(sourceQueryable).Aggregate;
+            Assert.True(result == null);
 
             // Long
             if (ValidateNullLong)
             {
                 serviceQuery = ServiceQueryRequestBuilder.New().Average(nameof(TestClass.NullLongVal)).Build();
                 result = serviceQuery.GetServiceQuery().ExecuteAggregate<T>(sourceQueryable);
+                Assert.True(result == null);
+                result = serviceQuery.GetServiceQuery().Execute<T>(sourceQueryable).Aggregate;
                 Assert.True(result == null);
             }
 
@@ -875,6 +903,8 @@
             // Single
             serviceQuery = ServiceQueryRequestBuilder.New().Average(nameof(TestClass.NullSingleVal)).Build();
             result = serviceQuery.GetServiceQuery().ExecuteAggregate<T>(sourceQueryable);
+            Assert.True(result == null);
+            result = serviceQuery.GetServiceQuery().Execute<T>(sourceQueryable).Aggregate;
             Assert.True(result == null);
 
             // String

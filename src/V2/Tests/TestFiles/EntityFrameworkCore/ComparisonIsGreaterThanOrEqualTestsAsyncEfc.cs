@@ -34,7 +34,7 @@ namespace ServiceQuery.Xunit
     public abstract class ComparisonIsGreaterThanOrEqualTestsAsyncEfc<T> : BaseTest<T> where T : class, ITestClass, new()
     {
         [Fact]
-        public async Task SyncIsGreaterThanOrEqualOrEqualStandardTest()
+        public async Task AsyncIsGreaterThanOrEqualOrEqualStandardTest()
         {
             var sourceQueryable = await GetTestListAsync();
             IQueryable<T> testQueryable;
@@ -297,7 +297,7 @@ namespace ServiceQuery.Xunit
         }
 
         [Fact]
-        public async Task SyncIsGreaterThanOrEqualOrEqualRequestTest()
+        public async Task AsyncIsGreaterThanOrEqualOrEqualRequestTest()
         {
             var sourceQueryable = await GetTestListAsync();
             IQueryable<T> testQueryable;
@@ -560,7 +560,7 @@ namespace ServiceQuery.Xunit
         }
 
         [Fact]
-        public async Task SyncNullIsGreaterThanOrEqualOrEqualStandardTest()
+        public async Task AsyncNullIsGreaterThanOrEqualOrEqualStandardTest()
         {
             var sourceQueryable = await GetTestListAsync();
             IQueryable<T> testQueryable;
@@ -823,7 +823,7 @@ namespace ServiceQuery.Xunit
         }
 
         [Fact]
-        public async Task SyncNullIsGreaterThanOrEqualOrEqualRequestTest()
+        public async Task AsyncNullIsGreaterThanOrEqualOrEqualRequestTest()
         {
             var sourceQueryable = await GetTestListAsync();
             IQueryable<T> testQueryable;
@@ -1086,7 +1086,7 @@ namespace ServiceQuery.Xunit
         }
 
         [Fact]
-        public async Task SyncNullCopyIsGreaterThanOrEqualOrEqualStandardTest()
+        public async Task AsyncNullCopyIsGreaterThanOrEqualOrEqualStandardTest()
         {
             var sourceQueryable = await GetTestNullCopyListAsync();
             IQueryable<T> testQueryable;
@@ -1349,7 +1349,7 @@ namespace ServiceQuery.Xunit
         }
 
         [Fact]
-        public async Task SyncNullCopyIsGreaterThanOrEqualOrEqualRequestTest()
+        public async Task AsyncNullCopyIsGreaterThanOrEqualOrEqualRequestTest()
         {
             var sourceQueryable = await GetTestNullCopyListAsync();
             IQueryable<T> testQueryable;

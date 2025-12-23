@@ -34,7 +34,7 @@ namespace ServiceQuery.Xunit
     public abstract class ComparisonIsInSetTestsAsyncEfc<T> : BaseTest<T> where T : class, ITestClass, new()
     {
         [Fact]
-        public async Task SyncIsInSetStandardTest()
+        public async Task AsyncIsInSetStandardTest()
         {
             var sourceQueryable = await GetTestListAsync();
             IQueryable<T> testQueryable;
@@ -297,7 +297,7 @@ namespace ServiceQuery.Xunit
         }
 
         [Fact]
-        public async Task SyncIsInSetTwo()
+        public async Task AsyncIsInSetTwo()
         {
             var sourceQueryable = await GetTestListAsync();
             IQueryable<T> testQueryable;
@@ -565,7 +565,7 @@ namespace ServiceQuery.Xunit
         }
 
         [Fact]
-        public async Task SyncIsInSetRequestTest()
+        public async Task AsyncIsInSetRequestTest()
         {
             var sourceQueryable = await GetTestListAsync();
             IQueryable<T> testQueryable;
@@ -830,7 +830,7 @@ namespace ServiceQuery.Xunit
         }
 
         [Fact]
-        public async Task SyncIsInSetTwoRequest()
+        public async Task AsyncIsInSetTwoRequest()
         {
             var sourceQueryable = await GetTestListAsync();
             IQueryable<T> testQueryable;
@@ -1098,7 +1098,7 @@ namespace ServiceQuery.Xunit
         }
 
         [Fact]
-        public async Task SyncNullIsInSetStandardTest()
+        public async Task AsyncNullIsInSetStandardTest()
         {
             var sourceQueryable = await GetTestListAsync();
             IQueryable<T> testQueryable;
@@ -1361,7 +1361,7 @@ namespace ServiceQuery.Xunit
         }
 
         [Fact]
-        public async Task SyncNullIsInSetRequestTest()
+        public async Task AsyncNullIsInSetRequestTest()
         {
             var sourceQueryable = await GetTestListAsync();
             IQueryable<T> testQueryable;
@@ -1624,7 +1624,7 @@ namespace ServiceQuery.Xunit
         }
 
         [Fact]
-        public async Task SyncNullIsInSetRequestAllTest()
+        public async Task AsyncNullIsInSetRequestAllTest()
         {
             var sourceQueryable = await GetTestListAsync();
             IQueryable<T> testQueryable;
@@ -1887,7 +1887,7 @@ namespace ServiceQuery.Xunit
         }
 
         [Fact]
-        public async Task SyncNullCopyIsInSetStandardTest()
+        public async Task AsyncNullCopyIsInSetStandardTest()
         {
             var sourceQueryable = await GetTestNullCopyListAsync();
             IQueryable<T> testQueryable;
@@ -2150,7 +2150,7 @@ namespace ServiceQuery.Xunit
         }
 
         [Fact]
-        public async Task SyncNullCopyIsInSetRequestTest()
+        public async Task AsyncNullCopyIsInSetRequestTest()
         {
             var sourceQueryable = await GetTestNullCopyListAsync();
             IQueryable<T> testQueryable;

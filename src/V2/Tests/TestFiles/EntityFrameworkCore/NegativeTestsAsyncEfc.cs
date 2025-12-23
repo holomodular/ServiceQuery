@@ -34,17 +34,17 @@ namespace ServiceQuery.Xunit
     public abstract class NegativeTestsAsyncEfc<T> : BaseTest<T> where T : class, ITestClass, new()
     {
         [Fact]
-        public void EndBeforeBegin()
+        public async Task EndBeforeBegin()
         {
-            var sourceQueryable = GetTestList();
+            var sourceQueryable = await GetTestListAsync();
             var sq = ServiceQueryRequestBuilder.New()
                 .End()
                 .IsEqual(nameof(TestClass.IntVal), "1")
                 .Begin()
                 .Build().GetServiceQuery();
-            Assert.Throws<ServiceQueryException>(() =>
+            await Assert.ThrowsAsync<ServiceQueryException>(async () =>
             {
-                var err = sq.Execute(sourceQueryable);
+                var err = await sq.ExecuteAsync(sourceQueryable);
             });
 
             sq = ServiceQueryRequestBuilder.New()
@@ -52,73 +52,73 @@ namespace ServiceQuery.Xunit
                 .IsEqual(nameof(TestClass.IntVal), "1")
                 .Begin()
                 .Build().GetServiceQuery();
-            Assert.Throws<ServiceQueryException>(() =>
+            await Assert.ThrowsAsync<ServiceQueryException>(async () =>
             {
-                var err = sq.Execute(sourceQueryable);
+                var err = await sq.ExecuteAsync(sourceQueryable);
             });
         }
 
         [Fact]
-        public void MissingEnd()
+        public async Task MissingEnd()
         {
-            var sourceQueryable = GetTestList();
+            var sourceQueryable = await GetTestListAsync();
             var sq = ServiceQueryRequestBuilder.New()
                 .Begin()
                 .IsEqual(nameof(TestClass.IntVal), "1")
                 .Build().GetServiceQuery();
-            Assert.Throws<ServiceQueryException>(() =>
+            await Assert.ThrowsAsync<ServiceQueryException>(async () =>
             {
-                var err = sq.Execute(sourceQueryable);
+                var err = await sq.ExecuteAsync(sourceQueryable);
             });
         }
 
         [Fact]
-        public void MultipleAndOr()
+        public async Task MultipleAndOr()
         {
-            var sourceQueryable = GetTestList();
+            var sourceQueryable = await GetTestListAsync();
             var sq = ServiceQueryRequestBuilder.New()
                 .And().Build().GetServiceQuery();
-            Assert.Throws<ServiceQueryException>(() =>
+            await Assert.ThrowsAsync<ServiceQueryException>(async () =>
             {
-                var err = sq.Execute(sourceQueryable);
+                var err = await sq.ExecuteAsync(sourceQueryable);
             });
 
             sq = ServiceQueryRequestBuilder.New()
                 .IsEqual(nameof(TestClass.IntVal), "1")
                 .And()
                 .And().Build().GetServiceQuery();
-            Assert.Throws<ServiceQueryException>(() =>
+            await Assert.ThrowsAsync<ServiceQueryException>(async () =>
             {
-                var err = sq.Execute(sourceQueryable);
+                var err = await sq.ExecuteAsync(sourceQueryable);
             });
 
             sq = ServiceQueryRequestBuilder.New()
                 .Or().Build().GetServiceQuery();
-            Assert.Throws<ServiceQueryException>(() =>
+            await Assert.ThrowsAsync<ServiceQueryException>(async () =>
             {
-                var err = sq.Execute(sourceQueryable);
+                var err = await sq.ExecuteAsync(sourceQueryable);
             });
 
             sq = ServiceQueryRequestBuilder.New()
                 .IsEqual(nameof(TestClass.IntVal), "1")
                 .Or()
                 .Or().Build().GetServiceQuery();
-            Assert.Throws<ServiceQueryException>(() =>
+            await Assert.ThrowsAsync<ServiceQueryException>(async () =>
             {
-                var err = sq.Execute(sourceQueryable);
+                var err = await sq.ExecuteAsync(sourceQueryable);
             });
         }
 
         [Fact]
-        public void PropertyNotFound()
+        public async Task PropertyNotFound()
         {
             var sourceQueryable = GetTestList();
             var sq = ServiceQueryRequestBuilder.New()
                 .Select("zzzzz")
                 .Build().GetServiceQuery();
-            Assert.Throws<ServiceQueryException>(() =>
+            await Assert.ThrowsAsync<ServiceQueryException>(async () =>
             {
-                var err = sq.Execute(sourceQueryable);
+                var err = await sq.ExecuteAsync(sourceQueryable);
             });
 
             var options = new ServiceQueryOptions() { PropertyNameCaseSensitive = true };
@@ -127,25 +127,25 @@ namespace ServiceQuery.Xunit
                 .Select("INTVAL")
                 .Build().GetServiceQuery();
 
-            Assert.Throws<ServiceQueryException>(() =>
+            await Assert.ThrowsAsync<ServiceQueryException>(async () =>
             {
-                var err = sq.Execute(sourceQueryable, options);
+                var err = await sq.ExecuteAsync(sourceQueryable, options);
             });
 
             sq = ServiceQueryRequestBuilder.New()
                 .Select("zzz")
                 .Build().GetServiceQuery();
 
-            Assert.Throws<ServiceQueryException>(() =>
+            await Assert.ThrowsAsync<ServiceQueryException>(async () =>
             {
-                var err = sq.Execute(sourceQueryable, options);
+                var err = await sq.ExecuteAsync(sourceQueryable, options);
             });
         }
 
         [Fact]
-        public void PageSizeNotANumber()
+        public async Task PageSizeNotANumber()
         {
-            var sourceQueryable = GetTestList();
+            var sourceQueryable = await GetTestListAsync();
             //IQueryable<T> testQueryable;
             IServiceQueryRequest serviceQuery;
             //List<T> result;
@@ -205,7 +205,7 @@ namespace ServiceQuery.Xunit
                 Properties = new List<string>() { nameof(TestClass.IntVal) },
                 Values = new List<string>() { "" }
             });
-            var templist = serviceQuery.Execute(sourceQueryable);
+            var templist = await serviceQuery.ExecuteAsync(sourceQueryable);
         }
 
         [Fact]
@@ -281,7 +281,7 @@ namespace ServiceQuery.Xunit
         }
 
         [Fact]
-        public void MissingProperty()
+        public async Task MissingProperty()
         {
             var sourceQueryable = GetTestList();
             IServiceQueryRequest serviceQuery;
@@ -305,11 +305,11 @@ namespace ServiceQuery.Xunit
                 Properties = new List<string>() { }
             });
 
-            Assert.Throws<ServiceQueryException>(() =>
+            await Assert.ThrowsAsync<ServiceQueryException>(async () =>
             {
-                var sq = serviceQuery.GetServiceQuery().Execute(sourceQueryable);
+                var sq = await serviceQuery.GetServiceQuery().ExecuteAsync(sourceQueryable);
             });
-            Assert.Throws<ServiceQueryException>(() =>
+            await Assert.ThrowsAsync<ServiceQueryException>(async () =>
             {
                 var sq = ServiceQueryRequestBuilder.New().Build().GetServiceQuery();
                 sq.Filters.Add(new ServiceQueryFilter()
@@ -318,7 +318,7 @@ namespace ServiceQuery.Xunit
                     CompareType = ServiceQueryCompareType.GreaterThan,
                     Properties = new List<string>() { }
                 });
-                var respsq = sq.Execute(sourceQueryable);
+                var respsq = await sq.ExecuteAsync(sourceQueryable);
             });
 
             serviceQuery = ServiceQueryRequestBuilder.New().Build();
@@ -328,11 +328,11 @@ namespace ServiceQuery.Xunit
                 Properties = new List<string>() { }
             });
 
-            Assert.Throws<ServiceQueryException>(() =>
+            await Assert.ThrowsAsync<ServiceQueryException>(async () =>
             {
-                var sq = serviceQuery.GetServiceQuery().Execute(sourceQueryable);
+                var sq = await serviceQuery.GetServiceQuery().ExecuteAsync(sourceQueryable);
             });
-            Assert.Throws<ServiceQueryException>(() =>
+            await Assert.ThrowsAsync<ServiceQueryException>(async () =>
             {
                 var sq = ServiceQueryRequestBuilder.New().Build().GetServiceQuery();
                 sq.Filters.Add(new ServiceQueryFilter()
@@ -341,7 +341,7 @@ namespace ServiceQuery.Xunit
                     CompareType = ServiceQueryCompareType.GreaterThanEqual,
                     Properties = new List<string>() { }
                 });
-                var respsq = sq.Execute(sourceQueryable);
+                var respsq = await sq.ExecuteAsync(sourceQueryable);
             });
 
             serviceQuery = ServiceQueryRequestBuilder.New().Build();
@@ -351,11 +351,11 @@ namespace ServiceQuery.Xunit
                 Properties = new List<string>() { }
             });
 
-            Assert.Throws<ServiceQueryException>(() =>
+            await Assert.ThrowsAsync<ServiceQueryException>(async () =>
             {
-                var sq = serviceQuery.GetServiceQuery().Execute(sourceQueryable);
+                var sq = await serviceQuery.GetServiceQuery().ExecuteAsync(sourceQueryable);
             });
-            Assert.Throws<ServiceQueryException>(() =>
+            await Assert.ThrowsAsync<ServiceQueryException>(async () =>
             {
                 var sq = ServiceQueryRequestBuilder.New().Build().GetServiceQuery();
                 sq.Filters.Add(new ServiceQueryFilter()
@@ -364,7 +364,7 @@ namespace ServiceQuery.Xunit
                     CompareType = ServiceQueryCompareType.LessThan,
                     Properties = new List<string>() { }
                 });
-                var respsq = sq.Execute(sourceQueryable);
+                var respsq = await sq.ExecuteAsync(sourceQueryable);
             });
 
             serviceQuery = ServiceQueryRequestBuilder.New().Build();
@@ -374,11 +374,11 @@ namespace ServiceQuery.Xunit
                 Properties = new List<string>() { }
             });
 
-            Assert.Throws<ServiceQueryException>(() =>
+            await Assert.ThrowsAsync<ServiceQueryException>(async () =>
             {
-                var sq = serviceQuery.GetServiceQuery().Execute(sourceQueryable);
+                var sq = await serviceQuery.GetServiceQuery().ExecuteAsync(sourceQueryable);
             });
-            Assert.Throws<ServiceQueryException>(() =>
+            await Assert.ThrowsAsync<ServiceQueryException>(async () =>
             {
                 var sq = ServiceQueryRequestBuilder.New().Build().GetServiceQuery();
                 sq.Filters.Add(new ServiceQueryFilter()
@@ -387,7 +387,7 @@ namespace ServiceQuery.Xunit
                     CompareType = ServiceQueryCompareType.LessThanEqual,
                     Properties = new List<string>() { }
                 });
-                var respsq = sq.Execute(sourceQueryable);
+                var respsq = await sq.ExecuteAsync(sourceQueryable);
             });
 
             serviceQuery = ServiceQueryRequestBuilder.New().Build();
@@ -397,11 +397,11 @@ namespace ServiceQuery.Xunit
                 Properties = new List<string>() { }
             });
 
-            Assert.Throws<ServiceQueryException>(() =>
+            await Assert.ThrowsAsync<ServiceQueryException>(async () =>
             {
-                var sq = serviceQuery.GetServiceQuery().Execute(sourceQueryable);
+                var sq = await serviceQuery.GetServiceQuery().ExecuteAsync(sourceQueryable);
             });
-            Assert.Throws<ServiceQueryException>(() =>
+            await Assert.ThrowsAsync<ServiceQueryException>(async () =>
             {
                 var sq = ServiceQueryRequestBuilder.New().Build().GetServiceQuery();
                 sq.Filters.Add(new ServiceQueryFilter()
@@ -410,7 +410,7 @@ namespace ServiceQuery.Xunit
                     CompareType = ServiceQueryCompareType.Equal,
                     Properties = new List<string>() { }
                 });
-                var respsq = sq.Execute(sourceQueryable);
+                var respsq = await sq.ExecuteAsync(sourceQueryable);
             });
 
             serviceQuery = ServiceQueryRequestBuilder.New().Build();
@@ -420,11 +420,11 @@ namespace ServiceQuery.Xunit
                 Properties = new List<string>() { }
             });
 
-            Assert.Throws<ServiceQueryException>(() =>
+            await Assert.ThrowsAsync<ServiceQueryException>(async () =>
             {
-                var sq = serviceQuery.GetServiceQuery().Execute(sourceQueryable);
+                var sq = await serviceQuery.GetServiceQuery().ExecuteAsync(sourceQueryable);
             });
-            Assert.Throws<ServiceQueryException>(() =>
+            await Assert.ThrowsAsync<ServiceQueryException>(async () =>
             {
                 var sq = ServiceQueryRequestBuilder.New().Build().GetServiceQuery();
                 sq.Filters.Add(new ServiceQueryFilter()
@@ -433,7 +433,7 @@ namespace ServiceQuery.Xunit
                     CompareType = ServiceQueryCompareType.NotEqual,
                     Properties = new List<string>() { }
                 });
-                var respsq = sq.Execute(sourceQueryable);
+                var respsq = await sq.ExecuteAsync(sourceQueryable);
             });
 
             serviceQuery = ServiceQueryRequestBuilder.New().Build();
@@ -443,11 +443,11 @@ namespace ServiceQuery.Xunit
                 Properties = new List<string>() { }
             });
 
-            Assert.Throws<ServiceQueryException>(() =>
+            await Assert.ThrowsAsync<ServiceQueryException>(async () =>
             {
-                var sq = serviceQuery.GetServiceQuery().Execute(sourceQueryable);
+                var sq = await serviceQuery.GetServiceQuery().ExecuteAsync(sourceQueryable);
             });
-            Assert.Throws<ServiceQueryException>(() =>
+            await Assert.ThrowsAsync<ServiceQueryException>(async () =>
             {
                 var sq = ServiceQueryRequestBuilder.New().Build().GetServiceQuery();
                 sq.Filters.Add(new ServiceQueryFilter()
@@ -456,7 +456,7 @@ namespace ServiceQuery.Xunit
                     IncludeType = ServiceQueryIncludeType.Include,
                     Properties = new List<string>() { }
                 });
-                var respsq = sq.Execute(sourceQueryable);
+                var respsq = await sq.ExecuteAsync(sourceQueryable);
             });
 
             serviceQuery = ServiceQueryRequestBuilder.New().Build();
@@ -466,11 +466,11 @@ namespace ServiceQuery.Xunit
                 Properties = new List<string>() { }
             });
 
-            Assert.Throws<ServiceQueryException>(() =>
+            await Assert.ThrowsAsync<ServiceQueryException>(async () =>
             {
-                var sq = serviceQuery.GetServiceQuery().Execute(sourceQueryable);
+                var sq = await serviceQuery.GetServiceQuery().ExecuteAsync(sourceQueryable);
             });
-            Assert.Throws<ServiceQueryException>(() =>
+            await Assert.ThrowsAsync<ServiceQueryException>(async () =>
             {
                 var sq = ServiceQueryRequestBuilder.New().Build().GetServiceQuery();
                 sq.Filters.Add(new ServiceQueryFilter()
@@ -479,7 +479,7 @@ namespace ServiceQuery.Xunit
                     IncludeType = ServiceQueryIncludeType.NotInclude,
                     Properties = new List<string>() { }
                 });
-                var respsq = sq.Execute(sourceQueryable);
+                var respsq = await sq.ExecuteAsync(sourceQueryable);
             });
 
             serviceQuery = ServiceQueryRequestBuilder.New().Build();
@@ -489,11 +489,11 @@ namespace ServiceQuery.Xunit
                 Properties = new List<string>() { }
             });
 
-            Assert.Throws<ServiceQueryException>(() =>
+            await Assert.ThrowsAsync<ServiceQueryException>(async () =>
             {
-                var sq = serviceQuery.GetServiceQuery().Execute(sourceQueryable);
+                var sq = await serviceQuery.GetServiceQuery().ExecuteAsync(sourceQueryable);
             });
-            Assert.Throws<ServiceQueryException>(() =>
+            await Assert.ThrowsAsync<ServiceQueryException>(async () =>
             {
                 var sq = ServiceQueryRequestBuilder.New().Build().GetServiceQuery();
                 sq.Filters.Add(new ServiceQueryFilter()
@@ -502,7 +502,7 @@ namespace ServiceQuery.Xunit
                     IncludeType = ServiceQueryIncludeType.Include,
                     Properties = new List<string>() { }
                 });
-                var respsq = sq.Execute(sourceQueryable);
+                var respsq = await sq.ExecuteAsync(sourceQueryable);
             });
 
             serviceQuery = ServiceQueryRequestBuilder.New().Build();
@@ -512,11 +512,11 @@ namespace ServiceQuery.Xunit
                 Properties = new List<string>() { }
             });
 
-            Assert.Throws<ServiceQueryException>(() =>
+            await Assert.ThrowsAsync<ServiceQueryException>(async () =>
             {
-                var sq = serviceQuery.GetServiceQuery().Execute(sourceQueryable);
+                var sq = await serviceQuery.GetServiceQuery().ExecuteAsync(sourceQueryable);
             });
-            Assert.Throws<ServiceQueryException>(() =>
+            await Assert.ThrowsAsync<ServiceQueryException>(async () =>
             {
                 var sq = ServiceQueryRequestBuilder.New().Build().GetServiceQuery();
                 sq.Filters.Add(new ServiceQueryFilter()
@@ -525,7 +525,7 @@ namespace ServiceQuery.Xunit
                     IncludeType = ServiceQueryIncludeType.NotInclude,
                     Properties = new List<string>() { }
                 });
-                var respsq = sq.Execute(sourceQueryable);
+                var respsq = await sq.ExecuteAsync(sourceQueryable);
             });
 
             serviceQuery = ServiceQueryRequestBuilder.New().Build();
@@ -535,11 +535,11 @@ namespace ServiceQuery.Xunit
                 Properties = new List<string>() { }
             });
 
-            Assert.Throws<ServiceQueryException>(() =>
+            await Assert.ThrowsAsync<ServiceQueryException>(async () =>
             {
-                var sq = serviceQuery.GetServiceQuery().Execute(sourceQueryable);
+                var sq = await serviceQuery.GetServiceQuery().ExecuteAsync(sourceQueryable);
             });
-            Assert.Throws<ServiceQueryException>(() =>
+            await Assert.ThrowsAsync<ServiceQueryException>(async () =>
             {
                 var sq = ServiceQueryRequestBuilder.New().Build().GetServiceQuery();
                 sq.Filters.Add(new ServiceQueryFilter()
@@ -548,7 +548,7 @@ namespace ServiceQuery.Xunit
                     AggregateType = ServiceQueryAggregateType.Minimum,
                     Properties = new List<string>() { }
                 });
-                var respsq = sq.Execute(sourceQueryable);
+                var respsq = await sq.ExecuteAsync(sourceQueryable);
             });
 
             serviceQuery = ServiceQueryRequestBuilder.New().Build();
@@ -558,11 +558,11 @@ namespace ServiceQuery.Xunit
                 Properties = new List<string>() { }
             });
 
-            Assert.Throws<ServiceQueryException>(() =>
+            await Assert.ThrowsAsync<ServiceQueryException>(async () =>
             {
-                var sq = serviceQuery.GetServiceQuery().Execute(sourceQueryable);
+                var sq = await serviceQuery.GetServiceQuery().ExecuteAsync(sourceQueryable);
             });
-            Assert.Throws<ServiceQueryException>(() =>
+            await Assert.ThrowsAsync<ServiceQueryException>(async () =>
             {
                 var sq = ServiceQueryRequestBuilder.New().Build().GetServiceQuery();
                 sq.Filters.Add(new ServiceQueryFilter()
@@ -571,7 +571,7 @@ namespace ServiceQuery.Xunit
                     AggregateType = ServiceQueryAggregateType.Maximum,
                     Properties = new List<string>() { }
                 });
-                var respsq = sq.Execute(sourceQueryable);
+                var respsq = await sq.ExecuteAsync(sourceQueryable);
             });
 
             serviceQuery = ServiceQueryRequestBuilder.New().Build();
@@ -581,11 +581,11 @@ namespace ServiceQuery.Xunit
                 Properties = new List<string>() { }
             });
 
-            Assert.Throws<ServiceQueryException>(() =>
+            await Assert.ThrowsAsync<ServiceQueryException>(async () =>
             {
-                var sq = serviceQuery.GetServiceQuery().Execute(sourceQueryable);
+                var sq = await serviceQuery.GetServiceQuery().ExecuteAsync(sourceQueryable);
             });
-            Assert.Throws<ServiceQueryException>(() =>
+            await Assert.ThrowsAsync<ServiceQueryException>(async () =>
             {
                 var sq = ServiceQueryRequestBuilder.New().Build().GetServiceQuery();
                 sq.Filters.Add(new ServiceQueryFilter()
@@ -594,7 +594,7 @@ namespace ServiceQuery.Xunit
                     CompareType = ServiceQueryCompareType.StartsWith,
                     Properties = new List<string>() { }
                 });
-                var respsq = sq.Execute(sourceQueryable);
+                var respsq = await sq.ExecuteAsync(sourceQueryable);
             });
 
             serviceQuery = ServiceQueryRequestBuilder.New().Build();
@@ -604,11 +604,11 @@ namespace ServiceQuery.Xunit
                 Properties = new List<string>() { }
             });
 
-            Assert.Throws<ServiceQueryException>(() =>
+            await Assert.ThrowsAsync<ServiceQueryException>(async () =>
             {
-                var sq = serviceQuery.GetServiceQuery().Execute(sourceQueryable);
+                var sq = await serviceQuery.GetServiceQuery().ExecuteAsync(sourceQueryable);
             });
-            Assert.Throws<ServiceQueryException>(() =>
+            await Assert.ThrowsAsync<ServiceQueryException>(async () =>
             {
                 var sq = ServiceQueryRequestBuilder.New().Build().GetServiceQuery();
                 sq.Filters.Add(new ServiceQueryFilter()
@@ -617,7 +617,7 @@ namespace ServiceQuery.Xunit
                     CompareType = ServiceQueryCompareType.EndsWith,
                     Properties = new List<string>() { }
                 });
-                var respsq = sq.Execute(sourceQueryable);
+                var respsq = await sq.ExecuteAsync(sourceQueryable);
             });
 
             serviceQuery = ServiceQueryRequestBuilder.New().Build();
@@ -627,11 +627,11 @@ namespace ServiceQuery.Xunit
                 Properties = new List<string>() { }
             });
 
-            Assert.Throws<ServiceQueryException>(() =>
+            await Assert.ThrowsAsync<ServiceQueryException>(async () =>
             {
-                var sq = serviceQuery.GetServiceQuery().Execute(sourceQueryable);
+                var sq = await serviceQuery.GetServiceQuery().ExecuteAsync(sourceQueryable);
             });
-            Assert.Throws<ServiceQueryException>(() =>
+            await Assert.ThrowsAsync<ServiceQueryException>(async () =>
             {
                 var sq = ServiceQueryRequestBuilder.New().Build().GetServiceQuery();
                 sq.Filters.Add(new ServiceQueryFilter()
@@ -640,7 +640,7 @@ namespace ServiceQuery.Xunit
                     CompareType = ServiceQueryCompareType.Contains,
                     Properties = new List<string>() { }
                 });
-                var respsq = sq.Execute(sourceQueryable);
+                var respsq = await sq.ExecuteAsync(sourceQueryable);
             });
 
             serviceQuery = ServiceQueryRequestBuilder.New().Build();
@@ -650,11 +650,11 @@ namespace ServiceQuery.Xunit
                 Properties = new List<string>() { }
             });
 
-            Assert.Throws<ServiceQueryException>(() =>
+            await Assert.ThrowsAsync<ServiceQueryException>(async () =>
             {
-                var sq = serviceQuery.GetServiceQuery().Execute(sourceQueryable);
+                var sq = await serviceQuery.GetServiceQuery().ExecuteAsync(sourceQueryable);
             });
-            Assert.Throws<ServiceQueryException>(() =>
+            await Assert.ThrowsAsync<ServiceQueryException>(async () =>
             {
                 var sq = ServiceQueryRequestBuilder.New().Build().GetServiceQuery();
                 sq.Filters.Add(new ServiceQueryFilter()
@@ -663,7 +663,7 @@ namespace ServiceQuery.Xunit
                     AggregateType = ServiceQueryAggregateType.Sum,
                     Properties = new List<string>() { }
                 });
-                var respsq = sq.Execute(sourceQueryable);
+                var respsq = await sq.ExecuteAsync(sourceQueryable);
             });
 
             serviceQuery = ServiceQueryRequestBuilder.New().Build();
@@ -673,9 +673,9 @@ namespace ServiceQuery.Xunit
                 Properties = new List<string>() { }
             });
 
-            Assert.Throws<ServiceQueryException>(() =>
+            await Assert.ThrowsAsync<ServiceQueryException>(async () =>
             {
-                var sq = serviceQuery.GetServiceQuery().Execute(sourceQueryable);
+                var sq = await serviceQuery.GetServiceQuery().ExecuteAsync(sourceQueryable);
             });
             //await Assert.ThrowsAsync<ServiceQueryException>(async() =>
             //{
@@ -686,7 +686,7 @@ namespace ServiceQuery.Xunit
             //        SortType = ServiceQuerySortType.Ascending,
             //        Properties = new List<string>() { }
             //    });
-            //    var respsq = sq.Execute(sourceQueryable);
+            //    var respsq = await sq.ExecuteAsync(sourceQueryable);
             //});
 
             serviceQuery = ServiceQueryRequestBuilder.New().Build();
@@ -696,9 +696,9 @@ namespace ServiceQuery.Xunit
                 Properties = new List<string>() { }
             });
 
-            Assert.Throws<ServiceQueryException>(() =>
+            await Assert.ThrowsAsync<ServiceQueryException>(async () =>
             {
-                var sq = serviceQuery.GetServiceQuery().Execute(sourceQueryable);
+                var sq = await serviceQuery.GetServiceQuery().ExecuteAsync(sourceQueryable);
             });
             //await Assert.ThrowsAsync<ServiceQueryException>(async() =>
             //{
@@ -709,18 +709,18 @@ namespace ServiceQuery.Xunit
             //        SortType = ServiceQuerySortType.Descending,
             //        Properties = new List<string>() { }
             //    });
-            //    var respsq = sq.Execute(sourceQueryable);
+            //    var respsq = await sq.ExecuteAsync(sourceQueryable);
             //});
         }
 
         [Fact]
-        public void ExecuteNull()
+        public async Task ExecuteNull()
         {
             IServiceQueryRequest serviceQuery;
 
             serviceQuery = ServiceQueryRequestBuilder.New().Build();
 
-            var result = serviceQuery.GetServiceQuery().Execute<TestClass>(null);
+            var result = await serviceQuery.GetServiceQuery().ExecuteAsync<TestClass>(null);
             Assert.True(result == null);
         }
 

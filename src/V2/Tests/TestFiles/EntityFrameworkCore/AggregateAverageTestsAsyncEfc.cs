@@ -42,6 +42,7 @@
             IQueryable<T> sourceQueryable = await GetTestListAsync();
             IServiceQuery serviceQuery;
             double? result;
+            ServiceQueryResponse<T> response = null;
 
             // Boolean
             serviceQuery = ServiceQueryBuilder.New().Average(nameof(TestClass.BoolVal)).Build();
@@ -132,8 +133,8 @@
                 serviceQuery = ServiceQueryBuilder.New().Average(nameof(TestClass.DecimalVal)).Build();
                 result = await serviceQuery.ExecuteAggregateAsync<T>(sourceQueryable);
                 Assert.True(result == (double)6 / 4);
-                result = await serviceQuery.ExecuteAggregateAsync<T>(sourceQueryable);
-                Assert.True(result == (double)6 / 4);
+                response = await serviceQuery.ExecuteAsync<T>(sourceQueryable);
+                Assert.True(response.Aggregate == (double)6 / 4);
             }
 
             // Double
@@ -141,15 +142,15 @@
             result = await serviceQuery.ExecuteAggregateAsync<T>(sourceQueryable);
             Assert.True(result == (double)6 / 4);
             serviceQuery = ServiceQueryBuilder.New().Average(nameof(TestClass.DoubleVal)).Build();
-            result = await serviceQuery.ExecuteAggregateAsync<T>(sourceQueryable);
-            Assert.True(result == (double)6 / 4);
+            response = await serviceQuery.ExecuteAsync<T>(sourceQueryable);
+            Assert.True(response.Aggregate == (double)6 / 4);
 
             // Float
             serviceQuery = ServiceQueryBuilder.New().Average(nameof(TestClass.FloatVal)).Build();
             result = await serviceQuery.ExecuteAggregateAsync<T>(sourceQueryable);
             Assert.True(result == (double)6 / 4);
-            result = await serviceQuery.ExecuteAggregateAsync<T>(sourceQueryable);
-            Assert.True(result == (double)6 / 4);
+            response = await serviceQuery.ExecuteAsync<T>(sourceQueryable);
+            Assert.True(response.Aggregate == (double)6 / 4);
 
             // Guid
             serviceQuery = ServiceQueryBuilder.New().Average(nameof(TestClass.GuidVal)).Build();

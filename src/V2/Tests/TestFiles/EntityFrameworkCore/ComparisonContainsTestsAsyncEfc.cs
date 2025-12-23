@@ -34,7 +34,7 @@ namespace ServiceQuery.Xunit
     public abstract class ComparisonContainsTestsAsyncEfc<T> : BaseTest<T> where T : class, ITestClass, new()
     {
         [Fact]
-        public async Task SyncContainsStandardTest()
+        public async Task AsyncContainsStandardTest()
         {
             var sourceQueryable = await GetTestListAsync();
             IQueryable<T> testQueryable;
@@ -230,7 +230,7 @@ namespace ServiceQuery.Xunit
         }
 
         [Fact]
-        public async Task SyncContainsRequestTest()
+        public async Task AsyncContainsRequestTest()
         {
             var sourceQueryable = await GetTestListAsync();
             IQueryable<T> testQueryable;
@@ -427,7 +427,7 @@ namespace ServiceQuery.Xunit
         }
 
         [Fact]
-        public async Task SyncNullContainsStandardTest()
+        public async Task AsyncNullContainsStandardTest()
         {
             var sourceQueryable = await GetTestListAsync();
             IQueryable<T> testQueryable;
@@ -624,7 +624,7 @@ namespace ServiceQuery.Xunit
         }
 
         [Fact]
-        public async Task SyncNullContainsRequestTest()
+        public async Task AsyncNullContainsRequestTest()
         {
             var sourceQueryable = await GetTestListAsync();
             IQueryable<T> testQueryable;
@@ -822,7 +822,7 @@ namespace ServiceQuery.Xunit
         }
 
         [Fact]
-        public async Task SyncNullCopyContainsStandardTest()
+        public async Task AsyncNullCopyContainsStandardTest()
         {
             var sourceQueryable = await GetTestNullCopyListAsync();
             IQueryable<T> testQueryable;
@@ -1019,7 +1019,7 @@ namespace ServiceQuery.Xunit
         }
 
         [Fact]
-        public async Task SyncNullCopyContainsRequestTest()
+        public async Task AsyncNullCopyContainsRequestTest()
         {
             var sourceQueryable = await GetTestNullCopyListAsync();
             IQueryable<T> testQueryable;

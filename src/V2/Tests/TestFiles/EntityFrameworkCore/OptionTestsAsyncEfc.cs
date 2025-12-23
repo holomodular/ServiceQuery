@@ -34,12 +34,12 @@ namespace ServiceQuery.Xunit
     public abstract class OptionTestsAsyncEfc<T> : BaseTest<T> where T : class, ITestClass, new()
     {
         [Fact]
-        public void PropertyNameSensitivity()
+        public async Task PropertyNameSensitivity()
         {
-            var sourceQueryable = GetTestList();
+            var sourceQueryable = await GetTestListAsync();
 
             var req = ServiceQueryRequestBuilder.New().IsEqual(nameof(TestClass.IntVal), "1").Build();
-            var resp = req.Execute(sourceQueryable);
+            var resp = await req.ExecuteAsync(sourceQueryable);
             Assert.True(resp.List.Count == 1);
 
             req = ServiceQueryRequestBuilder.New().IsEqual("intval", "1").Build();
@@ -48,16 +48,16 @@ namespace ServiceQuery.Xunit
             {
                 PropertyNameCaseSensitive = true
             };
-            Assert.Throws<ServiceQueryException>(() =>
+            await Assert.ThrowsAsync<ServiceQueryException>(async () =>
             {
-                resp = req.Execute(sourceQueryable, options);
+                resp = await req.ExecuteAsync(sourceQueryable, options);
             });
         }
 
         [Fact]
-        public void NullOptions()
+        public async Task NullOptions()
         {
-            var sourceQueryable = GetTestList();
+            var sourceQueryable = await GetTestListAsync();
 
             var req = ServiceQueryRequestBuilder.New().Select(nameof(TestClass.IntVal)).IsEqual(nameof(TestClass.IntVal), "1").Build();
 

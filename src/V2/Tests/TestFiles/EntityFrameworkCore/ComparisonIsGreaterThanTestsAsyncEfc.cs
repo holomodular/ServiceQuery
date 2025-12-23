@@ -34,7 +34,7 @@ namespace ServiceQuery.Xunit
     public abstract class ComparisonIsGreaterThanTestsAsyncEfc<T> : BaseTest<T> where T : class, ITestClass, new()
     {
         [Fact]
-        public async Task SyncIsGreaterThanStandardTest()
+        public async Task AsyncIsGreaterThanStandardTest()
         {
             var sourceQueryable = await GetTestListAsync();
             IQueryable<T> testQueryable;
@@ -545,7 +545,7 @@ namespace ServiceQuery.Xunit
         }
 
         [Fact]
-        public async Task SyncNullIsGreaterThanStandardTest()
+        public async Task AsyncNullIsGreaterThanStandardTest()
         {
             var sourceQueryable = await GetTestListAsync();
             IQueryable<T> testQueryable;
@@ -800,7 +800,7 @@ namespace ServiceQuery.Xunit
         }
 
         [Fact]
-        public async Task SyncNullIsGreaterThanRequestTest()
+        public async Task AsyncNullIsGreaterThanRequestTest()
         {
             var sourceQueryable = await GetTestListAsync();
             IQueryable<T> testQueryable;
@@ -1055,7 +1055,7 @@ namespace ServiceQuery.Xunit
         }
 
         [Fact]
-        public async Task SyncNullCopyIsGreaterThanStandardTest()
+        public async Task AsyncNullCopyIsGreaterThanStandardTest()
         {
             var sourceQueryable = await GetTestNullCopyListAsync();
             IQueryable<T> testQueryable;
@@ -1310,7 +1310,7 @@ namespace ServiceQuery.Xunit
         }
 
         [Fact]
-        public async Task SyncNullCopyIsGreaterThanRequestTest()
+        public async Task AsyncNullCopyIsGreaterThanRequestTest()
         {
             var sourceQueryable = await GetTestNullCopyListAsync();
             IQueryable<T> testQueryable;

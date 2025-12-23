@@ -1,4 +1,4 @@
-﻿<img src="https://github.com/holomodular/ServiceQuery/blob/main/Logo.png" title="ServiceQuery Logo" width="250"/>
+﻿<img src="https://raw.githubusercontent.com/holomodular/ServiceQuery/main/Logo.png" title="ServiceQuery Logo" width="250"/>
 
 [![NuGet version](https://badge.fury.io/nu/ServiceQuery.svg)](https://badge.fury.io/nu/ServiceQuery)
 ![badge](https://img.shields.io/endpoint?url=https://gist.githubusercontent.com/holomodular-support/5a0fab9a9341bb94e27da49a1e89fd03/raw/servicequery-codecoverage.json)
@@ -72,12 +72,21 @@ public async Task<ServiceQueryResponse<ExampleTable>> ExampleServiceQueryAsync(S
 }
 ```
 
-## Documentation
-Comprehensive documentation is available on our website at http://ServiceQuery.com including tables for supported data types and operations by .NET Framework version and database engine.
+## Packages Available
+The following NuGet packages are available for provider-specific implementations.
 
-## ServiceQuery.AzureDataTables
-Azure Data Tables has certain limitations, such as lack of support for aggregate functions, string comparisons and ordering. 
-Our companion NuGet package <b>ServiceQuery.AzureDataTables</b> provides a solution to these limitations, allowing you to use standard operations and execute requests seamlessly. The solution is to download all records and then perform the query using an internal list. See our example project for more information.
+### ServiceQuery.AzureDataTables
+Support for Azure Data Tables (Storage Account) and async methods.  Azure Data Tables has several limitations, such as lack of support for aggregate functions, string comparisons and ordering. 
+This package provides a solution to these limitations, allowing you to use all standard operations and execute requests seamlessly. The solution downloads all records and then performs the query and unsupported functions using an internal list. See our example project for more information.
+
+### ServiceQuery.EntityFrameworkCore
+Support for Microsoft Entity Framework Core (EFC) and async methods. Note: For the .NET 8 runtime, we reference EFC version 9. Use ServiceQuery.EntityFrameworkCore8 if you need EFC version 8.
+
+### ServiceQuery.EntityFrameworkCore8
+Support for Microsoft Entity Framework Core (EFC) and async method. Note: This references EFC version 8 for the .NET 8 runtime.
+
+### ServiceQuery.MongoDb
+Support for MongoDb and async methods.
 
 ## Building and Executing a Query
 Construct queries using the ServiceQueryRequestBuilder object:
@@ -148,6 +157,7 @@ public void Example()
 
 ## Using Query Operations
 If you are using javascript, make sure to download the [ServiceQuery.js](https://github.com/holomodular/ServiceQuery/blob/main/src/V2/javascript/servicequery.js) javascript file. This allows you to use the same syntax as the .NET code below!
+
 ```csharp
   using ServiceQuery;
 
@@ -212,6 +222,15 @@ If you are using javascript, make sure to download the [ServiceQuery.js](https:/
 
 ```
 
+### Working with DateTimes
+When working with DateTimes, make sure to use the ToString format of "o" or "O" for proper datetime round-trip serialization, as in the following code:
+
+```csharp
+var request = new ServiceQueryRequestBuilder()
+    .IsLessThan("CreateDate", DateTimeOffset.UtcNow.ToString("o"))
+    .Build();
+```
+
 ## ServiceQuery Options
 Customize server-side query processing with ServiceQueryOptions object:
 ```csharp
@@ -235,4 +254,4 @@ Adjust property mappings based on user role for security.
 Add expressions to queries to target specific data segments, ensuring efficient data retrieval and enhanced security.
 
 ## About
-Authored by https://www.linkedin.com/in/danlogsdon Visit https://HoloModular.com or https://ServiceQuery.com to learn more.
+ServiceQuery is owned and maintained by HoloModular LLC and created by Danny Logsdon (Founder). Visit our websites at https://HoloModular.com, https://ServiceQuery.com or https://www.linkedin.com/in/danlogsdon to learn more.

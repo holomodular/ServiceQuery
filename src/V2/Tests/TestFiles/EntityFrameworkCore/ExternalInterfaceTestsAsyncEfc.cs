@@ -25,9 +25,9 @@ namespace ServiceQuery.Xunit
         }
 
         [Fact]
-        public void ExternalInterfaceStandardTest()
+        public async Task ExternalInterfaceStandardTest()
         {
-            var sourceQueryable = GetTestList();
+            var sourceQueryable = await GetTestListAsync();
 
             IServiceQuery serviceQuery;
             List<TestClass> result;
@@ -115,9 +115,9 @@ namespace ServiceQuery.Xunit
         }
 
         [Fact]
-        public void NullExternalInterfaceStandardTest()
+        public async Task NullExternalInterfaceStandardTest()
         {
-            var sourceQueryable = GetTestList();
+            var sourceQueryable = await GetTestListAsync();
 
             IServiceQuery serviceQuery;
             List<TestClass> result;
@@ -205,9 +205,9 @@ namespace ServiceQuery.Xunit
         }
 
         [Fact]
-        public void ExternalInterfaceRequestTest()
+        public async Task ExternalInterfaceRequestTest()
         {
-            var sourceQueryable = GetTestList();
+            var sourceQueryable = await GetTestListAsync();
 
             IServiceQueryRequest serviceQuery;
             List<TestClass> result;
@@ -295,9 +295,9 @@ namespace ServiceQuery.Xunit
         }
 
         [Fact]
-        public void NullExternalInterfaceRequestTest()
+        public async Task NullExternalInterfaceRequestTest()
         {
-            var sourceQueryable = GetTestList();
+            var sourceQueryable = await GetTestListAsync();
 
             IServiceQueryRequest serviceQuery;
             List<TestClass> result;
@@ -385,28 +385,28 @@ namespace ServiceQuery.Xunit
         }
 
         [Fact]
-        public void ExternalInterfaceRequestExecuteTest()
+        public async Task ExternalInterfaceRequestExecuteTest()
         {
-            var sourceQueryable = GetTestList();
+            var sourceQueryable = await GetTestListAsync();
 
             IServiceQueryRequest serviceQuery;
             ServiceQueryResponse<TestClass> result;
 
             IQueryable<TestClass> nullquery = null;
             serviceQuery = ServiceQueryRequestBuilder.New().Build();
-            result = serviceQuery.Execute(nullquery);
+            result = await serviceQuery.ExecuteAsync(nullquery);
             Assert.Null(result);
-            result = serviceQuery.Execute(nullquery);
+            result = await serviceQuery.ExecuteAsync(nullquery);
             Assert.Null(result);
 
             serviceQuery = ServiceQueryRequestBuilder.New().Build();
-            result = serviceQuery.Execute(sourceQueryable);
+            result = await serviceQuery.ExecuteAsync(sourceQueryable);
             Assert.NotNull(result);
             Assert.Null(result.Aggregate);
             Assert.True(result.Count == 0);
             Assert.NotNull(result.List);
             Assert.True(result.List.Count == 4);
-            result = serviceQuery.Execute(sourceQueryable);
+            result = await serviceQuery.ExecuteAsync(sourceQueryable);
             Assert.NotNull(result);
             Assert.Null(result.Aggregate);
             Assert.True(result.Count == 0);
@@ -414,13 +414,13 @@ namespace ServiceQuery.Xunit
             Assert.True(result.List.Count == 4);
 
             serviceQuery = ServiceQueryRequestBuilder.New().Paging(1, 1000, true).Build();
-            result = serviceQuery.Execute(sourceQueryable);
+            result = await serviceQuery.ExecuteAsync(sourceQueryable);
             Assert.NotNull(result);
             Assert.Null(result.Aggregate);
             Assert.True(result.Count == 4);
             Assert.NotNull(result.List);
             Assert.True(result.List.Count == 4);
-            result = serviceQuery.Execute(sourceQueryable);
+            result = await serviceQuery.ExecuteAsync(sourceQueryable);
             Assert.NotNull(result);
             Assert.Null(result.Aggregate);
             Assert.True(result.Count == 4);
@@ -430,13 +430,13 @@ namespace ServiceQuery.Xunit
             serviceQuery = ServiceQueryRequestBuilder.New()
                 .IncludeCount()
                 .Build();
-            result = serviceQuery.Execute(sourceQueryable);
+            result = await serviceQuery.ExecuteAsync(sourceQueryable);
             Assert.NotNull(result);
             Assert.Null(result.Aggregate);
             Assert.True(result.Count == 4);
             Assert.NotNull(result.List);
             Assert.True(result.List.Count == 4);
-            result = serviceQuery.Execute(sourceQueryable);
+            result = await serviceQuery.ExecuteAsync(sourceQueryable);
             Assert.NotNull(result);
             Assert.Null(result.Aggregate);
             Assert.True(result.Count == 4);
@@ -450,13 +450,13 @@ namespace ServiceQuery.Xunit
                 .SortAsc(nameof(TestClass.BoolVal))
                 .IncludeCount()
                 .Build();
-            result = serviceQuery.Execute(sourceQueryable);
+            result = await serviceQuery.ExecuteAsync(sourceQueryable);
             Assert.NotNull(result);
             Assert.Null(result.Aggregate);
             Assert.True(result.Count == 4);
             Assert.NotNull(result.List);
             Assert.True(result.List.Count == 4);
-            result = serviceQuery.Execute(sourceQueryable);
+            result = await serviceQuery.ExecuteAsync(sourceQueryable);
             Assert.NotNull(result);
             Assert.Null(result.Aggregate);
             Assert.True(result.Count == 4);
@@ -465,14 +465,14 @@ namespace ServiceQuery.Xunit
 
             // Sort
             serviceQuery = ServiceQueryRequestBuilder.New().Sort(nameof(TestClass.IntVal), true).Build();
-            result = serviceQuery.Execute(sourceQueryable);
+            result = await serviceQuery.ExecuteAsync(sourceQueryable);
             Assert.NotNull(result);
             Assert.Null(result.Aggregate);
             Assert.True(result.Count == 0);
             Assert.NotNull(result.List);
             Assert.True(result.List.Count == 4);
             ValidateSort(result.List, true);
-            result = serviceQuery.Execute(sourceQueryable);
+            result = await serviceQuery.ExecuteAsync(sourceQueryable);
             Assert.NotNull(result);
             Assert.Null(result.Aggregate);
             Assert.True(result.Count == 0);
@@ -481,14 +481,14 @@ namespace ServiceQuery.Xunit
 
             // Aggregate
             serviceQuery = ServiceQueryRequestBuilder.New().Maximum(nameof(TestClass.IntVal)).Build();
-            result = serviceQuery.Execute(sourceQueryable);
+            result = await serviceQuery.ExecuteAsync(sourceQueryable);
             Assert.NotNull(result);
             Assert.NotNull(result.Aggregate);
             Assert.True(result.Aggregate.Value == 3);
             Assert.True(result.Count == null);
             Assert.NotNull(result.List);
             Assert.True(result.List.Count == 0);
-            result = serviceQuery.Execute(sourceQueryable);
+            result = await serviceQuery.ExecuteAsync(sourceQueryable);
             Assert.NotNull(result);
             Assert.NotNull(result.Aggregate);
             Assert.True(result.Aggregate.Value == 3);
@@ -498,14 +498,14 @@ namespace ServiceQuery.Xunit
 
             // Aggregate includecount
             serviceQuery = ServiceQueryRequestBuilder.New().Count().IncludeCount().Build();
-            result = serviceQuery.Execute(sourceQueryable);
+            result = await serviceQuery.ExecuteAsync(sourceQueryable);
             Assert.NotNull(result);
             Assert.NotNull(result.Aggregate);
             Assert.True(result.Aggregate.Value == 4);
             Assert.True(result.Count == 4);
             Assert.NotNull(result.List);
             Assert.True(result.List.Count == 0);
-            result = serviceQuery.Execute(sourceQueryable);
+            result = await serviceQuery.ExecuteAsync(sourceQueryable);
             Assert.NotNull(result);
             Assert.NotNull(result.Aggregate);
             Assert.True(result.Aggregate.Value == 4);

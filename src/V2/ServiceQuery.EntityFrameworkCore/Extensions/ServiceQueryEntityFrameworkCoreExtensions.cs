@@ -28,6 +28,10 @@ namespace ServiceQuery
                 if (queryable == null)
                     return null;
 
+                // If in-memory list, call sync version instead
+                if (queryable is AsyncInMemoryQueryable<T>)
+                    return serviceQuery.Execute<T>(queryable, serviceQueryOptions);
+
                 if (serviceQuery.IsAggregate())
                 {
                     var aggregate = await ExecuteAggregateAsync<T>(serviceQuery, queryable, serviceQueryOptions);
